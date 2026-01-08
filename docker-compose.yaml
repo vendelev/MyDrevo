@@ -1,0 +1,19 @@
+services:
+  qdrant:
+    image: qdrant/qdrant
+    volumes:
+      - ./docker/qdrant/storage:/qdrant/storage
+    ports:
+      - "${QDRANT_PORT}:6333"
+  php-dev:
+    container_name: ${COMPOSE_PROJECT_NAME}-php
+    restart: unless-stopped
+    build:
+      context: docker
+      dockerfile: Dockerfile
+      args:
+        - UID=${UID}
+        - GID=${GID}
+    volumes:
+      - ./backend:/var/www/backend/
+      - ./backend/storage/temp/phpunit:/opt/phpstorm-coverage

@@ -1,0 +1,39 @@
+parameters:
+    level: 8
+    paths:
+        - bootstrap/
+        - config/
+        - src/
+        - tests/
+    excludePaths:
+        - backend/bootstrap/cache/*
+    tmpDir: storage/temp/phpstan
+    exceptions:
+        # https://phpstan.org/blog/bring-your-exceptions-under-control
+        check:
+            missingCheckedExceptionInThrows: true
+            tooWideThrowType: true
+        uncheckedExceptionClasses:
+            - Illuminate\Contracts\Container\BindingResolutionException
+            - Symfony\Component\Console\Exception\CommandNotFoundException
+            - Symfony\Component\Serializer\Exception\ExceptionInterface
+            - GuzzleHttp\Exception\GuzzleException
+            - RuntimeException
+            - InvalidArgumentException
+    ignoreErrors:
+        -
+            message: "#^Called 'env' outside of the config directory which returns null when the config is cached, use 'config'.$#"
+            path: *Config/*.php
+    strictRules:
+        allRules: false
+        dynamicCallOnStaticMethod: true
+        overwriteVariablesWithLoop: true
+services:
+   -
+       class: Tests\Architecture\CleanStructureTest
+       tags:
+           - phpat.test
+   -
+       class: Tests\Architecture\CleanArchitectureTest
+       tags:
+           - phpat.test

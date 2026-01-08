@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+    <arg name="cache" value="storage/temp/.phpcs-cache"/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+
+    <file>bootstrap/app.php</file>
+    <file>bootstrap/providers.php</file>
+    <file>config/</file>
+    <file>src/</file>
+    <file>tests/</file>
+
+
+    <rule ref="PSR1"/>
+    <rule ref="PSR12"/>
+
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
+    <rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
+    <rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall"/>
+    <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
+    <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
+    <rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier"/>
+    <rule ref="Generic.CodeAnalysis.AssignmentInCondition"/>
+    <!--Пустое выражение(пр. в условии)-->
+    <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
+    <!--Проверяет на неиспользуемые параметры функции.-->
+<!--    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>-->
+    <!--Метод переопределён, но просто вызывает родителя-->
+    <rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>
+
+    <!--Отчеты об ошибках, если в нескольких файлах используется тот же класс или интерфейс.-->
+    <rule ref="Generic.Classes.DuplicateClassName"/>
+
+    <rule ref="Generic.Commenting.Todo"/>
+    <!--В комментариях Fix_me(одним словом)-->
+    <rule ref="Generic.Commenting.Fixme"/>
+
+
+    <rule ref="Generic.Files.LineEndings"/>
+    <!--проверка BOM-->
+    <rule ref="Generic.Files.ByteOrderMark"/>
+
+    <!--один файл - один: класс, интерфейс, трейт-->
+    <rule ref="Generic.Files.OneClassPerFile"/>
+    <rule ref="Generic.Files.OneInterfacePerFile"/>
+    <rule ref="Generic.Files.OneTraitPerFile"/>
+
+    <!--Каждое выражение на новой строке-->
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+
+    <!--Проверяет, что вызовы методов и функций расположены правильно.-->
+    <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
+
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+
+    <rule ref="Generic.PHP.DeprecatedFunctions"/>
+    <rule ref="Generic.PHP.ForbiddenFunctions"/>
+    <rule ref="Generic.PHP.NoSilencedErrors"/>
+    <rule ref="Generic.PHP.RequireStrictTypes"/>
+    <!--Проверяет, что открытие PHP тег является первым содержимым в файле.-->
+    <rule ref="Generic.PHP.CharacterBeforePHPOpeningTag"/>
+
+    <rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
+
+    <rule ref="Squiz.Classes.LowercaseClassKeywords"/>
+    <!--Проверяет Декларацию класса и его наследников.-->
+    <rule ref="Squiz.Classes.ClassDeclaration"/>
+    <!--Имя класса и файла совпадают-->
+    <rule ref="Squiz.Classes.ClassFileName"/>
+    <!--Имена классов в CamelCase-->
+    <rule ref="Squiz.Classes.ValidClassName"/>
+
+    <!--Проверяет, что контрольные выражения соответствуют своим стандартам кодирования.-->
+    <rule ref="Squiz.ControlStructures.ControlSignature"/>
+
+    <!--Проверяет, что объявление функции правильно.-->
+    <rule ref="Squiz.Functions.FunctionDeclaration"/>
+    <!--Проверяет, что аргументы в объявлениях функций расположены правильно.-->
+    <rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing"/>
+    <!--Проверяет, что дублированные аргументы не используются в функциональных объявлениях.-->
+    <rule ref="Squiz.Functions.FunctionDuplicateArgument"/>
+    <!--Убедитесь, что однострочные и многострочные объявления функций определяются правильно.-->
+    <rule ref="Squiz.Functions.MultiLineFunctionDeclaration">
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.OneParamPerLine"/>
+    </rule>
+
+    <rule ref="Squiz.Operators.ValidLogicalOperators"/>
+
+    <rule ref="Squiz.PHP.DisallowSizeFunctionsInLoops"/>
+    <rule ref="Squiz.PHP.Eval"/>
+    <rule ref="Squiz.PHP.NonExecutableCode"/>
+
+    <rule ref="Squiz.Scope.MemberVarScope"/>
+    <rule ref="Squiz.Scope.StaticThisUsage"/>
+
+    <rule ref="Squiz.WhiteSpace.CastSpacing"/>
+    <rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
+    <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
+    <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+    <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
+    <!--Убедитесь, что нет пробелов до / после оператора объекта.-->
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing"/>
+
+    <rule ref="PEAR.ControlStructures.ControlSignature"/>
+    <!--Убедитесь, что многострочные условия определены правильно.-->
+    <rule ref="PEAR.ControlStructures.MultiLineCondition">
+        <exclude name="PEAR.ControlStructures.MultiLineCondition.SpacingAfterOpenBrace"/>
+        <exclude name="PEAR.ControlStructures.MultiLineCondition.StartWithBoolean"/>
+    </rule>
+    <!--Убедитесь, что в include_once используется в условных ситуациях, а require_once используется в другом месте.-->
+    <rule ref="PEAR.Files.IncludingFile"/>
+    <!--Обеспечивает функциональные параметры со значениями по умолчанию находятся в конце декларации.-->
+    <rule ref="PEAR.Functions.ValidDefaultValue"/>
+    <!--после = значение на той же строке-->
+    <rule ref="PEAR.Formatting.MultiLineAssignment"/>
+
+    <!-- Functional rules -->
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <properties>
+            <property name="linesCountBeforeDeclare" value="1"/>
+            <property name="linesCountAfterDeclare" value="1"/>
+            <property name="spacesCountAroundEqualsSign" value="0"/>
+        </properties>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint"/>
+    <rule ref="SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly"/>
+    <rule ref="SlevomatCodingStandard.Classes.UselessLateStaticBinding"/>
+
+    <!-- Rules for detecting dead or useless code -->
+    <rule ref="SlevomatCodingStandard.Functions.UnusedInheritedVariablePassedToClosure"/>
+    <rule ref="SlevomatCodingStandard.Functions.UselessParameterDefaultValue"/>
+    <rule ref="SlevomatCodingStandard.Namespaces.UselessAlias"/>
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true" />
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.PHP.UselessParentheses"/>
+    <rule ref="SlevomatCodingStandard.PHP.OptimizedFunctionsWithoutUnpacking"/>
+    <rule ref="SlevomatCodingStandard.Variables.DisallowSuperGlobalVariable"/>
+    <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable"/>
+    <rule ref="SlevomatCodingStandard.Variables.UnusedVariable"/>
+    <rule ref="SlevomatCodingStandard.Variables.UselessVariable"/>
+    <rule ref="SlevomatCodingStandard.Exceptions.DeadCatch"/>
+
+    <!-- Rules for consistent code looks -->
+    <rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference"/>
+</ruleset>

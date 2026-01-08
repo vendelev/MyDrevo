@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "streamable-http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "perplexity": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "perplexity-mcp"
+      ],
+      "env": {
+        "PERPLEXITY_API_KEY": "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"
+      },
+      "disabledTools": [],
+      "alwaysAllow": []
+    }
+  }
+}
