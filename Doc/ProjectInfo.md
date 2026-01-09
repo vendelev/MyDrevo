@@ -2,7 +2,7 @@
 
 ## Сводка
 
-Учебный проект для создания парсера freshdesk используя Specification-Driven Development и AI, используя Laravel и полной контейнеризацией через Docker.
+Учебный проект для создания сайта гениалогического древа используя Specification-Driven Development и AI, используя Laravel и полной контейнеризацией через Docker.
 
 ### Основные компоненты
 - **Backend API**: Сервис на Laravel с Clean Architecture и CQRS
@@ -28,8 +28,8 @@
 
 **Конфигурация**: `backend/composer.json`
 
-- **Язык**: PHP 8.4.13
-- **Фреймворк**: Laravel 12.43
+- **Язык**: PHP 8.5.1
+- **Фреймворк**: Laravel 12.46.0
 - **Сборка**: Composer
 - **Структура**: Модульный монолит с Clean Architecture и CQRS
 - **Тесты**: Unit, Integration, E2E

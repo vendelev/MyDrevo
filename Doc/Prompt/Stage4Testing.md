@@ -6,15 +6,15 @@
 
 ## Входные параметры (Пользовательский ввод)
 
-{YYYY}/{MM}/{ISSUE_FOLDER_LINK} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
+{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
 
 ## Что надо сделать
 
 Внимательно изучи:
 - [CodeStyle.md](../Rule/CodeStyle.md)
 - [Testing.md](../Rule/Testing.md)
-- Новые требования к функционалу в файле [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER_LINK}/Spec.md)
-- Реализацию в файле [TaskForTest.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER_LINK}/TaskForTest.md)
+- Новые требования к функционалу в файле [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- Реализацию в файле [TaskForTest.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskForTest.md)
 
 Обязательные шаги:
 

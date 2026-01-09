@@ -19,7 +19,7 @@
 
 ## Входные параметры (Пользовательский ввод)
 
-{YYYY}/{MM}/{ISSUE_FOLDER_LINK} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя. 
+{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя. 
 
 ## Что надо сделать
 
@@ -28,7 +28,7 @@
 - Правила архитектуры в [Architecture.md](../Rule/Architecture.md)
 - Workflow при добавлении новой feature в [FeatureWorkflow.md](../Rule/FeatureWorkflow.md)
 - Особенности работы с PHP в этом проекте в [CodeHints.md](../Rule/CodeHints.md)
-- Новые бизнес-требования в [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER_LINK}/Spec.md)
+- Новые бизнес-требования в [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
 
 1. Нужно создать три новых файла с описанием реализации бизнес-требований:
 
