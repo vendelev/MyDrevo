@@ -1,5 +1,9 @@
 # Информация о проекте
 
+## Общение
+
+Все ответы и взаимодействие на **русском языке**.
+
 ## Сводка
 
 Учебный проект для создания сайта гениалогического древа используя Specification-Driven Development и AI, используя Laravel и полной контейнеризацией через Docker.
@@ -22,9 +26,7 @@
 
 ---
 
-## Проекты
-
-### Backend (PHP/Laravel)
+## Backend (PHP/Laravel)
 
 **Конфигурация**: `backend/composer.json`
 
@@ -35,13 +37,26 @@
 - **Тесты**: Unit, Integration, E2E
 - **Статический анализ**: PHPStan, PHP_CodeSniffer, Rector
 
-#### Переменные окружения
+### Архитектура
+
+- Правила архитектуры в [Architecture.md](/Doc/Rule/Architecture.md)
+
+### Code Style
+
+- Особенности работы с PHP в этом проекте в [CodeHints.md](/Doc/Rule/CodeHints.md)
+- Принятый в команде стиль кода в [CodeStyle.md](/Doc/Rule/CodeStyle.md)
+
+### Тестирование
+
+- Рекомендации по написанию тестов в [Testing.md](/Doc/Rule/Testing.md)
+
+### Переменные окружения
 
 - **Backend**: `backend/.env.example` — шаблон с комментариями
 - **Backend**: `backend/.env.testing` — переменные для проведения тестов
 - **Backend**: `backend/.env` — переменные с реальными значениями
 
-#### Структура файлов в backend
+### Структура директорий в backend
 
 ```text
 backend/
@@ -58,18 +73,9 @@ backend/
 
 ---
 
-### База данных
+## База данных
 
 - **СУБД**: SQLite
 - **Управление схемой**: Laravel миграции
 - **Конфигурация**: Backend переменные окружения
 - **Тестовая БД**: Отдельная конфигурация для тестов
-
----
-
-## Дополнительные контексты
-
-- Правила архитектуры в [Architecture.md](/Doc/Rule/Architecture.md)
-- Особенности работы с PHP в этом проекте в [CodeHints.md](/Doc/Rule/CodeHints.md)
-- Принятый в команде стиль кода в [CodeStyle.md](/Doc/Rule/CodeStyle.md)
-- Рекомендации по написанию тестов в [Testing.md](/Doc/Rule/Testing.md)

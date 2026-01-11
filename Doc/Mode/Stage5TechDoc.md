@@ -13,7 +13,7 @@
 ## Что надо сделать
 
 Внимательно изучи:
-- Информацию о проекте в [`AGENTS.md`](../../AGENTS.md)
+- Информацию о проекте в [`AGENTS.md`](/AGENTS.md)
 - Новые бизнес-требования в [`Spec.md`](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
 - План реализации в [TaskForDev.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskForDev.md)
 - План тестирования в [TaskForTest.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskForTest.md)

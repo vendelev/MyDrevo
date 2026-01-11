@@ -24,7 +24,7 @@
 ## Что надо сделать
 
 Внимательно изучи:
-- Информацию о проекте в [AGENTS.md](../../AGENTS.md)
+- Информацию о проекте в [AGENTS.md](/AGENTS.md)
 - Правила архитектуры в [Architecture.md](../Rule/Architecture.md)
 - Workflow при добавлении новой feature в [FeatureWorkflow.md](../Rule/FeatureWorkflow.md)
 - Особенности работы с PHP в этом проекте в [CodeHints.md](../Rule/CodeHints.md)
