@@ -5,6 +5,18 @@
       "url": "https://mcp.context7.com/mcp",
       "disabled": false,
       "alwaysAllow": []
+    },
+    "sqlite": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-sqlite",
+        "--db-path",
+        "backend/database/storage/database.sqlite"
+      ],
+      "disabledTools": [],
+      "alwaysAllow": [
+        "read_query"
+      ]
     }
   }
 }

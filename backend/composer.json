@@ -37,7 +37,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Parser\\": "src/"
+            "App\\": "src/"
         }
     },
     "autoload-dev": {
