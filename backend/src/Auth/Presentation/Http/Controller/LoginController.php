@@ -21,7 +21,7 @@ final readonly class LoginController
 
     public function showLoginForm(): View
     {
-        return ViewFacade::make('auth.login');
+        return ViewFacade::make('auth::login');
     }
 
     public function login(Request $request): RedirectResponse

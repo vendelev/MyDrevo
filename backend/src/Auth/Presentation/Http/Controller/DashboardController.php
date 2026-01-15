@@ -12,6 +12,6 @@ final class DashboardController
     public function index(): View
     {
         // Проверка аутентификации через Laravel middleware
-        return ViewFacade::make('auth.dashboard');
+        return ViewFacade::make('auth::dashboard');
     }
 }

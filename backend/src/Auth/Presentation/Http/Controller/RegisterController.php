@@ -21,7 +21,7 @@ final readonly class RegisterController
 
     public function showRegistrationForm(): \Illuminate\Contracts\View\View
     {
-        return View::make('auth.register');
+        return View::make('auth::register');
     }
 
     public function register(Request $request): RedirectResponse

@@ -209,7 +209,7 @@ return new class extends Migration
                 $table->string('login', 45)->default('');
                 $table->string('password', 45)->default('');
                 $table->string('fname', 45);
-                $table->string('sname', 45);
+                $table->string('sname', 45)->nullable();
                 $table->string('surname', 45);
                 $table->string('email', 100);
                 $table->dateTime('create_date')->default('1970-01-01 00:00:00');

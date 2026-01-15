@@ -9,16 +9,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 final class User extends Authenticatable
 {
     public function __construct(
-        private readonly int $id,
-        private readonly string $login,
-        private readonly string $password,
-        private readonly string $firstName,
-        private readonly ?string $middleName,
-        private readonly string $lastName,
-        private readonly string $email,
-        private readonly int $userType,
-        private readonly bool $active,
-        private readonly \DateTimeImmutable $createdAt
+        private readonly int $id = 0,
+        private readonly string $login = '',
+        private readonly string $password = '',
+        private readonly string $firstName = '',
+        private readonly ?string $middleName = null,
+        private readonly string $lastName = '',
+        private readonly string $email = '',
+        private readonly int $userType = 1,
+        private readonly bool $active = true,
+        private readonly \DateTimeImmutable $createdAt = new \DateTimeImmutable()
     ) {
         parent::__construct();
     }

@@ -6,3 +6,4 @@
 .env.testing
 auth.json
 /storage/temp/*
+/storage/framework/sessions/
