@@ -43,11 +43,16 @@
 ### Entity (Сущности)
 
 *   **User**:
-    *   `id`: UUID (Primary Key)
-    *   `name`: String (Имя пользователя)
-    *   `email`: String (Уникальный адрес почты)
-    *   `password`: String (Хешированный пароль)
-    *   `email_verified_at`: Timestamp (Дата подтверждения почты)
+    *   `id`: Integer (Primary Key, маппинг на `gen_user.ID`)
+    *   `login`: String (маппинг на `gen_user.LOGIN`)
+    *   `password`: String (маппинг на `gen_user.PASSWORD`)
+    *   `firstName`: String (маппинг на `gen_user.FNAME`)
+    *   `middleName`: String (маппинг на `gen_user.SNAME`)
+    *   `lastName`: String (маппинг на `gen_user.SURNAME`)
+    *   `email`: String (маппинг на `gen_user.EMAIL`)
+    *   `userType`: Integer (маппинг на `gen_user.USER_TYPE`)
+    *   `active`: Integer (маппинг на `gen_user.ACTIVE`)
+    *   `created_at`: Timestamp (маппинг на `gen_user.CREATE_DATE`)
 
 ### Value Objects (Объекты-значения)
 

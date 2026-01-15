@@ -45,25 +45,26 @@
 ### Сущности (Entities)
 
 1.  **FamilyMember (Член семьи):**
-    *   `id`: UUID (в БД мапится на `gen_person.ID`)
-    *   `first_name`: String (мапится на `gen_name_lang.FNAME` через `gen_person.FNAME_ID`)
-    *   `last_name`: String (мапится на `gen_surname_lang.MALE_SURNAME/FEMALE_SURNAME` через `gen_person.SURNAME_ID`)
-    *   `middle_name`: String (nullable, мапится на `gen_name_lang.MALE_SNAME/FEMALE_SNAME` через `gen_person.SNAME_ID`)
-    *   `gender`: Enum (male, female, other)
-    *   `birth_date`: Date (nullable, мапится на `gen_person.BDATE`)
-    *   `birth_place`: String (nullable)
-    *   `death_date`: Date (nullable, мапится на `gen_person.DDATE`)
-    *   `death_place`: String (nullable)
-    *   `biography`: Text (nullable, мапится на `gen_person_info_lang.INFO`)
-    *   `created_at`: Timestamp
-    *   `updated_at`: Timestamp
+    *   `id`: Integer (в БД мапится на `gen_person.ID`)
+    *   `firstName`: String (мапится на `gen_name_lang.FNAME` через `gen_person.FNAME_ID`)
+    *   `lastName`: String (мапится на `gen_surname_lang.MALE_SURNAME/FEMALE_SURNAME` через `gen_person.SURNAME_ID`)
+    *   `middleName`: String (nullable, мапится на `gen_name_lang.MALE_SNAME/FEMALE_SNAME` через `gen_person.SNAME_ID`)
+    *   `gender`: Enum (male, female) - будет добавлено в таблицу gen_person
+    *   `birthDate`: Date (nullable, мапится на `gen_person.BDATE`)
+    *   `birthPlace`: String (nullable) - будет добавлено в таблицу gen_person
+    *   `deathDate`: Date (nullable, мапится на `gen_person.DDATE`)
+    *   `deathPlace`: String (nullable) - будет добавлено в таблицу gen_person
+    *   `biography`: Text (nullable) - будет добавлено в таблицу gen_person_info_lang
+    *   `userId`: Integer (мапится на `gen_person.USER_ID`)
+    *   `createdAt`: Timestamp - будет добавлено в таблицу gen_person
+    *   `updatedAt`: Timestamp - будет добавлено в таблицу gen_person
 
 2.  **Relationship (Связь):**
-    *   `id`: UUID (в БД мапится на `gen_relation`)
-    *   `person_id`: UUID (ссылка на FamilyMember, мапится на `gen_relation.PID1`)
-    *   `relative_id`: UUID (ссылка на FamilyMember, мапится на `gen_relation.PID2`)
+    *   `id`: Integer (в БД мапится на ID в таблице связей)
+    *   `personId`: Integer (ссылка на FamilyMember, мапится на `gen_relation.PID1`)
+    *   `relativeId`: Integer (ссылка на FamilyMember, мапится на `gen_relation.PID2`)
     *   `type`: Enum (parent, child, spouse, мапится на `gen_relation.RELATION_TYPE_ID`)
-    *   `metadata`: JSON (дополнительная информация, например, тип усыновления)
+    *   `metadata`: JSON (дополнительная информация, например, тип усыновления) - будет добавлено в таблицу gen_relation
 
 ### Объекты-значения (Value Objects)
 
@@ -89,7 +90,10 @@
 - **Связи:** Таблица `gen_relation`.
 - **Пользователи:** Таблица `gen_user`.
 
-*Примечание: Несмотря на использование UUID в доменной модели, в БД используются `int unsigned auto_increment`. Слой инфраструктуры должен обеспечивать корректное преобразование.*
+*Примечание: Для полного соответствия модели предметной области необходимо внести изменения в структуру БД:*
+1. Добавить поля `gender`, `birthPlace`, `deathPlace`, `createdAt`, `updatedAt` в таблицу `gen_person`
+2. Добавить поле `INFO` в таблицу `gen_person_info_lang` для хранения биографии
+3. Добавить поле `metadata` в таблицу `gen_relation`
 
 ## Зависимости
 

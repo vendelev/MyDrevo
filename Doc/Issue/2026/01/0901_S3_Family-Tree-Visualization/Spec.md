@@ -45,9 +45,9 @@
 2.  **TreeNode (Узел дерева):**
     *   `id`: `FamilyMemberId` (соответствует `gen_person.ID`).
     *   `label`: String (ФИО, собирается из `gen_name_lang` и `gen_surname_lang`).
-    *   `gender`: `Gender` (определяется по `gen_name_lang.MALE_ID` или связанным полям).
+    *   `gender`: `Gender` (определяется по полю `gender` в таблице `gen_person`).
     *   `lifePeriod`: `LifePeriod` (на основе `gen_person.BDATE` и `gen_person.DDATE`).
-    *   `photoUrl`: String (ссылка на превью фото).
+    *   `photoUrl`: String (ссылка на превью фото) - будет доступно после реализации задачи S4.
 3.  **TreeEdge (Связь в дереве):**
     *   `source`: `FamilyMemberId` (соответствует `gen_relation.PID1`).
     *   `target`: `FamilyMemberId` (соответствует `gen_relation.PID2`).
@@ -68,11 +68,11 @@
 ```json
 {
   "nodes": [
-    {"id": "uuid-1", "name": "Иван Иванов", "gender": "male", "life_period": "1950-2010"},
-    {"id": "uuid-2", "name": "Мария Иванова", "gender": "female", "life_period": "1955-н.в."}
+    {"id": 1, "name": "Иван Иванов", "gender": "male", "life_period": "1950-2010"},
+    {"id": 2, "name": "Мария Иванова", "gender": "female", "life_period": "1955-н.в."}
   ],
   "links": [
-    {"source": "uuid-1", "target": "uuid-3", "type": "parent-child"}
+    {"source": 1, "target": 3, "type": "parent-child"}
   ]
 }
 ```

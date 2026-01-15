@@ -12,8 +12,8 @@
 ## Модель предметной области
 
 ### Сущности (Entities)
-- `FamilyMember`: ID (UUID), Gender, BirthDate, DeathDate, etc.
-- `Relationship`: ID (UUID), PersonId, RelativeId, Type (Parent, Child, Spouse).
+- `FamilyMember`: ID (Integer), Gender, BirthDate, DeathDate, etc.
+- `Relationship`: ID (Integer), PersonId, RelativeId, Type (Parent, Child, Spouse).
 
 ### Value Objects
 - `FullName`: FirstName, LastName, MiddleName.
@@ -62,24 +62,30 @@
 
 ## Последовательность действий
 
-1. **Шаг 1: Domain слой**
+1. **Шаг 1: Подготовка инфраструктуры БД**
+   - Создать миграции для добавления недостающих полей в таблицы:
+     - Добавить поля `gender`, `birth_place`, `death_place`, `created_at`, `updated_at` в таблицу `gen_person`
+     - Добавить поле `INFO` в таблицу `gen_person_info_lang` для хранения биографии
+     - Добавить поле `metadata` в таблицу `gen_relation`
+
+2. **Шаг 2: Domain слой**
    - Создать Value Objects `FullName` и `LifePeriod`.
    - Создать сущности `FamilyMember` и `Relationship`.
    - Определить интерфейсы репозиториев.
 
-2. **Шаг 2: Infrastructure слой (База данных)**
+3. **Шаг 3: Infrastructure слой (База данных)**
    - Реализовать `EloquentFamilyMemberRepository`. 
-   - *Важно*: Маппинг UUID на `int` ID в таблицах `gen_person` и связанных. Использовать транзакции для сохранения в несколько таблиц (`gen_person`, `gen_name_lang` и т.д.).
+   - Маппинг полей на таблицы `gen_person` и связанные таблицы.
    - Реализовать `EloquentRelationshipRepository`.
 
-3. **Шаг 3: Application слой**
+4. **Шаг 4: Application слой**
    - Реализовать UseCases для CRUD профилей.
    - Реализовать `AddRelationship` с бизнес-валидацией:
      - Проверка на циклы (рекурсивный поиск предков).
      - Проверка возраста (родитель старше ребенка).
      - Автоматическое создание обратной связи (если требуется логикой БД).
 
-4. **Шаг 4: Presentation слой**
+5. **Шаг 5: Presentation слой**
    - Создать контроллеры и зарегистрировать маршруты.
    - Настроить `FamilyServiceProvider` и зарегистрировать его в `bootstrap/providers.php`.
 
@@ -89,7 +95,10 @@ Client -> Controller -> RequestDTO -> UseCase -> DomainEntity -> Repository -> D
 ```
 
 ## Миграции и конфигурация
-Используются существующие таблицы из `structure.sql`. Новых миграций не требуется, но нужно убедиться, что Eloquent модели правильно настроены на эти таблицы.
+Необходимо создать миграции для добавления недостающих полей в существующие таблицы:
+- Добавление полей `gender`, `birth_place`, `death_place`, `created_at`, `updated_at` в таблицу `gen_person`
+- Добавление поля `INFO` в таблицу `gen_person_info_lang`
+- Добавление поля `metadata` в таблицу `gen_relation`
 
 ## Риски и альтернативы
 - **Риск**: Сложность маппинга на старую схему БД (много таблиц для одного профиля).

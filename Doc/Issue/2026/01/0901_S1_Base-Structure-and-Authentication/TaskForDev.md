@@ -15,15 +15,15 @@
 ## Модель предметной области
 
 ### Сущности (Domain/Entity)
-- `User`: `id` (UUID), `name`, `email`, `password`.
+- `User`: `id` (Integer), `login`, `password`, `firstName`, `middleName`, `lastName`, `email`, `userType`, `active`, `created_at`.
 
 ### Интерфейсы (Domain)
-- `UserRepositoryInterface`: Методы `save(User $user)`, `findByEmail(string $email)`, `findById(string $id)`.
+- `UserRepositoryInterface`: Методы `save(User $user)`, `findByEmail(string $email)`, `findById(int $id)`.
 
 ### DTO (Domain/Request & Response)
-- `RegisterRequest`: `name`, `email`, `password`.
+- `RegisterRequest`: `firstName`, `middleName`, `lastName`, `email`, `password`.
 - `LoginRequest`: `email`, `password`, `remember`.
-- `UserResponse`: `id`, `name`, `email`.
+- `UserResponse`: `id`, `firstName`, `middleName`, `lastName`, `email`.
 
 ## Сценарии интеграции
 - Модуль `Auth` является первичным. Другие модули будут зависеть от `Auth` для получения текущего пользователя через `Auth::user()` или кастомные адаптеры.
@@ -48,13 +48,13 @@
 ### Изменяемые файлы:
 - `backend/routes/web.php`
 - `backend/config/auth.php`
-- `backend/database/migrations/0001_01_01_000000_create_users_table.php` (стандартная миграция Laravel)
+- `backend/database/migrations/2026_01_15_000000_create_users_table.php` (новая миграция для соответствия структуре gen_user)
 
 ## Последовательность действий
 
 1.  **Настройка БД**:
     - Убедиться, что в `backend/.env` настроен SQLite.
-    - Выполнить `make php-run CMD="php artisan migrate"`.
+    - Создать миграцию для таблицы `gen_user`, соответствующую структуре из `structure.sql`.
 
 2.  **Domain Layer (Auth)**:
     - Создать сущность `User` и интерфейс репозитория.
@@ -78,7 +78,7 @@
 `User -> RegisterController -> RegisterUser UseCase -> UserRepository -> SQLite`
 
 ## Миграции и конфигурация
-- Использование стандартной таблицы `users`, но с UUID в качестве первичного ключа.
+- Создание миграции для таблицы `gen_user`, соответствующей структуре из `structure.sql`.
 - Настройка `guards` и `providers` в `config/auth.php` для использования нашего модуля.
 
 ## Риски и альтернативы

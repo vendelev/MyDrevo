@@ -1,84 +1,95 @@
-# Технический план реализации: Добавление медиа и поиск
+# Технический план реализации: Медиа и поиск (Этап 4)
 
-## Архитектурные решения
+## Архитектурное описание
 
-Реализация будет разделена на два функциональных блока в рамках новых или существующих модулей:
-1.  **Media Module**: Управление файлами, интеграция с Laravel Storage и обработка изображений.
-2.  **Search Module**: Логика фильтрации и поиска по сущностям `FamilyMember`.
+- **Domain**: Сущности `Media`, `SearchQuery`, Value Objects `SearchCriteria`. Интерфейсы репозиториев.
+- **Application**: UseCases для загрузки/удаления медиа, поиска персон. Команды и Запросы.
+- **Infrastructure**: Репозитории на базе Eloquent, маппинг доменных сущностей на таблицы `gen_*`, интеграция с файловым хранилищем.
+- **Presentation**: REST API контроллеры, Request/Response DTO.
 
-### Слои модулей:
--   **Domain**: Сущность `Media`, интерфейсы репозиториев, Value Objects для критериев поиска.
--   **Application**: UseCases для загрузки, удаления, установки аватара и выполнения поиска.
--   **Infrastructure**: Реализация хранилища (Laravel Storage), репозиториев (Eloquent), сервиса обработки изображений (Intervention Image).
--   **Presentation**: API Контроллеры, Resources для трансформации ответов.
+### Сущности (Entities)
+- `Media`: ID (Integer), FileName, FileType, FileSize, FilePath, PreviewPath, Description, UploadedAt, OwnerId, IsPublic.
+- `SearchQuery`: ID (Integer), Criteria (SearchCriteria), UserId, ExecutedAt.
 
-## Модель предметной области
+### Value Objects
+- `SearchCriteria`: FullName (String), BirthYearFrom (Integer), BirthYearTo (Integer), BirthPlace (String), Gender (Gender), IsAlive (Boolean).
 
-### Сущности (Domain/Entity)
--   `Media`: `id` (UUID), `ownerId` (UUID), `filePath`, `thumbnailPath`, `fileName`, `mimeType`, `fileSize`, `type` (Enum), `isPrimary` (bool).
+## Технические требования
 
-### Объекты-значения (Domain/ValueObject)
--   `SearchCriteria`: `query`, `birthYear`, `deathYear`, `place`, `gender`.
+### Backend (Laravel)
+1.  **Модуль `Media`:**
+    - Расположение: `src/Media`.
+    - Зависит от: `src/Family`.
+2.  **Domain слой:**
+    - `src/Media/Domain/Entity/Media.php`.
+    - `src/Media/Domain/ValueObject/SearchCriteria.php`.
+    - `src/Media/Domain/Repository/MediaRepositoryInterface.php`.
+    - `src/Media/Domain/Repository/SearchRepositoryInterface.php`.
+3.  **Application слой:**
+    - `src/Media/Application/UseCase/UploadMediaUseCase.php`.
+    - `src/Media/Application/UseCase/DeleteMediaUseCase.php`.
+    - `src/Media/Application/UseCase/SearchFamilyMembersUseCase.php`.
+    - `src/Media/Application/Service/FileStorageService.php`.
+    - `src/Media/Application/Service/PreviewGeneratorService.php`.
+4.  **Infrastructure слой:**
+    - `src/Media/Infrastructure/Repository/EloquentMediaRepository.php`.
+    - `src/Media/Infrastructure/Repository/EloquentSearchRepository.php`.
+    - `src/Media/Infrastructure/Storage/LocalStorageAdapter.php`.
+    - `src/Media/Infrastructure/Storage/S3StorageAdapter.php`.
+5.  **Presentation слой:**
+    - `src/Media/Presentation/Http/Controller/MediaController.php`.
+    - `src/Media/Presentation/Http/Controller/SearchController.php`.
+    - `src/Media/Presentation/Http/Request/UploadMediaRequest.php`.
+    - `src/Media/Presentation/Http/Request/SearchRequest.php`.
+    - `src/Media/Presentation/Http/Response/MediaResponse.php`.
+    - `src/Media/Presentation/Http/Response/SearchResponse.php`.
 
-### Интерфейсы (Domain)
--   `MediaRepositoryInterface`: `save(Media $media)`, `delete(string $id)`, `findByOwnerId(string $ownerId)`, `setPrimary(string $mediaId)`.
--   `FileStorageInterface`: `store(UploadedFile $file, string $path)`, `delete(string $path)`.
--   `ImageProcessorInterface`: `createThumbnail(string $path, int $width, int $height)`.
+### Frontend (React/Vue)
+1.  **Компоненты:**
+    - `MediaGallery.vue` — галерея медиафайлов.
+    - `MediaUpload.vue` — форма загрузки.
+    - `SearchForm.vue` — форма поиска.
+    - `SearchResults.vue` — список результатов поиска.
+2.  **Сервисы:**
+    - `MediaApiService.js` — обертка над HTTP-запросами к медиа API.
+    - `SearchApiService.js` — обертка над HTTP-запросами к поисковому API.
 
-## Изменяемые файлы
+## План разработки
 
-### Новые файлы:
--   `backend/src/Media/Domain/Entity/Media.php`
--   `backend/src/Media/Domain/MediaRepositoryInterface.php`
--   `backend/src/Media/Application/UseCase/UploadMedia.php`
--   `backend/src/Media/Application/UseCase/DeleteMedia.php`
--   `backend/src/Media/Application/UseCase/SetPrimaryPhoto.php`
--   `backend/src/Media/Infrastructure/Repository/EloquentMediaRepository.php`
--   `backend/src/Media/Infrastructure/Service/LaravelFileStorage.php`
--   `backend/src/Media/Infrastructure/Service/InterventionImageProcessor.php`
--   `backend/src/Media/Presentation/Http/Controller/MediaController.php`
--   `backend/src/Search/Domain/ValueObject/SearchCriteria.php`
--   `backend/src/Search/Application/UseCase/SearchMembers.php`
--   `backend/src/Search/Presentation/Http/Controller/SearchController.php`
--   `backend/database/migrations/2026_01_14_000001_create_media_table.php`
+### Подготовка
+1.  **Шаг 1: Подготовка модуля**
+    - Создать директорию `src/Media`.
+    - Определить зависимости от `src/Family`.
 
-### Изменяемые файлы:
--   `backend/routes/api.php`
--   `backend/config/filesystems.php`
+### Domain
+2.  **Шаг 2: Domain слой**
+    - Создать сущность `Media`.
+    - Создать Value Object `SearchCriteria`.
+    - Определить интерфейсы `MediaRepositoryInterface` и `SearchRepositoryInterface`.
 
-## Последовательность действий
+### Application
+3.  **Шаг 3: Application слой**
+    - Реализовать UseCases: `UploadMediaUseCase`, `DeleteMediaUseCase`, `SearchFamilyMembersUseCase`.
+    - Создать сервисы: `FileStorageService`, `PreviewGeneratorService`.
 
-1.  **Инфраструктура и БД**:
-    -   Создать миграцию для таблицы `gen_media`.
-    -   Настроить диск `media` в `config/filesystems.php`.
-    -   Установить `intervention/image` через composer.
+### Infrastructure
+4.  **Шаг 4: Infrastructure слой**
+    - Реализовать `EloquentMediaRepository` и `EloquentSearchRepository`.
+    - Создать адаптеры для файлового хранилища: `LocalStorageAdapter`, `S3StorageAdapter`.
 
-2.  **Domain Layer (Media)**:
-    -   Определить сущность `Media` и интерфейсы.
+### Presentation
+5.  **Шаг 5: Presentation слой**
+    - Создать контроллеры `MediaController` и `SearchController`.
+    - Реализовать Request/Response DTO.
+    - Добавить маршруты в `routes/api.php`.
 
-3.  **Infrastructure Layer (Media)**:
-    -   Реализовать `LaravelFileStorage` и `InterventionImageProcessor`.
-    -   Реализовать `EloquentMediaRepository`.
-
-4.  **Application Layer (Media)**:
-    -   Реализовать `UploadMedia` UseCase (валидация, сохранение файла, создание превью, запись в БД).
-    -   Реализовать `DeleteMedia` и `SetPrimaryPhoto`.
-
-5.  **Search Module**:
-    -   Создать `SearchCriteria` VO.
-    -   Реализовать `SearchMembers` UseCase с использованием Eloquent Query Builder для фильтрации.
-
-6.  **Presentation Layer**:
-    -   Создать контроллеры и зарегистрировать маршруты в `api.php`.
-
-## Риски и альтернативы
--   **Риск**: Медленный поиск по текстовым полям.
--   **Решение**: Добавить индексы в SQLite. В будущем рассмотреть Scout/Algolia/Meilisearch.
--   **Риск**: Безопасность загрузки.
--   **Решение**: Использовать `MimeTypeGuesser` и валидацию Laravel.
+### Frontend
+6.  **Шаг 6: Frontend реализация**
+    - Создать компоненты для галереи, загрузки и поиска.
+    - Реализовать взаимодействие с Backend API.
 
 ## Чек-лист архитектурного соответствия
--   [ ] Логика работы с файлами скрыта за `FileStorageInterface`.
--   [ ] Обработка изображений вынесена в отдельный сервис.
--   [ ] Поиск инкапсулирован в UseCase.
--   [ ] Используются UUID для идентификации медиа.
+- [x] Clean Architecture (слои разделены)
+- [x] CQRS (разделение на Command/Query UseCases)
+- [x] Модульный монолит (код в `src/Media`)
+- [x] Domain-driven (бизнес-логика в Domain и Application)
