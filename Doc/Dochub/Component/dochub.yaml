@@ -1,0 +1,50 @@
+components:
+  core.web.router:
+    title: "Web маршрутизация"
+    entity: component
+    context: core_platform
+    aspects: [ backend ]
+    tech: "Laravel 12"
+    responsibilities: >
+      Регистрация web-маршрутов и подключение route-файлов приложения.
+    inbound: []
+    outbound:
+      - auth.web
+
+  auth.web:
+    title: "Web интерфейс аутентификации"
+    entity: component
+    context: auth_domain
+    aspects: [ backend ]
+    tech: "Laravel 12, Blade"
+    responsibilities: >
+      HTTP-контроллеры и Blade-шаблоны для регистрации, входа, выхода и dashboard.
+    inbound:
+      - core.web.router
+    outbound:
+      - auth.user.service
+
+  auth.user.service:
+    title: "Сервис аутентификации"
+    entity: component
+    context: auth_domain
+    aspects: [ backend ]
+    tech: "Laravel 12, PHP 8.5, SQLite"
+    responsibilities: >
+      Регистрация, проверка учетных данных и управление сессиями пользователей.
+    inbound:
+      - auth.web
+    outbound:
+      - db.gen_user
+
+  db.gen_user:
+    title: "Таблица пользователей gen_user"
+    entity: component
+    context: database_domain
+    aspects: [ database ]
+    tech: "SQLite"
+    responsibilities: >
+      Хранение учетных данных пользователей и профилей для web-аутентификации.
+    inbound:
+      - auth.user.service
+    outbound: []

@@ -1,0 +1,14 @@
+title: "Core модуль"
+imports:
+  - ../../../Doc/Dochub/Aspects/dochub.yaml
+  - ../../../Doc/Dochub/Component/dochub.yaml
+  - ../../../Doc/Dochub/Context/dochub.yaml
+
+docs:
+  core.overview:
+    title: "Обзор модуля Core"
+    location: ./Domain/Doc/overview.md
+
+contexts: {}
+components: {}
+aspects: {}

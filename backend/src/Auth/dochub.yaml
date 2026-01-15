@@ -1,0 +1,14 @@
+title: "Auth модуль"
+imports:
+  - ../../../Doc/Dochub/Aspects/dochub.yaml
+  - ../../../Doc/Dochub/Component/dochub.yaml
+  - ../../../Doc/Dochub/Context/dochub.yaml
+
+docs:
+  auth.overview:
+    title: "Обзор модуля Auth"
+    location: ./Domain/Doc/overview.md
+
+contexts: {}
+components: {}
+aspects: {}

@@ -1,0 +1,9 @@
+aspects:
+  backend:
+    title: "Бэкенд сервис"
+  frontend:
+    title: "Фронтенд клиент"
+  database:
+    title: "База данных"
+  external-api:
+    title: "Внешний API"
