@@ -55,6 +55,10 @@
 1.  **Настройка БД**:
     - Убедиться, что в `backend/.env` настроен SQLite.
     - Создать миграцию для таблицы `gen_user`, соответствующую структуре из `structure.sql`.
+    - Создать миграцию для добавления полей `gender`, `birthPlace`, `deathPlace`, `createdAt`, `updatedAt` в таблицу `gen_person`
+    - Создать миграцию для добавления поля `INFO` в таблицу `gen_person_info_lang`
+    - Создать миграцию для добавления поля `metadata` в таблицу `gen_relation`
+    - Создать миграцию для изменения типов данных `BDATE` и `DDATE` с `datetime` на `date` в таблице `gen_person`
 
 2.  **Domain Layer (Auth)**:
     - Создать сущность `User` и интерфейс репозитория.
