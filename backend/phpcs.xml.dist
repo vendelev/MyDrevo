@@ -16,6 +16,8 @@
     <rule ref="PSR1"/>
     <rule ref="PSR12"/>
 
+    <exclude-pattern>\.blade\.php$</exclude-pattern>
+
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 
     <rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>

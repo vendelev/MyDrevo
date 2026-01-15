@@ -20,10 +20,10 @@ parameters:
             - GuzzleHttp\Exception\GuzzleException
             - RuntimeException
             - InvalidArgumentException
-    ignoreErrors:
-        -
-            message: "#^Called 'env' outside of the config directory which returns null when the config is cached, use 'config'.$#"
-            path: *Config/*.php
+#    ignoreErrors:
+#        -
+#            message: "#^Called 'env' outside of the config directory which returns null when the config is cached, use 'config'.$#"
+#            path: *Config/*.php
     strictRules:
         allRules: false
         dynamicCallOnStaticMethod: true
