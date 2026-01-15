@@ -10,12 +10,12 @@
 
 Вместо:
 ```php
-$response = new \Parser\Task\Domain\Response\TaskResponse();
+$response = new \App\Task\Domain\Response\TaskResponse();
 ```
 
 Используйте:
 ```php
-use Parser\Task\Domain\Response\TaskResponse;
+use App\Task\Domain\Response\TaskResponse;
 
 // ...
 

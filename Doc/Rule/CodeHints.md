@@ -9,6 +9,7 @@
 - Создавай интерфейсы когда нужна инверсия зависимостей.
 - Выноси логику парсинга и валидации из Controller.
 - Делай Entity и ValueObject immutable (неизменяемыми).
+- Всегда используй внедрение зависимостей через конструктор.
 
 ### ❌ НЕ ДЕЛАЙ
 
@@ -16,6 +17,8 @@
 - Не создавай интерфейсы если всего одна реализация.
 - Не передавай Request-laravel между слоями (используй DTO).
 - Не загружай неиспользуемые зависимости в конструктор.
+- Не используй `app()` для получения экземпляров классов в контроллерах и других местах.
+- Не используй в `$this->app->singleton` ServiceProvider.
 
 ## Регистрация интерфейсов и реализаций
 
@@ -40,8 +43,8 @@ $this->app->bind(Interface::class, Implementation::class);
 ```php
 <?php
 
-use Parser\Core\Presentation\Config\CoreServiceProvider;
-use Parser\Backup\Presentation\Config\BackupServiceProvider;
+use App\Core\Presentation\Config\CoreServiceProvider;
+use App\Backup\Presentation\Config\BackupServiceProvider;
 
 return [
     CoreServiceProvider::class,
