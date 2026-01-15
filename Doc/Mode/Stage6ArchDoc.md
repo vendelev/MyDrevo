@@ -34,7 +34,7 @@ IT архитектор — это высококвалифицированны�
 
 ## Входные параметры (Пользовательский ввод)
 
-{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
+/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
 
 ***
 
@@ -44,13 +44,13 @@ IT архитектор — это высококвалифицированны�
 
 - Информацию о проекте в [AGENTS.md](/AGENTS.md)
 - Правила архитектуры в [Architecture.md](../Rule/Architecture.md)
-- Новые бизнес-требования в [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- План реализации в [TaskForDev.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskForDev.md)
+- Новые бизнес-требования в [Spec.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- План реализации в [Task.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md)
 - Техническую документацию всех затронутых модулей /backend/src/{MODULE_FOLDER}/Readme.md
 
 ### Определение {MODULE_FOLDER}
 
-- Извлеките название модуля из контекста [TaskForDev.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskForDev.md). 
+- Извлеките название модуля из контекста [Task.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md). 
   Ищите упоминания модулей в пути файлов (например, для "backend/src/Ticket/Domain/Entity/Ticket.php" - это "Ticket").
 
 Агент должен создавать/поддерживать следующую структуру:
@@ -101,9 +101,9 @@ repo-root/
 ```yaml
 title: "Архитектура продукта X"
 imports:
-  - ./Doc/Aspects/dochub.yaml
-  - ./Doc/Component/dochub.yaml
-  - ./Doc/Context/dochub.yaml
+  - ./Doc/Dochub/Aspects/dochub.yaml
+  - ./Doc/Dochub/Component/dochub.yaml
+  - ./Doc/Dochub/Context/dochub.yaml
   - ./backend/src/Core/dochub.yaml
   - ./backend/src/ExampleModule/dochub.yaml
 
@@ -122,7 +122,7 @@ docs: {}
 
 ## Определение аспектов
 
-Файл `/Doc/Aspects/dochub.yaml` должен содержать словарь аспектов:
+Файл `/Doc/Dochub/Aspects/dochub.yaml` должен содержать словарь аспектов:
 
 ```yaml
 aspects:
@@ -146,7 +146,7 @@ aspects:
 
 ## Определение контекстов
 
-В файле `/Doc/Context/dochub.yaml` агент создаёт контексты:
+В файле `/Doc/Dochub/Context/dochub.yaml` агент создаёт контексты:
 
 ```yaml
 contexts:
@@ -163,7 +163,7 @@ contexts:
 
 ## Определение компонентов
 
-В файле `/Doc/Component/dochub.yaml` агент описывает компоненты:
+В файле `/Doc/Dochub/Component/dochub.yaml` агент описывает компоненты:
 
 ```yaml
 components:
@@ -236,54 +236,17 @@ components:
 
 Ниже представлены шаблоны - «канонический набор», в которые можно подставлять данные для разных доменов/компонентов, для генерации архитектурной документации для DocHub.
 
-
 ### 1. Шаблон компонента (YAML)
 
-```yaml
-components:
-  {{component_id}}:
-    title: "{{component_title}}"
-    entity: component
-    context: {{context_id}}          # можно опустить, если компонент кросс-доменный
-    aspects: [ {{aspect_ids_comma_separated}} ]
-    tech: "{{tech_stack}}"           # пример: "Java, Spring Boot, PostgreSQL"
-    responsibilities: >
-      {{responsibilities_one_or_two_sentences}}
-    inbound:
-      {{#each inbound_components}}
-      - {{this}}
-      {{/each}}
-    outbound:
-      {{#each outbound_components}}
-      - {{this}}
-      {{/each}}
-```
-
-
-***
+См. [`component-template.yaml`](Template/component-template.yaml)
 
 ### 2. Шаблон контекста/домена (YAML)
 
-```yaml
-contexts:
-  {{context_id}}:
-    title: "{{context_title}}"
-    description: >
-      {{short_description_one_or_two_sentences}}
-```
-
-
-***
+См. [`context-template.yaml`](Template/context-template.yaml)
 
 ### 3. Шаблон аспектов (YAML)
 
-```yaml
-aspects:
-  {{aspect_id}}:
-    title: "{{aspect_title}}"
-    description: >
-      {{short_description_one_or_two_sentences}}
-```
+См. [`aspect-template.yaml`](Template/aspect-template.yaml)
 
 ***
 

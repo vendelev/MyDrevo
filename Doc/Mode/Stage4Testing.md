@@ -13,12 +13,12 @@
 Внимательно изучи:
 - [CodeStyle.md](../Rule/CodeStyle.md)
 - [Testing.md](../Rule/Testing.md)
-- Новые требования к функционалу в файле [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- Реализацию в файле [TaskForTest.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskForTest.md)
+- Новые требования к функционалу в файле [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- Реализацию в файле [StageX_TaskForTest.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
 
 Обязательные шаги:
 
-1. Проанализируй TaskForTest.md для определения, какие компоненты и сценарии нужно протестировать.
+1. Проанализируй StageX_TaskForTest.md для определения, какие компоненты и сценарии нужно протестировать.
 
 2. Напиши тесты для нового функционала, следуя типам из [Testing.md](../Rule/Testing.md) (Unit, Integration, E2E). Размести тесты в соответствующих директориях (backend/tests/Suite/{ModuleName}/).
 

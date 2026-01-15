@@ -7,7 +7,7 @@
 
 ## Входные параметры (Пользовательский ввод)
 
-{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
+/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
 
 ## Что надо сделать
 
@@ -18,9 +18,9 @@
 
 Обязательные шаги:
 
-1. Выполни все описанные действия в файле [TaskForDev.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskForDev.md), строго следуя последовательности из плана.
+1. Выполни все описанные действия в файле [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md), строго следуя последовательности из плана.
 
-2. Проверь код на соответствие [TaskForDev.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskForDev.md) и [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) (самопроверка перед автоматизацией).
+2. Проверь код на соответствие [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) и [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) (самопроверка перед автоматизацией).
 
 3. Проверь соблюдение архитектурных принципов:
     - Используются только соответствующие слои зависимостей согласно правилам
@@ -60,7 +60,7 @@
 
 ## Критерии завершения этапа
 
-1. Все действия из файла [TaskForDev.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskForDev.md) выполнены.
+1. Все действия из файла [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) выполнены.
 2. Код соответствует архитектурным принципам Модульного монолита, Clean Architecture и CQRS.
 3. PHPStan: не выводит ошибок
 4. Rector: не выводит ошибок

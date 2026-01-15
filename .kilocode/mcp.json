@@ -1,8 +1,19 @@
 {
-  "mcpServers": {
-    "context7": {
-      "type": "streamable-http",
-      "url": "https://mcp.context7.com/mcp"
+    "mcpServers": {
+        "context7": {
+            "type": "streamable-http",
+            "url": "https://mcp.context7.com/mcp"
+        },
+        "sqlite": {
+            "command": "uvx",
+            "args": [
+                "mcp-server-sqlite",
+                "--db-path",
+                "/home/artiom/Develop/edu/my-drevo/backend/database/storage/database.sqlite"
+            ],
+            "alwaysAllow": [
+                "read_query"
+            ]
+        }
     }
-  }
 }
