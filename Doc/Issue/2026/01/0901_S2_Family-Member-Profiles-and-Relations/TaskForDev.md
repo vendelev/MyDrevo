@@ -65,7 +65,7 @@
 1. **Шаг 1: Подготовка инфраструктуры БД**
    - Создать миграции для добавления недостающих полей в таблицы:
      - Добавить поля `gender`, `birth_place`, `death_place`, `created_at`, `updated_at` в таблицу `gen_person`
-     - Добавить поле `INFO` в таблицу `gen_person_info_lang` для хранения биографии
+     - Поле `INFO` в таблице `gen_person_info_lang` для хранения биографии уже существует
      - Добавить поле `metadata` в таблицу `gen_relation`
 
 2. **Шаг 2: Domain слой**
@@ -74,7 +74,7 @@
    - Определить интерфейсы репозиториев.
 
 3. **Шаг 3: Infrastructure слой (База данных)**
-   - Реализовать `EloquentFamilyMemberRepository`. 
+   - Реализовать `EloquentFamilyMemberRepository`.
    - Маппинг полей на таблицы `gen_person` и связанные таблицы.
    - Реализовать `EloquentRelationshipRepository`.
 
@@ -97,7 +97,7 @@ Client -> Controller -> RequestDTO -> UseCase -> DomainEntity -> Repository -> D
 ## Миграции и конфигурация
 Необходимо создать миграции для добавления недостающих полей в существующие таблицы:
 - Добавление полей `gender`, `birth_place`, `death_place`, `created_at`, `updated_at` в таблицу `gen_person`
-- Добавление поля `INFO` в таблицу `gen_person_info_lang`
+- Поле `INFO` в таблице `gen_person_info_lang` для хранения биографии уже существует
 - Добавление поля `metadata` в таблицу `gen_relation`
 
 ## Риски и альтернативы

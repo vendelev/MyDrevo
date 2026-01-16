@@ -49,22 +49,22 @@
     *   `firstName`: String (мапится на `gen_name_lang.FNAME` через `gen_person.FNAME_ID`)
     *   `lastName`: String (мапится на `gen_surname_lang.MALE_SURNAME/FEMALE_SURNAME` через `gen_person.SURNAME_ID`)
     *   `middleName`: String (nullable, мапится на `gen_name_lang.MALE_SNAME/FEMALE_SNAME` через `gen_person.SNAME_ID`)
-    *   `gender`: Enum (male, female) - будет добавлено в таблицу gen_person
+    *   `gender`: Enum (male, female) - **требуется добавить в таблицу gen_person**
     *   `birthDate`: Date (nullable, мапится на `gen_person.BDATE`)
-    *   `birthPlace`: String (nullable) - будет добавлено в таблицу gen_person
+    *   `birthPlace`: String (nullable) - **требуется добавить в таблицу gen_person**
     *   `deathDate`: Date (nullable, мапится на `gen_person.DDATE`)
-    *   `deathPlace`: String (nullable) - будет добавлено в таблицу gen_person
-    *   `biography`: Text (nullable) - будет добавлено в таблицу gen_person_info_lang
+    *   `deathPlace`: String (nullable) - **требуется добавить в таблицу gen_person**
+    *   `biography`: Text (nullable) - мапится на `gen_person_info_lang.INFO` (поле уже существует)
     *   `userId`: Integer (мапится на `gen_person.USER_ID`)
-    *   `createdAt`: Timestamp - будет добавлено в таблицу gen_person
-    *   `updatedAt`: Timestamp - будет добавлено в таблицу gen_person
+    *   `createdAt`: Timestamp - **требуется добавить в таблицу gen_person**
+    *   `updatedAt`: Timestamp - **требуется добавить в таблицу gen_person**
 
 2.  **Relationship (Связь):**
     *   `id`: Integer (в БД мапится на ID в таблице связей)
     *   `personId`: Integer (ссылка на FamilyMember, мапится на `gen_relation.PID1`)
     *   `relativeId`: Integer (ссылка на FamilyMember, мапится на `gen_relation.PID2`)
     *   `type`: Enum (parent, child, spouse, мапится на `gen_relation.RELATION_TYPE_ID`)
-    *   `metadata`: JSON (дополнительная информация, например, тип усыновления) - будет добавлено в таблицу gen_relation
+    *   `metadata`: JSON (дополнительная информация, например, тип усыновления) - **требуется добавить в таблицу gen_relation**
 
 ### Объекты-значения (Value Objects)
 
@@ -86,13 +86,14 @@
 
 ### Структура БД (SQLite)
 Реализация должна опираться на существующую схему в [`backend/database/migrations/structure.sql`](backend/database/migrations/structure.sql):
+
 - **Профили:** Таблицы `gen_person`, `gen_name`, `gen_name_lang`, `gen_surname`, `gen_surname_lang`, `gen_person_info_lang`.
 - **Связи:** Таблица `gen_relation`.
 - **Пользователи:** Таблица `gen_user`.
 
 *Примечание: Для полного соответствия модели предметной области необходимо внести изменения в структуру БД:*
-1. Добавить поля `gender`, `birthPlace`, `deathPlace`, `createdAt`, `updatedAt` в таблицу `gen_person`
-2. Добавить поле `INFO` в таблицу `gen_person_info_lang` для хранения биографии
+1. Добавить поля `gender`, `birth_place`, `death_place`, `created_at`, `updated_at` в таблицу `gen_person`
+2. Поле `INFO` в таблице `gen_person_info_lang` для хранения биографии уже существует
 3. Добавить поле `metadata` в таблицу `gen_relation`
 
 ## Зависимости
