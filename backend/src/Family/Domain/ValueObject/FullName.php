@@ -2,30 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Family\Domain\ValueObject;
+namespace App\Family\Domain\ValueObject;
 
 class FullName
 {
     public function __construct(
-        private readonly string $firstName,
-        private readonly string $lastName,
-        private readonly ?string $middleName = null
+        public readonly string $firstName,
+        public readonly string $lastName,
+        public readonly ?string $middleName = null
     ) {
-    }
-
-    public function getFirstName(): string
-    {
-        return $this->firstName;
-    }
-
-    public function getLastName(): string
-    {
-        return $this->lastName;
-    }
-
-    public function getMiddleName(): ?string
-    {
-        return $this->middleName;
     }
 
     public function getFullName(): string
