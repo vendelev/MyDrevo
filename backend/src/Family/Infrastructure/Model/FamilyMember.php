@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property-read \App\Auth\Domain\Entity\User $user
  */
-class FamilyMember extends Model
+final class FamilyMember extends Model
 {
     protected $table = 'family_members';
 

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Family\Domain\ValueObject;
 
-class FullName
+final readonly class FullName
 {
     public function __construct(
-        public readonly string $firstName,
-        public readonly string $lastName,
-        public readonly ?string $middleName = null
+        public string $firstName,
+        public string $lastName,
+        public ?string $middleName = null
     ) {
     }
 

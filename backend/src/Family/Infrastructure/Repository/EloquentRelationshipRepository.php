@@ -10,7 +10,7 @@ use App\Family\Infrastructure\Model\Relationship as RelationshipModel;
 use App\Family\Domain\ValueObject\RelationshipType;
 use DateTimeImmutable;
 
-class EloquentRelationshipRepository implements RelationshipRepositoryInterface
+final class EloquentRelationshipRepository implements RelationshipRepositoryInterface
 {
     /**
      * @throws \TypeError

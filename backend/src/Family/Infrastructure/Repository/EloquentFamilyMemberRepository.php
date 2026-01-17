@@ -12,7 +12,7 @@ use App\Family\Domain\ValueObject\Gender;
 use App\Family\Domain\ValueObject\LifePeriod;
 use DateTimeImmutable;
 
-class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInterface
+final class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInterface
 {
     /**
      * @throws \DateMalformedStringException

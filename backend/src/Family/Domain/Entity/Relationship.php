@@ -7,16 +7,16 @@ namespace App\Family\Domain\Entity;
 use App\Family\Domain\ValueObject\RelationshipType;
 use DateTimeImmutable;
 
-class Relationship
+final readonly class Relationship
 {
     public function __construct(
-        public readonly int $id,
-        public readonly int $personId,
-        public readonly int $relativeId,
-        public readonly RelationshipType $type,
-        public readonly ?string $metadata,
-        public readonly DateTimeImmutable $createdAt,
-        public readonly DateTimeImmutable $updatedAt
+        public int $id,
+        public int $personId,
+        public int $relativeId,
+        public RelationshipType $type,
+        public ?string $metadata,
+        public DateTimeImmutable $createdAt,
+        public DateTimeImmutable $updatedAt
     ) {
     }
 }

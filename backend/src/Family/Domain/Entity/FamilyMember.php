@@ -9,7 +9,7 @@ use App\Family\Domain\ValueObject\Gender;
 use App\Family\Domain\ValueObject\LifePeriod;
 use DateTimeImmutable;
 
-class FamilyMember
+final class FamilyMember
 {
     public function __construct(
         public readonly int $id,

@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Family\Infrastructure\Model\FamilyMember $person
  * @property-read \App\Family\Infrastructure\Model\FamilyMember $relative
  */
-class Relationship extends Model
+final class Relationship extends Model
 {
     protected $table = 'family_relationships';
 

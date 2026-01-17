@@ -7,14 +7,14 @@ namespace App\Family\Domain\ValueObject;
 use App\Family\Domain\Exception\InvalidLifePeriodException;
 use DateTimeImmutable;
 
-class LifePeriod
+final readonly class LifePeriod
 {
     /**
      * @throws InvalidLifePeriodException
      */
     public function __construct(
-        public readonly ?DateTimeImmutable $birthDate = null,
-        public readonly ?DateTimeImmutable $deathDate = null
+        public ?DateTimeImmutable $birthDate = null,
+        public ?DateTimeImmutable $deathDate = null
     ) {
         $this->validate();
     }
