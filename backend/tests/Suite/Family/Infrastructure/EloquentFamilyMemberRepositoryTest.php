@@ -166,31 +166,22 @@ final class EloquentFamilyMemberRepositoryTest extends TestCase
 
         $this->repository->save($familyMember);
 
-        // Обновляем данные, создавая новый экземпляр
+        // Обновляем данные, используя метод Entity для immutability
         $updatedFullName = new FullName('Петр', 'Петров', 'Петрович');
-        $updatedFamilyMember = new FamilyMember(
-            id: $familyMember->id,
-            fullName: $updatedFullName,
-            gender: $familyMember->gender,
-            lifePeriod: $familyMember->lifePeriod,
-            birthPlace: $familyMember->birthPlace,
-            deathPlace: $familyMember->deathPlace,
-            biography: $familyMember->biography,
-            userId: $familyMember->userId,
-            createdAt: $familyMember->createdAt,
-            updatedAt: new DateTimeImmutable('2026-01-01 11:00:00')
-        );
+        $newUpdatedAt = new DateTimeImmutable('2026-01-01 11:00:00');
+        $updatedFamilyMember = $familyMember->updateFullName($updatedFullName, $newUpdatedAt);
 
         // Сохраняем обновленный FamilyMember
         $this->repository->save($updatedFamilyMember);
 
         // Проверяем, что данные обновились в БД
-        $updatedFamilyMember = $this->repository->findById(1);
+        $savedUpdatedFamilyMember = $this->repository->findById(1);
 
-        self::assertNotNull($updatedFamilyMember);
-        self::assertEquals('Петр', $updatedFamilyMember->fullName->firstName);
-        self::assertEquals('Петров', $updatedFamilyMember->fullName->lastName);
-        self::assertEquals('Петрович', $updatedFamilyMember->fullName->middleName);
+        self::assertNotNull($savedUpdatedFamilyMember);
+        self::assertEquals('Петр', $savedUpdatedFamilyMember->fullName->firstName);
+        self::assertEquals('Петров', $savedUpdatedFamilyMember->fullName->lastName);
+        self::assertEquals('Петрович', $savedUpdatedFamilyMember->fullName->middleName);
+        self::assertEquals($newUpdatedAt, $savedUpdatedFamilyMember->updatedAt);
     }
 
     /**

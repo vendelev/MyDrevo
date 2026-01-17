@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Family\Application\Response;
+namespace App\Family\Domain\Response;
 
-use App\Family\Application\Dto\FamilyMemberDto;
+use App\Family\Domain\Dto\FamilyMemberDto;
 
 final readonly class FamilyMemberResponse
 {

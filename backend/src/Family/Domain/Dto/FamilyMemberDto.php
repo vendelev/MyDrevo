@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Family\Application\Dto;
+namespace App\Family\Domain\Dto;
 
 final readonly class FamilyMemberDto
 {
