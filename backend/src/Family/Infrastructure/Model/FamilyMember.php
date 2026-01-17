@@ -1,0 +1,63 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Modules\Family\Infrastructure\Model;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Modules\Auth\Infrastructure\Model\User as AuthUser;
+
+/**
+ * @property int $id
+ * @property string $first_name
+ * @property string $last_name
+ * @property string|null $middle_name
+ * @property string $gender
+ * @property string|null $birth_date
+ * @property string|null $death_date
+ * @property string|null $biography
+ * @property int $user_id
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * @property-read \App\Modules\Auth\Domain\Entity\User $user
+ */
+class FamilyMember extends Model
+{
+    protected $table = 'family_members';
+    
+    protected $fillable = [
+        'id',
+        'first_name',
+        'last_name',
+        'middle_name',
+        'gender',
+        'birth_date',
+        'death_date',
+        'biography',
+        'user_id',
+        'created_at',
+        'updated_at',
+    ];
+    
+    protected $casts = [
+        'id' => 'integer',
+        'user_id' => 'integer',
+        'birth_date' => 'date',
+        'death_date' => 'date',
+    ];
+    
+    public $incrementing = true;
+    
+    protected $keyType = 'int';
+    
+    /**
+     * @return BelongsTo<\App\Modules\Auth\Infrastructure\Model\User, $this>
+     */
+    public function user(): BelongsTo
+    {
+        /** @var BelongsTo<\App\Modules\Auth\Infrastructure\Model\User, $this> */
+        return $this->belongsTo(\App\Modules\Auth\Infrastructure\Model\User::class, 'user_id');
+    }
+}
