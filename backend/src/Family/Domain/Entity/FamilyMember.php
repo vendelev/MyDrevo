@@ -24,4 +24,52 @@ final readonly class FamilyMember
         public DateTimeImmutable $updatedAt
     ) {
     }
+
+    public function updateFullName(FullName $fullName, DateTimeImmutable $updatedAt): self
+    {
+        return new self(
+            id: $this->id,
+            fullName: $fullName,
+            gender: $this->gender,
+            lifePeriod: $this->lifePeriod,
+            birthPlace: $this->birthPlace,
+            deathPlace: $this->deathPlace,
+            biography: $this->biography,
+            userId: $this->userId,
+            createdAt: $this->createdAt,
+            updatedAt: $updatedAt
+        );
+    }
+
+    public function updateLifePeriod(LifePeriod $lifePeriod, DateTimeImmutable $updatedAt): self
+    {
+        return new self(
+            id: $this->id,
+            fullName: $this->fullName,
+            gender: $this->gender,
+            lifePeriod: $lifePeriod,
+            birthPlace: $this->birthPlace,
+            deathPlace: $this->deathPlace,
+            biography: $this->biography,
+            userId: $this->userId,
+            createdAt: $this->createdAt,
+            updatedAt: $updatedAt
+        );
+    }
+
+    public function updateBiography(?string $biography, DateTimeImmutable $updatedAt): self
+    {
+        return new self(
+            id: $this->id,
+            fullName: $this->fullName,
+            gender: $this->gender,
+            lifePeriod: $this->lifePeriod,
+            birthPlace: $this->birthPlace,
+            deathPlace: $this->deathPlace,
+            biography: $biography,
+            userId: $this->userId,
+            createdAt: $this->createdAt,
+            updatedAt: $updatedAt
+        );
+    }
 }

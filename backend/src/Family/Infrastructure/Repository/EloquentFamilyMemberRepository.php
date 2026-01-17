@@ -120,9 +120,19 @@ final class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInte
         );
 
         $birthDateTime = $model->birth_date;
-        $birthDate = $birthDateTime instanceof \DateTimeInterface ? new DateTimeImmutable($birthDateTime->format('Y-m-d H:i:s')) : null;
+        if ($birthDateTime instanceof \DateTimeInterface) {
+            $birthDate = new DateTimeImmutable($birthDateTime->format('Y-m-d H:i:s'));
+        } else {
+            $birthDate = null;
+        }
+
         $deathDateTime = $model->death_date;
-        $deathDate = $deathDateTime instanceof \DateTimeInterface ? new DateTimeImmutable($deathDateTime->format('Y-m-d H:i:s')) : null;
+        if ($deathDateTime instanceof \DateTimeInterface) {
+            $deathDate = new DateTimeImmutable($deathDateTime->format('Y-m-d H:i:s'));
+        } else {
+            $deathDate = null;
+        }
+
         $lifePeriod = new LifePeriod($birthDate, $deathDate);
 
         $gender = Gender::from($model->gender);

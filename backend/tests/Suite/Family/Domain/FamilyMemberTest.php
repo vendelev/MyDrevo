@@ -52,7 +52,7 @@ final class FamilyMemberTest extends TestCase
     /**
      * @throws \App\Family\Domain\Exception\InvalidLifePeriodException
      */
-    public function testCreateWithUpdatedFullName(): void
+    public function testUpdateFullName(): void
     {
         $fullName = new FullName('Иван', 'Иванов', 'Иванович');
         $lifePeriod = new LifePeriod(new DateTimeImmutable('1980-01-01'));
@@ -74,18 +74,7 @@ final class FamilyMemberTest extends TestCase
 
         $newFullName = new FullName('Петр', 'Петров', 'Петрович');
         $newUpdatedAt = new DateTimeImmutable('2026-01-01 11:00:00');
-        $updatedFamilyMember = new FamilyMember(
-            id: $familyMember->id,
-            fullName: $newFullName,
-            gender: $familyMember->gender,
-            lifePeriod: $familyMember->lifePeriod,
-            birthPlace: $familyMember->birthPlace,
-            deathPlace: $familyMember->deathPlace,
-            biography: $familyMember->biography,
-            userId: $familyMember->userId,
-            createdAt: $familyMember->createdAt,
-            updatedAt: $newUpdatedAt
-        );
+        $updatedFamilyMember = $familyMember->updateFullName($newFullName, $newUpdatedAt);
 
         self::assertEquals($newFullName, $updatedFamilyMember->fullName);
         self::assertEquals($familyMember->gender, $updatedFamilyMember->gender);
@@ -101,7 +90,7 @@ final class FamilyMemberTest extends TestCase
     /**
      * @throws \App\Family\Domain\Exception\InvalidLifePeriodException
      */
-    public function testCreateWithUpdatedLifePeriod(): void
+    public function testUpdateLifePeriod(): void
     {
         $fullName = new FullName('Иван', 'Иванов', 'Иванович');
         $lifePeriod = new LifePeriod(new DateTimeImmutable('1980-01-01'));
@@ -126,18 +115,7 @@ final class FamilyMemberTest extends TestCase
             new DateTimeImmutable('2025-01-01')
         );
         $newUpdatedAt = new DateTimeImmutable('2026-01-01 11:00:00');
-        $updatedFamilyMember = new FamilyMember(
-            id: $familyMember->id,
-            fullName: $familyMember->fullName,
-            gender: $familyMember->gender,
-            lifePeriod: $newLifePeriod,
-            birthPlace: $familyMember->birthPlace,
-            deathPlace: $familyMember->deathPlace,
-            biography: $familyMember->biography,
-            userId: $familyMember->userId,
-            createdAt: $familyMember->createdAt,
-            updatedAt: $newUpdatedAt
-        );
+        $updatedFamilyMember = $familyMember->updateLifePeriod($newLifePeriod, $newUpdatedAt);
 
         self::assertEquals($newLifePeriod, $updatedFamilyMember->lifePeriod);
         self::assertEquals($familyMember->fullName, $updatedFamilyMember->fullName);
@@ -153,7 +131,7 @@ final class FamilyMemberTest extends TestCase
     /**
      * @throws \App\Family\Domain\Exception\InvalidLifePeriodException
      */
-    public function testCreateWithUpdatedBiography(): void
+    public function testUpdateBiography(): void
     {
         $fullName = new FullName('Иван', 'Иванов', 'Иванович');
         $lifePeriod = new LifePeriod(new DateTimeImmutable('1980-01-01'));
@@ -175,18 +153,7 @@ final class FamilyMemberTest extends TestCase
 
         $newBiography = 'Обновленная биография';
         $newUpdatedAt = new DateTimeImmutable('2026-01-01 11:00:00');
-        $updatedFamilyMember = new FamilyMember(
-            id: $familyMember->id,
-            fullName: $familyMember->fullName,
-            gender: $familyMember->gender,
-            lifePeriod: $familyMember->lifePeriod,
-            birthPlace: $familyMember->birthPlace,
-            deathPlace: $familyMember->deathPlace,
-            biography: $newBiography,
-            userId: $familyMember->userId,
-            createdAt: $familyMember->createdAt,
-            updatedAt: $newUpdatedAt
-        );
+        $updatedFamilyMember = $familyMember->updateBiography($newBiography, $newUpdatedAt);
 
         self::assertEquals($newBiography, $updatedFamilyMember->biography);
         self::assertEquals($familyMember->fullName, $updatedFamilyMember->fullName);
@@ -202,7 +169,7 @@ final class FamilyMemberTest extends TestCase
     /**
      * @throws \App\Family\Domain\Exception\InvalidLifePeriodException
      */
-    public function testCreateWithBiographySetToNull(): void
+    public function testUpdateBiographyToNull(): void
     {
         $fullName = new FullName('Иван', 'Иванов', 'Иванович');
         $lifePeriod = new LifePeriod(new DateTimeImmutable('1980-01-01'));
@@ -223,18 +190,7 @@ final class FamilyMemberTest extends TestCase
         );
 
         $newUpdatedAt = new DateTimeImmutable('2026-01-01 11:00:00');
-        $updatedFamilyMember = new FamilyMember(
-            id: $familyMember->id,
-            fullName: $familyMember->fullName,
-            gender: $familyMember->gender,
-            lifePeriod: $familyMember->lifePeriod,
-            birthPlace: $familyMember->birthPlace,
-            deathPlace: $familyMember->deathPlace,
-            biography: null,
-            userId: $familyMember->userId,
-            createdAt: $familyMember->createdAt,
-            updatedAt: $newUpdatedAt
-        );
+        $updatedFamilyMember = $familyMember->updateBiography(null, $newUpdatedAt);
 
         self::assertNull($updatedFamilyMember->biography);
         self::assertEquals($familyMember->fullName, $updatedFamilyMember->fullName);
