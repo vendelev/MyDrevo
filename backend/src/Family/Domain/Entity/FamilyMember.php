@@ -9,35 +9,19 @@ use App\Family\Domain\ValueObject\Gender;
 use App\Family\Domain\ValueObject\LifePeriod;
 use DateTimeImmutable;
 
-final class FamilyMember
+final readonly class FamilyMember
 {
     public function __construct(
-        public readonly int $id,
+        public int $id,
         public FullName $fullName,
-        public readonly Gender $gender,
+        public Gender $gender,
         public LifePeriod $lifePeriod,
+        public ?string $birthPlace,
+        public ?string $deathPlace,
         public ?string $biography,
-        public readonly int $userId,
-        public readonly DateTimeImmutable $createdAt,
+        public int $userId,
+        public DateTimeImmutable $createdAt,
         public DateTimeImmutable $updatedAt
     ) {
-    }
-
-    public function updateFullName(FullName $fullName): void
-    {
-        $this->fullName = $fullName;
-        $this->updatedAt = new DateTimeImmutable();
-    }
-
-    public function updateLifePeriod(LifePeriod $lifePeriod): void
-    {
-        $this->lifePeriod = $lifePeriod;
-        $this->updatedAt = new DateTimeImmutable();
-    }
-
-    public function updateBiography(?string $biography): void
-    {
-        $this->biography = $biography;
-        $this->updatedAt = new DateTimeImmutable();
     }
 }

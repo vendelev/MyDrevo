@@ -14,5 +14,10 @@ interface FamilyMemberRepositoryInterface
 
     public function findByUserId(int $userId): ?FamilyMember;
 
+    /**
+     * @return FamilyMember[]
+     */
+    public function findAllByUserId(int $userId): array;
+
     public function delete(int $id): void;
 }

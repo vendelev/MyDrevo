@@ -15,7 +15,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $middle_name
  * @property string $gender
  * @property \DateTimeInterface|null $birth_date
+ * @property string|null $birth_place
  * @property \DateTimeInterface|null $death_date
+ * @property string|null $death_place
  * @property string|null $biography
  * @property int $user_id
  * @property \DateTimeInterface $created_at
@@ -34,7 +36,9 @@ final class FamilyMember extends Model
         'middle_name',
         'gender',
         'birth_date',
+        'birth_place',
         'death_date',
+        'death_place',
         'biography',
         'user_id',
         'created_at',

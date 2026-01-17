@@ -59,6 +59,8 @@ final class EloquentFamilyMemberRepositoryTest extends TestCase
             fullName: $fullName,
             gender: Gender::MALE,
             lifePeriod: $lifePeriod,
+            birthPlace: null,
+            deathPlace: null,
             biography: 'Тестовая биография',
             userId: 1,
             createdAt: $createdAt,
@@ -116,6 +118,8 @@ final class EloquentFamilyMemberRepositoryTest extends TestCase
             fullName: $fullName,
             gender: Gender::MALE,
             lifePeriod: $lifePeriod,
+            birthPlace: 'Москва',
+            deathPlace: 'Санкт-Петербург',
             biography: 'Тестовая биография',
             userId: 1,
             createdAt: $createdAt,
@@ -152,6 +156,8 @@ final class EloquentFamilyMemberRepositoryTest extends TestCase
             fullName: $fullName,
             gender: Gender::MALE,
             lifePeriod: $lifePeriod,
+            birthPlace: null,
+            deathPlace: null,
             biography: 'Тестовая биография',
             userId: 1,
             createdAt: $createdAt,
@@ -160,12 +166,23 @@ final class EloquentFamilyMemberRepositoryTest extends TestCase
 
         $this->repository->save($familyMember);
 
-        // Обновляем данные
+        // Обновляем данные, создавая новый экземпляр
         $updatedFullName = new FullName('Петр', 'Петров', 'Петрович');
-        $familyMember->updateFullName($updatedFullName);
+        $updatedFamilyMember = new FamilyMember(
+            id: $familyMember->id,
+            fullName: $updatedFullName,
+            gender: $familyMember->gender,
+            lifePeriod: $familyMember->lifePeriod,
+            birthPlace: $familyMember->birthPlace,
+            deathPlace: $familyMember->deathPlace,
+            biography: $familyMember->biography,
+            userId: $familyMember->userId,
+            createdAt: $familyMember->createdAt,
+            updatedAt: new DateTimeImmutable('2026-01-01 11:00:00')
+        );
 
         // Сохраняем обновленный FamilyMember
-        $this->repository->save($familyMember);
+        $this->repository->save($updatedFamilyMember);
 
         // Проверяем, что данные обновились в БД
         $updatedFamilyMember = $this->repository->findById(1);
@@ -198,6 +215,8 @@ final class EloquentFamilyMemberRepositoryTest extends TestCase
             fullName: $fullName,
             gender: Gender::MALE,
             lifePeriod: $lifePeriod,
+            birthPlace: null,
+            deathPlace: null,
             biography: 'Тестовая биография',
             userId: 1,
             createdAt: $createdAt,

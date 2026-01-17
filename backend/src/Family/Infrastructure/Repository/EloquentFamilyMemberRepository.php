@@ -38,7 +38,9 @@ final class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInte
         $model->middle_name = $fullName->middleName;
         $model->gender = $familyMember->gender->value;
         $model->birth_date = $lifePeriod->birthDate;
+        $model->birth_place = $familyMember->birthPlace;
         $model->death_date = $lifePeriod->deathDate;
+        $model->death_place = $familyMember->deathPlace;
         $model->biography = $familyMember->biography;
         $model->updated_at = $familyMember->updatedAt;
 
@@ -79,6 +81,25 @@ final class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInte
         return $this->mapToEntity($model);
     }
 
+    /**
+     * @return FamilyMember[]
+     * @throws \DateMalformedStringException
+     * @throws \TypeError
+     * @throws \ValueError
+     * @throws \App\Family\Domain\Exception\InvalidLifePeriodException
+     */
+    public function findAllByUserId(int $userId): array
+    {
+        $models = FamilyMemberModel::where('user_id', $userId)->get();
+
+        $familyMembers = [];
+        foreach ($models as $model) {
+            $familyMembers[] = $this->mapToEntity($model);
+        }
+
+        return $familyMembers;
+    }
+
     public function delete(int $id): void
     {
         FamilyMemberModel::where('id', $id)->delete();
@@ -98,8 +119,10 @@ final class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInte
             $model->middle_name
         );
 
-        $birthDate = $model->birth_date instanceof \DateTimeInterface ? new DateTimeImmutable($model->birth_date->format('Y-m-d H:i:s')) : null;
-        $deathDate = $model->death_date instanceof \DateTimeInterface ? new DateTimeImmutable($model->death_date->format('Y-m-d H:i:s')) : null;
+        $birthDateTime = $model->birth_date;
+        $birthDate = $birthDateTime instanceof \DateTimeInterface ? new DateTimeImmutable($birthDateTime->format('Y-m-d H:i:s')) : null;
+        $deathDateTime = $model->death_date;
+        $deathDate = $deathDateTime instanceof \DateTimeInterface ? new DateTimeImmutable($deathDateTime->format('Y-m-d H:i:s')) : null;
         $lifePeriod = new LifePeriod($birthDate, $deathDate);
 
         $gender = Gender::from($model->gender);
@@ -109,6 +132,8 @@ final class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInte
             $fullName,
             $gender,
             $lifePeriod,
+            $model->birth_place,
+            $model->death_place,
             $model->biography,
             (int) $model->user_id,
             new DateTimeImmutable($model->created_at->format('Y-m-d H:i:s')),
