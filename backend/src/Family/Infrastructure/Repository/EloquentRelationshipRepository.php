@@ -24,14 +24,18 @@ final class EloquentRelationshipRepository implements RelationshipRepositoryInte
         if (!$model) {
             $model = new RelationshipModel();
             $model->id = $relationship->id;
-            $model->person_id = $relationship->personId;
-            $model->relative_id = $relationship->relativeId;
-            $model->created_at = $relationship->createdAt->format('Y-m-d H:i:s');
+        }
+
+        $model->person_id = $relationship->personId;
+        $model->relative_id = $relationship->relativeId;
+
+        if (!$model->exists) {
+            $model->created_at = $relationship->createdAt;
         }
 
         $model->type = $relationship->type->value;
-        $model->metadata = $relationship->metadata ?? null;
-        $model->updated_at = $relationship->updatedAt->format('Y-m-d H:i:s');
+        $model->metadata = $relationship->metadata;
+        $model->updated_at = $relationship->updatedAt;
 
         $model->save();
     }
@@ -89,9 +93,9 @@ final class EloquentRelationshipRepository implements RelationshipRepositoryInte
             (int) $model->person_id,
             (int) $model->relative_id,
             $type,
-            $model->metadata,
-            new DateTimeImmutable($model->created_at),
-            new DateTimeImmutable($model->updated_at)
+            $model->metadata ?? null,
+            new DateTimeImmutable($model->created_at->format('Y-m-d H:i:s')),
+            new DateTimeImmutable($model->updated_at->format('Y-m-d H:i:s'))
         );
     }
 }

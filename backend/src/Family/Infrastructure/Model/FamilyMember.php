@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Family\Infrastructure\Model;
 
+use App\Auth\Infrastructure\Model\User as AuthUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -13,14 +14,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $last_name
  * @property string|null $middle_name
  * @property string $gender
- * @property string|null $birth_date
- * @property string|null $death_date
+ * @property \DateTimeInterface|null $birth_date
+ * @property \DateTimeInterface|null $death_date
  * @property string|null $biography
  * @property int $user_id
- * @property string $created_at
- * @property string $updated_at
+ * @property \DateTimeInterface $created_at
+ * @property \DateTimeInterface $updated_at
  *
- * @property-read \App\Auth\Domain\Entity\User $user
+ * @property-read \App\Auth\Infrastructure\Model\User $user
  */
 final class FamilyMember extends Model
 {
@@ -51,12 +52,14 @@ final class FamilyMember extends Model
 
     protected $keyType = 'int';
 
+    // Свойство $touches наследуется от родительского класса Illuminate\Database\Eloquent\Model
+
     /**
-     * @return BelongsTo<\App\Auth\Domain\Entity\User, $this>
+     * @return BelongsTo<\App\Auth\Infrastructure\Model\User, $this>
      */
     public function user(): BelongsTo
     {
-        /** @var BelongsTo<\App\Auth\Domain\Entity\User, $this> */
-        return $this->belongsTo(\App\Auth\Domain\Entity\User::class, 'user_id');
+        /** @var BelongsTo<\App\Auth\Infrastructure\Model\User, $this> */
+        return $this->belongsTo(AuthUser::class, 'user_id');
     }
 }

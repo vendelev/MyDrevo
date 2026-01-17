@@ -13,8 +13,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $relative_id
  * @property string $type
  * @property string|null $metadata
- * @property string $created_at
- * @property string $updated_at
+ * @property \DateTimeInterface $created_at
+ * @property \DateTimeInterface $updated_at
  *
  * @property-read \App\Family\Infrastructure\Model\FamilyMember $person
  * @property-read \App\Family\Infrastructure\Model\FamilyMember $relative

@@ -27,7 +27,7 @@ final class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInte
             $model = new FamilyMemberModel();
             $model->id = $familyMember->id;
             $model->user_id = $familyMember->userId;
-            $model->created_at = $familyMember->createdAt->format('Y-m-d H:i:s');
+            $model->created_at = $familyMember->createdAt;
         }
 
         $fullName = $familyMember->fullName;
@@ -37,10 +37,10 @@ final class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInte
         $model->last_name = $fullName->lastName;
         $model->middle_name = $fullName->middleName;
         $model->gender = $familyMember->gender->value;
-        $model->birth_date = $lifePeriod->birthDate?->format('Y-m-d');
-        $model->death_date = $lifePeriod->deathDate?->format('Y-m-d');
+        $model->birth_date = $lifePeriod->birthDate;
+        $model->death_date = $lifePeriod->deathDate;
         $model->biography = $familyMember->biography;
-        $model->updated_at = $familyMember->updatedAt->format('Y-m-d H:i:s');
+        $model->updated_at = $familyMember->updatedAt;
 
         $model->save();
     }
@@ -98,8 +98,8 @@ final class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInte
             $model->middle_name
         );
 
-        $birthDate = $model->birth_date ? new DateTimeImmutable($model->birth_date) : null;
-        $deathDate = $model->death_date ? new DateTimeImmutable($model->death_date) : null;
+        $birthDate = $model->birth_date instanceof \DateTimeInterface ? new DateTimeImmutable($model->birth_date->format('Y-m-d H:i:s')) : null;
+        $deathDate = $model->death_date instanceof \DateTimeInterface ? new DateTimeImmutable($model->death_date->format('Y-m-d H:i:s')) : null;
         $lifePeriod = new LifePeriod($birthDate, $deathDate);
 
         $gender = Gender::from($model->gender);
@@ -111,8 +111,8 @@ final class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInte
             $lifePeriod,
             $model->biography,
             (int) $model->user_id,
-            new DateTimeImmutable($model->created_at),
-            new DateTimeImmutable($model->updated_at)
+            new DateTimeImmutable($model->created_at->format('Y-m-d H:i:s')),
+            new DateTimeImmutable($model->updated_at->format('Y-m-d H:i:s'))
         );
     }
 }
