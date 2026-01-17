@@ -21,6 +21,20 @@
 - Не используй `app()` для получения экземпляров классов в контроллерах и других местах.
 - Не используй в `$this->app->singleton` ServiceProvider.
 
+## Шаблоны файлов
+
+### Используй этот шаблон для DTO и всех его вариаций (Request, Response, Entity, ValueObject, Event)
+
+```php
+final readonly class ParseTask
+{
+    public function __construct(
+        public string $key,
+    ) {
+    }
+}
+```
+
 ## Регистрация интерфейсов и реализаций
 
 Для связи интерфейсов и их реализаций в контейнере зависимостей Laravel используйте метод `bind`:
