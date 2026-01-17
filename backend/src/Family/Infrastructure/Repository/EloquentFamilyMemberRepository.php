@@ -33,9 +33,9 @@ class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInterface
         $fullName = $familyMember->getFullName();
         $lifePeriod = $familyMember->getLifePeriod();
 
-        $model->first_name = $fullName->getFirstName();
-        $model->last_name = $fullName->getLastName();
-        $model->middle_name = $fullName->getMiddleName();
+        $model->first_name = $fullName->firstName;
+        $model->last_name = $fullName->lastName;
+        $model->middle_name = $fullName->middleName;
         $model->gender = $familyMember->getGender()->value;
         $model->birth_date = $lifePeriod->getBirthDate()?->format('Y-m-d');
         $model->death_date = $lifePeriod->getDeathDate()?->format('Y-m-d');

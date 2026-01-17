@@ -34,7 +34,11 @@ class LifePeriod
      */
     private function validate(): void
     {
-        if ($this->birthDate && $this->deathDate && $this->birthDate > $this->deathDate) {
+        if (
+            $this->birthDate instanceof \DateTimeImmutable
+            && $this->deathDate instanceof \DateTimeImmutable
+            && $this->birthDate > $this->deathDate
+        ) {
             throw InvalidLifePeriodException::birthDateAfterDeathDate();
         }
     }

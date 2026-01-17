@@ -14,7 +14,7 @@ class FamilyMember
     public function __construct(
         private readonly int $id,
         private FullName $fullName,
-        private Gender $gender,
+        private readonly Gender $gender,
         private LifePeriod $lifePeriod,
         private ?string $biography,
         private readonly int $userId,

@@ -6,7 +6,6 @@ namespace App\Family\Infrastructure\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Family\Infrastructure\Model\FamilyMember;
 
 /**
  * @property int $id

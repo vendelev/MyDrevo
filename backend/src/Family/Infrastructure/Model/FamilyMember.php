@@ -6,7 +6,6 @@ namespace App\Family\Infrastructure\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Auth\Infrastructure\Model\User as AuthUser;
 
 /**
  * @property int $id
@@ -53,11 +52,11 @@ class FamilyMember extends Model
     protected $keyType = 'int';
 
     /**
-     * @return BelongsTo<\App\Auth\Infrastructure\Model\User, $this>
+     * @return BelongsTo<\App\Auth\Domain\Entity\User, $this>
      */
     public function user(): BelongsTo
     {
-        /** @var BelongsTo<\App\Auth\Infrastructure\Model\User, $this> */
-        return $this->belongsTo(\App\Auth\Infrastructure\Model\User::class, 'user_id');
+        /** @var BelongsTo<\App\Auth\Domain\Entity\User, $this> */
+        return $this->belongsTo(\App\Auth\Domain\Entity\User::class, 'user_id');
     }
 }

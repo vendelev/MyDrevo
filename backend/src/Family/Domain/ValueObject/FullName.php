@@ -19,6 +19,7 @@ class FullName
         if ($this->middleName) {
             $fullName .= ' ' . $this->middleName;
         }
+
         return $fullName;
     }
 }
