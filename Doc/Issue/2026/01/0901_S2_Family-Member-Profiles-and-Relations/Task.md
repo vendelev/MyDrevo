@@ -14,6 +14,7 @@
    - Создание миграций для добавления необходимых полей в таблицы `gen_person` и `gen_relation`.
    - Обновление структуры БД для поддержки модели предметной области.
    - [План для разработчика](Stages/Stage1_TaskForDev.md) | [План для тестирования](Stages/Stage1_TaskForTest.md)
+   - ✅ Этап завершён
 
 2. **Этап 2: Реализация модели FamilyMember**
    - Создание сущности `FamilyMember`, value objects `FullName` и `LifePeriod`.
