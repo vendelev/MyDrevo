@@ -21,26 +21,26 @@ class EloquentFamilyMemberRepository implements FamilyMemberRepositoryInterface
      */
     public function save(FamilyMember $familyMember): void
     {
-        $model = FamilyMemberModel::find($familyMember->getId());
+        $model = FamilyMemberModel::find($familyMember->id);
 
         if (!$model) {
             $model = new FamilyMemberModel();
-            $model->id = $familyMember->getId();
-            $model->user_id = $familyMember->getUserId();
-            $model->created_at = $familyMember->getCreatedAt()->format('Y-m-d H:i:s');
+            $model->id = $familyMember->id;
+            $model->user_id = $familyMember->userId;
+            $model->created_at = $familyMember->createdAt->format('Y-m-d H:i:s');
         }
 
-        $fullName = $familyMember->getFullName();
-        $lifePeriod = $familyMember->getLifePeriod();
+        $fullName = $familyMember->fullName;
+        $lifePeriod = $familyMember->lifePeriod;
 
         $model->first_name = $fullName->firstName;
         $model->last_name = $fullName->lastName;
         $model->middle_name = $fullName->middleName;
-        $model->gender = $familyMember->getGender()->value;
-        $model->birth_date = $lifePeriod->getBirthDate()?->format('Y-m-d');
-        $model->death_date = $lifePeriod->getDeathDate()?->format('Y-m-d');
-        $model->biography = $familyMember->getBiography();
-        $model->updated_at = $familyMember->getUpdatedAt()->format('Y-m-d H:i:s');
+        $model->gender = $familyMember->gender->value;
+        $model->birth_date = $lifePeriod->birthDate?->format('Y-m-d');
+        $model->death_date = $lifePeriod->deathDate?->format('Y-m-d');
+        $model->biography = $familyMember->biography;
+        $model->updated_at = $familyMember->updatedAt->format('Y-m-d H:i:s');
 
         $model->save();
     }

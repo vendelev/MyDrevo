@@ -19,19 +19,19 @@ class EloquentRelationshipRepository implements RelationshipRepositoryInterface
      */
     public function save(Relationship $relationship): void
     {
-        $model = RelationshipModel::find($relationship->getId());
+        $model = RelationshipModel::find($relationship->id);
 
         if (!$model) {
             $model = new RelationshipModel();
-            $model->id = $relationship->getId();
-            $model->person_id = $relationship->getPersonId();
-            $model->relative_id = $relationship->getRelativeId();
-            $model->created_at = $relationship->getCreatedAt()->format('Y-m-d H:i:s');
+            $model->id = $relationship->id;
+            $model->person_id = $relationship->personId;
+            $model->relative_id = $relationship->relativeId;
+            $model->created_at = $relationship->createdAt->format('Y-m-d H:i:s');
         }
 
-        $model->type = $relationship->getType()->value;
-        $model->metadata = $relationship->getMetadata() ?? null;
-        $model->updated_at = $relationship->getUpdatedAt()->format('Y-m-d H:i:s');
+        $model->type = $relationship->type->value;
+        $model->metadata = $relationship->metadata ?? null;
+        $model->updated_at = $relationship->updatedAt->format('Y-m-d H:i:s');
 
         $model->save();
     }

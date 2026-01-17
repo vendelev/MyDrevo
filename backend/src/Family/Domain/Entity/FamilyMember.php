@@ -12,55 +12,15 @@ use DateTimeImmutable;
 class FamilyMember
 {
     public function __construct(
-        private readonly int $id,
-        private FullName $fullName,
-        private readonly Gender $gender,
-        private LifePeriod $lifePeriod,
-        private ?string $biography,
-        private readonly int $userId,
-        private readonly DateTimeImmutable $createdAt,
-        private DateTimeImmutable $updatedAt
+        public readonly int $id,
+        public FullName $fullName,
+        public readonly Gender $gender,
+        public LifePeriod $lifePeriod,
+        public ?string $biography,
+        public readonly int $userId,
+        public readonly DateTimeImmutable $createdAt,
+        public DateTimeImmutable $updatedAt
     ) {
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    public function getFullName(): FullName
-    {
-        return $this->fullName;
-    }
-
-    public function getGender(): Gender
-    {
-        return $this->gender;
-    }
-
-    public function getLifePeriod(): LifePeriod
-    {
-        return $this->lifePeriod;
-    }
-
-    public function getBiography(): ?string
-    {
-        return $this->biography;
-    }
-
-    public function getUserId(): int
-    {
-        return $this->userId;
-    }
-
-    public function getCreatedAt(): DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function getUpdatedAt(): DateTimeImmutable
-    {
-        return $this->updatedAt;
     }
 
     public function updateFullName(FullName $fullName): void

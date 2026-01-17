@@ -13,20 +13,10 @@ class LifePeriod
      * @throws InvalidLifePeriodException
      */
     public function __construct(
-        private readonly ?DateTimeImmutable $birthDate = null,
-        private readonly ?DateTimeImmutable $deathDate = null
+        public readonly ?DateTimeImmutable $birthDate = null,
+        public readonly ?DateTimeImmutable $deathDate = null
     ) {
         $this->validate();
-    }
-
-    public function getBirthDate(): ?DateTimeImmutable
-    {
-        return $this->birthDate;
-    }
-
-    public function getDeathDate(): ?DateTimeImmutable
-    {
-        return $this->deathDate;
     }
 
     /**
