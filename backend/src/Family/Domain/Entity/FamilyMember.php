@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Family\Domain\Entity;
+namespace App\Family\Domain\Entity;
 
-use App\Modules\Family\Domain\ValueObject\FullName;
-use App\Modules\Family\Domain\ValueObject\Gender;
-use App\Modules\Family\Domain\ValueObject\LifePeriod;
+use App\Family\Domain\ValueObject\FullName;
+use App\Family\Domain\ValueObject\Gender;
+use App\Family\Domain\ValueObject\LifePeriod;
 use DateTimeImmutable;
 
 class FamilyMember

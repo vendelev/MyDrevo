@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Family\Infrastructure\Repository;
+namespace App\Family\Infrastructure\Repository;
 
-use App\Modules\Family\Domain\Entity\Relationship;
-use App\Modules\Family\Domain\RelationshipRepositoryInterface;
-use App\Modules\Family\Infrastructure\Model\Relationship as RelationshipModel;
-use App\Modules\Family\Domain\ValueObject\RelationshipType;
+use App\Family\Domain\Entity\Relationship;
+use App\Family\Domain\RelationshipRepositoryInterface;
+use App\Family\Infrastructure\Model\Relationship as RelationshipModel;
+use App\Family\Domain\ValueObject\RelationshipType;
 use DateTimeImmutable;
 
 class EloquentRelationshipRepository implements RelationshipRepositoryInterface
@@ -20,7 +20,7 @@ class EloquentRelationshipRepository implements RelationshipRepositoryInterface
     public function save(Relationship $relationship): void
     {
         $model = RelationshipModel::find($relationship->getId());
-        
+
         if (!$model) {
             $model = new RelationshipModel();
             $model->id = $relationship->getId();
@@ -28,11 +28,11 @@ class EloquentRelationshipRepository implements RelationshipRepositoryInterface
             $model->relative_id = $relationship->getRelativeId();
             $model->created_at = $relationship->getCreatedAt()->format('Y-m-d H:i:s');
         }
-        
+
         $model->type = $relationship->getType()->value;
         $model->metadata = $relationship->getMetadata() ?? null;
         $model->updated_at = $relationship->getUpdatedAt()->format('Y-m-d H:i:s');
-        
+
         $model->save();
     }
 
@@ -44,11 +44,11 @@ class EloquentRelationshipRepository implements RelationshipRepositoryInterface
     public function findById(int $id): ?Relationship
     {
         $model = RelationshipModel::find($id);
-        
+
         if (!$model) {
             return null;
         }
-        
+
         return $this->mapToEntity($model);
     }
 
@@ -61,12 +61,12 @@ class EloquentRelationshipRepository implements RelationshipRepositoryInterface
     public function findByPersonId(int $personId): array
     {
         $models = RelationshipModel::where('person_id', $personId)->get();
-        
+
         $result = [];
         foreach ($models as $model) {
             $result[] = $this->mapToEntity($model);
         }
-        
+
         return $result;
     }
 
@@ -74,7 +74,7 @@ class EloquentRelationshipRepository implements RelationshipRepositoryInterface
     {
         RelationshipModel::where('id', $id)->delete();
     }
-    
+
     /**
      * @throws \TypeError
      * @throws \ValueError
@@ -83,7 +83,7 @@ class EloquentRelationshipRepository implements RelationshipRepositoryInterface
     private function mapToEntity(RelationshipModel $model): Relationship
     {
         $type = RelationshipType::from($model->type);
-        
+
         return new Relationship(
             (int) $model->id,
             (int) $model->person_id,

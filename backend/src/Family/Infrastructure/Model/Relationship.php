@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Family\Infrastructure\Model;
+namespace App\Family\Infrastructure\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Modules\Family\Infrastructure\Model\FamilyMember;
+use App\Family\Infrastructure\Model\FamilyMember;
 
 /**
  * @property int $id
@@ -17,13 +17,13 @@ use App\Modules\Family\Infrastructure\Model\FamilyMember;
  * @property string $created_at
  * @property string $updated_at
  *
- * @property-read \App\Modules\Family\Infrastructure\Model\FamilyMember $person
- * @property-read \App\Modules\Family\Infrastructure\Model\FamilyMember $relative
+ * @property-read \App\Family\Infrastructure\Model\FamilyMember $person
+ * @property-read \App\Family\Infrastructure\Model\FamilyMember $relative
  */
 class Relationship extends Model
 {
     protected $table = 'family_relationships';
-    
+
     protected $fillable = [
         'id',
         'person_id',
@@ -33,31 +33,31 @@ class Relationship extends Model
         'created_at',
         'updated_at',
     ];
-    
+
     protected $casts = [
         'id' => 'integer',
         'person_id' => 'integer',
         'relative_id' => 'integer',
         'metadata' => 'array',
     ];
-    
+
     /**
-     * @return BelongsTo<\App\Modules\Family\Infrastructure\Model\FamilyMember, $this>
+     * @return BelongsTo<\App\Family\Infrastructure\Model\FamilyMember, $this>
      */
     public function person(): BelongsTo
     {
-        return $this->belongsTo(\App\Modules\Family\Infrastructure\Model\FamilyMember::class, 'person_id');
+        return $this->belongsTo(\App\Family\Infrastructure\Model\FamilyMember::class, 'person_id');
     }
-    
+
     /**
-     * @return BelongsTo<\App\Modules\Family\Infrastructure\Model\FamilyMember, $this>
+     * @return BelongsTo<\App\Family\Infrastructure\Model\FamilyMember, $this>
      */
     public function relative(): BelongsTo
     {
-        return $this->belongsTo(\App\Modules\Family\Infrastructure\Model\FamilyMember::class, 'relative_id');
+        return $this->belongsTo(\App\Family\Infrastructure\Model\FamilyMember::class, 'relative_id');
     }
-    
+
     public $incrementing = true;
-    
+
     protected $keyType = 'int';
 }

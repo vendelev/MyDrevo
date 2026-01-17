@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Family\Domain\Exception;
+namespace App\Family\Domain\Exception;
 
 use Exception;
 

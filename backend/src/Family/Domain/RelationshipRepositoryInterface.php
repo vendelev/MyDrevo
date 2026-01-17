@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Family\Domain;
+namespace App\Family\Domain;
 
-use App\Modules\Family\Domain\Entity\Relationship;
+use App\Family\Domain\Entity\Relationship;
 
 interface RelationshipRepositoryInterface
 {

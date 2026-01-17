@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Family\Domain\Entity;
+namespace App\Family\Domain\Entity;
 
-use App\Modules\Family\Domain\ValueObject\RelationshipType;
+use App\Family\Domain\ValueObject\RelationshipType;
 use DateTimeImmutable;
 
 class Relationship
