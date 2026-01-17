@@ -16,12 +16,12 @@ final readonly class CleanArchitectureTest
     public function testDomainLayer(): BuildStep
     {
         return PHPat::rule()
-            ->classes(Selector::inNamespace('/^Parser.*\\\\Domain\\\\.*/', true))
+            ->classes(Selector::inNamespace('/^App.*\\\\Domain\\\\.*/', true))
             ->shouldNotDependOn()
             ->classes(
-                Selector::inNamespace('/^Parser.*\\\\Application\\\\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Presentation\\\\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Infrastructure\\\\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Application\\\\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Presentation\\\\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Infrastructure\\\\.*/', true),
             )
             ->because('Domain может использовать только Domain (и свой и чужой)');
     }
@@ -32,11 +32,11 @@ final readonly class CleanArchitectureTest
     public function testApplicationLayer(): BuildStep
     {
         return PHPat::rule()
-            ->classes(Selector::inNamespace('/^Parser.*\\\\Application\\\\.*/', true))
+            ->classes(Selector::inNamespace('/^App.*\\\\Application\\\\.*/', true))
             ->shouldNotDependOn()
             ->classes(
-                Selector::inNamespace('/^Parser.*\\\\Presentation\\\\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Infrastructure\\\\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Presentation\\\\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Infrastructure\\\\.*/', true),
             )
             ->because('Application может использовать Domain (только свой)');
     }
@@ -47,10 +47,10 @@ final readonly class CleanArchitectureTest
     public function testInfrastructureLayer(): BuildStep
     {
         return PHPat::rule()
-            ->classes(Selector::inNamespace('/^Parser.*\\\\Infrastructure\\\\.*/', true))
+            ->classes(Selector::inNamespace('/^App.*\\\\Infrastructure\\\\.*/', true))
             ->shouldNotDependOn()
             ->classes(
-                Selector::inNamespace('/^Parser.*\\\\Presentation\\\\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Presentation\\\\.*/', true),
             )
             ->because('Infrastructure может использовать только Application и Domain (и свой и чужой)');
     }

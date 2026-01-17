@@ -17,11 +17,11 @@ final readonly class CleanStructureTest
     {
         return PHPat::rule()
             ->classes(
-                Selector::inNamespace('/^Parser.*\\\\Command[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Factory[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Responder[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Query[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\UseCase[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Command[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Factory[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Responder[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Query[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\UseCase[\\\]*\.*/', true),
             )
             ->shouldBeNamed('/.+Application.+/', true)
             ->because('Этот класс должен находится в слое Application');
@@ -34,9 +34,9 @@ final readonly class CleanStructureTest
     {
         return PHPat::rule()
             ->classes(
-                Selector::inNamespace('/^Parser.*\\\\Application[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Infrastructure[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Presentation[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Application[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Infrastructure[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Presentation[\\\]*\.*/', true),
             )
             ->shouldBeFinal()
             ->because('Класс должен быть Final');
@@ -49,7 +49,7 @@ final readonly class CleanStructureTest
     {
         return PHPat::rule()
             ->classes(
-                Selector::inNamespace('/^Parser.*\\\\Application[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Application[\\\]*\.*/', true),
             )
             ->excluding(Selector::isEnum())
             ->shouldBeReadonly()
@@ -63,13 +63,13 @@ final readonly class CleanStructureTest
     {
         return PHPat::rule()
             ->classes(
-                Selector::inNamespace('/^Parser.*\\\\Event[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Exception[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Entity[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Request[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Response[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Validation[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\ValueObject[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Event[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Exception[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Entity[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Request[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Response[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Validation[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\ValueObject[\\\]*\.*/', true),
             )
             ->shouldBeNamed('/.+Domain.+/', true)
             ->because('Этот класс должен находится в слое Domain');
@@ -93,10 +93,10 @@ final readonly class CleanStructureTest
     {
         return PHPat::rule()
             ->classes(
-                Selector::inNamespace('/^Parser.*\\\\Config[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Console[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Http[\\\]*\.*/', true),
-                Selector::inNamespace('/^Parser.*\\\\Listener[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Config[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Console[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Http[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Listener[\\\]*\.*/', true),
             )
             ->shouldBeNamed('/.+Presentation.+/', true)
             ->because('Этот класс должен находится в слое Presentation');
@@ -109,7 +109,7 @@ final readonly class CleanStructureTest
     {
         return PHPat::rule()
             ->classes(
-                Selector::inNamespace('/^Parser.*\\\\Adapter[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Adapter[\\\]*\.*/', true),
             )
             ->shouldBeNamed('/.+Infrastructure.+/', true)
             ->because('Этот класс должен находится в слое Infrastructure');
