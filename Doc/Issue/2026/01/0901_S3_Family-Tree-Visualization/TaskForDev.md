@@ -19,29 +19,29 @@
 ## Технические требования
 
 ### Backend (Laravel)
-1.  **Модуль `FamilyTree`:**
-    - Расположение: `src/FamilyTree`.
+1.  **Модуль `Family`:**
+    - Расположение: `src/Family`.
     - Зависит от: `src/Family`.
 2.  **Domain слой:**
-    - `src/FamilyTree/Domain/Entity/FamilyTree.php`.
-    - `src/FamilyTree/Domain/Entity/TreeNode.php`.
-    - `src/FamilyTree/Domain/Entity/TreeEdge.php`.
-    - `src/FamilyTree/Domain/ValueObject/TreeLayout.php`.
-    - `src/FamilyTree/Domain/ValueObject/TreeConfiguration.php`.
-    - `src/FamilyTree/Domain/Repository/FamilyTreeRepositoryInterface.php`.
+    - `src/Family/Domain/Entity/FamilyTree.php`.
+    - `src/Family/Domain/Entity/TreeNode.php`.
+    - `src/Family/Domain/Entity/TreeEdge.php`.
+    - `src/Family/Domain/ValueObject/TreeLayout.php`.
+    - `src/Family/Domain/ValueObject/TreeConfiguration.php`.
+    - `src/Family/Domain/Repository/FamilyTreeRepositoryInterface.php`.
 3.  **Application слой:**
-    - `src/FamilyTree/Application/UseCase/GenerateTreeUseCase.php`.
-    - `src/FamilyTree/Application/Service/TreeBuilder.php`.
-    - `src/FamilyTree/Application/Dto/GenerateTreeRequest.php`.
-    - `src/FamilyTree/Application/Dto/GenerateTreeResponse.php`.
+    - `src/Family/Application/UseCase/GenerateTreeUseCase.php`.
+    - `src/Family/Application/Service/TreeBuilder.php`.
+    - `src/Family/Application/Dto/GenerateTreeRequest.php`.
+    - `src/Family/Application/Dto/GenerateTreeResponse.php`.
 4.  **Infrastructure слой:**
-    - `src/FamilyTree/Infrastructure/Repository/EloquentFamilyTreeRepository.php`.
-    - `src/FamilyTree/Infrastructure/Mapper/TreeNodeMapper.php`.
-    - `src/FamilyTree/Infrastructure/Mapper/TreeEdgeMapper.php`.
+    - `src/Family/Infrastructure/Repository/EloquentFamilyTreeRepository.php`.
+    - `src/Family/Infrastructure/Mapper/TreeNodeMapper.php`.
+    - `src/Family/Infrastructure/Mapper/TreeEdgeMapper.php`.
 5.  **Presentation слой:**
-    - `src/FamilyTree/Presentation/Http/Controller/FamilyTreeController.php`.
-    - `src/FamilyTree/Presentation/Http/Request/GenerateTreeRequest.php`.
-    - `src/FamilyTree/Presentation/Http/Response/GenerateTreeResponse.php`.
+    - `src/Family/Presentation/Http/Controller/FamilyTreeController.php`.
+    - `src/Family/Presentation/Http/Request/GenerateTreeRequest.php`.
+    - `src/Family/Presentation/Http/Response/GenerateTreeResponse.php`.
 6.  **Маршруты:**
     - `GET /api/v1/family-tree/{root_id}` → `FamilyTreeController::generate`.
 
@@ -61,7 +61,7 @@
 
 ### Подготовка
 1.  **Шаг 1: Подготовка модуля**
-    - Создать директорию `src/FamilyTree`.
+    - Создать директорию `src/Family`.
     - Определить зависимости от `src/Family`.
 
 ### Domain
@@ -97,5 +97,5 @@
 ## Чек-лист архитектурного соответствия
 - [x] Clean Architecture (слои разделены)
 - [x] CQRS (разделение на Command/Query UseCases)
-- [x] Модульный монолит (код в `src/FamilyTree`)
+- [x] Модульный монолит (код в `src/Family`)
 - [x] Domain-driven (бизнес-логика в Domain и Application)

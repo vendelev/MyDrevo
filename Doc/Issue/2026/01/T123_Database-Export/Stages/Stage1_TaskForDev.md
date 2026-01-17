@@ -24,7 +24,7 @@
 
 - Модуль: `Export`
 - Публичные точки входа: Интерфейсы для других модулей.
-- Зависимости от других модулей: Auth (UserRepositoryInterface), будущие FamilyTree (FamilyRepositoryInterface), Media (MediaRepositoryInterface).
+- Зависимости от других модулей: Auth (UserRepositoryInterface), будущие Family (FamilyRepositoryInterface), Media (MediaRepositoryInterface).
 
 ## Модель предметной области
 
