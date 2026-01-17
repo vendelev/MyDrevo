@@ -35,6 +35,8 @@ final readonly class CleanStructureTest
         return PHPat::rule()
             ->classes(
                 Selector::inNamespace('/^App.*\\\\Application[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Domain\\\\Entity[\\\]*\.*/', true),
+                Selector::inNamespace('/^App.*\\\\Domain\\\\ValueObject[\\\]*\.*/', true),
                 Selector::inNamespace('/^App.*\\\\Infrastructure[\\\]*\.*/', true),
                 Selector::inNamespace('/^App.*\\\\Presentation[\\\]*\.*/', true),
             )
