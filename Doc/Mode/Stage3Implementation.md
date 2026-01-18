@@ -11,65 +11,29 @@
 
 ## Что надо сделать
 
-Внимательно изучи:
-- Информацию о проекте в [AGENTS.md](/AGENTS.md)
+Внимательно изучите:
+- Информацию о проекте в [AGENTS.md](../../AGENTS.md)
 - Особенности работы с PHP в этом проекте в [CodeHints.md](../Rule/CodeHints.md)
 - Принятый в команде стиль кода в [CodeStyle.md](../Rule/CodeStyle.md)
 
-Обязательные шаги:
+Обязательные шаги, выполняйте их СТРОГО последовательно:
 
 1. Выполни все описанные действия в файле [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md), строго следуя последовательности из плана.
 
 2. Проверь код на соответствие [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) и [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) (самопроверка перед автоматизацией).
 
 3. Проверь соблюдение архитектурных принципов:
-    - Используются только соответствующие слои зависимостей согласно правилам
-    - Не используются Eloquent модели напрямую в Application слое
-    - Используются типизированные DTO вместо Request-объектов Laravel
-    - Entity и ValueObject являются иммутабельными
 
-4. Запусти автоматические инструменты исправления кода и стиля
-    ```bash
-    # 1. Rector - Автоматическое улучшение кода (рефакторинг, модернизация)
-    make php-run CMD="vendor/bin/rector process"
-    
-    # 2. PHPCBF - Автоматическое исправление стиля кода
-    make php-run CMD="vendor/bin/phpcbf"
-    ```
+   - Используются только соответствующие слои зависимостей согласно правилам
+   - Не используются Eloquent модели напрямую в Application слое
+   - Используются типизированные DTO вместо Request-объектов Laravel
+   - Entity и ValueObject являются иммутабельными
 
-   **Критерии успеха**:
-    - ✅ Rector: Код рефакторирован и изменен автоматически
-    - ✅ PHPCBF: Стиль кода автоматически исправлен в соответствии с файлом конфигурации
-
-5. Запусти проверку качества кода
-   ```bash
-   # 1. PHPStan - Проверка типов
-   make php-run CMD="vendor/bin/phpstan analyse --memory-limit=256M"
-   
-   # 2. Rector - Проверка рефакторинга и модернизации
-   make php-run CMD="vendor/bin/rector process --dry-run"
-   
-   # 3. PHP_CodeSniffer - Проверка кодстиля
-   make php-run CMD="vendor/bin/phpcs --colors"
-   ```
-
-   **Критерии успеха**:
-    - ✅ PHPStan: **0 ошибок**
-    - ✅ Rector: **OK**
-    - ✅ PHP_CodeSniffer: **0 нарушений**
+**Не надо** запускать PHPStan, Rector, PHP_Codesniffer (phpcs) и исправлять ошибки.
+Запуск статических анализаторов кода будет на следующем этапе.
 
 ## Критерии завершения этапа
 
 1. Все действия из файла [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) выполнены.
 2. Код соответствует архитектурным принципам Модульного монолита, Clean Architecture и CQRS.
-3. PHPStan: не выводит ошибок
-4. Rector: не выводит ошибок
-5. PHP_CodeSniffer: не выводит ошибок
 
-## Ревью пользователем готовой реализации
-
-Если ревю прошло → перейти к коммиту. Если нет → исправить код и повторить проверки.
-
-## Коммит изменений в git
-
-Комментарий должен быть на русском языке

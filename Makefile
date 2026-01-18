@@ -30,7 +30,9 @@ install:
 	[ -f backend/.env.testing ] || cp backend/.env.example backend/.env.testing
 	${DOCKER_COMPOSE} exec php-dev composer install
 	${DOCKER_COMPOSE} exec php-dev php artisan key:generate
-	sed -i 's/DB_DATABASE=.*/DB_DATABASE=database/storage/database_test.sqlite/' backend/.env.testing
+	sed -i 's|DB_DATABASE=.*|DB_DATABASE=database/storage/database_test.sqlite|' backend/.env.testing
+	${DOCKER_COMPOSE} exec php-dev php artisan migrate
+	${DOCKER_COMPOSE} exec php-dev php artisan migrate --env=testing
 
 up:
 	${DOCKER_COMPOSE} up -d

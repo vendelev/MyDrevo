@@ -12,8 +12,5 @@ trim_trailing_whitespace = true
 trim_trailing_whitespace = false
 indent_size = 2
 
-[*.{yml,yaml}]
+[*.{yml,yaml,kilocodemodes,codeassistantmodes,roomodes}]
 indent_size = 2
-
-[docker-compose.yml]
-indent_size = 4

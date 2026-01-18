@@ -21,19 +21,55 @@
 - Не используй `app()` для получения экземпляров классов в контроллерах и других местах.
 - Не используй в `$this->app->singleton` ServiceProvider.
 
-## Шаблоны файлов
+## Примеры-шаблоны файлов модуля
 
-### Используй этот шаблон для DTO и всех его вариаций (Request, Response, Entity, ValueObject, Event)
+### Application
 
-```php
-final readonly class ParseTask
-{
-    public function __construct(
-        public string $key,
-    ) {
-    }
-}
-```
+- Команда для обработки исходящих сообщений - [`ExampleOutboxCommand.php`](../../backend/src/Example/Application/Command/ExampleOutboxCommand.php)
+- DTO для рассчитанного значения - [`Calculated.php`](../../backend/src/Example/Application/Dto/Calculated.php)
+- Простое DTO - [`ExampleDto.php`](../../backend/src/Example/Application/Dto/ExampleDto.php)
+- Фабрика для создания запросов примеров - [`ExampleRequestFactory.php`](../../backend/src/Example/Application/Factory/ExampleRequestFactory.php)
+- Запрос для получения данных - [`GetExampleQuery.php`](../../backend/src/Example/Application/Query/GetExampleQuery.php)
+- Responder для генерации отчета - [`ExampleMarkdownReportResponder.php`](../../backend/src/Example/Application/Responder/ExampleMarkdownReportResponder.php)
+- Шаблон отчета в формате markdown - [`ExampleReport.md`](../../backend/src/Example/Application/Responder/Template/ExampleReport.md)
+- Сервис для выполнения расчетов - [`ExampleCalcService.php`](../../backend/src/Example/Application/Service/ExampleCalcService.php)
+- Варианты использования (создать и посмотреть) - [`ExampleUseCase.php`](../../backend/src/Example/Application/UseCase/ExampleUseCase.php)
+- UseCase для выполнения операции вычитания - [`SubtractExampleUseCase.php`](../../backend/src/Example/Application/UseCase/SubtractExampleUseCase.php)
+
+### Domain
+
+- Документация обзора домена - [`overview.md`](../../backend/src/Example/Domain/Doc/overview.md)
+- DTO для создания - [`CreateExampleDto.php`](../../backend/src/Example/Domain/Dto/CreateExampleDto.php)
+- Enum - [`Status.php`](../../backend/src/Example/Domain/Dto/Status.php)
+- Eloquent модель - [`Example.php`](../../backend/src/Example/Domain/Entity/Example.php)
+- Событие: уведомление о создании - [`ExampleCreated.php`](../../backend/src/Example/Domain/Event/ExampleCreated.php)
+- Исключение для ненайденного примера - [`ExampleNotFoundException.php`](../../backend/src/Example/Domain/Exception/ExampleNotFoundException.php)
+- Исключение для недопустимых чисел - [`InvalidSubtractNumbersException.php`](../../backend/src/Example/Domain/Exception/InvalidSubtractNumbersException.php)
+- DTO запрос на создание - [`CreateExampleRequest.php`](../../backend/src/Example/Domain/Request/CreateExampleRequest.php)
+- DTO ответ - [`ExampleResponse.php`](../../backend/src/Example/Domain/Response/ExampleResponse.php)
+- Value object для созданного ID - [`CreatedIdVO.php`](../../backend/src/Example/Domain/ValueObject/CreatedIdVO.php)
+- ValueObject с валидацией - [`SubtractNumbersVO.php`](../../backend/src/Example/Domain/ValueObject/SubtractNumbersVO.php)
+- Интерфейс внешнего логгера - [`ExternalLoggerInterface.php`](../../backend/src/Example/Domain/ExternalLoggerInterface.php)
+- Интерфейс репозитория - [`ExampleRepositoryInterface.php`](../../backend/src/Example/Domain/ExampleRepositoryInterface.php)
+
+### Infrastructure
+
+- Адаптер для логирования в ClickHouse - [`ClickhouseLogger.php`](../../backend/src/Example/Infrastructure/Adapter/ClickhouseLogger.php)
+- Репозиторий для работы с Eloquent - [`EloquentExampleRepository.php`](../../backend/src/Example/Infrastructure/Repository/EloquentExampleRepository.php)
+
+### Presentation
+
+- Конфигурационный файл - [`example.php`](../../backend/src/Example/Presentation/Config/example.php)
+- Service provider для модуля - [`ExampleServiceProvider.php`](../../backend/src/Example/Presentation/Config/ExampleServiceProvider.php)
+- Консольная команда - [`SubtractExampleCommand.php`](../../backend/src/Example/Presentation/Console/SubtractExampleCommand.php)
+- Контроллер - [`ExampleController.php`](../../backend/src/Example/Presentation/Http/Controller/ExampleController.php)
+- Middleware - [`ExampleMiddleware.php`](../../backend/src/Example/Presentation/Http/Middleware/ExampleMiddleware.php)
+- Отображение данных в html - [`dashboard.blade.php`](../../backend/src/Example/Presentation/Http/View/dashboard.blade.php)
+- Слушатель события - [`ExampleCreatedListener.php`](../../backend/src/Example/Presentation/Listener/ExampleCreatedListener.php)
+
+### Корень модуля
+- Конфигурация документации модуля - [`dochub.yaml`](../../backend/src/Example/dochub.yaml)
+- Описание модуля - [`Readme.md`](../../backend/src/Example/Readme.md)
 
 ## Регистрация интерфейсов и реализаций
 
@@ -59,11 +95,11 @@ $this->app->bind(Interface::class, Implementation::class);
 <?php
 
 use App\Core\Presentation\Config\CoreServiceProvider;
-use App\Backup\Presentation\Config\BackupServiceProvider;
+use App\Example\Presentation\Config\ExampleServiceProvider;
 
 return [
     CoreServiceProvider::class,
-    BackupServiceProvider::class,
+    ExampleServiceProvider::class,
 ];
 ```
 
@@ -77,62 +113,9 @@ return [
 
 ### Правильное использование
 
-#### 1. Создание конфигурационного файла
-
-Создайте конфигурационный файл в каталоге `Presentation/Config` вашего модуля:
-
-```php
-// freshdesk.php
-<?php
-
-declare(strict_types=1);
-
-return [
-    'api_key' => env('FRESHDESK_API_KEY'),
-    'domain' => env('FRESHDESK_DOMAIN'),
-];
-```
-
-#### 2. Регистрация конфигурации в ServiceProvider и передача значений через параметры конструктора класса
-
-Для передачи конфигурационных значений в классы используйте контейнер зависимостей:
-
-```php
-// TaskServiceProvider.php
-public function register(): void
-{
-    // Merge configuration
-    $this->mergeConfigFrom(__DIR__ . '/freshdesk.php', 'freshdesk');
-    
-    $this->app->singleton(ParseTask::class);
-    
-    $this->app->when(ParseTask::class)
-        ->needs('$freshdeskApiKey')
-        ->giveConfig('freshdesk.api_key');
-        
-    $this->app->when(ParseTask::class)
-        ->needs('$freshdeskDomain')
-        ->giveConfig('freshdesk.domain');
-}
-```
-
-#### 3. Получение конфигурации в классах
-
-В классах используйте внедрение зависимостей для получения значений:
-
-```php
-final readonly class ParseTask
-{
-    public function __construct(
-        private TaskParserInterface $taskParser,
-        private string $freshdeskApiKey,
-        private string $freshdeskDomain,
-    ) {
-    }
-    
-    // ...
-}
-```
+1. Создайте конфигурационный файл в каталоге `Presentation/Config` вашего модуля, пример: [example.php](../../backend/src/Example/Presentation/Config/example.php)
+2. Для передачи конфигурационных значений в классы используйте контейнер зависимостей в ServiceProvider, пример: [ExampleServiceProvider.php](../../backend/src/Example/Presentation/Config/ExampleServiceProvider.php)
+3. В классах используйте внедрение зависимостей через параметры конструктора для получения значений, пример: [ClickhouseLogger.php](../../backend/src/Example/Infrastructure/Adapter/ClickhouseLogger.php)
 
 ### Преимущества подхода
 
@@ -146,6 +129,6 @@ final readonly class ParseTask
 Все переменные окружения должны быть определены в файле `.env.example` с примерами значений и комментариями:
 
 ```env
-# Freshdesk API Configuration
-FRESHDESK_API_KEY=your_freshdesk_api_key_here
-FRESHDESK_DOMAIN=your_company_domain
+# API Configuration
+API_KEY=your_api_key_here
+```
