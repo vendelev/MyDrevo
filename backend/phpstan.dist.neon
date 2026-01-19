@@ -15,15 +15,14 @@ parameters:
             tooWideThrowType: true
         uncheckedExceptionClasses:
             - Illuminate\Contracts\Container\BindingResolutionException
-            - Symfony\Component\Console\Exception\CommandNotFoundException
-            - Symfony\Component\Serializer\Exception\ExceptionInterface
-            - GuzzleHttp\Exception\GuzzleException
             - RuntimeException
             - InvalidArgumentException
-#    ignoreErrors:
-#        -
-#            message: "#^Called 'env' outside of the config directory which returns null when the config is cached, use 'config'.$#"
-#            path: *Config/*.php
+            - TypeError
+            - ValueError
+    ignoreErrors:
+        -
+            message: "#^Called 'env' outside of the config directory which returns null when the config is cached, use 'config'.$#"
+            path: *Config/*.php
     strictRules:
         allRules: false
         dynamicCallOnStaticMethod: true

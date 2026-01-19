@@ -11,6 +11,19 @@ final class RegisterControllerE2ETest extends TestCase
 {
     use WithFaker;
 
+    public function testShowRegistrationForm(): void
+    {
+        // Act
+        $response = $this->get('/register');
+
+        // Assert
+        $response->assertStatus(200);
+        $response->assertSee('Регистрация');
+        $response->assertSee('Адрес электронной почты');
+        $response->assertSee('Пароль');
+        $response->assertSee('Имя');
+    }
+
     public function testRegisterWithValidData(): void
     {
         // Arrange

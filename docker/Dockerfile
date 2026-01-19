@@ -20,7 +20,7 @@ RUN <<EOF
   ln -s /usr/share/zoneinfo/${LOCALTIME} /etc/localtime
   echo ${LOCALTIME} > /etc/timezone
   echo 'date.timezone = ${LOCALTIME}' >> $PHP_INI_DIR/php.ini
-  install-php-extensions sockets zip intl pcntl curl opcache xdebug-${XDEBUG}
+  install-php-extensions sockets zip intl pcntl curl opcache xdebug-${XDEBUG} bcmath
   apt-get remove -q -y ${PHPIZE_DEPS} ${BUILD_DEPENDS}
   apt-get clean autoclean
   apt-get autoremove --yes

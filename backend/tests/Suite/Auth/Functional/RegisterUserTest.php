@@ -35,9 +35,9 @@ final class RegisterUserTest extends TestCase
         // Assert
         self::assertEquals('testuser', $user->getLogin());
         self::assertEquals('john@example.com', $user->getEmail());
-        self::assertEquals('John', $user->getFirstName());
-        self::assertEquals('Doe', $user->getMiddleName());
-        self::assertEquals('Smith', $user->getLastName());
+        self::assertEquals('John', $user->getFname());
+        self::assertEquals('Doe', $user->getSname());
+        self::assertEquals('Smith', $user->getSurname());
         self::assertTrue($user->isActive());
         self::assertEquals(1, $user->getUserType());
         self::assertTrue(Hash::check('password123', $user->getAuthPassword()));

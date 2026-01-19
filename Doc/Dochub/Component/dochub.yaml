@@ -10,6 +10,7 @@ components:
     inbound: []
     outbound:
       - auth.web
+      - example.web
 
   auth.web:
     title: "Web интерфейс аутентификации"

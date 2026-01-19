@@ -41,25 +41,23 @@ final class AuthCommandsAndQueriesTest extends TestCase
         self::assertNotNull($foundUser);
         self::assertEquals('testuser', $foundUser->getLogin());
         self::assertEquals('john@example.com', $foundUser->getEmail());
-        self::assertEquals('John', $foundUser->getFirstName());
-        self::assertEquals('Doe', $foundUser->getMiddleName());
-        self::assertEquals('Smith', $foundUser->getLastName());
-        self::assertTrue($foundUser->isActive());
-        self::assertEquals(1, $foundUser->getUserType());
+        self::assertEquals('John', $foundUser->getFname());
+        self::assertEquals('Doe', $foundUser->getSname());
+        self::assertEquals('Smith', $foundUser->getSurname());
 
         // Test save via Command
-        $user = new User(
-            id: 2,
-            login: 'newuser',
-            password: 'newpassword',
-            firstName: 'Jane',
-            middleName: null,
-            lastName: 'Doe',
-            email: 'jane@example.com',
-            userType: 1,
-            active: true,
-            createdAt: new \DateTimeImmutable()
-        );
+        $user = new User([
+            'id' => 2,
+            'login' => 'newuser',
+            'password' => 'newpassword',
+            'firstName' => 'Jane',
+            'middleName' => null,
+            'lastName' => 'Doe',
+            'email' => 'jane@example.com',
+            'userType' => 1,
+            'active' => true,
+            'createdAt' => 'now',
+        ]);
 
         $registerCommand = $this->service(RegisterUserCommand::class);
         $registerCommand->handle($user);

@@ -22,17 +22,17 @@ final readonly class GetUserByIdQuery
 
         $userData = (array) $userData;
 
-        return new User(
-            $userData['id'],
-            $userData['login'],
-            $userData['password'],
-            $userData['fname'],
-            $userData['sname'],
-            $userData['surname'],
-            $userData['email'],
-            $userData['user_type'],
-            (bool) $userData['active'],
-            new \DateTimeImmutable($userData['create_date'])
-        );
+        return new User([
+            'id' => $userData['id'],
+            'login' => $userData['login'],
+            'password' => $userData['password'],
+            'firstName' => $userData['fname'],
+            'middleName' => $userData['sname'] ?? null,
+            'lastName' => $userData['surname'],
+            'email' => $userData['email'],
+            'userType' => $userData['user_type'],
+            'active' => (bool) $userData['active'],
+            'createdAt' => new \DateTimeImmutable($userData['create_date'])->format('Y-m-d H:i:s'),
+        ]);
     }
 }

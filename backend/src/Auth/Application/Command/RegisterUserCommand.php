@@ -16,13 +16,13 @@ final readonly class RegisterUserCommand
             [
                 'login' => $user->getLogin(),
                 'password' => $user->getAuthPassword(),
-                'fname' => $user->getFirstName(),
-                'sname' => $user->getMiddleName(),
-                'surname' => $user->getLastName(),
+                'fname' => $user->getFname(),
+                'sname' => $user->getSname(),
+                'surname' => $user->getSurname(),
                 'email' => $user->getEmail(),
                 'user_type' => $user->getUserType(),
                 'active' => $user->isActive() ? 1 : 0,
-                'create_date' => $user->getCreatedAt()->format('Y-m-d H:i:s'),
+                'create_date' => $user->getCreateDate(),
             ]
         );
     }

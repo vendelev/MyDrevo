@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Family\Presentation\Http\Controller\FamilyMemberController;
+use App\Example\Presentation\Http\Controller\ExampleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('family-members', FamilyMemberController::class);
+Route::middleware('auth')->group(function () {
+    Route::post('/examples', [ExampleController::class, 'create']);
 });

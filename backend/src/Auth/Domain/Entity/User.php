@@ -8,19 +8,59 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 final class User extends Authenticatable
 {
-    public function __construct(
-        private readonly int $id = 0,
-        private readonly string $login = '',
-        private readonly string $password = '',
-        private readonly string $firstName = '',
-        private readonly ?string $middleName = null,
-        private readonly string $lastName = '',
-        private readonly string $email = '',
-        private readonly int $userType = 1,
-        private readonly bool $active = true,
-        private readonly \DateTimeImmutable $createdAt = new \DateTimeImmutable()
-    ) {
-        parent::__construct();
+    protected $fillable = [
+        'id',
+        'login',
+        'password',
+        'firstName',
+        'middleName',
+        'lastName',
+        'createdAt',
+        'active',
+        'email',
+        'userType',
+    ];
+
+    protected $table = 'gen_user';
+
+    public const CREATED_AT = 'create_date';
+
+    public const UPDATED_AT = null;
+
+    private readonly int $id;
+
+    private readonly string $login;
+
+    private readonly string $password;
+
+    private readonly string $fname;
+
+    private readonly ?string $sname;
+
+    private readonly string $surname;
+
+    private readonly string $email;
+
+    private readonly int $userType;
+
+    private readonly bool $active;
+
+    private readonly string $createDate;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->id = $attributes['id'] ?? 0;
+        $this->login = $attributes['login'] ?? '';
+        $this->password = $attributes['password'] ?? '';
+        $this->fname = $attributes['firstName'] ?? '';
+        $this->sname = $attributes['middleName'] ?? null;
+        $this->surname = $attributes['lastName'] ?? '';
+        $this->email = $attributes['email'] ?? '';
+        $this->userType = $attributes['userType'] ?? 1;
+        $this->active = $attributes['active'] ?? true;
+        $this->createDate = $attributes['createdAt'] ?? 'now';
     }
 
     // Required by Laravel's Authenticatable
@@ -63,19 +103,19 @@ final class User extends Authenticatable
         return $this->login;
     }
 
-    public function getFirstName(): string
+    public function getFname(): string
     {
-        return $this->firstName;
+        return $this->fname;
     }
 
-    public function getMiddleName(): ?string
+    public function getSname(): ?string
     {
-        return $this->middleName;
+        return $this->sname;
     }
 
-    public function getLastName(): string
+    public function getSurname(): string
     {
-        return $this->lastName;
+        return $this->surname;
     }
 
     public function getEmail(): string
@@ -93,8 +133,8 @@ final class User extends Authenticatable
         return $this->active;
     }
 
-    public function getCreatedAt(): \DateTimeImmutable
+    public function getCreateDate(): string
     {
-        return $this->createdAt;
+        return $this->createDate;
     }
 }

@@ -15,10 +15,10 @@ abstract class TestCase extends BaseTestCase
 {
     use RefreshDatabase;
 
-    protected function refreshTestDatabase(): void
-    {
-        $this->beginDatabaseTransaction();
-    }
+//    protected function refreshTestDatabase(): void
+//    {
+//        $this->beginDatabaseTransaction();
+//    }
 
     /**
      * @template TObject

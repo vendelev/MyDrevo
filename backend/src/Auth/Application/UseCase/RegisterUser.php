@@ -29,18 +29,18 @@ final readonly class RegisterUser
         }
 
         // Создание пользователя
-        $user = new User(
-            id: 0, // ID будет назначен БД
-            login: $request->login,
-            password: Hash::make($request->password),
-            firstName: $request->firstName,
-            middleName: $request->middleName,
-            lastName: $request->lastName,
-            email: $request->email,
-            userType: 1, // По умолчанию обычный пользователь
-            active: true,
-            createdAt: new \DateTimeImmutable()
-        );
+        $user = new User([
+            'id' => 0, // ID будет назначен БД
+            'login' => $request->login,
+            'password' => Hash::make($request->password),
+            'firstName' => $request->firstName,
+            'middleName' => $request->middleName,
+            'lastName' => $request->lastName,
+            'email' => $request->email,
+            'userType' => 1, // По умолчанию обычный пользователь
+            'active' => true,
+            'createdAt' => 'now',
+        ]);
 
         // Сохранение пользователя
         $this->registerUserCommand->handle($user);

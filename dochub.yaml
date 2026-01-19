@@ -1,10 +1,11 @@
-title: "Архитектура продукта: базовая структура и аутентификация"
+title: "Архитектура продукта: базовая структура, аутентификация и демонстрационный модуль"
 imports:
-  - ./Doc/Dochub/Aspects/dochub.yaml
-  - ./Doc/Dochub/Component/dochub.yaml
-  - ./Doc/Dochub/Context/dochub.yaml
-  - ./backend/src/Core/dochub.yaml
-  - ./backend/src/Auth/dochub.yaml
+   - ./Doc/Dochub/Aspects/dochub.yaml
+   - ./Doc/Dochub/Component/dochub.yaml
+   - ./Doc/Dochub/Context/dochub.yaml
+   - ./backend/src/Core/dochub.yaml
+   - ./backend/src/Auth/dochub.yaml
+   - ./backend/src/Example/dochub.yaml
 components: {}
 contexts: {}
 aspects: {}

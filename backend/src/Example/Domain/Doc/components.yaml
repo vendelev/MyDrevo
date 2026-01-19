@@ -1,0 +1,77 @@
+components:
+  example.web:
+    title: "Web интерфейс Example"
+    entity: component
+    context: example_domain
+    aspects: [ backend ]
+    tech: "Laravel 12, Blade"
+    responsibilities: >
+      HTTP-контроллеры, middleware и Blade-шаблоны для API создания примеров и HTML отображения данных примера.
+    inbound:
+      - core.web.router
+    outbound:
+      - example.crud.service
+      - example.calc.service
+
+  example.crud.service:
+    title: "Сервис CRUD примеров"
+    entity: component
+    context: example_domain
+    aspects: [ backend ]
+    tech: "Laravel 12, PHP 8.5, CQRS"
+    responsibilities: >
+      UseCase, команды и запросы для создания и получения примеров с outbox и генерацией событий.
+    inbound:
+      - example.web
+    outbound:
+      - db.examples
+      - db.example_outbox
+
+  example.calc.service:
+    title: "Сервис математических вычислений"
+    entity: component
+    context: example_domain
+    aspects: [ backend ]
+    tech: "Laravel 12, PHP 8.5"
+    responsibilities: >
+      UseCase, сервис расчета и responder для вычитания чисел и генерации Markdown отчетов.
+    inbound:
+      - example.web
+    outbound:
+      - external.clickhouse
+
+  db.examples:
+    title: "Таблица примеров examples"
+    entity: component
+    context: database_domain
+    aspects: [ database ]
+    tech: "SQLite"
+    responsibilities: >
+      Хранение сущностей примеров с полями name, comment, status, user_id.
+    inbound:
+      - example.crud.service
+    outbound: []
+
+  db.example_outbox:
+    title: "Таблица outbox example_outbox"
+    entity: component
+    context: database_domain
+    aspects: [ database ]
+    tech: "SQLite"
+    responsibilities: >
+      Хранение данных для асинхронной обработки в формате JSON.
+    inbound:
+      - example.crud.service
+    outbound: []
+
+  external.clickhouse:
+    title: "Внешний логгер Clickhouse"
+    entity: component
+    context: database_domain
+    aspects: [ external-api, database ]
+    tech: "Clickhouse API"
+    responsibilities: >
+      Логгирование сообщений с контекстом в внешнюю систему Clickhouse.
+    inbound:
+      - example.calc.service
+    outbound: []

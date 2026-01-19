@@ -7,3 +7,4 @@
 auth.json
 /storage/temp/*
 /storage/framework/sessions/
+/storage/framework/views/

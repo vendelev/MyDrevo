@@ -1,0 +1,13 @@
+title: "Example модуль"
+imports:
+   - ./Domain/Doc/components.yaml
+   - ./Domain/Doc/contexts.yaml
+
+docs:
+   example.overview:
+     title: "Обзор модуля Example"
+     location: ./Domain/Doc/overview.md
+
+contexts: {}
+components: {}
+aspects: {}
