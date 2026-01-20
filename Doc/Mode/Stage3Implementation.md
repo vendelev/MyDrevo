@@ -19,6 +19,8 @@
 Обязательные шаги, выполняйте их СТРОГО последовательно:
 
 1. Выполни все описанные действия в файле [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md), строго следуя последовательности из плана.
+   **ВАЖНО**. Для уменьшения контекста для каждого создания или изменения файла запускай нового агента 
+   в режиме "implementation".
 
 2. Проверь код на соответствие [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) и [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) (самопроверка перед автоматизацией).
 

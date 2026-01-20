@@ -9,6 +9,7 @@
 - Не использовать Mockery
 - Вместо `app()` использовать `$this->service`.
   Пример: app(ValidationFactoryInterface::class) -> $this->service(ValidationFactoryInterface::class)
+- Для Integration и E2E надо создавать записи в БД используя классы в папке [ModelFactory](../../backend/tests/Stub/ModelFactory)
 
 **Когда писать тесты**:
 - ✅ Все компоненты Application и Domain слоев **ОБЯЗАТЕЛЬНО** должны быть протестированы

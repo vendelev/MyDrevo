@@ -12,24 +12,26 @@
   - Unit — доменные правила/DTO/валидации без внешних зависимостей.
   - Integration — связка команд/запросов/репозиториев с БД.
   - E2E — HTTP-флоу от роутинга до ответа.
-- Каждый сценарий описывай в формате: **Дано → Проверяемое → Ожидаемый результат**.
 
 ## Структура тестовых файлов
 
-> Укажи точные пути и назначение.
+ModelFactory:
+
+- `backend/tests/Stub/<ModuleName>/...Factory.php` — ...
 
 Unit:
 
-- `backend/tests/Suite/<ModuleName>/Domain/...Test.php` — …
-- `backend/tests/Suite/<ModuleName>/Application/...Test.php` — …
+- `backend/tests/Suite/<ModuleName>/Domain/Entity/...Test.php` — ...
+- `backend/tests/Suite/<ModuleName>/Domain/ValueObject/...Test.php` — ...
 
 Integration:
 
-- `backend/tests/Suite/<ModuleName>/Integration/...Test.php` — …
+- `backend/tests/Suite/<ModuleName>/Application/UseCase/...UseCaseTest.php` — ...
+- `backend/tests/Suite/<ModuleName>/Infrastructure/Repository/...RepositoryTest.php` — ...
 
 E2E:
 
-- `backend/tests/Suite/<ModuleName>/E2E/...Test.php` — …
+- `backend/tests/Suite/<ModuleName>/Presentation/Http/Controller/...ControllerTest.php` — ...
 
 ## Сценарии
 
@@ -60,11 +62,6 @@ E2E:
 
 - AC-1: … → `<TestClass>::<testMethod>()`
 - AC-2: … → `<TestClass>::<testMethod>()`
-
-## Чек-лист выполнения (локально/CI)
-
-- `make php-run CMD="php artisan test"`
-- `make php-run CMD="vendor/bin/phpstan analyse"` (если включено в пайплайн)
 
 ## Диаграмма тестируемого потока (Mermaid)
 
