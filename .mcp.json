@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "sqlite": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic-ai/mcp-server-sqlite",
+        "/home/artiom/Develop/edu/my-drevo/backend/database/storage/database.sqlite"
+      ]
+    }
+  }
+}
