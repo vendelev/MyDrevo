@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('gen_person', function (Blueprint $table) {
+            $table->id();
             // TODO: Реализовать структуру таблицы на этапе 2
         });
     }

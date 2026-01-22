@@ -7,10 +7,32 @@ namespace Tests\Suite\DatabaseMigration\Presentation\Console\Commands;
 use Illuminate\Testing\PendingCommand;
 use Tests\TestCase;
 
+/**
+ * Тесты команды экспорта данных из MySQL.
+ */
 final class ExportMySQLCommandTest extends TestCase
 {
-    public function testCommandSkipped(): void
+    /**
+     * Тест успешного экспорта данных.
+     */
+    public function test_export_success(): void
     {
-        $this->markTestSkipped('TODO: Implement test on stage 3');
+        self::markTestSkipped('TODO: Реализовать тест на этапе 3');
+    }
+
+    /**
+     * Тест экспорта с ошибкой подключения.
+     */
+    public function test_export_connection_error(): void
+    {
+        self::markTestSkipped('TODO: Реализовать тест на этапе 3');
+    }
+
+    /**
+     * Тест экспорта с валидацией параметров.
+     */
+    public function test_export_validation(): void
+    {
+        self::markTestSkipped('TODO: Реализовать тест на этапе 3');
     }
 }
