@@ -29,10 +29,10 @@
 Создать директорию и файл:
 
 ```bash
-mkdir -p backend/tests/Suite/Infrastructure/Database/Command
+mkdir -p backend/tests/Suite/DatabaseMigration/Presentation/Console/Command
 ```
 
-**Содержимое файла `backend/tests/Suite/Infrastructure/Database/Command/ExportMySQLCommandTest.php`:**
+**Содержимое файла `backend/tests/Suite/DatabaseMigration/Presentation/Console/Command/ExportMySQLCommandTest.php`:**
 
 ```php
 <?php
@@ -76,7 +76,7 @@ final class ExportMySQLCommandTest extends TestCase
 
 #### Тест команды импорта
 
-**Содержимое файла `backend/tests/Suite/Infrastructure/Database/Command/ImportDatabaseCommandTest.php`:**
+**Содержимое файла `backend/tests/Suite/DatabaseMigration/Presentation/Console/Command/ImportDatabaseCommandTest.php`:**
 
 ```php
 <?php
@@ -128,7 +128,7 @@ final class ImportDatabaseCommandTest extends TestCase
 
 #### Тест команды валидации целостности
 
-**Содержимое файла `backend/tests/Suite/Infrastructure/Database/Command/ValidateIntegrityCommandTest.php`:**
+**Содержимое файла `backend/tests/Suite/DatabaseMigration/Presentation/Console/Command/ValidateIntegrityCommandTest.php`:**
 
 ```php
 <?php
@@ -183,10 +183,10 @@ final class ValidateIntegrityCommandTest extends TestCase
 Создать директорию и файл:
 
 ```bash
-mkdir -p backend/tests/Suite/Infrastructure/Database/Controller
+mkdir -p backend/tests/Suite/DatabaseMigration/Presentation/Http/Controller
 ```
 
-**Содержимое файла `backend/tests/Suite/Infrastructure/Database/Controller/DatabaseStatusControllerTest.php`:**
+**Содержимое файла `backend/tests/Suite/DatabaseMigration/Presentation/Http/Controller/DatabaseStatusControllerTest.php`:**
 
 ```php
 <?php
