@@ -3,16 +3,14 @@
 ## Цель этапа
 
 - **Что добавляем/меняем**: Создаем полную структуру файлов для миграции БД MySQL → SQLite: миграции для основных
-  таблиц, консольные команды (экспорт, импорт, валидация), API контроллер статуса БД и тесты.
-- **Что является критерием готовности**: Все файлы созданы с заглушками методов, проект собирается без ошибок,
-  все тесты помечены как `markTestSkipped`.
+  таблиц, консольные команды (экспорт, импорт, валидация), API контроллер статуса БД.
+- **Что является критерием готовности**: Все файлы созданы с заглушками методов, проект собирается без ошибок.
 
 ## Общие архитектурные принципы
 
 - Данная задача является **инфраструктурной** и не создает новые модули бизнес-логики.
 - Работа ведется напрямую с БД без применения Clean Architecture в полном объеме.
 - Консольные команды и API контроллер работают напрямую с БД (без Repository).
-- Тесты будут интеграционными (проверка команд и эндпоинта).
 - Следуем стандартам Laravel для миграций, команд и контроллеров.
 
 ## Архитектурные решения
@@ -23,7 +21,6 @@
 - **app/Console/Commands**: Artisan-команды для работы с БД
 - **app/Http/Controllers**: API контроллер для проверки статуса БД
 - **routes**: Регистрация API роута
-- **tests**: Интеграционные тесты команд и контроллера
 
 **Важно**: На данном этапе создаем только структуру файлов с заглушками. Реальная реализация будет на следующих этапах.
 
@@ -64,18 +61,6 @@ backend/
 │   └── api.php (изменить)
 ├── bootstrap/
 │   └── providers.php (изменить)
-├── tests/
-│   └── Suite/
-│       └── DatabaseMigration/
-│           └── Presentation/
-│               ├── Console/
-│               │   └── Command/
-│               │       ├── ExportMySQLCommandTest.php
-│               │       ├── ImportDatabaseCommandTest.php
-│               │       └── ValidateIntegrityCommandTest.php
-│               └── Http/
-│                   └── Controller/
-│                       └── DatabaseStatusControllerTest.php
 ```
 
 ## Модель предметной области
@@ -110,8 +95,7 @@ flowchart TD
     Start[Начало этапа 1] --> CreateMigrations[Создать 12 файлов миграций]
     CreateMigrations --> CreateCommands[Создать 3 Artisan команды]
     CreateCommands --> CreateController[Создать API контроллер]
-    CreateController --> CreateTests[Создать тесты с markTestSkipped]
-    CreateTests --> RegisterRoutes[Зарегистрировать роуты]
+    CreateController --> RegisterRoutes[Зарегистрировать роуты]
     RegisterRoutes --> Verify[Проверить сборку проекта]
     Verify --> End[Готово: структура создана]
 
@@ -120,7 +104,6 @@ flowchart TD
     style CreateMigrations fill:#fff4e6
     style CreateCommands fill:#fff4e6
     style CreateController fill:#fff4e6
-    style CreateTests fill:#fff4e6
 ```
 
 ### Структура файлов миграций
@@ -161,15 +144,6 @@ flowchart TD
     Commands --> ValidateCmd[ValidateIntegrityCommand]
 
     Controllers --> StatusCtrl[DatabaseStatusController]
-
-    Tests[Integration Tests] --> CmdTests[Command Tests]
-    Tests --> CtrlTests[Controller Tests]
-
-    CmdTests --> ExportTest[ExportMySQLCommandTest]
-    CmdTests --> ImportTest[ImportDatabaseCommandTest]
-    CmdTests --> ValidateTest[ValidateIntegrityCommandTest]
-
-    CtrlTests --> StatusTest[DatabaseStatusControllerTest]
 ```
 
 ## Изменяемые файлы
@@ -206,13 +180,6 @@ flowchart TD
 ### Создать: API контроллер (1 файл)
 
 1. `backend/src/DatabaseMigration/Presentation/Http/Controllers/DatabaseStatusController.php`
-
-### Создать: Тесты (4 файла)
-
-1. `backend/tests/Suite/DatabaseMigration/Presentation/Console/Command/ExportMySQLCommandTest.php`
-2. `backend/tests/Suite/DatabaseMigration/Presentation/Console/Command/ImportDatabaseCommandTest.php`
-3. `backend/tests/Suite/DatabaseMigration/Presentation/Console/Command/ValidateIntegrityCommandTest.php`
-4. `backend/tests/Suite/DatabaseMigration/Presentation/Http/Controller/DatabaseStatusControllerTest.php`
 
 ### Изменить: Роуты
 
@@ -634,213 +601,7 @@ use App\DatabaseMigration\Presentation\Http\Controllers\DatabaseStatusController
 Route::get('/status', [DatabaseStatusController::class, 'status']);
 ```
 
-### Шаг 5: Создание тестов (4 файла)
-
-#### 5.1 Тест команды экспорта
-
-Создать директорию и файл:
-
-```bash
-mkdir -p backend/tests/Suite/Infrastructure/Database/Command
-```
-
-**Содержимое файла `backend/tests/Suite/Infrastructure/Database/Command/ExportMySQLCommandTest.php`:**
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace Tests\Suite\Infrastructure\Database\Command;
-
-use Tests\TestCase;
-
-/**
- * Тесты команды экспорта данных из MySQL.
- */
-final class ExportMySQLCommandTest extends TestCase
-{
-    /**
-     * Тест успешного экспорта данных.
-     */
-    public function test_export_success(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 3');
-    }
-
-    /**
-     * Тест экспорта с ошибкой подключения.
-     */
-    public function test_export_connection_error(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 3');
-    }
-
-    /**
-     * Тест экспорта с валидацией параметров.
-     */
-    public function test_export_validation(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 3');
-    }
-}
-```
-
-#### 5.2 Тест команды импорта
-
-**Содержимое файла `backend/tests/Suite/Infrastructure/Database/Command/ImportDatabaseCommandTest.php`:**
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace Tests\Suite\Infrastructure\Database\Command;
-
-use Tests\TestCase;
-
-/**
- * Тесты команды импорта данных в SQLite.
- */
-final class ImportDatabaseCommandTest extends TestCase
-{
-    /**
-     * Тест успешного импорта данных.
-     */
-    public function test_import_success(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 4');
-    }
-
-    /**
-     * Тест импорта с валидацией файла.
-     */
-    public function test_import_validation(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 4');
-    }
-
-    /**
-     * Тест импорта с флагом truncate.
-     */
-    public function test_import_truncate(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 4');
-    }
-
-    /**
-     * Тест импорта с флагом skip-existing.
-     */
-    public function test_import_skip_existing(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 4');
-    }
-}
-```
-
-#### 5.3 Тест команды валидации целостности
-
-**Содержимое файла `backend/tests/Suite/Infrastructure/Database/Command/ValidateIntegrityCommandTest.php`:**
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace Tests\Suite\Infrastructure\Database\Command;
-
-use Tests\TestCase;
-
-/**
- * Тесты команды проверки целостности БД.
- */
-final class ValidateIntegrityCommandTest extends TestCase
-{
-    /**
-     * Тест проверки целостности без ошибок.
-     */
-    public function test_validate_success(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 5');
-    }
-
-    /**
-     * Тест проверки целостности с ошибками.
-     */
-    public function test_validate_with_errors(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 5');
-    }
-
-    /**
-     * Тест автоматического исправления проблем.
-     */
-    public function test_validate_fix(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 5');
-    }
-
-    /**
-     * Тест вывода в формате JSON.
-     */
-    public function test_validate_json_output(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 5');
-    }
-}
-```
-
-#### 5.4 Тест API контроллера
-
-Создать директорию и файл:
-
-```bash
-mkdir -p backend/tests/Suite/Infrastructure/Database/Controller
-```
-
-**Содержимое файла `backend/tests/Suite/Infrastructure/Database/Controller/DatabaseStatusControllerTest.php`:**
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace Tests\Suite\Infrastructure\Database\Controller;
-
-use Tests\TestCase;
-
-/**
- * Тесты контроллера статуса базы данных.
- */
-final class DatabaseStatusControllerTest extends TestCase
-{
-    /**
-     * Тест успешного получения статуса БД.
-     */
-    public function test_status_success(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 6');
-    }
-
-    /**
-     * Тест получения статуса при ошибке подключения.
-     */
-    public function test_status_connection_error(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 6');
-    }
-
-    /**
-     * Тест получения статуса при отсутствии таблиц.
-     */
-    public function test_status_missing_tables(): void
-    {
-        self::markTestSkipped('TODO: Реализовать тест на этапе 6');
-    }
-}
-```
-
-### Шаг 6: Проверка сборки проекта
+### Шаг 5: Проверка сборки проекта
 
 После создания всех файлов выполнить:
 
@@ -863,7 +624,6 @@ make php-run CMD="vendor/bin/phpunit tests/Suite/Infrastructure/Database"
 - Проект собирается без ошибок
 - Все 3 команды доступны: `db:export-mysql`, `db:import`, `db:validate-integrity`
 - Роут `GET /api/status` зарегистрирован
-- Все тесты помечены как skipped (0 failures, X skipped)
 
 ## Риски и альтернативы
 
@@ -904,11 +664,9 @@ make php-run CMD="vendor/bin/phpunit tests/Suite/Infrastructure/Database"
 - [ ] Созданы 3 консольные команды с заглушками
 - [ ] Создан API контроллер с заглушкой
 - [ ] Зарегистрирован роут `GET /api/status`
-- [ ] Созданы 4 тестовых файла с `markTestSkipped`
 - [ ] Проект собирается без ошибок: `composer dump-autoload`
 - [ ] Все команды доступны: `php artisan list | grep db:`
 - [ ] Роут зарегистрирован: `php artisan route:list | grep status`
-- [ ] Все тесты помечены как skipped: `vendor/bin/phpunit tests/Suite/Infrastructure/Database`
 - [ ] Код соответствует стилю проекта (PSR-12, типизация, PHPDoc)
 - [ ] Все файлы добавлены в git: `git status`
 
@@ -945,18 +703,12 @@ make php-run CMD="vendor/bin/phpunit tests/Suite/Infrastructure/Database"
 
 1. `backend/app/Http/Controllers/DatabaseStatusController.php`
 
-### Тесты (4 файла)
-
-1. `backend/tests/Suite/DatabaseMigration/Presentation/Console/Command/ExportMySQLCommandTest.php`
-2. `backend/tests/Suite/DatabaseMigration/Presentation/Console/Command/ImportDatabaseCommandTest.php`
-3. `backend/tests/Suite/DatabaseMigration/Presentation/Console/Command/ValidateIntegrityCommandTest.php`
-4. `backend/tests/Suite/Infrastructure/Database/Controller/DatabaseStatusControllerTest.php`
-
-### Изменяемые файлы (1 файл)
+### Изменяемые файлы (2 файла)
 
 1. `backend/routes/api.php` — добавить роут `GET /api/status`
+2. `backend/bootstrap/providers.php` — зарегистрировать DatabaseMigrationServiceProvider
 
-**Итого**: 12 миграций + 3 файла модуля + 3 команды + 1 контроллер + 4 теста + 2 изменяемых файла = **25 файлов** (22 создать, 3 изменить)
+**Итого**: 12 миграций + 3 файла модуля + 3 команды + 1 контроллер + 2 изменяемых файла = **22 файла** (19 создать, 3 изменить)
 
 ## Примечания
 
