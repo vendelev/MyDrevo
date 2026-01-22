@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\DatabaseMigration\Presentation\Http\Controllers\DatabaseStatusController;
 use App\Example\Presentation\Http\Controller\ExampleController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::post('/examples', [ExampleController::class, 'create']);
 });
+
+// Статус базы данных
+Route::get('/status', [DatabaseStatusController::class, 'status']);

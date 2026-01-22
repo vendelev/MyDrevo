@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 use App\Core\Presentation\Config\CoreServiceProvider;
 use App\Core\Presentation\Config\RouteServiceProvider;
+use App\DatabaseMigration\Presentation\Config\DatabaseMigrationServiceProvider;
 use App\Example\Presentation\Config\ExampleServiceProvider;
 use Illuminate\Auth\AuthServiceProvider as IlluminateAuthServiceProvider;
 use Illuminate\Cookie\CookieServiceProvider;
 
 return [
     CoreServiceProvider::class,
+    DatabaseMigrationServiceProvider::class,
     ExampleServiceProvider::class,
     RouteServiceProvider::class,
     IlluminateAuthServiceProvider::class,

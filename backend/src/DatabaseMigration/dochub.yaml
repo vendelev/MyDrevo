@@ -1,0 +1,2 @@
+module: DatabaseMigration
+description: Модуль для миграции данных из MySQL в SQLite
