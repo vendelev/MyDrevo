@@ -28,10 +28,10 @@
 
 ## Связь с архитектурой и правилами
 
-- Архитектура: [Architecture.md](/Doc/Rule/Architecture.md)
-- Процесс добавления фич: [FeatureWorkflow.md](/Doc/Rule/FeatureWorkflow.md)
-- PHP-правила: [CodeHints.md](/Doc/Rule/CodeHints.md)
-- Рекомендации по написанию тестов: [Testing.md](/Doc/Rule/Testing.md)
+- Архитектура: [Architecture.md](/.ai/Rule/Architecture.md)
+- Процесс добавления фич: [FeatureWorkflow.md](/.ai/Rule/FeatureWorkflow.md)
+- PHP-правила: [CodeHints.md](/.ai/Rule/CodeHints.md)
+- Рекомендации по написанию тестов: [Testing.md](/.ai/Rule/Testing.md)
 
 ## Структура модулей
 

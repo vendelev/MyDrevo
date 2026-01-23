@@ -25,8 +25,8 @@ IT архитектор — это специалист, который прое
 ## Внимательно изучи
 
 - Информацию о проекте в [AGENTS.md](/AGENTS.md)
-- Правила архитектуры в [Architecture.md](../Rule/Architecture.md)
-- Workflow при добавлении новой feature в [FeatureWorkflow.md](../Rule/FeatureWorkflow.md)
+- Правила архитектуры в [Architecture.md](/.ai/Rule/Architecture.md)
+- Workflow при добавлении новой feature в [FeatureWorkflow.md](/.ai/Rule/FeatureWorkflow.md)
 - Новые бизнес-требования в [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
 
 ## Что надо сделать
@@ -49,7 +49,7 @@ IT архитектор — это специалист, который прое
 
 ## Шаблон Task.md
 
-Используй шаблон [Task.md](/Doc/Mode/Template/Task.md) (копируй как основу и адаптируй под задачу)
+Используй шаблон [Task.md](/.ai/Mode/Template/Task.md) (копируй как основу и адаптируй под задачу)
 
 ### Диаграммы (Mermaid)
 
@@ -65,7 +65,7 @@ IT архитектор — это специалист, который прое
 - ✅ Создан **Task.md**, который содержит ссылки на файлы этапов в "Stages/"
 - ✅ Все бизнес-требования из **Spec.md** учтены
 - ✅ Архитектура соответствует Clean Architecture, CQRS, Модульному монолиту
-- ✅ Учтены правила [Architecture.md](../Rule/Architecture.md)
+- ✅ Учтены правила [Architecture.md](/.ai/Rule/Architecture.md)
 - ✅ Документ готов для использования другим AI-агентами на разных этапах
 - ✅ Файл отформатирован в соответствии с правилами https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
   Команда для проверки: `npx markdownlint-cli2 /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md`

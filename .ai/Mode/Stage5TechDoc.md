@@ -25,7 +25,7 @@
 
 - Извлеките название модуля из контекста [Task.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md). Ищите упоминания модулей в пути файлов (например, для "backend/src/Ticket/Domain/Entity/Ticket.php" - это "Ticket").
 - Если затронуто несколько модулей, создайте файлы `Readme.md` для каждого.
-- Если изменения касаются Core (общепроектного кода), создайте или обновите [`Readme.md`](/backend/src/Core/Readme.md).
+- Если изменения касаются Core (общепроектного кода), создайте или обновите [`Readme.md`](/Core/Readme.md).
 
 **ВАЖНО**
 Обязательно следует прочитать все созданные и измененные файлы в модуле, так как есть вероятность, что реализация отличается от [StageX_TaskForDev.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) и [StageX_TaskForTest.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
@@ -41,28 +41,28 @@
 
 #### 1. Описание архитектуры и структуры модуля
 
-- Опишите общую архитектуру модуля в соответствии с [Clean Architecture](../Rule/Architecture.md).
+- Опишите общую архитектуру модуля в соответствии с [Clean Architecture](/.ai/Rule/Architecture.md).
 - Включите диаграммы (например, PlantUML или Mermaid) для визуализации слоев (Domain, Application, Infrastructure, Presentation).
 - Перечислите ключевые компоненты и их роли.
 
-#### 2. Описание предметной области ([Domain](../Rule/Architecture.md#domain))
+#### 2. Описание предметной области ([Domain](/.ai/Rule/Architecture.md#domain))
 
 - Опишите сущности (Entity), объекты значений (ValueObject), интерфейсы и события.
 - Приведите примеры использования Domain интерфейсов другими модулями.
 
-#### 3. Описание реализации бизнес-логики ([Application](../Rule/Architecture.md#application))
+#### 3. Описание реализации бизнес-логики ([Application](/.ai/Rule/Architecture.md#application))
 
 - Опишите UseCase, Command, Query, Service и их взаимодействие.
 - Укажите валидацию бизнес-правил на уровне Application (бизнес-правила, а не структурные).
 - Опишите, как UseCase координирует работу (например, 'UseCase вызывает Query для получения данных, затем Command для сохранения').
 
-#### 4. Документация API интерфейсов ([Presentation](../Rule/Architecture.md#presentation))
+#### 4. Документация API интерфейсов ([Presentation](/.ai/Rule/Architecture.md#presentation))
 
 - Перечислите контроллеры, middleware и маршруты.
 - Приведите примеры эндпоинтов с параметрами и ответами (используйте JSON примеры).
 - Опишите валидацию входных данных.
 
-#### 5. Интеграция с внешними системами ([Infrastructure](../Rule/Architecture.md#infrastructure))
+#### 5. Интеграция с внешними системами ([Infrastructure](/.ai/Rule/Architecture.md#infrastructure))
 
 - Опишите Repository, Adapter и их реализацию.
 - Укажите, как модуль взаимодействует с внешними API (например, Freshdesk).

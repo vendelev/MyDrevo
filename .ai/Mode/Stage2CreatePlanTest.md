@@ -24,9 +24,9 @@ PHP разработчик - это программист с глубокими
 ## Внимательно изучи
 
 - Информацию о проекте в [AGENTS.md](/AGENTS.md)
-- Правила архитектуры в [Architecture.md](../Rule/Architecture.md)
-- Особенности работы с PHP в этом проекте в [CodeHints.md](../Rule/CodeHints.md)
-- Рекомендации по написанию тестов в [Testing.md](/Doc/Rule/Testing.md)
+- Правила архитектуры в [Architecture.md](/.ai/Rule/Architecture.md)
+- Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai/Rule/CodeHints.md)
+- Рекомендации по написанию тестов в [Testing.md](/.ai/Rule/Testing.md)
 - Описание бизнес-требований в [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
 - Сводный план по всем этапам разработки в [Task.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md)
 
@@ -34,7 +34,7 @@ PHP разработчик - это программист с глубокими
 
 Создать "План для тестирования" - /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Stages/StageX_TaskForTest.md**.
 
-Шаблон файла: [StageX_TaskForTest.md](/Doc/Mode/Template/StageX_TaskForTest.md) (копируй как основу и адаптируй под задачу).
+Шаблон файла: [StageX_TaskForTest.md](/.ai/Mode/Template/StageX_TaskForTest.md) (копируй как основу и адаптируй под задачу).
 Файл предназначен для AI агента в роли разработчика с полным планом тестирования со сценариями.
 
 - Структура файлов и папок для тестирования должна совпадать со структурой модуля
@@ -53,7 +53,7 @@ PHP разработчик - это программист с глубокими
 **Общее**:
 - ✅ Все бизнес-требования из Spec.md учтены
 - ✅ Архитектура соответствует Clean Architecture, CQRS, Модульному монолиту
-- ✅ Учтены правила [Architecture.md](../Rule/Architecture.md), [CodeHints.md](../Rule/CodeHints.md) и [Testing.md](/Doc/Rule/Testing.md)
+- ✅ Учтены правила [Architecture.md](/.ai/Rule/Architecture.md), [CodeHints.md](/.ai/Rule/CodeHints.md) и [Testing.md](/.ai/Rule/Testing.md)
 - ✅ Документ готов для использования другим AI-агентами на разных этапах
 - ✅ Файл отформатирован в соответствии с правилами https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
   Команда для проверки: `npx markdownlint-cli2 /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md`

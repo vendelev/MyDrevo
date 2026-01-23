@@ -20,8 +20,8 @@ PHP разработчик - это программист с глубокими
 ## Внимательно изучи
 
 - Информацию о проекте в [AGENTS.md](/AGENTS.md)
-- Правила архитектуры в [Architecture.md](../Rule/Architecture.md)
-- Особенности работы с PHP в этом проекте в [CodeHints.md](../Rule/CodeHints.md)
+- Правила архитектуры в [Architecture.md](/.ai/Rule/Architecture.md)
+- Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai/Rule/CodeHints.md)
 - Описание бизнес-требований в [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
 - Сводный план по всем этапам разработки в [Task.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md)
 
@@ -30,7 +30,7 @@ PHP разработчик - это программист с глубокими
 Нужно создать "План для разработчика" - /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Stages/StageX_TaskForDev.md**.
 "План для тестирования" описывать не надо, это будет сделано позже другим AI-агентом.
 
-Шаблон файла: [StageX_TaskForDev.md](/Doc/Mode/Template/StageX_TaskForDev.md) (копируй как основу и адаптируй под задачу).
+Шаблон файла: [StageX_TaskForDev.md](/.ai/Mode/Template/StageX_TaskForDev.md) (копируй как основу и адаптируй под задачу).
 Файл предназначем для AI агента в роли разработчика с детальным описанием реализации без деталей тестирования.
 
 Задавай уточняющие вопросы по мере необходимости.
@@ -49,7 +49,7 @@ PHP разработчик - это программист с глубокими
 **Общее**:
 - ✅ Все бизнес-требования из **Spec.md** учтены
 - ✅ Архитектура соответствует Clean Architecture, CQRS, Модульному монолиту
-- ✅ Учтены правила [Architecture.md](../Rule/Architecture.md) и [CodeHints.md](../Rule/CodeHints.md)
+- ✅ Учтены правила [Architecture.md](/.ai/Rule/Architecture.md) и [CodeHints.md](/.ai/Rule/CodeHints.md)
 - ✅ Документ готов для использования другим AI-агентами на разных этапах
 - ✅ Файл отформатирован в соответствии с правилами https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
   Команда для проверки: `npx markdownlint-cli2 /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md`

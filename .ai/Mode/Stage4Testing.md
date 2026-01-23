@@ -11,8 +11,8 @@
 ## Что надо сделать
 
 Внимательно изучите:
-- [CodeStyle.md](../Rule/CodeStyle.md)
-- [Testing.md](../Rule/Testing.md)
+- [CodeStyle.md](/.ai/Rule/CodeStyle.md)
+- [Testing.md](/.ai/Rule/Testing.md)
 - Новые требования к функционалу в файле [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
 - Реализацию в файле [StageX_TaskForTest.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
 
@@ -20,7 +20,7 @@
 
 1. Проанализируй StageX_TaskForTest.md для определения, какие компоненты и сценарии нужно протестировать.
 
-2. Напиши тесты для нового функционала, следуя типам из [Testing.md](../Rule/Testing.md) (Unit, Integration, E2E). Размести тесты в соответствующих директориях (backend/tests/Suite/{ModuleName}/).
+2. Напиши тесты для нового функционала, следуя типам из [Testing.md](/.ai/Rule/Testing.md) (Unit, Integration, E2E). Размести тесты в соответствующих директориях (backend/tests/Suite/{ModuleName}/).
    **ВАЖНО**. Для уменьшения контекста для каждого создания или изменения файла запускай нового агента в режиме "testing".
 
 3. Запустите проверку PHPUnit

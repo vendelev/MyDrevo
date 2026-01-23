@@ -2,8 +2,6 @@
 
 ## Обзор
 
-Кратко опиши, что реализуем по [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md):
-
 - Цель: Создание полного набора тестов (Unit, Integration, E2E) для модуля Example, эталонного модуля реализации Clean Architecture и CQRS.
 - Пользовательская ценность: Обеспечение надежности и качества кода, демонстрация лучших практик тестирования.
 - Границы (вне scope): Не включает изменения в код модуля, только тесты.
@@ -17,10 +15,10 @@
 
 ## Связь с архитектурой и правилами
 
-- Архитектура: [Architecture.md](../Rule/Architecture.md)
-- Процесс добавления фич: [FeatureWorkflow.md](../Rule/FeatureWorkflow.md)
-- PHP-правила: [CodeHints.md](../Rule/CodeHints.md)
-- Тестирование: [Testing.md](../Rule/Testing.md)
+- Архитектура: [Architecture.md](/.ai/Rule/Architecture.md)
+- Процесс добавления фич: [FeatureWorkflow.md](/.ai/Rule/FeatureWorkflow.md)
+- PHP-правила: [CodeHints.md](/.ai/Rule/CodeHints.md)
+- Тестирование: [Testing.md](/.ai/Rule/Testing.md)
 
 ## Этапы реализации
 

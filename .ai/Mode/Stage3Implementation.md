@@ -13,8 +13,8 @@
 
 Внимательно изучите:
 - Информацию о проекте в [AGENTS.md](../../AGENTS.md)
-- Особенности работы с PHP в этом проекте в [CodeHints.md](../Rule/CodeHints.md)
-- Принятый в команде стиль кода в [CodeStyle.md](../Rule/CodeStyle.md)
+- Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai/Rule/CodeHints.md)
+- Принятый в команде стиль кода в [CodeStyle.md](/.ai/Rule/CodeStyle.md)
 
 Обязательные шаги, выполняйте их СТРОГО последовательно:
 

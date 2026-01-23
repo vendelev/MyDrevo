@@ -39,16 +39,16 @@
 
 ### Архитектура
 
-- Правила архитектуры в [Architecture.md](/Doc/Rule/Architecture.md)
+- Правила архитектуры в [Architecture.md](/.ai/Rule/Architecture.md)
 
 ### Code Style
 
-- Особенности работы с PHP в этом проекте в [CodeHints.md](/Doc/Rule/CodeHints.md)
-- Принятый в команде стиль кода в [CodeStyle.md](/Doc/Rule/CodeStyle.md)
+- Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai/Rule/CodeHints.md)
+- Принятый в команде стиль кода в [CodeStyle.md](/.ai/Rule/CodeStyle.md)
 
 ### Тестирование
 
-- Рекомендации по написанию тестов в [Testing.md](/Doc/Rule/Testing.md)
+- Рекомендации по написанию тестов в [Testing.md](/.ai/Rule/Testing.md)
 
 ### Переменные окружения
 
