@@ -701,7 +701,7 @@ make php-run CMD="vendor/bin/phpunit tests/Suite/Infrastructure/Database"
 
 ### Контроллер (1 файл)
 
-1. `backend/app/Http/Controllers/DatabaseStatusController.php`
+1. `backend/src/DatabaseMigration/Presentation/Http/Controllers/DatabaseStatusController.php`
 
 ### Изменяемые файлы (2 файла)
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\DatabaseMigration\Presentation\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controller;
 
 /**
  * Контроллер для проверки статуса базы данных.
