@@ -18,8 +18,10 @@ Study carefully:
 - Implementation plan in [StageX_TaskForDev.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md)
 - Testing plan in [StageX_TaskForTest.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
 
-Create new file `/backend/src/{MODULE_FOLDER}/Readme.md` with detailed technical documentation for implemented module.
-If file already exists, it must be updated.
+1. Create new file `/backend/src/{MODULE_FOLDER}/Readme.md` with detailed technical documentation for implemented module.
+   If file already exists, it must be updated.
+
+2. Use the "markdownlint" mode for automatic fixing of created file formatting.
 
 ### Determining {MODULE_FOLDER}
 
@@ -93,7 +95,6 @@ Adding test run description is excessive.
 - Module dependencies on other modules and external libraries specified
 - Module use cases from file [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) described
 - File formatted according to https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md rules
-  Check command: `npx markdownlint-cli2 /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md`
 
 ## User Review of Tests
 

@@ -143,3 +143,14 @@ customModes:
       following the process @/.ai/Mode/PHPCS.md.
     description: PHP_CodeSniffer specialist
     groups: ["edit", "read", "command", "mcp"]
+  - slug: markdownlint
+    name: 📝 Markdownlint
+    iconName: codicon-markdown
+    roleDefinition: |
+      You are a documentation formatting specialist. You specialize in fixing errors found by markdownlint.
+    whenToUse: |
+      Use this mode when you need to check markdown files and fix errors found by markdownlint,
+      following the process @/.ai/Mode/Markdownlint.md.
+    description: Markdownlint error fixing specialist
+    groups: ["edit", "read", "command", "mcp"]
+    customInstructions: Strictly follow the process @/.ai/Mode/Markdownlint.md.

@@ -18,8 +18,10 @@
 - План реализации в [StageX_TaskForDev.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md)
 - План тестирования в [StageX_TaskForTest.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
 
-Создайте новый файл `/backend/src/{MODULE_FOLDER}/Readme.md` с подробной технической документацией для реализованного модуля.
-Если файл уже существует его надо актуализировать.
+1. Создайте новый файл `/backend/src/{MODULE_FOLDER}/Readme.md` с подробной технической документацией для реализованного модуля.
+   Если файл уже существует, его надо актуализировать.
+
+2. Используй режим "markdownlint" для автоматического исправления оформления созданного файла.
 
 ### Определение {MODULE_FOLDER}
 

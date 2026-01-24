@@ -144,3 +144,15 @@ customModes:
     description: Специалист по PHP_CodeSniffer
     groups: ["edit", "read", "command", "mcp"]
     customInstructions: Строго следуйте процессу @/.ai/Mode/PHPCS.md.
+  - slug: markdownlint
+    name: 📝 Markdownlint
+    iconName: codicon-bug
+    roleDefinition: |
+        Вы являетесь специалистом по оформлению документации.
+        Вы специализируетесь на исправлении ошибок, найденных markdownlint.
+    whenToUse: |
+        Используйте этот режим, когда вам нужно проверить markdown файлы и исправить ошибки, найденные markdownlint,
+        следуя процессу @/.ai_ru/Mode/Markdownlint.md.
+    description: Специалист по исправлению ошибок markdownlint
+    groups: ["edit", "read", "command", "mcp"]
+    customInstructions: Строго следуйте процессу @/.ai_ru/Mode/Markdownlint.md.

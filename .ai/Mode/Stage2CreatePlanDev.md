@@ -27,14 +27,17 @@ If parameters not provided, they must be requested from user.
 
 ## What Needs to Be Done
 
-Need to create "Plan for Developer" - /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Stages/StageX_TaskForDev.md**.
-"Testing Plan" should not be described, this will be done later by another AI agent.
+1. Need to create "Plan for Developer" - /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Stages/StageX_TaskForDev.md**.
+   "Testing Plan" should not be described, this will be done later by another AI agent.
 
-File template: [StageX_TaskForDev.md](/.ai/Mode/Template/StageX_TaskForDev.md) (copy as basis and adapt to task).
-File is intended for AI agent in developer role with detailed implementation description without testing details.
+   File template: [StageX_TaskForDev.md](/.ai/Mode/Template/StageX_TaskForDev.md) (copy as basis and adapt to task).
+   File is intended for AI agent in developer role with detailed implementation description without testing details.
 
-Ask clarifying questions as needed.
-Implementation description must be understandable to developer without additional questions and comply with project architecture.
+2. Ask clarifying questions as needed.
+   Implementation description must be understandable to developer without additional questions and comply with project architecture.
+
+3. Use the "markdownlint" mode for automatic fixing of created file formatting.
+   To reduce context for each file, create a new agent with "markdownlint" mode.
 
 ## Stage Completion Criteria
 
@@ -52,4 +55,3 @@ Implementation description must be understandable to developer without additiona
 - ✅ Rules from [Architecture.md](/.ai/Rule/Architecture.md) and [CodeHints.md](/.ai/Rule/CodeHints.md) considered
 - ✅ Document ready for use by other AI agents at different stages
 - ✅ File formatted according to https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md rules
-  Check command: `npx markdownlint-cli2 /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md`

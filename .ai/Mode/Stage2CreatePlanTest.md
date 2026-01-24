@@ -32,16 +32,19 @@ If parameters not provided, they must be requested from user.
 
 ## What Needs to Be Done
 
-Create "Testing Plan" - /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Stages/StageX_TaskForTest.md**.
+1. Create "Testing Plan" - /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Stages/StageX_TaskForTest.md**.
 
-File template: [StageX_TaskForTest.md](/.ai/Mode/Template/StageX_TaskForTest.md) (copy as basis and adapt to task).
-File is intended for AI agent in developer role with complete testing plan with scenarios.
+   File template: [StageX_TaskForTest.md](/.ai/Mode/Template/StageX_TaskForTest.md) (copy as basis and adapt to task).
+   File is intended for AI agent in developer role with complete testing plan with scenarios.
 
-- Testing file and folder structure should match module structure
-- Describe each scenario in format: **Given → What is checked → Expected result**.
+   - Testing file and folder structure should match module structure
+   - Describe each scenario in format: **Given → What is checked → Expected result**.
 
-Ask clarifying questions as needed.
-Plan must be understandable to developer and tester without additional questions and comply with project architecture.
+2. Ask clarifying questions as needed.
+   Plan must be understandable to developer and tester without additional questions and comply with project architecture.
+
+3. Use the "markdownlint" mode for automatic fixing of created file formatting.
+   To reduce context for each file, create a new agent with "markdownlint" mode.
 
 ## Stage Completion Criteria
 
@@ -56,4 +59,3 @@ Created file **StageX_TaskForTest.md**:
 - ✅ Rules from [Architecture.md](/.ai/Rule/Architecture.md), [CodeHints.md](/.ai/Rule/CodeHints.md) and [Testing.md](/.ai/Rule/Testing.md) considered
 - ✅ Document ready for use by other AI agents at different stages
 - ✅ File formatted according to https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md rules
-  Check command: `npx markdownlint-cli2 /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md`

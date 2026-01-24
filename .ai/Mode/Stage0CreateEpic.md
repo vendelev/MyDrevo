@@ -28,6 +28,9 @@ User specifies the epic number and formulates stakeholder business needs.
    Each stage must be described in detail in a separate file in folder "/Doc/Backlog/{YYYY}/{EPIC_FOLDER}".
    These files will be used in the next stage by another AI agent to create detailed specification with business requirements description.
 
+5. Use the "markdownlint" mode for automatic fixing of created files formatting.
+   To reduce context for each file, create a new agent with "markdownlint" mode.
+
 ### EPIC_FOLDER Naming Rules
 
 When creating an epic folder, the following rules must be followed:
@@ -104,7 +107,6 @@ Each Stage{STAGE_NUMBER}.md file must meet the following criteria:
 - ✅ Dependencies on other stages, modules or systems are specified
 - ✅ Possible stage implementation risks are considered
 - ✅ File formatted according to [markdownlint](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md) rules
-  Check command: `npx markdownlint-cli2 /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md`
 
 ## User Review of Business Requirements
 

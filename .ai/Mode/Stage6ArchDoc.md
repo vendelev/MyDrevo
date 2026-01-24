@@ -84,6 +84,9 @@ Mandatory steps:
 
 4. Ask clarifying questions as needed.
 
+5. Use the "markdownlint" mode for automatic fixing of created md-files formatting.
+   To reduce context for each file, create a new agent with "markdownlint" mode.
+
 Requirements:
 
 - Always have **root `dochub.yaml`** as entry point to project.
