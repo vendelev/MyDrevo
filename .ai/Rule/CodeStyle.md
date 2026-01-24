@@ -1,19 +1,19 @@
-# Принятый в команде Code Style
+# Team-Accepted Code Style
 
 --- 
 
-## Импорты классов
+## Class Imports
 
-Все полные наименования классов должны быть заменены на использование оператора `use` в начале файла.
+All full class names should be replaced with `use` operator at the beginning of the file.
 
-### Пример
+### Example
 
-Вместо:
+Instead of:
 ```php
 $response = new \App\Task\Domain\Response\TaskResponse();
 ```
 
-Используйте:
+Use:
 ```php
 use App\Task\Domain\Response\TaskResponse;
 
@@ -22,45 +22,45 @@ use App\Task\Domain\Response\TaskResponse;
 $response = new TaskResponse();
 ```
 
-### Исключения
+### Exceptions
 
-- Не добавляйте оператор `use` для встроенных типов и функций PHP (int, string, count(), etc.)
-- Не добавляйте оператор `use` для классов в том же namespace
+- Do not add `use` operator for built-in PHP types and functions (int, string, count(), etc.)
+- Do not add `use` operator for classes in the same namespace
 
 --- 
 
-## Рекомендации по оформлению кода
+## Code Formatting Guidelines
 
-1. **При написании тестов:**
-    - Использовать статические вызовы методов PHPUnit, например (
-          self::assertTrue вместо $this->assertTrue,
-          self::assertFalse вместо $this->assertFalse,
-          self::assertSame вместо $this->assertSame,
-          self::assertNull вместо $this->assertNull,
-          self::assertEquals вместо $this->assertEquals,
-      )
+1. **When writing tests:**
+   - Use static PHPUnit method calls, for example (
+    `self::assertTrue` instead of `$this->assertTrue`,
+    `self::assertFalse` instead of `$this->assertFalse`,
+    `self::assertSame` instead of `$this->assertSame`,
+    `self::assertNull` instead of `$this->assertNull`,
+    `self::assertEquals` instead of `$this->assertEquals`,
+   )
 
-2. **При написании кода:**
-    - Следить за длиной строк (не более 120 символов)
-    - Разбивать длинные строки на несколько строк для улучшения читаемости
-    - Не переопределять методы без изменения логики
-    - Всегда проверять форматирование кода после внесения изменений
-    - Использовать типизированные константы для улучшения type safety
+2. **When writing code:**
+   - Monitor line length (no more than 120 characters)
+   - Split long lines into multiple lines for better readability
+   - Do not override methods without changing logic
+   - Always check code formatting after making changes
+   - Use typed constants for improved type safety
 
-3. **Документирование кода** (PHPDoc):
-    - Добавить PHPDoc блоки для всех public методов
-    - Документировать параметры (@param) только для описания массивов
-    - Документировать возвращаемое значение (@return) только для описания массивов
-    - Документировать возможные исключения (@throws)
-    - Добавлять типы массивов в PHPDoc в строковых комментариях для улучшения анализа кода
-    - Для скалярных массивов в PHPDocs вместо `array<...>` указывать `list<...>`
-    - Комментарии в коде должны быть написаны на русском языке
+3. **Code Documentation** (PHPDoc):
+   - Add PHPDoc blocks for all public methods
+   - Document parameters (@param) only for array descriptions
+   - Document return value (@return) only for array descriptions
+   - Document possible exceptions (@throws)
+   - Add array types in PHPDoc in string comments for improved code analysis
+   - For scalar arrays in PHPDocs, use `list<...>` instead of `array<...>`
+   - Comments in code should be written in Russian
 
-   **Исключения**:
-    - Комментарии могут содержать английские термины, относящиеся к коду (например, @param, @return, @throws)
-    - Названия классов, методов и переменных в комментариях должны сохранять оригинальное написание
+   **Exceptions**:
+  - Comments may contain English terms related to code (e.g., @param, @return, @throws)
+  - Class, method, and variable names in comments should preserve original spelling
 
-    Пример:
+   Example:
     ```php
     /**
     * Трансформирует DTO из API в доменную Entity.
@@ -79,9 +79,9 @@ $response = new TaskResponse();
     }
     ```
 
-4. **При работе с Entity и DTO:**
-    - Использовать публичные readonly свойства вместо геттеров (согласно возможностям PHP 8.5)
+4. **When working with Entity and DTO:**
+  - Use public readonly properties instead of getters (according to PHP 8.5 capabilities)
 
-5. **При работе с интерфейсами:**
-    - Удалять лишние (@return void) из PHPDoc комментариев
-    - Следить за корректностью описания методов
+5. **When working with interfaces:**
+  - Remove unnecessary (@return void) from PHPDoc comments
+  - Monitor correctness of method descriptions

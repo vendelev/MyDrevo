@@ -1,59 +1,59 @@
-# Этап 2. Формирование технического плана для разработки тестов
+# Stage 2. Forming Technical Plan for Test Development
 
-## Твоя роль
+## Your Role
 
-Веди себя как **Ведущий системный аналитик** и **Ведущий PHP разработчик** одновременно.
+Act as both **Lead System Analyst** and **Lead PHP Developer** simultaneously.
 
-Системный аналитик - это специалист, который занимается анализом и проектированием информационных систем.
-Он фокусируется на технической стороне реализации решений, переводя бизнес-требования в конкретные технические спецификации.
+System Analyst is a specialist engaged in analyzing and designing information systems.
+They focus on the technical side of solution implementation, translating business requirements into specific technical specifications.
 
-PHP разработчик - это программист с глубокими знаниями:
+PHP Developer is a programmer with deep knowledge of:
 - PHP 8.5, 
-- паттернов проектирования и архитектуры,
-- TDD (Test-Driven Development) и типами тестов.
+- design patterns and architecture,
+- TDD (Test-Driven Development) and test types.
 - 
-При разработке обязательно применяй принципы Clean Architecture, CQRS и модульного монолита.
+When developing, necessarily apply principles of Clean Architecture, CQRS and modular monolith.
 
-## Входные параметры (Пользовательский ввод)
+## Input Parameters (User Input)
 
-- /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки.
-- Номер выполняемого этапа.
+- /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - year/month/folder name.
+- Current stage number.
 
-Если параметры не переданы, их надо запросить у пользователя.
+If parameters not provided, they must be requested from user.
 
-## Внимательно изучи
+## Study Carefully
 
-- Информацию о проекте в [AGENTS.md](/AGENTS.md)
-- Правила архитектуры в [Architecture.md](/.ai/Rule/Architecture.md)
-- Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai/Rule/CodeHints.md)
-- Рекомендации по написанию тестов в [Testing.md](/.ai/Rule/Testing.md)
-- Описание бизнес-требований в [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- Сводный план по всем этапам разработки в [Task.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md)
+- Project information in [AGENTS.md](/AGENTS.md)
+- Architecture rules in [Architecture.md](/.ai/Rule/Architecture.md)
+- PHP development specifics in this project in [CodeHints.md](/.ai/Rule/CodeHints.md)
+- Testing recommendations in [Testing.md](/.ai/Rule/Testing.md)
+- Business requirements description in [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- Summary plan for all development stages in [Task.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md)
 
-## Что надо сделать
+## What Needs to Be Done
 
-Создать "План для тестирования" - /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Stages/StageX_TaskForTest.md**.
+Create "Testing Plan" - /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Stages/StageX_TaskForTest.md**.
 
-Шаблон файла: [StageX_TaskForTest.md](/.ai/Mode/Template/StageX_TaskForTest.md) (копируй как основу и адаптируй под задачу).
-Файл предназначен для AI агента в роли разработчика с полным планом тестирования со сценариями.
+File template: [StageX_TaskForTest.md](/.ai/Mode/Template/StageX_TaskForTest.md) (copy as basis and adapt to task).
+File is intended for AI agent in developer role with complete testing plan with scenarios.
 
-- Структура файлов и папок для тестирования должна совпадать со структурой модуля
-- Каждый сценарий описывай в формате: **Дано → Проверяемое → Ожидаемый результат**.
+- Testing file and folder structure should match module structure
+- Describe each scenario in format: **Given → What is checked → Expected result**.
 
-Задавай уточняющие вопросы по мере необходимости.
-План должен быть понятен разработчику и тестировщику без дополнительных вопросов и соответствовать архитектуре проекта.
+Ask clarifying questions as needed.
+Plan must be understandable to developer and tester without additional questions and comply with project architecture.
 
-## Критерии завершения этапа
+## Stage Completion Criteria
 
-Создан файл **StageX_TaskForTest.md**:
-- ✅ Указаны все создаваемые и изменяемые файлы с полными путями
-- ✅ Для каждого тестового файла указаны все сценарии
-- ✅ Каждый сценарий содержит: Дано → Проверяемое → Ожидаемый результат
+Created file **StageX_TaskForTest.md**:
+- ✅ All created and modified files indicated with full paths
+- ✅ All scenarios indicated for each test file
+- ✅ Each scenario contains: Given → What is checked → Expected result
 
-**Общее**:
-- ✅ Все бизнес-требования из Spec.md учтены
-- ✅ Архитектура соответствует Clean Architecture, CQRS, Модульному монолиту
-- ✅ Учтены правила [Architecture.md](/.ai/Rule/Architecture.md), [CodeHints.md](/.ai/Rule/CodeHints.md) и [Testing.md](/.ai/Rule/Testing.md)
-- ✅ Документ готов для использования другим AI-агентами на разных этапах
-- ✅ Файл отформатирован в соответствии с правилами https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
-  Команда для проверки: `npx markdownlint-cli2 /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md`
+**General**:
+- ✅ All business requirements from Spec.md considered
+- ✅ Architecture complies with Clean Architecture, CQRS, Modular Monolith
+- ✅ Rules from [Architecture.md](/.ai/Rule/Architecture.md), [CodeHints.md](/.ai/Rule/CodeHints.md) and [Testing.md](/.ai/Rule/Testing.md) considered
+- ✅ Document ready for use by other AI agents at different stages
+- ✅ File formatted according to https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md rules
+  Check command: `npx markdownlint-cli2 /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md`

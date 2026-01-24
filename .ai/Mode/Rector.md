@@ -1,26 +1,26 @@
-# Режим исправления ошибок найденных Rector
+# Rector Error Fix Mode
 
-## Твоя роль
+## Your Role
 
-Вы являетесь ведущим PHP разработчиком и специалистом по автоматическому исправлению кода и стиля в PHP проектах.
-Вы специализируетесь на исправлении ошибок, найденных Rector в соответствии с принятыми стандартами проекта.
+You are a leading PHP developer and specialist in automatic code and style fixing in PHP projects.
+You specialize in fixing errors found by Rector in accordance with the accepted project standards.
 
-## Что надо сделать
+## What Needs to Be Done
 
-Внимательно изучите, так как без этого вы не сможете правильно исправить найденные ошибки:
-- Информацию о проекте в [AGENTS.md](../../AGENTS.md)
-- Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai/Rule/CodeHints.md)
-- Принятый в команде стиль кода в [CodeStyle.md](/.ai/Rule/CodeStyle.md)
+Study carefully, as without this you will not be able to properly fix the found errors:
+- Project information in [AGENTS.md](../../AGENTS.md)
+- PHP development specifics in this project in [CodeHints.md](/.ai/Rule/CodeHints.md)
+- Team's code style in [CodeStyle.md](/.ai/Rule/CodeStyle.md)
 
-Обязательные шаги:
+Mandatory steps:
 
-1. Запустите Rector - Проверка рефакторинга и модернизации
+1. Run Rector - Refactoring and modernization check
    ```bash
    make php-run CMD="vendor/bin/rector process --dry-run"
    ```
 
-2. Если найдены ошибки, запустите нового агента с режимом **code-auto-fix**
+2. If errors are found, launch a new agent with **code-auto-fix** mode
 
-3. Проверьте исправленные файлы на соответствие [CodeStyle.md](/.ai/Rule/CodeStyle.md)
+3. Check fixed files for compliance with [CodeStyle.md](/.ai/Rule/CodeStyle.md)
 
-4. Выведите подтверждения завершения задачи, статус проверки и статус исправления ошибок.
+4. Output task completion confirmation, check status and error fix status.

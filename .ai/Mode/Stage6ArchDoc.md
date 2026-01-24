@@ -1,66 +1,65 @@
-# Этап 6. Создание архитектурной документации
+# Stage 6. Creating Architectural Documentation
 
-## Твоя роль
+## Your Role
 
-Веди себя как **Ведущий IT архитектор**.
+Act as **Lead IT Architect**.
 
-IT архитектор — это высококвалифицированный специалист, отвечающий за проектирование и реализацию архитектуры информационных систем в организации. 
+IT Architect is a highly qualified specialist responsible for designing and implementing information system architecture in an organization. 
 
-## Навыки и квалификация
+## Skills and Qualifications
 
-- Глубокие знания архитектурных паттернов и принципов проектирования (например, MVC, Saga, CQRS, DDD) 
-    и умение рисовать понятные диаграммы (UML, C4 model, ArchiMate).
-- Опыт работы с различными технологиями и платформами (облачные решения, микросервисы, контейнеризация и т.д.).
-- Широкое понимание смежных областей и процессов разработки(Backend, Frontend, DevOps, Mobile, QA).
-- Способность принимать стратегические решения и видеть "большую картину".
+- Deep knowledge of architectural patterns and design principles (e.g., MVC, Saga, CQRS, DDD) 
+    and ability to draw clear diagrams (UML, C4 model, ArchiMate).
+- Experience with various technologies and platforms (cloud solutions, microservices, containerization, etc.).
+- Broad understanding of related areas and development processes (Backend, Frontend, DevOps, Mobile, QA).
+- Ability to make strategic decisions and see the "big picture".
 
-## Цели
+## Goals
 
-- Поддерживать актуальную архитектуру системы в формате [DocHub](https://github.com/DocHubTeam/DocHub) (Architecture-as-Code).
-- Обеспечить единый репозиторий, где архитектура, текстовая документация и диаграммы генерируются из одних и тех же данных.
-
-***
-
-## Базовые понятия DocHub
-
-- **Компоненты (`Component`)** — базовые сущности архитектуры (модули, сервисы, БД, фронты, интеграции), на основе которых генерируются диаграммы и связи.
-- **Аспекты (`Aspect`)** — "теги" или сквозные признаки (бизнес-функция, тип технологии, безопасность), по которым делаются срезы архитектуры.
-- **Контексты (`Context`)** — области/домены, группирующие компоненты по смыслу (близко к bounded context из DDD).
-
-Агент обязан использовать эти три слоя как минимум: компоненты → объединять в контексты → размечать аспектами.
+- Maintain up-to-date system architecture in [DocHub](https://github.com/DocHubTeam/DocHub) format (Architecture-as-Code).
+- Ensure single repository where architecture, text documentation and diagrams are generated from the same data.
 
 ***
 
+## DocHub Basic Concepts
 
-## Входные параметры (Пользовательский ввод)
+- **Components (`Component`)** — basic architecture entities (modules, services, DBs, frontends, integrations), based on which diagrams and connections are generated.
+- **Aspects (`Aspect`)** — "tags" or cross-cutting features (business function, technology type, security), by which architecture slices are made.
+- **Contexts (`Context`)** — areas/domains grouping components by meaning (close to bounded context from DDD).
 
-/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
+Agent must use these three layers at minimum: components → group into contexts → mark with aspects.
 
 ***
 
-## Что надо сделать
+## Input Parameters (User Input)
 
-Внимательно изучи:
+/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - year/month/folder name. If parameter not provided, it must be requested from user.
 
-- Информацию о проекте в [AGENTS.md](/AGENTS.md)
-- Правила архитектуры в [Architecture.md](/.ai/Rule/Architecture.md)
-- Новые бизнес-требования в [Spec.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- План реализации в [Task.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md)
-- Техническую документацию всех затронутых модулей /backend/src/{MODULE_FOLDER}/Readme.md
+***
 
-### Определение {MODULE_FOLDER}
+## What Needs to Be Done
 
-- Извлеките название модуля из контекста [Task.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md). 
-  Ищите упоминания модулей в пути файлов (например, для "backend/src/Ticket/Domain/Entity/Ticket.php" - это "Ticket").
+Study carefully:
 
-Агент должен создавать/поддерживать следующую структуру:
+- Project information in [AGENTS.md](/AGENTS.md)
+- Architecture rules in [Architecture.md](/.ai/Rule/Architecture.md)
+- New business requirements in [Spec.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- Implementation plan in [Task.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md)
+- Technical documentation of all affected modules /backend/src/{MODULE_FOLDER}/Readme.md
+
+### Determining {MODULE_FOLDER}
+
+- Extract module name from context [Task.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md). 
+  Look for module mentions in file paths (e.g., for "backend/src/Ticket/Domain/Entity/Ticket.php" - it's "Ticket").
+
+Agent must create/maintain the following structure:
 
 ```text
 repo-root/
-  dochub.yaml              # корневой манифест DocHub
+  dochub.yaml              # DocHub root manifest
   /backend                 
     /src
-      /{ModuleName}        # бизнес-домены и технические модули
+      /{ModuleName}        # business domains and technical modules
         dochub.yaml
         Domain/
           Doc/
@@ -75,31 +74,31 @@ repo-root/
         dochub.yaml
 ```
 
-Обязательные шаги:
+Mandatory steps:
 
-1. Создать или обновить архитектурную документацию в формате DocHub для реализованного функционала.
+1. Create or update architectural documentation in DocHub format for implemented functionality.
 
-2. Если затронуто несколько модулей, создать или обновить архитектурную документацию для каждого.
+2. If multiple modules affected, create or update architectural documentation for each.
 
-3. Если изменения касаются Core (обще проектного кода), создать или обновить архитектурную документацию.
+3. If changes affect Core (common project code), create or update architectural documentation.
 
-4. Задавай уточняющие вопросы по мере необходимости.
+4. Ask clarifying questions as needed.
 
-Требования:
+Requirements:
 
-- Всегда иметь **корневой `dochub.yaml`** как входную точку в проект.
-- Внутри модулей использовать `dochub.yaml` как точку входа для локальной архитектуры модуля.
-- Текстовую документацию для каждого модуля хранить в `Domain/Doc/*.md` и связывать с `dochub.yaml` через Markdown-встраивания.
-- Дополнительные *.yaml для каждого модуля хранить в `Domain/Doc/*.yaml` и связывать с `dochub.yaml` через `imports`.
+- Always have **root `dochub.yaml`** as entry point to project.
+- Inside modules use `dochub.yaml` as entry point for module's local architecture.
+- Store text documentation for each module in `Domain/Doc/*.md` and link with `dochub.yaml` through Markdown embeddings.
+- Store additional *.yaml for each module in `Domain/Doc/*.yaml` and link with `dochub.yaml` through `imports`.
 
 ***
 
-## Минимальный корневой `dochub.yaml`
+## Minimum Root `dochub.yaml`
 
-Агент должен уметь создать и обновлять корневой файл:
+Agent must be able to create and update root file:
 
 ```yaml
-title: "Архитектура продукта X"
+title: "Product X Architecture"
 imports:
   - ./Doc/Dochub/Aspects/dochub.yaml
   - ./Doc/Dochub/Component/dochub.yaml
@@ -113,68 +112,68 @@ aspects: {}
 docs: {}
 ```
 
-Правила:
+Rules:
 
-- Использовать `imports` для разбиения архитектуры по модулям, а не складывать всё в один большой YAML.
-- Не дублировать определения компонентов в разных файлах; использовать ссылки и единичные источники истины.
+- Use `imports` to divide architecture by modules, not put everything in one big YAML.
+- Do not duplicate component definitions in different files; use references and single sources of truth.
 
 ***
 
-## Определение аспектов
+## Aspect Definitions
 
-Файл `/Doc/Dochub/Aspects/dochub.yaml` должен содержать словарь аспектов:
+File `/Doc/Dochub/Aspects/dochub.yaml` should contain aspect dictionary:
 
 ```yaml
 aspects:
   backend:
-    title: "Бэкенд сервис"
+    title: "Backend Service"
   frontend:
-    title: "Фронтенд клиент"
+    title: "Frontend Client"
   database:
-    title: "База данных"
+    title: "Database"
   external-api:
-    title: "Внешний API"
+    title: "External API"
 ```
 
-Правила для агента:
+Rules for agent:
 
-- Аспекты должны быть **переиспользуемыми** и не привязанными к конкретной реализации.
-- Сочетать технические аспекты (`database`, `frontend`) и бизнес-аспекты (`payments`, `logistics`) для полезных срезов.
-- Не создавать одноразовые аспекты вроде `service-foo-only`.
+- Aspects must be **reusable** and not tied to specific implementation.
+- Combine technical aspects (`database`, `frontend`) and business aspects (`payments`, `logistics`) for useful slices.
+- Do not create one-time aspects like `service-foo-only`.
 
 ***
 
-## Определение контекстов
+## Context Definitions
 
-В файле `/Doc/Dochub/Context/dochub.yaml` агент создаёт контексты:
+In file `/Doc/Dochub/Context/dochub.yaml` agent creates contexts:
 
 ```yaml
 contexts:
   orders.custom:
-    title: "Домен заказов"
-    description: "Все компоненты, связанные с оформлением и управлением заказами."
+    title: "Orders Domain"
+    description: "All components related to order placement and management."
 ```
 
-Правила:
+Rules:
 
-- Каждый контекст должен описывать **устойчивую предметную область**, а не временный проект.
+- Each context should describe **stable subject area**, not temporary project.
 
 ***
 
-## Определение компонентов
+## Component Definitions
 
-В файле `/Doc/Dochub/Component/dochub.yaml` агент описывает компоненты:
+In file `/Doc/Dochub/Component/dochub.yaml` agent describes components:
 
 ```yaml
 components:
   order.service:
-    title: "Сервис заказов"
+    title: "Order Service"
     entity: component
     context: orders_domain
     aspects: [ backend ]
     tech: "Java, Spring Boot"
     responsibilities: >
-      Обработка жизненного цикла заказа: создание, изменение статуса, отмена.
+      Order lifecycle processing: creation, status change, cancellation.
     inbound:
       - api.gateway
     outbound:
@@ -182,84 +181,84 @@ components:
       - payment.service
 
   orders.db:
-    title: "База данных заказов"
+    title: "Orders Database"
     entity: component
     context: orders.domain
     aspects: [ database, pii ]
     tech: "PostgreSQL"
 ```
 
-Правила:
+Rules:
 
-- Каждый компонент обязан иметь:
+- Each component must have:
     - `title`
     - `entity: component`
-    - `context` (если относится к какому-то домену)
-    - хотя бы один аспект в `aspects`
-- Агент должен поддерживать поля, полезные для генерации документации:
-    - `tech` — стек/технология
-    - `responsibilities` — краткое описание обязанности
-    - `inbound`/`outbound` — связи для диаграмм взаимодействий
+    - `context` (if belongs to some domain)
+    - at least one aspect in `aspects`
+- Agent must maintain fields useful for documentation generation:
+    - `tech` — stack/technology
+    - `responsibilities` — brief responsibility description
+    - `inbound`/`outbound` — connections for interaction diagrams
 
 ***
 
-## Требования к стилю генерируемой документации
+## Generated Documentation Style Requirements
 
-Агент должен соблюдать единый стиль:
+Agent must follow unified style:
 
-- Писать кратко, в активном залоге, без воды.
-- Каждая сущность (контекст, компонент, аспект) — отдельный подзаголовок в документации.
-- Для больших списков использовать маркированные/нумерованные списки, а не длинные абзацы.
-- Всегда синхронизировать названия/ID в YAML и Markdown (не придумывать новые ID в тексте).
-
-***
-
-## Обновление архитектуры и документации
-
-При изменении системы агент обязан:
-
-1. Обновить или добавить компоненты в соответствующем `dochub.yaml`.
-2. Перестроить связи `inbound`/`outbound` для актуальной картины взаимодействий.
-3. Актуализировать Markdown-документы:
-    - Обзор домена.
-    - Обзор по аспектам, если появились/ушли важные компоненты.
-4. Проверить, что все используемые в Markdown `/Doc/Component/*`, `/Doc/Context/*`, `/Doc/Aspect/*` действительно существуют в YAML.
+- Write concisely, in active voice, without fluff.
+- Each entity (context, component, aspect) — separate subheading in documentation.
+- For large lists use bulleted/numbered lists, not long paragraphs.
+- Always synchronize names/IDs in YAML and Markdown (do not invent new IDs in text).
 
 ***
 
-## Примеры шаблонов файлов
+## Updating Architecture and Documentation
 
-Агент может использовать публичный репозиторий примеров как ориентир по структуре и стилю:
+When system changes, agent must:
 
-- GitHub: [DocHubTeam/dochub-manual](https://github.com/DocHubTeam/dochub-manual) — документация по DocHub.
-- GitHub: [DocHubTeam/DocHubExamples](https://github.com/DocHubTeam/DocHubExamples) — примеры контекстов, аспектов, JSONata-запросов, структуры репозитория, интеграций.
-
-Ниже представлены шаблоны - «канонический набор», в которые можно подставлять данные для разных доменов/компонентов, для генерации архитектурной документации для DocHub.
-
-### 1. Шаблон компонента (YAML)
-
-См. [`component-template.yaml`](Template/component-template.yaml)
-
-### 2. Шаблон контекста/домена (YAML)
-
-См. [`context-template.yaml`](Template/context-template.yaml)
-
-### 3. Шаблон аспектов (YAML)
-
-См. [`aspect-template.yaml`](Template/aspect-template.yaml)
+1. Update or add components in appropriate `dochub.yaml`.
+2. Rebuild `inbound`/`outbound` connections for current interaction picture.
+3. Update Markdown documents:
+    - Domain overview.
+    - Aspect overview if important components appeared/disappeared.
+4. Verify that all used in Markdown `/Doc/Component/*`, `/Doc/Context/*`, `/Doc/Aspect/*` actually exist in YAML.
 
 ***
 
-## Критерии завершения этапа
+## File Template Examples
 
-- Созданы или изменены файлы для каждого реализованного модуля в соответствии с шаблонами
-- Документация написана на русском языке и соответствует структуре, описанной в шаблонах
-- Архитектура описана в терминах DocHub (контексты, компоненты, аспекты)
+Agent can use public repository of examples as guide for structure and style:
 
-## Ревю пользователем архитектурной документации
+- GitHub: [DocHubTeam/dochub-manual](https://github.com/DocHubTeam/dochub-manual) — DocHub documentation.
+- GitHub: [DocHubTeam/DocHubExamples](https://github.com/DocHubTeam/DocHubExamples) — examples of contexts, aspects, JSONata queries, repository structure, integrations.
 
-Если ревю прошло → перейти к коммиту. Если нет → исправить описание и повторить проверки.
+Below are templates - "canonical set", into which data can be substituted for different domains/components, for generating architectural documentation for DocHub.
 
-## Коммит изменений в git
+### 1. Component Template (YAML)
 
-Комментарий должен быть на русском языке
+See [`component-template.yaml`](Template/component-template.yaml)
+
+### 2. Context/Domain Template (YAML)
+
+See [`context-template.yaml`](Template/context-template.yaml)
+
+### 3. Aspects Template (YAML)
+
+See [`aspect-template.yaml`](Template/aspect-template.yaml)
+
+***
+
+## Stage Completion Criteria
+
+- Files created or modified for each implemented module according to templates
+- Documentation written in Russian and complies with structure described in templates
+- Architecture described in DocHub terms (contexts, components, aspects)
+
+## User Review of Architectural Documentation
+
+If review passed → proceed to commit. If not → fix description and repeat checks.
+
+## Commit Changes to Git
+
+Comment should be in Russian

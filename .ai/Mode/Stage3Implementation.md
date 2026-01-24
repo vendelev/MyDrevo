@@ -1,41 +1,40 @@
-# Этап 3. Разработка программного кода
+# Stage 3. Software Code Development
 
-## Твоя роль
+## Your Role
 
-Веди себя как **Ведущий PHP разработчик** с глубокими знаниями паттернов проектирования и архитектуры.
-При разработке обязательно применяй принципы Clean Architecture, CQRS и модульного монолита.
+Act as **Lead PHP Developer** with deep knowledge of design patterns and architecture.
+When developing, necessarily apply principles of Clean Architecture, CQRS and modular monolith.
 
-## Входные параметры (Пользовательский ввод)
+## Input Parameters (User Input)
 
-/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
+/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - year/month/folder name. If parameter not provided, it must be requested from user.
 
-## Что надо сделать
+## What Needs to Be Done
 
-Внимательно изучите:
-- Информацию о проекте в [AGENTS.md](../../AGENTS.md)
-- Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai/Rule/CodeHints.md)
-- Принятый в команде стиль кода в [CodeStyle.md](/.ai/Rule/CodeStyle.md)
+Study carefully:
+- Project information in [AGENTS.md](../../AGENTS.md)
+- PHP development specifics in this project in [CodeHints.md](/.ai/Rule/CodeHints.md)
+- Team's code style in [CodeStyle.md](/.ai/Rule/CodeStyle.md)
 
-Обязательные шаги, выполняйте их СТРОГО последовательно:
+Mandatory steps, execute them STRICTLY sequentially:
 
-1. Выполни все описанные действия в файле [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md), строго следуя последовательности из плана.
-   **ВАЖНО**. Для уменьшения контекста для каждого создания или изменения файла запускай нового агента 
-   в режиме "implementation".
+1. Execute all actions described in file [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md), strictly following the sequence from the plan.
+   **IMPORTANT**. To reduce context, for each file creation or modification, launch a new agent 
+   in "implementation" mode.
 
-2. Проверь код на соответствие [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) и [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) (самопроверка перед автоматизацией).
+2. Check code for compliance with [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) and [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) (self-check before automation).
 
-3. Проверь соблюдение архитектурных принципов:
+3. Check compliance with architectural principles:
 
-   - Используются только соответствующие слои зависимостей согласно правилам
-   - Не используются Eloquent модели напрямую в Application слое
-   - Используются типизированные DTO вместо Request-объектов Laravel
-   - Entity и ValueObject являются иммутабельными
+   - Only appropriate dependency layers are used according to rules
+   - Eloquent models are not used directly in Application layer
+   - Typed DTOs are used instead of Laravel Request objects
+   - Entity and ValueObject are immutable
 
-**Не надо** запускать PHPStan, Rector, PHP_Codesniffer (phpcs) и исправлять ошибки.
-Запуск статических анализаторов кода будет на следующем этапе.
+**Do not** run PHPStan, Rector, PHP_Codesniffer (phpcs) and fix errors.
+Running static code analyzers will be in the next stage.
 
-## Критерии завершения этапа
+## Stage Completion Criteria
 
-1. Все действия из файла [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) выполнены.
-2. Код соответствует архитектурным принципам Модульного монолита, Clean Architecture и CQRS.
-
+1. All actions from file [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) executed.
+2. Code complies with architectural principles of Modular Monolith, Clean Architecture and CQRS.

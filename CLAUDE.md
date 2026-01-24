@@ -1,2 +1,3 @@
-# Контекст проекта
-Всегда читай и учитывай правила из AGENTS.md перед ответами.
+# Project Context
+Always read and consider the rules from AGENTS.md before responding.
+

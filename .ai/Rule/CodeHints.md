@@ -1,96 +1,96 @@
-# Подсказки при работе с PHP кодом
+# Hints When Working with PHP Code
 
-## Практические рекомендации
+## Practical Recommendations
 
-### ✅ ДЕЛАЙ
+### ✅ DO
 
-- Проверяй соседние файлы перед реализацией (соглашения, импорты, библиотеки).
-- Используй типизацию везде (параметры, возвращаемые значения).
-- Создавай интерфейсы когда нужна инверсия зависимостей.
-- Выноси логику парсинга и валидации из Controller.
-- Используй публичные readonly свойства в __construct вместо геттеров, когда нет необходимости в дополнительной логике.
-- Делай Entity и ValueObject immutable (неизменяемыми) добавляя модификатор final.
-- Всегда используй внедрение зависимостей через конструктор.
-- Eloquent модель ВСЕГДА ДОЛЖНА распологаться в `backend/src/{ModuleName}/Domain/Entity`. Это исключение.
+- Check neighboring files before implementation (conventions, imports, libraries).
+- Use typing everywhere (parameters, return values).
+- Create interfaces when dependency inversion is needed.
+- Extract parsing and validation logic from Controller.
+- Use public readonly properties in __construct instead of getters when no additional logic is needed.
+- Make Entity and ValueObject immutable by adding final modifier.
+- Always use dependency injection through constructor.
+- Eloquent model MUST ALWAYS be located in `backend/src/{ModuleName}/Domain/Entity`. This is an exception.
 
-### ❌ НЕ ДЕЛАЙ
+### ❌ DON'T
 
-- Не использует Eloquent модели напрямую в Application слое.
-- Не создавай интерфейсы если всего одна реализация.
-- Не передавай Request-laravel между слоями (используй DTO).
-- Не загружай неиспользуемые зависимости в конструктор.
-- Не используй `app()` для получения экземпляров классов в контроллерах и других местах.
-- Не используй в `$this->app->singleton` ServiceProvider.
+- Don't use Eloquent models directly in Application layer.
+- Don't create interfaces if there's only one implementation.
+- Don't pass Laravel-Request between layers (use DTO).
+- Don't load unused dependencies in constructor.
+- Don't use `app()` to get class instances in controllers and elsewhere.
+- Don't use `$this->app->singleton` in ServiceProvider.
 
-## Примеры-шаблоны файлов модуля
+## Module File Template Examples
 
 ### Application
 
-- Команда для обработки исходящих сообщений - [`ExampleOutboxCommand.php`](../../backend/src/Example/Application/Command/ExampleOutboxCommand.php)
-- DTO для рассчитанного значения - [`Calculated.php`](../../backend/src/Example/Application/Dto/Calculated.php)
-- Простое DTO - [`ExampleDto.php`](../../backend/src/Example/Application/Dto/ExampleDto.php)
-- Фабрика для создания запросов примеров - [`ExampleRequestFactory.php`](../../backend/src/Example/Application/Factory/ExampleRequestFactory.php)
-- Запрос для получения данных - [`GetExampleQuery.php`](../../backend/src/Example/Application/Query/GetExampleQuery.php)
-- Responder для генерации отчета - [`ExampleMarkdownReportResponder.php`](../../backend/src/Example/Application/Responder/ExampleMarkdownReportResponder.php)
-- Шаблон отчета в формате markdown - [`ExampleReport.md`](../../backend/src/Example/Application/Responder/Template/ExampleReport.md)
-- Сервис для выполнения расчетов - [`ExampleCalcService.php`](../../backend/src/Example/Application/Service/ExampleCalcService.php)
-- Варианты использования (создать и посмотреть) - [`ExampleUseCase.php`](../../backend/src/Example/Application/UseCase/ExampleUseCase.php)
-- UseCase для выполнения операции вычитания - [`SubtractExampleUseCase.php`](../../backend/src/Example/Application/UseCase/SubtractExampleUseCase.php)
+- Command for processing outgoing messages - [`ExampleOutboxCommand.php`](../../backend/src/Example/Application/Command/ExampleOutboxCommand.php)
+- DTO for calculated value - [`Calculated.php`](../../backend/src/Example/Application/Dto/Calculated.php)
+- Simple DTO - [`ExampleDto.php`](../../backend/src/Example/Application/Dto/ExampleDto.php)
+- Factory for creating example requests - [`ExampleRequestFactory.php`](../../backend/src/Example/Application/Factory/ExampleRequestFactory.php)
+- Query for data retrieval - [`GetExampleQuery.php`](../../backend/src/Example/Application/Query/GetExampleQuery.php)
+- Responder for report generation - [`ExampleMarkdownReportResponder.php`](../../backend/src/Example/Application/Responder/ExampleMarkdownReportResponder.php)
+- Report template in markdown format - [`ExampleReport.md`](../../backend/src/Example/Application/Responder/Template/ExampleReport.md)
+- Service for calculations - [`ExampleCalcService.php`](../../backend/src/Example/Application/Service/ExampleCalcService.php)
+- Use cases (create and view) - [`ExampleUseCase.php`](../../backend/src/Example/Application/UseCase/ExampleUseCase.php)
+- UseCase for subtraction operation - [`SubtractExampleUseCase.php`](../../backend/src/Example/Application/UseCase/SubtractExampleUseCase.php)
 
 ### Domain
 
-- Документация обзора домена - [`overview.md`](../../backend/src/Example/Domain/Doc/overview.md)
-- DTO для создания - [`CreateExampleDto.php`](../../backend/src/Example/Domain/Dto/CreateExampleDto.php)
+- Domain overview documentation - [`overview.md`](../../backend/src/Example/Domain/Doc/overview.md)
+- DTO for creation - [`CreateExampleDto.php`](../../backend/src/Example/Domain/Dto/CreateExampleDto.php)
 - Enum - [`Status.php`](../../backend/src/Example/Domain/Dto/Status.php)
-- Eloquent модель - [`Example.php`](../../backend/src/Example/Domain/Entity/Example.php)
-- Событие: уведомление о создании - [`ExampleCreated.php`](../../backend/src/Example/Domain/Event/ExampleCreated.php)
-- Исключение для ненайденного примера - [`ExampleNotFoundException.php`](../../backend/src/Example/Domain/Exception/ExampleNotFoundException.php)
-- Исключение для недопустимых чисел - [`InvalidSubtractNumbersException.php`](../../backend/src/Example/Domain/Exception/InvalidSubtractNumbersException.php)
-- DTO запрос на создание - [`CreateExampleRequest.php`](../../backend/src/Example/Domain/Request/CreateExampleRequest.php)
-- DTO ответ - [`ExampleResponse.php`](../../backend/src/Example/Domain/Response/ExampleResponse.php)
-- Value object для созданного ID - [`CreatedIdVO.php`](../../backend/src/Example/Domain/ValueObject/CreatedIdVO.php)
-- ValueObject с валидацией - [`SubtractNumbersVO.php`](../../backend/src/Example/Domain/ValueObject/SubtractNumbersVO.php)
-- Интерфейс внешнего логгера - [`ExternalLoggerInterface.php`](../../backend/src/Example/Domain/ExternalLoggerInterface.php)
-- Интерфейс репозитория - [`ExampleRepositoryInterface.php`](../../backend/src/Example/Domain/ExampleRepositoryInterface.php)
+- Eloquent model - [`Example.php`](../../backend/src/Example/Domain/Entity/Example.php)
+- Event: creation notification - [`ExampleCreated.php`](../../backend/src/Example/Domain/Event/ExampleCreated.php)
+- Exception for not found example - [`ExampleNotFoundException.php`](../../backend/src/Example/Domain/Exception/ExampleNotFoundException.php)
+- Exception for invalid numbers - [`InvalidSubtractNumbersException.php`](../../backend/src/Example/Domain/Exception/InvalidSubtractNumbersException.php)
+- DTO request for creation - [`CreateExampleRequest.php`](../../backend/src/Example/Domain/Request/CreateExampleRequest.php)
+- DTO response - [`ExampleResponse.php`](../../backend/src/Example/Domain/Response/ExampleResponse.php)
+- Value object for created ID - [`CreatedIdVO.php`](../../backend/src/Example/Domain/ValueObject/CreatedIdVO.php)
+- ValueObject with validation - [`SubtractNumbersVO.php`](../../backend/src/Example/Domain/ValueObject/SubtractNumbersVO.php)
+- External logger interface - [`ExternalLoggerInterface.php`](../../backend/src/Example/Domain/ExternalLoggerInterface.php)
+- Repository interface - [`ExampleRepositoryInterface.php`](../../backend/src/Example/Domain/ExampleRepositoryInterface.php)
 
 ### Infrastructure
 
-- Адаптер для логирования в ClickHouse - [`ClickhouseLogger.php`](../../backend/src/Example/Infrastructure/Adapter/ClickhouseLogger.php)
-- Репозиторий для работы с Eloquent - [`EloquentExampleRepository.php`](../../backend/src/Example/Infrastructure/Repository/EloquentExampleRepository.php)
+- Adapter for ClickHouse logging - [`ClickhouseLogger.php`](../../backend/src/Example/Infrastructure/Adapter/ClickhouseLogger.php)
+- Repository for working with Eloquent - [`EloquentExampleRepository.php`](../../backend/src/Example/Infrastructure/Repository/EloquentExampleRepository.php)
 
 ### Presentation
 
-- Конфигурационный файл - [`example.php`](../../backend/src/Example/Presentation/Config/example.php)
-- Service provider для модуля - [`ExampleServiceProvider.php`](../../backend/src/Example/Presentation/Config/ExampleServiceProvider.php)
-- Консольная команда - [`SubtractExampleCommand.php`](../../backend/src/Example/Presentation/Console/SubtractExampleCommand.php)
-- Контроллер - [`ExampleController.php`](../../backend/src/Example/Presentation/Http/Controller/ExampleController.php)
+- Configuration file - [`example.php`](../../backend/src/Example/Presentation/Config/example.php)
+- Service provider for module - [`ExampleServiceProvider.php`](../../backend/src/Example/Presentation/Config/ExampleServiceProvider.php)
+- Console command - [`SubtractExampleCommand.php`](../../backend/src/Example/Presentation/Console/SubtractExampleCommand.php)
+- Controller - [`ExampleController.php`](../../backend/src/Example/Presentation/Http/Controller/ExampleController.php)
 - Middleware - [`ExampleMiddleware.php`](../../backend/src/Example/Presentation/Http/Middleware/ExampleMiddleware.php)
-- Отображение данных в html - [`dashboard.blade.php`](../../backend/src/Example/Presentation/Http/View/dashboard.blade.php)
-- Слушатель события - [`ExampleCreatedListener.php`](../../backend/src/Example/Presentation/Listener/ExampleCreatedListener.php)
+- Data display in html - [`dashboard.blade.php`](../../backend/src/Example/Presentation/Http/View/dashboard.blade.php)
+- Event listener - [`ExampleCreatedListener.php`](../../backend/src/Example/Presentation/Listener/ExampleCreatedListener.php)
 
-### Корень модуля
-- Конфигурация документации модуля - [`dochub.yaml`](../../backend/src/Example/dochub.yaml)
-- Описание модуля - [`Readme.md`](../../backend/src/Example/Readme.md)
+### Module Root
+- Module documentation configuration - [`dochub.yaml`](../../backend/src/Example/dochub.yaml)
+- Module description - [`Readme.md`](../../backend/src/Example/Readme.md)
 
-## Регистрация интерфейсов и реализаций
+## Interface and Implementation Registration
 
-Для связи интерфейсов и их реализаций в контейнере зависимостей Laravel используйте метод `bind`:
+To bind interfaces and their implementations in Laravel dependency container use `bind` method:
 
 ```php
 $this->app->bind(Interface::class, Implementation::class);
 ```
 
-Это позволяет легко заменять реализации в тестах и соблюдает принцип инверсии зависимостей.
+This allows easy replacement of implementations in tests and follows dependency inversion principle.
 
-В остальных случаях объявлять класс в контейнере зависимостей НЕ ТРЕБУЕТСЯ.
+In other cases, declaring class in dependency container is NOT REQUIRED.
 
-## Регистрация ServiceProvider
+## ServiceProvider Registration
 
-Каждый модуль может иметь свой ServiceProvider для регистрации компонентов в контейнере зависимостей.
+Each module can have its own ServiceProvider for registering components in dependency container.
 
-### Регистрация в bootstrap/providers.php
+### Registration in bootstrap/providers.php
 
-Все ServiceProvider должны быть зарегистрированы в файле `backend/bootstrap/providers.php`:
+All ServiceProviders must be registered in `backend/bootstrap/providers.php` file:
 
 ```php
 <?php
@@ -104,30 +104,30 @@ return [
 ];
 ```
 
-## Рекомендации по использованию переменных окружения
+## Environment Variables Usage Guidelines
 
-### Общие принципы
+### General Principles
 
-1. **Конфигурация через конфигурационные файлы**: Все параметры приложения должны быть доступны через систему конфигурации Laravel.
-2. **Использование env() только в конфигурационных файлах**: Функция `env()` должна использоваться только в конфигурационных файлах в каталоге `config/` или в соответствующих файлах модулей.
-3. **Избегайте прямого использования env() в бизнес-логике**: Никогда не используйте `env()` напрямую в классах Application, Domain или Infrastructure слоях.
+1. **Configuration through configuration files**: All application parameters should be accessible through Laravel configuration system.
+2. **Using env() only in configuration files**: The `env()` function should be used only in configuration files in `config/` directory or in corresponding module files.
+3. **Avoid direct env() use in business logic**: Never use `env()` directly in Application, Domain or Infrastructure layer classes.
 
-### Правильное использование
+### Correct Usage
 
-1. Создайте конфигурационный файл в каталоге `Presentation/Config` вашего модуля, пример: [example.php](../../backend/src/Example/Presentation/Config/example.php)
-2. Для передачи конфигурационных значений в классы используйте контейнер зависимостей в ServiceProvider, пример: [ExampleServiceProvider.php](../../backend/src/Example/Presentation/Config/ExampleServiceProvider.php)
-3. В классах используйте внедрение зависимостей через параметры конструктора для получения значений, пример: [ClickhouseLogger.php](../../backend/src/Example/Infrastructure/Adapter/ClickhouseLogger.php)
+1. Create configuration file in `Presentation/Config` directory of your module, example: [example.php](../../backend/src/Example/Presentation/Config/example.php)
+2. To pass configuration values to classes use dependency container in ServiceProvider, example: [ExampleServiceProvider.php](../../backend/src/Example/Presentation/Config/ExampleServiceProvider.php)
+3. In classes use dependency injection through constructor parameters to get values, example: [ClickhouseLogger.php](../../backend/src/Example/Infrastructure/Adapter/ClickhouseLogger.php)
 
-### Преимущества подхода
+### Approach Benefits
 
-1. **Тестируемость**: Конфигурационные значения могут быть легко заменены в тестах.
-2. **Гибкость**: Возможность переопределения конфигурации через файлы конфигурации.
-3. **Читаемость**: Явное указание зависимостей от конфигурации.
-4. **Соответствие принципам Clean Architecture**: Конфигурация инкапсулирована в Presentation слое.
+1. **Testability**: Configuration values can be easily replaced in tests.
+2. **Flexibility**: Ability to override configuration through configuration files.
+3. **Readability**: Explicit indication of configuration dependencies.
+4. **Clean Architecture compliance**: Configuration is encapsulated in Presentation layer.
 
-### Переменные окружения в .env файле
+### Environment Variables in .env File
 
-Все переменные окружения должны быть определены в файле `.env.example` с примерами значений и комментариями:
+All environment variables must be defined in `.env.example` file with sample values and comments:
 
 ```env
 # API Configuration
