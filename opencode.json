@@ -1,0 +1,85 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "model": "opencode/big-pickle",
+    "mcp": {
+        "context7": {
+            "type": "remote",
+            "url": "https://mcp.context7.com/mcp",
+            "headers": {
+                "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+            }
+        }
+    },
+    "agent": {
+        "create-epic": {
+            "model": "opencode/big-pickle",
+            "description": "Создание бизнес требований",
+            "prompt": "{file:./.ai/Mode/Stage0CreateEpic.md}"
+        },
+        "create-spec": {
+            "model": "opencode/big-pickle",
+            "description": "Создание функциональных требований",
+            "prompt": "{file:./.ai/Mode/Stage1CreateSpec.md}"
+        },
+        "create-plan-sum": {
+            "model": "opencode/big-pickle",
+            "description": "Создание сводного технического плана",
+            "prompt": "{file:./.ai/Mode/Stage2CreatePlanSummary.md}"
+        },
+        "create-plan-dev": {
+            "model": "opencode/big-pickle",
+            "description": "Создание технического плана разработки кода",
+            "prompt": "{file:./.ai/Mode/Stage2CreatePlanDev.md}"
+        },
+        "create-plan-test": {
+            "model": "opencode/big-pickle",
+            "description": "Создание технического плана написания тестов",
+            "prompt": "{file:./.ai/Mode/Stage2CreatePlanTest.md}"
+        },
+        "implementation": {
+            "model": "opencode/big-pickle",
+            "description": "Реализация кода на PHP",
+            "prompt": "{file:./.ai/Mode/Stage3Implementation.md}"
+        },
+        "testing": {
+            "model": "opencode/big-pickle",
+            "description": "Разработка тестов",
+            "prompt": "{file:./.ai/Mode/Stage4Testing.md}"
+        },
+        "tech-doc": {
+            "model": "opencode/big-pickle",
+            "description": "Создание технической документации",
+            "prompt": "{file:./.ai/Mode/Stage5TechDoc.md}"
+        },
+        "arch-doc": {
+            "model": "opencode/big-pickle",
+            "description": "Создание архитектурной документации",
+            "prompt": "{file:./.ai/Mode/Stage6ArchDoc.md}"
+        },
+        "code-auto-fix": {
+            "model": "opencode/gpt-5-nano",
+            "description": "Автоматическое исправление кода и стиля (Rector и PHPCBF)",
+            "prompt": "{file:./.ai/Mode/CodeAutoFix.md}"
+        },
+        "phpstan": {
+            "model": "opencode/gpt-5-nano",
+            "description": "PHPStan",
+            "prompt": "{file:./.ai/Mode/PHPStan.md}"
+        },
+        "rector": {
+            "model": "opencode/gpt-5-nano",
+            "description": "Rector",
+            "prompt": "{file:./.ai/Mode/Rector.md}"
+        },
+        "phpcs": {
+            "model": "opencode/gpt-5-nano",
+            "description": "PHP_CodeSniffer",
+            "prompt": "{file:./.ai/Mode/PHPCS.md}"
+        },
+        "markdownlint": {
+            "model": "opencode/gpt-5-nano",
+            "description": "Исправление ошибок markdownlint",
+            "prompt": "{file:./.ai/Mode/Markdownlint.md}"
+        }
+    }
+}
