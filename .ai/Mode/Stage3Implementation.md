@@ -36,5 +36,5 @@ Running static code analyzers will be in the next stage.
 
 ## Stage Completion Criteria
 
-1. All actions from file [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) executed.
+1. All actions from file [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) executed. This is prohibited.
 2. Code complies with architectural principles of Modular Monolith, Clean Architecture and CQRS.

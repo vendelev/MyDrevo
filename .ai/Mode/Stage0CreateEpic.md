@@ -28,8 +28,6 @@ User specifies the epic number and formulates stakeholder business needs.
    Each stage must be described in detail in a separate file in folder "/Doc/Backlog/{YYYY}/{EPIC_FOLDER}".
    These files will be used in the next stage by another AI agent to create detailed specification with business requirements description.
 
-5. Use the "markdownlint" mode for automatic fixing of created files formatting.
-   To reduce context for each file, create a new agent with "markdownlint" mode.
 
 ### EPIC_FOLDER Naming Rules
 
@@ -93,20 +91,8 @@ The Stage{STAGE_NUMBER}.md file should contain the following sections:
 - All development divided into stages and Stage{STAGE_NUMBER}.md files created with complete description.
 - Description is understandable to non-technical users.
 - All requirements are formulated clearly without ambiguity.
-- File formatted according to [markdownlint](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md) rules
-
-### Stage Description Quality Criteria
-
-Each Stage{STAGE_NUMBER}.md file must meet the following criteria:
-
-- ✅ Stage description is understandable to non-technical users
-- ✅ All functional requirements are formulated clearly without ambiguity
-- ✅ Non-functional requirements are considered (performance, security, usability, etc.)
-- ✅ Use cases are provided (examples of user interaction)
-- ✅ Acceptance criteria are defined for verifying stage requirements completion
-- ✅ Dependencies on other stages, modules or systems are specified
-- ✅ Possible stage implementation risks are considered
-- ✅ File formatted according to [markdownlint](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md) rules
+- Use cases are provided (examples of user interaction)
+- Dependencies on other stages, modules or systems are specified
 
 ## User Review of Business Requirements
 

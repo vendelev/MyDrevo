@@ -36,9 +36,6 @@ If parameters not provided, they must be requested from user.
 2. Ask clarifying questions as needed.
    Implementation description must be understandable to developer without additional questions and comply with project architecture.
 
-3. Use the "markdownlint" mode for automatic fixing of created file formatting.
-   To reduce context for each file, create a new agent with "markdownlint" mode.
-
 ## Stage Completion Criteria
 
 **StageX_TaskForDev.md**:
@@ -54,4 +51,3 @@ If parameters not provided, they must be requested from user.
 - ✅ Architecture complies with Clean Architecture, CQRS, Modular Monolith
 - ✅ Rules from [Architecture.md](/.ai/Rule/Architecture.md) and [CodeHints.md](/.ai/Rule/CodeHints.md) considered
 - ✅ Document ready for use by other AI agents at different stages
-- ✅ File formatted according to https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md rules

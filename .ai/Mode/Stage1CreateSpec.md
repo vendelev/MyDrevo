@@ -24,9 +24,6 @@ User specifies task number and formulates business needs for creating new functi
    Ask clarifying questions as needed.
    This file will be used in the next stage by another AI agent to create technical plan for software code development.
 
-4. Use the "markdownlint" mode for automatic fixing of created file formatting.
-   To reduce context for each file, create a new agent with "markdownlint" mode.
-
     ### Spec.md Structure
 
    Specification should cover all use cases and be understandable to non-technical users.
@@ -43,7 +40,7 @@ User specifies task number and formulates business needs for creating new functi
    - **Acceptance Criteria**: How to verify requirements completion.
    - **Not Included in Implementation**: What will not be implemented within the current task.
 
-5. Check Spec.md against checklist:
+4. Check Spec.md against checklist:
    - Are all requirements clearly formulated?
    - Are edge cases covered?
    - Does it align with project business goals?
@@ -66,7 +63,6 @@ User specifies task number and formulates business needs for creating new functi
 - Specification is understandable to non-technical users
 - All requirements are formulated clearly without ambiguity
 - Edge cases are considered
-- File formatted according to https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md rules
 
 ## User Review of Business Requirements
 

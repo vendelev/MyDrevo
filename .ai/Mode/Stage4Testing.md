@@ -36,7 +36,7 @@ Mandatory steps, execute them STRICTLY sequentially:
    - Do tests comply with architecture and styles?
    - No duplication or redundancy?
 
-**Do not** run PHPStan, Rector, PHP_Codesniffer (phpcs) and fix errors. 
+**Do not** run PHPStan, Rector, PHP_Codesniffer (phpcs) and fix errors. This is prohibited.
 Running static code analyzers will be in the next stage.  
 
 ## Stage Completion Criteria

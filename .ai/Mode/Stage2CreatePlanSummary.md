@@ -47,8 +47,6 @@ They are responsible for ensuring the solution can be reliably implemented and d
    No need to create and describe each file for "Plan for Developer" and "Plan for Testing" at this stage.
    This will be done by another AI agent later.
 
-3. Use the "markdownlint" mode for automatic fixing of created file formatting.
-  To reduce context for each file, create a new agent with "markdownlint" mode.
 
 ## Task.md Template
 
@@ -70,4 +68,3 @@ Recommendations:
 - ✅ Architecture complies with Clean Architecture, CQRS, Modular Monolith
 - ✅ Rules from [Architecture.md](/.ai/Rule/Architecture.md) are considered
 - ✅ Document ready for use by other AI agents at different stages
-- ✅ File formatted according to https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md rules
