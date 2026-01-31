@@ -1,270 +1,163 @@
-# Мультиагентная разработка
+# Multi-Agent Development
 
 ***
 
-## Общая концепция
+## General Concept
 
-Система состоит из команды специализированных агентов, координируемых оркестратором. 
-Каждый агент выполняет определённую роль в процессе разработки. 
+The system consists of a team of specialized agents coordinated by an orchestrator.
+Each agent performs a specific role in the development process.
 
-Оркестратор управляет последовательностью работы, передаёт результаты между агентами и останавливает процесс 
- при возникновении блокирующих вопросов.
+The orchestrator manages the work sequence, transfers results between agents, and stops the process
+when blocking questions arise.
 
 ***
 
-## Роли агентов
+## Agent Roles
 
-### Оркестратор
+### Orchestrator
 
-**Функция:** 
+**Function:**
 
-- Координация всего процесса разработки
-- Ставит задачи другим агентам
-- Принимает и анализирует результаты
-- Определяет следующие шаги
-- Останавливает процесс при блокирующих вопросах
-- Управляет циклами review-доработка
+- Coordination of the entire development process
+- Assigns tasks to other agents
+- Receives and analyzes results
+- Determines next steps
+- Stops the process when blocking questions arise
+- Manages review-refinement cycles
 
 ### Product Owner
 
-**Функция:** [Описание бизнес потребностей и планирование этапов эпика](/.ai/Mode/Stage0CreateEpic.md) 
+**Function:** [Describing business needs and planning epic stages](/.ai/agents/Stage0CreateEpic.md)
 
-### Бизнес аналитик
+### Business Analyst
 
-**Функция:** [Создание спецификации с описанием бизнес-требований](/.ai/Mode/Stage1CreateSpec.md)
+**Function:** [Describing business requirements](/.ai/agents/Stage1CreateSpec.md)
 
-### Системный аналитик + IT архитектор
+### System Analyst + IT Architect
 
-**Функция:** [Формирование сводного технического плана](/.ai/Mode/Stage2CreatePlanSummary.md)
+**Function:** [Forming a summary technical plan](/.ai/agents/Stage2CreatePlanSummary.md)
 
-### Системный аналитик + PHP разработчик
+### System Analyst + PHP Developer
 
-**Функция:** [Формирование технического плана по разработке кода](/.ai/Mode/Stage2CreatePlanDev.md)
+**Function:** [Forming a technical plan for code development](/.ai/agents/Stage2CreatePlanDev.md)
 
-### Системный аналитик + Разработчик тестов
+### System Analyst + Test Developer
 
-**Функция:** [Формирование технического плана по написанию тестов](/.ai/Mode/Stage2CreatePlanTest.md)
+**Function:** [Forming a technical plan for writing tests](/.ai/agents/Stage2CreatePlanTest.md)
 
-### PHP разработчик
+### PHP Developer
 
-**Функция:** [Разработка программного кода](/.ai/Mode/Stage3Implementation.md)
+**Function:** [Software code development](/.ai/agents/Stage3Implementation.md)
 
-### Разработчик тестов
+### Test Developer
 
-**Функция:** [Разработка тестов](/.ai/Mode/Stage4Testing.md)
+**Function:** [Test development](/.ai/agents/Stage4Testing.md)
 
-### Технический писатель
+### Technical Writer
 
-**Функция:** [Создание технической документации](/.ai/Mode/Stage5TechDoc.md)
+**Function:** [Creating technical documentation](/.ai/agents/Stage5TechDoc.md)
 
-### IT архитектор
+### IT Architect
 
-**Функция:** [Создание архитектурной документации](/.ai/Mode/Stage6ArchDoc.md)
+**Function:** [Creating architectural documentation](/.ai/agents/Stage6ArchDoc.md)
 
 ***
 
-## Схема работы
+## Workflow Scheme
 
-На каждом этапе мультиагентной разработки шаги работы с агентами будут одинаковы:
+At each stage of multi-agent development, the steps for working with agents will be the same:
 
-1. Создаем новый контекст в режиме "**orchestrator**" и пишем ему команду (см описание каждого этапа).
-2. Проводим ревью, вносим правки самостоятельно или даем команду на исправление агенту.
-3. Делаем коммит самостоятельно или даем команду: `сделай коммит`.
-   Команду агенту надо давать в задаче "**orchestrator**", чтобы агент, имея общий контекст, смог правильно 
-   составить комментарий к коммиту.
+1. Create a new context in "**orchestrator**" mode and write a command to it (see description of each stage).
+2. Conduct a review, make corrections yourself or give a command to the agent for corrections.
+3. Make a commit yourself or give the command: `make a commit`.
+   The command to the agent should be given in the "**orchestrator**" task so that the agent, having the general context, can correctly
+   compose the commit comment.
 
 ### Workflow
 
-- Первым выполняется Шаг 0, где создается эпик и этапы.
-- Шаг 1 повторяется столько раз, сколько было создано этапов.
-- Шаг 2 повторяется для каждого этапа непосредственно перед реализацией.
-- Тк технический план тоже разбит на подэтапы, Шаги 3-6 повторяются для каждого подэтапа.
-- На Шаге 7 создается человекочитаемая документация.
-- На Шаге 8 создается архитектурная документация описывающая взаимодействие и зависимости всей системы.
+- Step 0 is executed first, where the epic and stages are created.
+- Step 1 is repeated as many times as stages were created.
+- Step 2 is repeated for each stage immediately before implementation.
+- Since the technical plan is also divided into sub-stages, Steps 3-6 are repeated for each sub-stage.
+- In Step 7, human-readable documentation is created.
+- In Step 8, architectural documentation is created describing the interaction and dependencies of the entire system.
 
-## Рекомендации
+## Recommendations
 
-Если задача не большая, то создавать эпик не обязательно. Можно сразу создать спецификацию с описанием 
- бизнес-требований.
+If the task is not large, creating an epic is not mandatory. You can immediately create a specification with a description of
+business requirements.
 
-После создания эпика создавайте по каждому этапу **только спецификации**.
-А технические планы создавайте непосредственно перед началом реализации.
+After creating the epic, create **only specifications** for each stage.
+Create technical plans immediately before starting implementation.
 
-Создание технических планов "на будущее" приводит к тому, что после выполнения текущего этапа приходится 
- пересматривать план реализации следующего этапа.
+Creating technical plans "for the future" leads to the fact that after completing the current stage, you have to
+reconsider the implementation plan for the next stage.
 
-Для уменьшения контекста и упрощения code-review технический план так же разбивается на несколько подэтапов реализации  
- + по отдельности разработка кода и написание тестов.
+To reduce context and simplify code review, the technical plan is also divided into several implementation sub-stages
++ separately code development and test writing.
 
-## Последовательность работ
+## Work Sequence
 
-### Шаг 0. Описание бизнес потребностей и планирование этапов эпика.
+### Step 0. Describing business requirements and planning epic stages
 
-Создаем новый контекст в режиме "orchestrator" и пишем следующую команду:
+Command: `/ra-epic <epic number> <description of business needs>`
 
-```markdown
-1. Используй агента в режиме "create-epic" для описания бизнес-потребностей.
-   Номер эпика: {номер эпика из трекера}.
-   Описание потребностей: {.......}
-   Запущенный агент должен вернуть список созданных или измененных файлов для последующей проверки.
-2. По окончанию работы запущенного агента надо запустить нового агента в режиме "create-epic".
-   Дать ему команду: "Перепроверь созданные файлы {список файлов} на соответствие своим инструкциям".
-   Запущенный агент должен вернуть список файлов и список замечаний для каждого файла.
-3. Если найдены замечания, то запусти нового агента в режиме "create-epic", чтобы он внес правки. 
-   Для уменьшения контекста каждому агента надо давать задание по изменению только одного файла.
-```
+Algorithm: [ra-epic.md](/.ai/commands/ra-epic.md)
 
-### Шаг 1. Создание спецификации с описанием бизнес-требований.
+### Step 1. Describing functional requirements
 
-Создаем новый контекст в режиме "orchestrator" и пишем следующую команду:
+Command: `/ra-spec <task number> <path to epic Summary.md> <stage number>`
 
-```markdown
-1. Используй агента в режиме "create-spec" согласно @/.ai/Mode/Stage1CreateSpec.md для описания бизнес-требований.
-   Номер задачи: {номер задачи из трекера}.
-   Описание этика находится в файле @/Doc/Backlog/{YYYY}/{EPIC_FOLDER}/Summary.md. 
-   Нужно создать описание бизнес-требований для этапа {Х} согласно инструкциям.
-   Запущенный агент должен вернуть список созданных или измененных файлов для последующей проверки.
-2. По окончанию работы запущенного агента надо запустить нового агента в режиме "create-spec".
-   Дать ему команду: "Перепроверь созданные файлы {список файлов} на соответствие своим инструкциям".
-   Если найдены замечания, запущенный агент должен вернуть список замечаний для каждого файла, который нужно исправить.
-3. Если найдены замечания, то запусти нового агента в режиме "create-spec", чтобы он внес правки. 
-   Для уменьшения контекста каждому агента надо давать задание по изменению только одного файла.
-```
+Algorithm: [ra-spec.md](/.ai/commands/ra-spec.md)
 
-### Шаг 2. Формирование сводного технического плана.
+### Step 2. Forming a summary technical plan
 
-**Рекомендация**:
-```
-Создавайте технический план непосредственно перед разработкой.
-Создание плана "на будущее" приводит к тому, что после реализации текущего этапа приходится пересматривать план разработки следующего этапа.
-```
+**Recommendation**: create the technical plan immediately before development.
+Creating a plan "for the future" leads to the fact that after implementing the current stage, you have to
+reconsider the development plan for the next stage.
 
-Создаем новый контекст в режиме "orchestrator" и пишем следующую команду:
+Command: `/ra-plan-sum <path to task Spec.md>`
 
-```markdown
-1. Используй агента в режиме "create-plan-sum" и на основе бизнес требований из файла 
-   @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md создай сводный план по разработке кода и тестов согласно инструкциям.
-   Запущенный агент должен вернуть список созданных или измененных файлов для последующей проверки.
-2. По окончанию работы запущенного агента надо запустить нового агента в режиме "create-plan-sum".
-   Дать ему команду: "Перепроверь созданные файлы {список файлов} на соответствие своим инструкциям".
-   Если найдены замечания, запущенный агент должен вернуть список замечаний для каждого файла, который нужно исправить.
-3. Если найдены замечания, то запусти нового агента в режиме "create-plan-sum", чтобы он внес правки. 
-   Для уменьшения контекста каждому агента надо давать задание по изменению только одного файла.
-```
+Algorithm: [ra-plan-sum.md](/.ai/commands/ra-plan-sum.md)
 
-### Шаг 3. Формирование технического плана по разработке кода.
+### Step 3. Forming a technical plan for code development
 
-Создаем новый контекст в режиме "orchestrator" и пишем следующую команду:
+Command: `/ra-plan-dev <path to task folder> <stage number>`
 
-```markdown
-1. Используй агента в режиме "create-plan-dev" и на основе бизнес требований и сводного плана по этапу {X}
-   для задачи @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} создай новый план по разработке кода согласно инструкциям.
-   Запущенный агент должен вернуть список созданных или измененных файлов для последующей проверки.
-2. По окончанию работы запущенного агента надо запустить нового агента в режиме "create-plan-dev".
-   Дать ему команду: "Перепроверь созданный файл на соответствие своим инструкциям".
-   Для уменьшения контекста каждому агента надо давать задание по проверке только одного файла.
-   Если найдены замечания, запущенный агент должен вернуть список замечаний для каждого файла, который нужно исправить.
-3. Если найдены замечания, то запусти нового агента в режиме "create-plan-dev", чтобы он внес правки. 
-   Для уменьшения контекста каждому агента надо давать задание по изменению только одного файла.
-```
+Algorithm: [ra-plan-dev.md](/.ai/commands/ra-plan-dev.md)
 
-### Шаг 4. Формирование технического плана по написанию тестов.
+### Step 4. Forming a technical plan for writing tests
 
-Создаем новый контекст в режиме "orchestrator" и пишем следующую команду:
+Command: `/ra-plan-test <path to task folder> <stage number>`
 
-```markdown
-1. Используй агента в режиме "create-plan-test" и на основе бизнес требований и сводного плана по этапу {X}
-   для задачи @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} создай новый план по написанию тестов согласно инструкциям.
-   Запущенный агент должен вернуть список созданных или измененных файлов для последующей проверки.
-2. По окончанию работы запущенного агента надо запустить нового агента в режиме "create-plan-test".
-   Дать ему команду: "Перепроверь созданный файл на соответствие своим инструкциям".
-   Для уменьшения контекста каждому агента надо давать задание по проверке только одного файла.
-   Если найдены замечания, запущенный агент должен вернуть список замечаний для каждого файла, который нужно исправить.
-3. Если найдены замечания, то запусти нового агента в режиме "create-plan-test", чтобы он внес правки. 
-   Для уменьшения контекста каждому агента надо давать задание по изменению только одного файла.
-```
+Algorithm: [ra-plan-test.md](/.ai/commands/ra-plan-test.md)
 
-### Шаг 5. Разработка программного кода
+### Step 5. Software code development
 
-Создаем новый контекст в режиме "orchestrator" и пишем следующую команду:
+Command: `/ra-impl <path to task Task.md> <implementation stage number>`
 
-```markdown
-1. Используй агента в режиме "implementation" для разработки кода по этапу реализации {X} из файла 
-   @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md согласно инструкциям.
-   Запущенный агент должен вернуть список созданных или измененных файлов для последующей проверки.
-2. По окончанию работы используй агента в режиме "implementation" для перепроверки этапа {X} 
-   из @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md.
-   Если найдены замечания, запущенный агент должен вернуть список замечаний для каждого файла, который нужно исправить.
-3. Для исправления замечаний используй нового агента в режиме "implementation", чтобы он внес правки. 
-   Для уменьшения контекста каждому агента надо давать задание по изменению только одного файла.
-4. Используй агента с режимом "code-auto-fix" для автоматического исправления кода и стиля
-5. Используй агента с режимом "phpstan" для исправления ошибок с типами
-   Если агент вернул сообщение, что были найдены ошибки, то требуется перезапуск подзадачи.
-   Повторяй перезапуск не более 2-х раз.
-6. Используй агента с режимом "rector" для исправления ошибок с типами
-7. Используй агента с режимом "phpcs" для исправления ошибок с типами
-   Если агент вернул сообщение, что были найдены ошибки, то требуется перезапуск подзадачи.
-   Повторяй перезапуск не более 2-х раз.
-```
+Algorithm: [ra-impl.md](/.ai/commands/ra-impl.md)
 
-Проводим ревью, вносим правки самостоятельно или даем команду на исправление агенту.
-Делаем коммит самостоятельно или даем команду: `сделай коммит`.
+Conduct a review, make corrections yourself or give a command to the agent for corrections.
+Make a commit yourself or give the command: `make a commit`.
 
-### Шаг 6. Написание тестов
+### Step 6. Writing tests
 
-Создаем новый контекст в режиме "orchestrator" и пишем следующую команду:
+Command: `/ra-test <path to task Task.md> <implementation stage number>`
 
-```markdown
-1. Используй агента в режиме "testing" и напиши тесты для этапа реализации {X} из файла 
-   @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md согласно инструкциям.
-   Запущенный агент должен вернуть список созданных или измененных файлов для последующей проверки.
-2. По окончанию работы запущенного агента надо запустить нового агента в режиме "testing".
-   Дать ему команду: "Перепроверь созданный файл на соответствие своим инструкциям".
-   Для уменьшения контекста каждому агента надо давать задание по проверке только одного файла.
-   Если найдены замечания, запущенный агент должен вернуть список замечаний для каждого файла, который нужно исправить.
-3. Если найдены замечания, то запусти нового агента в режиме "testing", чтобы он внес правки. 
-   Для уменьшения контекста каждому агента надо давать задание по изменению только одного файла.
-4. Используй агента с режимом "code-auto-fix" для автоматического исправления кода и стиля
-5. Используй агента с режимом "phpstan" для исправления ошибок с типами
-   Если агент вернул сообщение, что были найдены ошибки, то требуется перезапуск подзадачи.
-   Повторяй перезапуск не более 2-х раз.
-6. Используй агента с режимом "rector" для исправления ошибок с типами
-7. Используй агента с режимом "phpcs" для исправления ошибок с типами
-   Если агент вернул сообщение, что были найдены ошибки, то требуется перезапуск подзадачи.
-   Повторяй перезапуск не более 2-х раз.
-8. Используй агента с режимом "testing" дяя повторного запуска PHPUnit
-9. В файле Task.md сделать пометку у соответствующего этапа реализации, что он выполнен (✅ Этап завершён).
-```
+Algorithm: [ra-test.md](/.ai/commands/ra-test.md)
 
-Проводим ревью, вносим правки самостоятельно или даем команду на исправление агенту.
-Делаем коммит самостоятельно или даем команду: `сделай коммит`.
+Conduct a review, make corrections yourself or give a command to the agent for corrections.
+Make a commit yourself or give the command: `make a commit`.
 
-### Шаг 7. Создание технической документации.
+### Step 7. Creating technical documentation
 
-Создаем новый контекст в режиме "orchestrator" и пишем следующую команду:
+Command: `/ra-tech-doc <path to task folder>`
 
-```markdown
-1. Используй агента в режиме "tech-doc" и на основе бизнес требований и плана по разработке коди и тестов 
-   в папке @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} создай техническую документацию согласно инструкциям.
-   Запущенный агент должен вернуть список созданных или измененных файлов для последующей проверки.
-2. По окончанию работы запущенного агента надо запустить нового агента в режиме "tech-doc".
-   Дать ему команду: "Перепроверь созданные файлы {список файлов} на соответствие своим инструкциям".
-   Если найдены замечания, запущенный агент должен вернуть список замечаний для каждого файла, который нужно исправить.
-3. Если найдены замечания, то запусти нового агента в режиме "tech-doc", чтобы он внес правки. 
-   Для уменьшения контекста каждому агента надо давать задание по изменению только одного файла.
-```
+Algorithm: [ra-tech-doc.md](/.ai/commands/ra-tech-doc.md)
 
-### Шаг 8. Создание архитектурной документации.
+### Step 8. Creating architectural documentation
 
-Создаем новый контекст в режиме "orchestrator" и пишем следующую команду:
+Command: `/ra-arch-doc <path to task folder>`
 
-```markdown
-1. Используй агента в режиме "arch-doc" и на основе бизнес требований и плана по разработке коди и тестов 
-   в папке @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} создай техническую документацию согласно инструкциям.
-   Запущенный агент должен вернуть список созданных или измененных файлов для последующей проверки.
-2. По окончанию работы запущенного агента надо запустить нового агента в режиме "arch-doc".
-   Дать ему команду: "Перепроверь созданные файлы {список файлов} на соответствие своим инструкциям".
-   Если найдены замечания, запущенный агент должен вернуть список замечаний для каждого файла, который нужно исправить.
-3. Если найдены замечания, то запусти нового агента в режиме "arch-doc", чтобы он внес правки. 
-   Для уменьшения контекста каждому агента надо давать задание по изменению только одного файла.
-```
+Algorithm: [ra-arch-doc.md](/.ai/commands/ra-arch-doc.md)

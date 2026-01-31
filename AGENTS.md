@@ -39,16 +39,16 @@ The project uses Makefile to simplify frequent development tasks:
 
 ### Architecture
 
-- Architecture rules in [Architecture.md](/.ai/Rule/Architecture.md)
+- Architecture rules in [Architecture.md](/.ai/rules/Architecture.md)
 
 ### Code Style
 
-- PHP specifics for this project in [CodeHints.md](/.ai/Rule/CodeHints.md)
-- Team-accepted code style in [CodeStyle.md](/.ai/Rule/CodeStyle.md)
+- PHP specifics for this project in [CodeHints.md](/.ai/rules/CodeHints.md)
+- Team-accepted code style in [CodeStyle.md](/.ai/rules/CodeStyle.md)
 
 ### Testing
 
-- Recommendations for writing tests in [Testing.md](/.ai/Rule/Testing.md)
+- Recommendations for writing tests in [Testing.md](/.ai/rules/Testing.md)
 
 ### Environment Variables
 

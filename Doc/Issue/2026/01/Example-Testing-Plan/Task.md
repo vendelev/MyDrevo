@@ -15,10 +15,10 @@
 
 ## Связь с архитектурой и правилами
 
-- Архитектура: [Architecture.md](/.ai/Rule/Architecture.md)
-- Процесс добавления фич: [FeatureWorkflow.md](/.ai/Rule/FeatureWorkflow.md)
-- PHP-правила: [CodeHints.md](/.ai/Rule/CodeHints.md)
-- Тестирование: [Testing.md](/.ai/Rule/Testing.md)
+- Архитектура: [Architecture.md](/.ai/rules/Architecture.md)
+- Процесс добавления фич: [FeatureWorkflow.md](/.ai/rules/FeatureWorkflow.md)
+- PHP-правила: [CodeHints.md](/.ai/rules/CodeHints.md)
+- Тестирование: [Testing.md](/.ai/rules/Testing.md)
 
 ## Этапы реализации
 
