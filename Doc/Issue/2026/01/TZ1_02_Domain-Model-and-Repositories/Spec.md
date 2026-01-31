@@ -1150,7 +1150,7 @@ class RepositoryServiceProvider extends ServiceProvider
 
 #### Критерии по качеству кода
 
-- ✅ Код соответствует стилю проекта (.ai/Rule/CodeStyle.md)
+- ✅ Код соответствует стилю проекта (.ai/rules/CodeStyle.md)
 - ✅ Код проходит статический анализ PHPStan уровня 8-9 без ошибок
 - ✅ Код проходит проверку PHP_CodeSniffer без ошибок
 - ✅ Код следует принципам Clean Architecture (Core не зависит от Infrastructure)

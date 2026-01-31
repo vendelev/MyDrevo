@@ -17,9 +17,9 @@
 
 ## Связь с архитектурой и правилами
 
-- Архитектура: [Architecture.md](/.ai/Rule/Architecture.md)
-- Процесс добавления фич: [FeatureWorkflow.md](/.ai/Rule/FeatureWorkflow.md)
-- PHP-правила: [CodeHints.md](/.ai/Rule/CodeHints.md)
+- Архитектура: [Architecture.md](/.ai/rules/Architecture.md)
+- Процесс добавления фич: [FeatureWorkflow.md](/.ai/rules/FeatureWorkflow.md)
+- PHP-правила: [CodeHints.md](/.ai/rules/CodeHints.md)
 
 ## Этапы реализации
 

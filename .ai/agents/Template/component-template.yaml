@@ -1,0 +1,17 @@
+components:
+  {{component_id}}:
+    title: "{{component_title}}"
+    entity: component
+    context: {{context_id}}          # можно опустить, если компонент кросс-доменный
+    aspects: [ {{aspect_ids_comma_separated}} ]
+    tech: "{{tech_stack}}"           # пример: "Java, Spring Boot, PostgreSQL"
+    responsibilities: >
+      {{responsibilities_one_or_two_sentences}}
+    inbound:
+      {{#each inbound_components}}
+      - {{this}}
+      {{/each}}
+    outbound:
+      {{#each outbound_components}}
+      - {{this}}
+      {{/each}}
