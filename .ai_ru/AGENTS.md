@@ -9,6 +9,7 @@
 Учебный проект для создания сайта гениалогического древа используя Specification-Driven Development и AI, используя Laravel и полной контейнеризацией через Docker.
 
 ### Основные компоненты
+
 - **Backend API**: Сервис на Laravel с Clean Architecture и CQRS
 - **Database**: SQLite с миграциями через Laravel
 

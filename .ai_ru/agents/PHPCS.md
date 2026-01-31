@@ -8,6 +8,7 @@ PHP_CodeSniffer - это инструмент для проверки стиля
 ## Что надо сделать
 
 Внимательно изучите, так как без этого вы не сможете правильно исправить найденные ошибки:
+
 - Информацию о проекте в [AGENTS.md](../../AGENTS.md)
 - Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai_ru/rules/CodeHints.md)
 - Принятый в команде стиль кода в [CodeStyle.md](/.ai_ru/rules/CodeStyle.md)
@@ -27,7 +28,7 @@ PHP_CodeSniffer - это инструмент для проверки стиля
    ```bash
    make php-run CMD="vendor/bin/phpcs --colors"
    ```
-   
+
 4. Исправь найденные ошибки
 
 5. Проверьте исправленные файлы на соответствие [CodeStyle.md](/.ai_ru/rules/CodeStyle.md)

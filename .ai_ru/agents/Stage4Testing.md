@@ -11,6 +11,7 @@
 ## Что надо сделать
 
 Внимательно изучите:
+
 - [CodeStyle.md](/.ai_ru/rules/CodeStyle.md)
 - [Testing.md](/.ai_ru/rules/TestingHints.md)
 - Новые требования к функционалу в файле [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
@@ -24,6 +25,7 @@
    **ВАЖНО**. Для уменьшения контекста для каждого создания или изменения файла запускай нового агента в режиме "testing".
 
 3. Запустите проверку PHPUnit
+
     ```bash
     make php-run CMD="vendor/bin/phpunit --colors --coverage-text"
     ```
@@ -43,4 +45,3 @@
 
 1. Написаны и запущены тесты для нового функционала
 2. Все тесты проходят, покрытие соответствует требованиям
-

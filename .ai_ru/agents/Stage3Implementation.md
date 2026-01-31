@@ -12,6 +12,7 @@
 ## Что надо сделать
 
 Внимательно изучите:
+
 - Информацию о проекте в [AGENTS.md](../../AGENTS.md)
 - Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai_ru/rules/CodeHints.md)
 - Принятый в команде стиль кода в [CodeStyle.md](/.ai_ru/rules/CodeStyle.md)
@@ -19,7 +20,7 @@
 Обязательные шаги, выполняйте их СТРОГО последовательно:
 
 1. Выполни все описанные действия в файле [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md), строго следуя последовательности из плана.
-   **ВАЖНО**. Для уменьшения контекста для каждого создания или изменения файла запускай нового агента 
+   **ВАЖНО**. Для уменьшения контекста для каждого создания или изменения файла запускай нового агента
    в режиме "implementation".
 
 2. Проверь код на соответствие [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) и [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) (самопроверка перед автоматизацией).
@@ -38,4 +39,3 @@
 
 1. Все действия из файла [StageX_TaskForDev.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) выполнены.
 2. Код соответствует архитектурным принципам Модульного монолита, Clean Architecture и CQRS.
-

@@ -69,6 +69,7 @@
 - Слушатель события - [`ExampleCreatedListener.php`](../../backend/src/Example/Presentation/Listener/ExampleCreatedListener.php)
 
 ### Корень модуля
+
 - Конфигурация документации модуля - [`dochub.yaml`](../../backend/src/Example/dochub.yaml)
 - Описание модуля - [`Readme.md`](../../backend/src/Example/Readme.md)
 

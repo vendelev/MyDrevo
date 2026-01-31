@@ -15,7 +15,9 @@
 =====================
 ВХОДНЫЕ ДАННЫЕ
 =====================
+
 Вы получите:
+
 - Полный исходный код проекта (все файлы и директории)
 - Конфигурационные файлы
 - Схемы баз данных и миграции (при наличии)
@@ -27,12 +29,15 @@
 =====================
 ЦЕЛЬ
 =====================
+
 Создать ОДИН объединённый YAML-документ, содержащий:
+
 1. Каноническую базу знаний проекта
 2. Индексы сущностей с перекрёстными ссылками
 3. Логические представления знаний (наложения) для различных аналитических перспектив
 
 Результат должен быть пригоден для:
+
 - Навигации LLM и ответов на вопросы
 - Архитектурного анализа
 - Онбординга
@@ -43,6 +48,7 @@
 =====================
 ОБЩИЕ ПРАВИЛА
 =====================
+
 - Никогда не угадывайте недокументированное поведение
 - Если что-то неясно, явно помечайте это как "unknown"
 - Каждый факт должен быть прослеживаем до файла или местоположения в коде
@@ -55,6 +61,7 @@
 =====================
 ОБЯЗАТЕЛЬНЫЙ ФОРМАТ ВЫВОДА
 =====================
+
 Вывод ДОЛЖЕН быть единым валидным YAML-документом со следующей структурой:
 
 ============================================================
@@ -72,6 +79,7 @@ frameworks:
 repositories_or_services:
 
 structure:
+
 - id:
   path:
   type: [service|module|library|ui|config|infra|script|test|other]
@@ -81,6 +89,7 @@ structure:
 
 architecture:
 layers:
+
 - id:
 name:
 responsibility:
@@ -90,6 +99,7 @@ dependencies_out:
 
 runtime:
 entry_points:
+
 - id:
 file:
 function_or_command:
@@ -103,6 +113,7 @@ schedulers:
 cron_or_timers:
 
 interfaces:
+
 - id:
   name:
   type: [function|class|method|service]
@@ -115,6 +126,7 @@ interfaces:
   calls:
 
 endpoints:
+
 - id:
   protocol: [http|rpc|event|queue|cli]
   method:
@@ -127,6 +139,7 @@ endpoints:
 
 data:
 entities:
+
 - id:
 name:
 type: [table|document|object|struct]
@@ -143,6 +156,7 @@ migrations:
 
 configuration:
 config_files:
+
 - id:
 file:
 purpose:
@@ -154,6 +168,7 @@ default:
 effect:
 
 integrations:
+
 - id:
   system:
   type: [api|database|queue|filesystem|cloud|third_party]
@@ -171,12 +186,14 @@ secrets_handling:
 sensitive_data_paths:
 
 constraints:
+
 - id:
   description:
   enforced_in:
   consequence_if_violated:
 
 notes:
+
 - id:
   observation:
   evidence:
@@ -210,6 +227,7 @@ entities:
 views:
 
 subprojects:
+
 - id:
 name:
 purpose:
@@ -219,6 +237,7 @@ runtime_scope:
 depends_on:
 
 user_scenarios:
+
 - id:
 name:
 actor:
@@ -234,6 +253,7 @@ uses:
 postconditions:
 
 interfaces:
+
 - id:
 type: [http_api|rpc|event|cli|internal_contract]
 description:
@@ -242,6 +262,7 @@ consumers:
 data_models:
 
 features:
+
 - id:
 name:
 business_value:
@@ -250,6 +271,7 @@ scenarios:
 risks:
 
 ui_components:
+
 - id:
 type: [page|form|widget|dialog|component]
 location:
@@ -257,6 +279,7 @@ used_in:
 talks_to:
 
 risks:
+
 - id:
 description:
 related_entities:
@@ -265,6 +288,7 @@ mitigation:
 ============================================================
 ФИНАЛЬНЫЕ ТРЕБОВАНИЯ
 ============================================================
+
 - Вывод ДОЛЖЕН быть единым валидным YAML-документом
 - Все ссылки должны разрешаться в определённые идентификаторы сущностей
 - Представления не должны переопределять или дублировать канонические данные
