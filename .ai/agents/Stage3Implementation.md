@@ -7,7 +7,7 @@
 
 ## Входные параметры (Пользовательский ввод)
 
-/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у
+/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у
  пользователя.
 
 ## Что надо сделать
@@ -21,14 +21,14 @@
 Обязательные шаги, выполняйте их СТРОГО последовательно:
 
 1. Выполни все описанные действия в файле
-   [TaskX_TaskForDev.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForDev.md),
+   [TaskX_TaskForDev.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskList/TaskX_TaskForDev.md),
    строго следуя последовательности из плана.
    **ВАЖНО**. Для уменьшения контекста для каждого создания или изменения файла запускай нового агента
    в режиме "implementation".
 
 2. Проверь код на соответствие:
-   - [TaskX_TaskForDev.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForDev.md)
-   - [Spec.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) (самопроверка перед автоматизацией).
+   - [TaskX_TaskForDev.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskList/TaskX_TaskForDev.md)
+   - [Spec.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/Spec.md) (самопроверка перед автоматизацией).
 
 3. Проверь соблюдение архитектурных принципов:
 
@@ -43,5 +43,5 @@
 ## Критерии завершения этапа
 
 1. Все действия из файла:
-   - [TaskX_TaskForDev.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForDev.md) выполнены.
+   - [TaskX_TaskForDev.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskList/TaskX_TaskForDev.md) выполнены.
 2. Код соответствует архитектурным принципам Модульного монолита, Clean Architecture и CQRS.

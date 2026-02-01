@@ -12,7 +12,7 @@ $ARGUMENTS
 
 - `subagent_type`: `testing`
 - `prompt`: "Напиши тесты для этапа реализации {X} из файла
-  @/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md согласно инструкциям.
+  @/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskSummary.md согласно инструкциям.
   Верни список созданных или измененных файлов для последующей проверки"
 
 Дождись завершения работы агента и сохрани список файлов из его ответа.

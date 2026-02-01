@@ -6,7 +6,7 @@
 
 ## Входные параметры (Пользовательский ввод)
 
-{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
+{YYYY}/{MM}/{FEATURE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
 
 ## Что надо сделать
 
@@ -14,8 +14,8 @@
 
 - [CodeStyle.md](/.ai/rules/CodeStyle.md)
 - [Testing.md](/.ai/rules/TestingHints.md)
-- Новые требования к функционалу в файле [Spec.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- Реализацию в файле [TaskX_TaskForTest.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForTest.md)
+- Новые требования к функционалу в файле [Spec.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/Spec.md)
+- Реализацию в файле [TaskX_TaskForTest.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskList/TaskX_TaskForTest.md)
 
 Обязательные шаги, выполняйте их СТРОГО последовательно:
 

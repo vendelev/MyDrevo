@@ -5,4 +5,4 @@ model: sonnet
 allowed-tools: Task
 ---
 
-@.ai_ru/commands/ra-spec.md
+@.ai_ru/commands/ra-feature.md

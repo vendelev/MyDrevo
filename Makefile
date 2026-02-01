@@ -18,7 +18,7 @@ help:
 	$(TAB) make php-cli - Bash PHP контейнера.
 	$(TAB) make php-log - Логи PHP контейнера.
 	$(TAB) make php-run CMD="php artisan migrate" - Выполнить команду в PHP контейнере.
-	$(TAB) make markdownlint - Проверка правил для markdown файлов.
+	$(TAB) make markdownlint ARGS="Doc" - Проверка правил для markdown файлов.
 
 install:
 	[ -f .env ] || cp .env.example .env
@@ -62,4 +62,4 @@ php-run:
 	${DOCKER_COMPOSE} exec php-dev $(CMD)
 
 markdownlint:
-	npx markdownlint-cli2 Doc
+	npx markdownlint-cli2 $(ARGS)

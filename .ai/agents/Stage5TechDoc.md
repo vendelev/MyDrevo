@@ -13,16 +13,16 @@
 
 ## Входные параметры (Пользовательский ввод)
 
-{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
+{YYYY}/{MM}/{FEATURE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
 
 ## Что надо сделать
 
 Внимательно изучи:
 
 - Информацию о проекте в [`AGENTS.md`](/AGENTS.md)
-- Новые бизнес-требования в [`Spec.md`](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- План реализации в [TaskX_TaskForDev.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForDev.md)
-- План тестирования в [TaskX_TaskForTest.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForTest.md)
+- Новые бизнес-требования в [`Spec.md`](../FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/Spec.md)
+- План реализации в [TaskX_TaskForDev.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskList/TaskX_TaskForDev.md)
+- План тестирования в [TaskX_TaskForTest.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskList/TaskX_TaskForTest.md)
 
 1. Создайте новый файл `/backend/src/{MODULE_FOLDER}/Readme.md` с подробной технической документацией для
    реализованного модуля.
@@ -32,14 +32,14 @@
 
 ### Определение {MODULE_FOLDER}
 
-- Извлеките название модуля из контекста [TaskSummary.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md).
+- Извлеките название модуля из контекста [TaskSummary.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskSummary.md).
   Ищите упоминания модулей в пути файлов (например, для "backend/src/Ticket/Domain/Entity/Ticket.php" - это "Ticket").
 - Если затронуто несколько модулей, создайте файлы `Readme.md` для каждого.
 - Если изменения касаются Core (общепроектного кода), создайте или обновите [`Readme.md`](/Core/Readme.md).
 
 **ВАЖНО**
 Обязательно следует прочитать все созданные и измененные файлы в модуле, так как есть вероятность, что реализация
-отличается от [TaskX_TaskForDev.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForDev.md) и [TaskX_TaskForTest.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForTest.md).
+отличается от [TaskX_TaskForDev.md](../FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskList/TaskX_TaskForDev.md) и [TaskX_TaskForTest.md](../FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskList/TaskX_TaskForTest.md).
 В Readme.md следует описывать реальную реализацию.
 
 Описание должно быть подробное, но без лишних технических подробностей.
@@ -103,7 +103,7 @@
 
 #### 9. Сценарии использования
 
-- Опишите сценарии использования модуля в приложении из файла [Spec.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md).
+- Опишите сценарии использования модуля в приложении из файла [Spec.md](../FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/Spec.md).
 
 ## Критерии завершения этапа
 
@@ -112,7 +112,7 @@
 - Все разделы шаблона заполнены актуальной информацией о модуле
 - При наличии внешних API созданы файлы документации в `/backend/src/{MODULE_FOLDER}/Domain/Doc`
 - Указаны зависимости модуля от других модулей и внешних библиотек
-- Описаны сценарии использования модуля из файла [Spec.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- Описаны сценарии использования модуля из файла [Spec.md](../FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/Spec.md)
 
 ## Ревью пользователем тестов
 

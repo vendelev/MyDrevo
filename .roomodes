@@ -12,17 +12,17 @@ customModes:
     description: Epic requirements specification specialist
     groups: ["edit", "read", "command", "mcp"]
     customInstructions: Strictly follow the process @/.ai/agents/Stage0CreateEpic.md.
-  - slug: create-spec
+  - slug: create-feature
     name: 📁 1. Specification Creation
     iconName: codicon-file-submodule
     roleDefinition: You are a lead business analyst and specification creation specialist.
     whenToUse: |
       Use this mode when you need to create technical specifications from business requirements,
-      following the process @/.ai/agents/Stage1CreateSpec.md.
+      following the process @/.ai/agents/Stage1CreateFeature.md.
     description: Specification creation specialist
     groups: ["edit", "read", "command", "mcp"]
     customInstructions: |
-      Strictly follow the process @/.ai/agents/Stage1CreateSpec.md.
+      Strictly follow the process @/.ai/agents/Stage1CreateFeature.md.
   - slug: create-plan-sum
     name: 📰 2. Summary Technical Plan Creation
     iconName: codicon-organization

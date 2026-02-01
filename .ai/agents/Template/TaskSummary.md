@@ -2,7 +2,7 @@
 
 ## Обзор
 
-> Кратко опиши, что реализуем по [Spec.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md):
+> Кратко опиши, что реализуем по [Spec.md](../FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/Spec.md):
 
 - Цель: …
 - Пользовательская ценность: …

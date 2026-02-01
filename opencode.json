@@ -16,9 +16,9 @@
             "template": "{file:./.ai/commands/ra-epic.md}",
             "model": "opencode/gpt-5-nano"
         },
-        "ra-spec": {
+        "ra-feature": {
             "description": "Описание функциональных требований",
-            "template": "{file:./.ai/commands/ra-spec.md}",
+            "template": "{file:./.ai/commands/ra-feature.md}",
             "model": "opencode/gpt-5-nano"
         },
         "ra-plan-sum": {
@@ -63,10 +63,10 @@
             "description": "Создание бизнес требований",
             "prompt": "{file:./.ai/agents/Stage0CreateEpic.md}"
         },
-        "create-spec": {
+        "create-feature": {
             "model": "opencode/big-pickle",
             "description": "Создание функциональных требований",
-            "prompt": "{file:./.ai/agents/Stage1CreateSpec.md}"
+            "prompt": "{file:./.ai/agents/Stage1CreateFeature.md}"
         },
         "create-plan-sum": {
             "model": "opencode/big-pickle",

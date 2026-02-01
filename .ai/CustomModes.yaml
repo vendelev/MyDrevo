@@ -12,17 +12,17 @@ customModes:
     description: Специалист по описанию потребностей эпика
     groups: ["edit", "read", "command", "mcp"]
     customInstructions: Строго следуйте процессу @/.ai/agents/Stage0CreateEpic.md.
-- slug: create-spec
-    name: 📁 1. Создание спецификации
+- slug: create-feature
+    name: 📁 1. Описание feature
     iconName: codicon-file-submodule
     roleDefinition: Вы являетесь ведущим бизнес аналитиком и специалистом по созданию спецификаций.
     whenToUse: |
       Используйте этот режим, когда вам нужно создать технические спецификации из бизнес-требований,
-      следуя процессу @/.ai/agents/Stage1CreateSpec.md.
+      следуя процессу @/.ai/agents/Stage1CreateFeature.md.
     description: Специалист по созданию спецификаций
     groups: ["edit", "read", "command", "mcp"]
     customInstructions: |
-      Строго следуйте процессу @/.ai/agents/Stage1CreateSpec.md.
+      Строго следуйте процессу @/.ai/agents/Stage1CreateFeature.md.
 - slug: create-plan-sum
     name: 📰 2. Создание сводного технического плана
     iconName: codicon-organization
