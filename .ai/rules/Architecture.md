@@ -1,48 +1,48 @@
-# Project Architecture
+# Архитектура проекта
 
 ## Design Patterns & Principles
 
 1. **CQRS (Command Query Responsibility Segregation)**
 2. **Clean Architecture**
-   - Multi-layered architecture with clear dependencies
-   - Domain-driven design
-   - Framework-independent business logic
+   - Многослойная архитектура с четкими зависимостями
+   - Доменно-ориентированное проектирование
+   - Бизнес-логика, независимая от фреймворка
 3. **Modular Monolith**
-   - Independent modules
-   - Modular API and contracts
-   - Clear module boundaries
+   - Независимые модули
+   - Модульные API и контракты
+   - Четкие границы модулей
 
-## Key Conventions
+## Ключевые соглашения
 
-- **Module**: A maximally self-sufficient part of the product responsible for specific functionality.
-  Each module can contain public domain interfaces, entities, or events that define the boundaries of its usage (module API).
+- **Модуль**: Максимально самодостаточная часть продукта, отвечающая за определённый функционал.
+  Каждый модуль может содержать публичные доменные интерфейсы, сущности или события, определяющие границы его использования (API модуля).
 
-- **UseCase**: Implementation of a specific user behavior scenario (describes what the user wants to do).
+- **UseCase**: Реализация конкретного варианта поведения пользователя (описывает, что пользователь хочет сделать).
 
-- **DTO** (Data Transfer Object): Typed data structure for transfer between layers and modules.
+- **DTO** (Data Transfer Object): Типизированная структура данных для передачи между слоями и модулями.
 
-- **Events** (Event): Specialized DTO for informing other modules about an event that occurred. Three types:
-  - **Notifications** (Notification): DTO describing a message about a completed action in the past. Can be synchronous or asynchronous. Multiple recipients possible. Example: *patient was registered*.
-  - **Queries** (Query): DTO describing a synchronous request for data retrieval. Exactly one recipient (one response). Example: *get patient history*.
-  - **Commands** (Command): DTO describing a synchronous instruction to another module to perform an action (create, modify, delete data). Exactly one recipient (one handler). Example: *create journal entry*.
+- **События** (Event): Специализированный DTO для информирования других модулей о произошедшем событии. Три типа:
+  - **Уведомления** (Notification): DTO описывающий сообщение о завершённом действии в прошлом. Может быть синхронным или асинхронным. Много получателей возможно. Пример: *пациент был зарегистрирован*.
+  - **Запросы** (Query): DTO описывающий синхронный запрос на получение данных. Ровно один получатель (один ответ). Пример: *получить историю пациента*.
+  - **Команды** (Command): DTO описывающий синхронное указание другому модулю выполнить действие (создать, изменить, удалить данные). Ровно один получатель (одна обработка). Пример: *создать запись в журнале*.
 
-## Module Directory Structure
+## Структура директорий в модуле
 
 ### Application
 
-Contains the implementation of the module's business logic:
+Содержит реализацию бизнес-логики модуля:
 
-- **UseCase**: Main class implementing a use case. Coordinates the work of Command, Query, Service.
-- **Command**: CQRS "command" class implementing data modification logic (create, update, delete). Direct database access is allowed to simplify implementation logic.
-- **Query**: CQRS "query" class implementing data retrieval logic. Direct database access is allowed to simplify implementation logic.
-- **Service**: Self-contained implementation of specific logic (framework-independent). Examples: calculator, parser, validator.
-- **Dto**: Objects for data transfer within the Application layer. For example, UseCase receives RequestDTO, creates and enriches local DTO, passes DTO to Command.
-- **Factory**: Factory methods for creating DTO, Response, ValueObject.
-- **Responder**: Generators of special content instead of JSON (Excel, PDF, email). Contains templates and generators.
-  - **Template** - Any templates: email, Excel/Word, Telegram messages.
-  - **{FileName}.php** - Response generator from template. Example: `CreateTaxExcelReport.php`
+- **UseCase**: Основной класс, реализующий вариант использования. Координирует работу Command, Query, Service.
+- **Command**: Класс "команды" CQRS реализующий логику изменения данных (создание, обновление, удаление). Для упрощения реализации логики разрешается работать с БД напрямую.
+- **Query**: Класс "запроса" CQRS реализующий логику получения данных. Для упрощения реализации логики разрешается работать с БД напрямую.
+- **Service**: Самодостаточная реализация специфичной логики (не зависит от фреймворка). Пример: калькулятор, парсер, валидатор.
+- **Dto**: Объекты для передачи данных внутри Application слоя. Например, UseCase получает RequestDTO, создает и обогащает локальную DTO, передает DTO в Command.
+- **Factory**: Фабричные методы для создания DTO, Response, ValueObject.
+- **Responder**: Генераторы специального контента вместо JSON (Excel, PDF, email). Содержит шаблоны и генераторы.
+  - **Template** - Любые шаблоны: email, Excel/Word, сообщения в Telegram.
+  - **{FileName}.php** - Генератор ответа из шаблона. Например: `CreateTaxExcelReport.php`
 
-**Structure Example:**
+**Пример структуры:**
 
 ```php
 Patient/
@@ -66,22 +66,22 @@ Patient/
 
 ### Domain
 
-Subject area.
-Public module API.
-All entities here are accessible outside the module:
+Предметная область.
+Публичное API модуля.
+Все сущности отсюда доступны вне модуля:
 
-- **{InterfaceName}.php**: Contracts (interfaces) for dependency inversion and module interaction.
-- **Request**: DTO of incoming data in Controller/Console. Immutable.
-- **Response**: DTO of outgoing data from Controller. Immutable.
-- **Dto**: Structures for transfer between modules and layers. Immutable.
-- **Entity**: Description of database table structure (used in Command and Repository). For logic simplification, Eloquent models are placed here.
-- **ValueObject**: Narrowly specialized DTO, sometimes with built-in validation. Immutable.
-- **Validation**: Classes for checking business requirements on data.
-- **Event**: Notifications, Queries, Commands for interaction between modules. Immutable.
-- **Exception**: Domain exceptions about errors in the Application layer.
-- **Doc**: Module and its API documentation.
+- **{InterfaceName}.php**: Контракты (интерфейсы) для инверсии зависимостей и взаимодействия модулей.
+- **Request**: DTO входящих данных в Controller/Console. Immutable.
+- **Response**: DTO исходящих данных из Controller. Immutable.
+- **Dto**: Структуры для передачи между модулями и слоями. Immutable.
+- **Entity**: Описание структуры таблицы БД (используется в Command и Repository). Для упрощения логики, Eloquent модели размещаем здесь.
+- **ValueObject**: Узкоспециализированный DTO, иногда, со встроенной валидацией. Immutable.
+- **Validation**: Классы для проверки бизнес-требований к данным.
+- **Event**: Уведомления, Запросы, Команды для взаимодействия между модулями. Immutable.
+- **Exception**: Доменные исключения об ошибках в Application слое.
+- **Doc**: Документация модуля и его API.
 
-**Structure Example:**
+**Пример структуры:**
 
 ```php
 Patient/
@@ -111,13 +111,13 @@ Patient/
 
 ### Infrastructure
 
-Implementation of integrations with external systems (Anti-corruption layer):
+Реализация интеграций с внешними системами (Anti-corruption layer):
 
-- **Repository**: Simplified CQRS for database access.
-- **Adapter**: Implements Domain interfaces for working with external services and other modules.
-- **{ServiceName}**: Adapters for interaction with vendor libraries.
+- **Repository**: Упрощённый CQRS для доступа к БД.
+- **Adapter**: Реализует Domain интерфейсы для работы с внешними сервисами и другими модулями.
+- **{ServiceName}**: Адаптеры для взаимодействия с vendor библиотеками.
 
-**Structure Example:**
+**Пример структуры:**
 
 ```text
 Patient/
@@ -130,16 +130,16 @@ Patient/
 
 ### Presentation
 
-Entry and exit point of the module:
+Точка входа и выхода из модуля:
 
-- **Http/Controller**: HTTP controllers for handling REST requests.
-- **Http/Middleware**: Middleware components.
-- **Http/View**: HTML templates.
-- **Console**: Cron scripts, daemons, console commands.
-- **Listener**: Subscribers to domain events.
-- **Config**: Module configuration (environment, DI, Service Container, routing).
+- **Http/Controller**: HTTP контроллеры для обработки REST запросов.
+- **Http/Middleware**: Middleware компоненты.
+- **Http/View**: HTML шаблоны.
+- **Console**: Крон-скрипты, демоны, консольные команды.
+- **Listener**: Подписчики на доменные события.
+- **Config**: Конфигурация модуля (environment, DI,Service Container, routing).
 
-**Structure Example:**
+**Пример структуры:**
 
 ```text
 Patient/
@@ -159,116 +159,116 @@ Patient/
 │       └── PatientServiceProvider.php
 ```
 
-This is the "maximum" complexity of a single module. It's not required to create all folders at once.
+Это "максимальная" сложность одного модуля. Не требуется создавать все папки сразу.
 
-## Project Directory Structure
+## Структура директорий в проекте
 
-- **backend** - REST API and Console commands implementation
-  - **bootstrap** - Laravel application initialization files
-  - **config** - Laravel configuration files
+- **backend** - реализация REST API и Консольных команд
+  - **bootstrap** - Файлы инициализации приложения Laravel
+  - **config** - Файлы конфигурации Laravel
   - **database**
-    - **migrations** - Database migration files
-    - **storage** - SQLite file storage
+    - **migrations** - Файлы с миграциями в БД
+    - **storage** - Хранение файлов SQLite
   - **src**
-    - **Core** - Application core. Project-wide events, exceptions, framework and vendor wrappers. Structure similar to a module.
-    - **{ModuleName}** - Functionality modules (structure as described above).
+    - **Core** - Ядро приложения. Общепроектные события, исключения, обертки над фреймворком и vendor. Структура аналогична модулю.
+    - **{ModuleName}** - Модули функциональности (структура как описано выше).
   - **tests**
-    - **Architecture** - Architecture tests.
-    - **Suite** - Application test suite.
-      - **{ModuleName}** - Module tests.
-    - **Stub** - Everything necessary for running tests. Example: universal fake-jwt.
-      - **ModelFactory** - Files for generating database records for testing
-    - **TestCase.php** - Abstract wrapper class over the framework.
+    - **Architecture** - Архитектурные тесты.
+    - **Suite** - Набор тестов приложения.
+      - **{ModuleName}** - Тесты модуля.
+    - **Stub** - Все необходимое для выполнения тестов. Например: универсальный fake-jwt.
+      - **ModelFactory** - Файлы для генерации записей в БД для проведения тестирования  
+    - **TestCase.php** - Абстрактный класс-обертка над фреймворком.
 
-- **docker** - Files for building Docker containers.
-- **mock-server** - Configuration for [HTTP mock server](https://github.com/jmartin82/mmock)
+- **docker** - Файлы для сборки Docker контейнеров.
+- **mock-server** - Конфигурация для [HTTP mock server](https://github.com/jmartin82/mmock)
 
-## Layer Dependency Rules
+## Правила зависимостей между слоями
 
-**Each layer can use only its own and lower layers:**
+**Каждый слой может использовать только свой и нижестоящие слои:**
 
-| Layer              | Can Use                                                                                          |
-|--------------------|--------------------------------------------------------------------------------------------------|
-| **Presentation**   | Infrastructure (only own module), Application (only own module), Domain (own and other modules) |
-| **Infrastructure** | Application (only own module), Domain (own and other modules)                                    |
-| **Application**    | Application (only own module), Domain (preferably only own module)                               |
-| **Domain**         | Domain (own and other modules)                                                                   |
+| Слой               | Может использовать                                                                                        |
+|--------------------|-----------------------------------------------------------------------------------------------------------|
+| **Presentation**   | Infrastructure (только своего модуля), Application (только своего модуля), Domain (своего модуля и чужих) |
+| **Infrastructure** | Application (только своего модуля), Domain (своего и чужих модулей)                                       |
+| **Application**    | Application (только своего модуля), Domain (предпочтительно только своего модуля)                         |
+| **Domain**         | Domain (своего и чужих модулей)                                                                           |
 
-**Dependency Injection (DI):**
+**Внедрение зависимостей (DI):**
 
-- No need to create an interface if there's only one implementation. BUT for using Infrastructure implementation in the Application layer, you MUST create an interface in Domain.
-- Example: Application uses `AuthenticationRepositoryInterface` (defined in Domain), which is implemented by `DatabaseAuthenticationRepository` (in Infrastructure).
+- Не требуется создавать интерфейс, если существует одна реализация. НО для использования Infrastructure-реализации в Application слое обязательно создайте интерфейс в Domain.
+- Пример: Application использует `AuthenticationRepositoryInterface` (определена в Domain), которую реализует `DatabaseAuthenticationRepository` (в Infrastructure).
 
-## Module Dependencies
+## Зависимости между модулями
 
-A module should be maximally independent from other modules, except for "Core".
+Модуль должен быть максимально не зависим от других модулей, кроме "Core".
 
-Modules can interact with each other in two ways:
+Модули могут взаимодействовать между собой двумя способами:
 
-1. **Synchronously through interfaces**: "Module A" uses Domain interfaces of "Module B" through Anti-corruption layer (Adapter in Infrastructure).
-2. **Synchronously/Asynchronously through events**: "Module A" generates Domain Event, subscribers (Listeners) of other modules process it.
+1. **Синхронно через интерфейсы**: "Модуль A" использует Domain интерфейсы "модуля B" через Anti-corruption layer (Adapter в Infrastructure).
+2. **Синхронно/Асинхронно через события**: "Модуль A" генерирует Domain Event, подписчики (Listener) других модулей его обрабатывают.
 
-## When to Create Interfaces
+## Когда создавать интерфейсы
 
-An interface (contract) is mandatory in the following cases:
+Интерфейс (контракт) обязателен в следующих случаях:
 
-1. **Within a module**: There are 2+ implementations of functionality.
-   - Example: `CacheRepository` and `DatabaseRepository` both implement `RepositoryInterface`.
-2. **For dependency inversion**: Application layer depends on Domain interface, which is implemented by Infrastructure.
-3. **For module interaction**: When using functionality from another module, always through its Domain interface.
+1. **В рамках модуля**: Существует 2+ реализации функциональности.
+   - Пример: `CacheRepository` и `DatabaseRepository` оба реализуют `RepositoryInterface`.
+2. **Для инверсии зависимостей**: Application слой зависит от Domain интерфейса, который реализует Infrastructure.
+3. **Для взаимодействия модулей**: При использовании функциональности из другого модуля всегда через его Domain интерфейс.
 
-## Validation and Typing
+## Валидация и типизация
 
-### At Controller Level (Presentation)
+### На уровне Controller (Presentation)
 
-**Structural** data characteristics are validated:
+Валидируются **структурные** характеристики данных:
 
-- Field requirements (required / nullable).
-- Field types (string, int, array, etc.).
-- Basic formats (email, date, etc.).
-- Goal: Ensure that a typed DTO can be created from the incoming request.
+- Обязательность полей (required / nullable).
+- Типы полей (string, int, array, и т.д.).
+- Базовые форматы (email, date, и т.д.).
+- Цель: Гарантировать, что можно создать типизированный DTO из входящего запроса.
 
-**Tools:** ValidationInterface `$this->validator->validateData()`.
+**Инструменты:** ValidationInterface `$this->validator->validateData()`.
 
-### At UseCase Level (Application)
+### На уровне UseCase (Application)
 
-**Business requirements** on data are validated:
+Валидируются **бизнес-требования** к данным:
 
-- Logical constraints (is patient over 18 years old?).
-- States (can the action be performed in the current status?).
-- Accessibility (is there access to the resource?).
-- Goal: Ensure correctness of the business process.
+- Логические ограничения (пациент старше 18 лет?).
+- Состояния (можно ли выполнить действие в текущем статусе?).
+- Доступность (есть ли доступ к ресурсу?).
+- Цель: Гарантировать корректность бизнес-процесса.
 
-**Tools:** Validation classes in Domain, checks in UseCase or Service.
+**Инструменты:** Validation классы в Domain, проверки в UseCase или Service.
 
-### For Complex Input Data
+### Для сложных входных данных
 
-Extract parsing and validation logic from Controller:
+Выносите логику парсинга и валидации из Controller:
 
 ```php
-// In Controller:
+// В Controller:
 $patientDto = PatientFactory::createFromRequest($request->validated());
 
-// Or in Domain (ValueObject):
+// Или в Domain (ValueObject):
 $email = new Email($request->input('email'));
 ```
 
-### DTO Typing
+### Типизация DTO
 
-- **Public and Protected methods**: Use typed DTOs as parameters and return values.
-- **Private methods**: Associative arrays are allowed.
-- **Goal**: Ensure type safety and document the contract of public methods.
+- **Public и Protected методы**: Используйте типизированные DTO как параметры и возвращаемые значения.
+- **Private методы**: Допускается использование ассоциативных массивов.
+- **Цель**: Обеспечить type safety и документировать контракт публичных методов.
 
-## Responsibility Granularity in Classes
+## Гранулярность ответственности в классе
 
-### Keep methods in one class if:
+### Оставлять методы в одном классе, если
 
-- A constructor dependency is used in **multiple methods** for similar functionality.
-- Methods are responsible for one area of responsibility.
+- Зависимость из конструктора используется в **нескольких методах** для похожей функциональности.
+- Методы отвечают за одну зону ответственности.
 
-### Separate into different classes if:
+### Разделять на разные классы, если
 
-- A constructor dependency is used in **2 methods out of 5+**.
-- This indicates separation of responsibilities.
-- Example: Creating a separate `NotificationService` instead of loading it in the main UseCase.
-- **Advantage**: Avoid loading unused dependencies, improve testability.
+- Зависимость из конструктора используется в **2 методах из 5+**.
+- Это указывает на разделение ответственности.
+- Пример: Создание отдельного `NotificationService` вместо загрузки в основной UseCase.
+- **Преимущество**: Избегаете загрузки неиспользуемых зависимостей, улучшаете тестируемость.

@@ -1,42 +1,41 @@
-# Workflow for Adding a New Feature
+# Workflow при добавлении новой feature
 
+## 1. Планирование (Domain слой)
 
-## 1. Planning (Domain Layer)
+Начните с определения **доменной модели**:
 
-Start by defining the **domain model**:
+- Какие **Entity** нужны? (Сущности, представляющие объекты реальности)
+- Какие **ValueObject** требуются? (Неизменяемые значения с валидацией)
+- Какие **интерфейсы** (контракты) нужны другим слоям?
+- Какие **исключения** должны быть выброшены при нарушении бизнес-правил?
 
-- Which **Entities** are needed? (Entities representing real-world objects)
-- Which **ValueObjects** are required? (Immutable values with validation)
-- Which **interfaces** (contracts) are needed for other layers?
-- Which **exceptions** should be thrown when business rules are violated?
+## 2. Логика (Application слой)
 
-## 2. Logic (Application Layer)
+Реализуйте **UseCase** координирующий работу:
 
-Implement a **UseCase** that coordinates the work:
+- Используйте Domain интерфейсы через конструктор (внедрение зависимостей).
+- Валидируйте **бизнес-требования** (статусы, доступность, логические ограничения).
+- Скоординируйте работу `Query`, `Command`, `Service` и других компонентов.
+- Возвращайте типизированный DTO (Response).
 
-- Use Domain interfaces through the constructor (dependency injection).
-- Validate **business requirements** (statuses, availability, logical constraints).
-- Coordinate the work of `Query`, `Command`, `Service`, and other components.
-- Return a typed DTO (Response).
+## 3. Интеграция (Infrastructure слой)
 
-## 3. Integration (Infrastructure Layer)
+Реализуйте **Repository** и **Adapter** для доступа к внешним системам:
 
-Implement **Repository** and **Adapter** for access to external systems:
+- Repository преобразует доменные Entity в Eloquent модели.
+- Adapter реализует Domain интерфейсы для работы с внешними сервисами.
+- Разделяйте логику: Repository для БД, Adapter для сервисов.
 
-- Repository transforms domain Entities into Eloquent models.
-- Adapter implements Domain interfaces for working with external services.
-- Separate the logic: Repository for database, Adapter for services.
+## 4. Точка входа (Presentation слой)
 
-## 4. Entry Point (Presentation Layer)
+Создайте **Controller**, **Listener** или **Console Command**:
 
-Create a **Controller**, **Listener**, or **Console Command**:
+- Controller получает Request, валидирует структурные данные, вызывает UseCase.
+- Listener реагирует на доменные события других модулей.
+- Console Command реализует фоновые задачи.
 
-- Controller receives a Request, validates structural data, calls UseCase.
-- Listener responds to domain events from other modules.
-- Console Command implements background tasks.
+## 5. Тестирование
 
-## 5. Testing
-
-- **Unit tests** for Domain layer (Entity, ValueObject, Service).
-- **Integration tests** for Infrastructure layer (UseCase, Query, Command, Repository, Adapter).
-- **E2E tests** for the complete flow from HTTP request to response.
+- **Unit тесты** Domain слоя (Entity, ValueObject, Service).
+- **Integration тесты** Infrastructure слоя (UseCase, Query, Command, Repository, Adapter).
+- **E2E тесты** полного потока от HTTP запроса до ответа.

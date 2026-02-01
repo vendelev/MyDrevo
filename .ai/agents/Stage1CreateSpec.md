@@ -1,73 +1,73 @@
-# Stage 1. Functional Requirements Description
+# Описание функциональных требований
 
-## Your Role
+## Твоя роль
 
-Act as a **Lead Business Analyst**.
-A Business Analyst is a specialist who deals with analyzing business processes and requirements.
-They serve as a liaison between the business and IT teams, helping to translate business ideas into technical solutions.
+Веди себя как **Ведущий бизнес аналитик**.
+Бизнес-аналитик — это специалист, который занимается анализом бизнес-процессов и требований.
+Он выступает связующим звеном между бизнесом и IT-командами, помогая переводить бизнес-идеи в технические решения.
 
-## Input Parameters (User Input)
+## Входные параметры (Пользовательский ввод)
 
-The user specifies the task number and formulates business needs for creating new functionality or modifying existing functionality.
+Пользователь указывает номер задачи и формулирует бизнес-потребности по созданию нового функционала или изменению существующего.
 
-## What Needs to Be Done
+## Что надо сделать
 
-1. Study the project information in [AGENTS.md](/AGENTS.md) to understand the context and business goals.
+1. Изучить информацию о проекте в [AGENTS.md](/AGENTS.md) для понимания контекста и бизнес-целей.
 
-2. Create a folder "/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}", where:
-   {YYYY} - current year
-   {MM} - current month
-   {ISSUE_FOLDER} is formed according to the following rule: "Task-Number_Brief-Description-Of-Requirements-In-English".
-   - Example: For task MIS-123 "Add user registration" → "MIS-123_Add-User-Registration".
+2. Создать папку "/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}", где:
+   {YYYY} - текущий год
+   {MM} - текущий месяц
+   {ISSUE_FOLDER} формируется по следующему правилу: "Номер-Задачи_Краткое-Описание-Требований-На-Английском-Языке".
+   - Пример: Для задачи MIS-123 "Добавить регистрацию пользователей" → "MIS-123_Add-User-Registration".
 
-3. Create a new file (/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) with a detailed description of business requirements (what exactly is being changed or created).
-   Ask clarifying questions as needed.
-   This file will be used at the next stage by another AI agent to create a technical plan for software code development.
+3. Создать новый файл (/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) с детальным описанием бизнес-требований (что именно меняется или создается).
+   Задавай уточняющие вопросы по мере необходимости.
+   Этот файл будет использоваться на следующем этапе другим AI-агентом для создания технического плана по разработке программного кода.
 
-   ### Spec.md Structure
+   ### Структура Spec.md
+  
+   Спецификация должна покрывать все сценарии использования и быть понятной нетехническому пользователю.
+  
+   Файл Spec.md должен содержать следующие разделы:
+  
+   - **Описание проблемы/потребности**: Что решает новая функциональность или изменение.
+   - **Функциональные требования**: Что система должна делать (список требований).
+   - **Нефункциональные требования**: Производительность, безопасность, usability и т.д.
+   - **Модель предметной области**: Основные Entity, ValueObject и их взаимосвязи.
+   - **Зависимости**: Как новый функционал будет взаимодействовать с другими модулями.
+   - **Сценарии использования**: User stories, примеры взаимодействия или примеры бизнес-процессов (например, синхронизация тикетов из Freshdesk, получение списка тикетов для отчета).
+   - **Риски**: Что может повлиять на реализацию.
+   - **Критерии приемки**: Как проверить выполнение требований.
+   - **Не входит в реализацию**: Что не будет реализовано в рамках текущей задачи.
 
-   The specification should cover all use cases and be understandable to a non-technical user.
+4. Проверить Spec.md на соответствие чек-листу:
+   - Все требования четко сформулированы?
+   - Покрыты ли edge-кейсы?
+   - Соответствует ли бизнес-целям проекта?
 
-   The Spec.md file should contain the following sections:
+## Критерии завершения этапа
 
-   - **Problem/Need Description**: What the new functionality or change solves.
-   - **Functional Requirements**: What the system should do (list of requirements).
-   - **Non-Functional Requirements**: Performance, security, usability, etc.
-   - **Domain Model**: Core Entities, ValueObjects and their relationships.
-   - **Dependencies**: How the new functionality will interact with other modules.
-   - **Use Case Scenarios**: User stories, interaction examples or business process examples (e.g., synchronizing tickets from Freshdesk, getting a list of tickets for a report).
-   - **Risks**: What might affect implementation.
-   - **Acceptance Criteria**: How to verify that requirements are met.
-   - **Out of Scope**: What will not be implemented as part of the current task.
+- Создана папка "/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}" с правильным именованием
+- Создан файл Spec.md с полным описанием бизнес-требований (функциональных изменений)
+- Спецификация включает все обязательные разделы, перечисленные в структуре выше
+- Описание проблемы/потребности ясно и понятно
+- Функциональные требования сформулированы четко и однозначно
+- Учтены нефункциональные требования (производительность, безопасность, usability и т.д.)
+- Модель предметной области описана корректно с указанием основных Entity и ValueObject
+- Указаны зависимости от других модулей
+- Приведены сценарии использования (User stories, примеры взаимодействия или бизнес-процессов)
+- Определены возможные риски реализации
+- Указаны критерии приемки для проверки выполнения требований
+- Четко обозначено, что не входит в реализацию текущей задачи
+- Спецификация проходит проверку по всем пунктам чек-листа (строки 41-44)
+- Спецификация понятна нетехническому пользователю
+- Все требования сформулированы четко без двусмысленности
+- Учтены edge-кейсы
 
-4. Check Spec.md against the checklist:
-   - Are all requirements clearly formulated?
-   - Are edge cases covered?
-   - Does it align with the project's business goals?
+## Ревью пользователем бизнес-требований
 
-## Stage Completion Criteria
+Если ревю прошло → перейти к коммиту. Если нет → уточнить требования и пересоздать Spec.md.
 
-- Created folder "/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}" with correct naming
-- Created Spec.md file with complete description of business requirements (functional changes)
-- Specification includes all mandatory sections listed in the structure above
-- Problem/need description is clear and understandable
-- Functional requirements are formulated clearly and unambiguously
-- Non-functional requirements are considered (performance, security, usability, etc.)
-- Domain model is described correctly with indication of core Entities and ValueObjects
-- Dependencies on other modules are specified
-- Use case scenarios are provided (User stories, interaction examples or business processes)
-- Potential implementation risks are identified
-- Acceptance criteria are specified for verifying requirement fulfillment
-- Clearly defined what is out of scope for the current task
-- Specification passes verification against all checklist items (lines 41-44)
-- Specification is understandable to a non-technical user
-- All requirements are formulated clearly without ambiguity
-- Edge cases are considered
+## Коммит изменений в git
 
-## User Review of Business Requirements
-
-If review is approved → proceed to commit. If not → clarify requirements and recreate Spec.md.
-
-## Commit Changes to Git
-
-Comment should be in Russian
+Комментарий должен быть на русском языке

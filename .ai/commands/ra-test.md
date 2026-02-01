@@ -1,82 +1,82 @@
-# Write tests.
+# Напиши тесты
 
-## Input Data
+## Входные данные
 
 $ARGUMENTS
 
-## Workflow Algorithm
+## Алгоритм работы
 
-### Step 1. Writing Tests
+### Шаг 1. Написание тестов
 
-Call Task tool (switch_mode) to write tests:
-
-- `subagent_type`: `testing`
-- `prompt`: "Write tests for implementation stage {X} from file
-  @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md according to instructions.
-  Return a list of created or modified files for subsequent verification."
-
-Wait for the agent to complete and save the list of files from its response.
-
-### Step 2. Re-verification
-
-After the agent completes, call Task tool (switch_mode) for re-verification:
+Вызови Task tool (switch_mode) для написания тестов:
 
 - `subagent_type`: `testing`
-- `prompt`: "Re-verify the created file {file path} for compliance with your instructions.
-  Return a list of remarks."
+- `prompt`: "Напиши тесты для этапа реализации {X} из файла
+  @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md согласно инструкциям.
+  Верни список созданных или измененных файлов для последующей проверки"
 
-To reduce context, assign each agent the task of checking only one file.
+Дождись завершения работы агента и сохрани список файлов из его ответа.
 
-Wait for the agent to complete and save the list of remarks.
+### Шаг 2. Перепроверка
 
-### Step 3. Fixing Remarks
-
-If remarks are found, call a separate Task tool (switch_mode) for each file:
+По окончанию работы агента вызови Task tool (switch_mode) для перепроверки:
 
 - `subagent_type`: `testing`
-- `prompt`: "Make corrections to file {file path} according to remarks: {list of remarks}"
+- `prompt`: "Перепроверь созданный файл {путь к файлу} на соответствие своим инструкциям.
+  Верни список замечаний"
 
-To reduce context, assign each agent the task of modifying only one file.
+Для уменьшения контекста каждому агенту давай задание по проверке только одного файла.
 
-### Step 4. Automatic Code and Style Fix
+Дождись завершения работы агента и сохрани список замечаний.
 
-Call Task tool (switch_mode):
+### Шаг 3. Исправление замечаний
+
+Если найдены замечания, для каждого файла вызови отдельный Task tool (switch_mode):
+
+- `subagent_type`: `testing`
+- `prompt`: "Внеси правки в файл {путь к файлу} согласно замечаниям: {список замечаний}"
+
+Для уменьшения контекста каждому агенту давай задание по изменению только одного файла.
+
+### Шаг 4. Автоматическое исправление кода и стиля
+
+Вызови Task tool (switch_mode):
 
 - `subagent_type`: `code-auto-fix`
-- `prompt`: "Fix code and style"
+- `prompt`: "Исправь код и стиль"
 
-### Step 5. Type Error Checking
+### Шаг 5. Проверка ошибок типов
 
-Call Task tool (switch_mode):
+Вызови Task tool (switch_mode):
 
 - `subagent_type`: `phpstan`
-- `prompt`: "Check and fix type errors"
+- `prompt`: "Проверь и исправь ошибки типов"
 
-If the agent returns an error message, restart the subtask (no more than 2 times).
+Если агент вернул сообщение об ошибках, перезапусти подзадачу (не более 2-х раз).
 
-### Step 6. Refactoring
+### Шаг 6. Рефакторинг
 
-Call Task tool (switch_mode):
+Вызови Task tool (switch_mode):
 
 - `subagent_type`: `rector`
-- `prompt`: "Check and fix code"
+- `prompt`: "Проверь и исправь код"
 
-### Step 7. Code Style Check
+### Шаг 7. Проверка стиля кода
 
-Call Task tool (switch_mode):
+Вызови Task tool (switch_mode):
 
 - `subagent_type`: `phpcs`
-- `prompt`: "Check and fix code style"
+- `prompt`: "Проверь и исправь стиль кода"
 
-If the agent returns an error message, restart the subtask (no more than 2 times).
+Если агент вернул сообщение об ошибках, перезапусти подзадачу (не более 2-х раз).
 
-### Step 8. Running Tests
+### Шаг 8. Запуск тестов
 
-Call Task tool (switch_mode):
+Вызови Task tool (switch_mode):
 
 - `subagent_type`: `testing`
-- `prompt`: "Run PHPUnit tests and check results"
+- `prompt`: "Запусти PHPUnit тесты и проверь результаты"
 
-### Step 9. Mark Stage as Completed
+### Шаг 9. Пометка этапа как завершённого
 
-In the Task.md file, mark the corresponding implementation stage as completed (✅ Stage completed).
+В файле TaskSummary.md сделай пометку у соответствующего этапа реализации, что он выполнен (✅ Задача выполнена).

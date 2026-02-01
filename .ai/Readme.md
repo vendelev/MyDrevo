@@ -1,163 +1,164 @@
-# Multi-Agent Development
+# Мультиагентная разработка
 
 ***
 
-## General Concept
+## Общая концепция
 
-The system consists of a team of specialized agents coordinated by an orchestrator.
-Each agent performs a specific role in the development process.
+Система состоит из команды специализированных агентов, координируемых оркестратором.
+Каждый агент выполняет определённую роль в процессе разработки.
 
-The orchestrator manages the work sequence, transfers results between agents, and stops the process
-when blocking questions arise.
+Оркестратор управляет последовательностью работы, передаёт результаты между агентами и останавливает процесс
+ при возникновении блокирующих вопросов.
 
 ***
 
-## Agent Roles
+## Роли агентов
 
-### Orchestrator
+### Оркестратор
 
-**Function:**
+**Функция:**
 
-- Coordination of the entire development process
-- Assigns tasks to other agents
-- Receives and analyzes results
-- Determines next steps
-- Stops the process when blocking questions arise
-- Manages review-refinement cycles
+- Координация всего процесса разработки
+- Ставит задачи другим агентам
+- Принимает и анализирует результаты
+- Определяет следующие шаги
+- Останавливает процесс при блокирующих вопросах
+- Управляет циклами review-доработка
 
 ### Product Owner
 
-**Function:** [Describing business needs and planning epic stages](/.ai/agents/Stage0CreateEpic.md)
+**Функция:** [Описание бизнес потребностей и планирование этапов эпика](/.ai/agents/Stage0CreateEpic.md)
 
-### Business Analyst
+### Бизнес аналитик
 
-**Function:** [Describing business requirements](/.ai/agents/Stage1CreateSpec.md)
+**Функция:** [Описание бизнес-требований](/.ai/agents/Stage1CreateSpec.md)
 
-### System Analyst + IT Architect
+### Системный аналитик + IT архитектор
 
-**Function:** [Forming a summary technical plan](/.ai/agents/Stage2CreatePlanSummary.md)
+**Функция:** [Формирование сводного технического плана](/.ai/agents/Stage2CreatePlanSummary.md)
 
-### System Analyst + PHP Developer
+### Системный аналитик + PHP разработчик
 
-**Function:** [Forming a technical plan for code development](/.ai/agents/Stage2CreatePlanDev.md)
+**Функция:** [Формирование технического плана по разработке кода](/.ai/agents/Stage2CreatePlanDev.md)
 
-### System Analyst + Test Developer
+### Системный аналитик + Разработчик тестов
 
-**Function:** [Forming a technical plan for writing tests](/.ai/agents/Stage2CreatePlanTest.md)
+**Функция:** [Формирование технического плана по написанию тестов](/.ai/agents/Stage2CreatePlanTest.md)
 
-### PHP Developer
+### PHP разработчик
 
-**Function:** [Software code development](/.ai/agents/Stage3Implementation.md)
+**Функция:** [Разработка программного кода](/.ai/agents/Stage3Implementation.md)
 
-### Test Developer
+### Разработчик тестов
 
-**Function:** [Test development](/.ai/agents/Stage4Testing.md)
+**Функция:** [Разработка тестов](/.ai/agents/Stage4Testing.md)
 
-### Technical Writer
+### Технический писатель
 
-**Function:** [Creating technical documentation](/.ai/agents/Stage5TechDoc.md)
+**Функция:** [Создание технической документации](/.ai/agents/Stage5TechDoc.md)
 
-### IT Architect
+### IT архитектор
 
-**Function:** [Creating architectural documentation](/.ai/agents/Stage6ArchDoc.md)
+**Функция:** [Создание архитектурной документации](/.ai/agents/Stage6ArchDoc.md)
 
 ***
 
-## Workflow Scheme
+## Схема работы
 
-At each stage of multi-agent development, the steps for working with agents will be the same:
+На каждом этапе мультиагентной разработки шаги работы с агентами будут одинаковы:
 
-1. Create a new context in "**orchestrator**" mode and write a command to it (see description of each stage).
-2. Conduct a review, make corrections yourself or give a command to the agent for corrections.
-3. Make a commit yourself or give the command: `make a commit`.
-   The command to the agent should be given in the "**orchestrator**" task so that the agent, having the general context, can correctly
-   compose the commit comment.
+1. Создаем новый контекст в режиме "**orchestrator**" и пишем ему команду (см описание каждого этапа).
+2. Проводим ревью, вносим правки самостоятельно или даем команду на исправление агенту.
+3. Делаем коммит самостоятельно или даем команду: `сделай коммит`.
+   Команду агенту надо давать в задаче "**orchestrator**", чтобы агент, имея общий контекст, смог правильно
+   составить комментарий к коммиту.
 
 ### Workflow
 
-- Step 0 is executed first, where the epic and stages are created.
-- Step 1 is repeated as many times as stages were created.
-- Step 2 is repeated for each stage immediately before implementation.
-- Since the technical plan is also divided into sub-stages, Steps 3-6 are repeated for each sub-stage.
-- In Step 7, human-readable documentation is created.
-- In Step 8, architectural documentation is created describing the interaction and dependencies of the entire system.
+- Первым выполняется Шаг 0, где создается эпик и этапы.
+- Шаг 1 повторяется столько раз, сколько было создано этапов.
+- Шаг 2 повторяется для каждого этапа непосредственно перед реализацией.
+- Тк технический план тоже разбит на подэтапы, Шаги 3-6 повторяются для каждого подэтапа.
+- На Шаге 7 создается человекочитаемая документация.
+- На Шаге 8 создается архитектурная документация описывающая взаимодействие и зависимости всей системы.
 
-## Recommendations
+## Рекомендации
 
-If the task is not large, creating an epic is not mandatory. You can immediately create a specification with a description of
-business requirements.
+Если задача не большая, то создавать эпик не обязательно. Можно сразу создать спецификацию с описанием
+ бизнес-требований.
 
-After creating the epic, create **only specifications** for each stage.
-Create technical plans immediately before starting implementation.
+После создания эпика создавайте по каждому этапу **только спецификации**.
+А технические планы создавайте непосредственно перед началом реализации.
 
-Creating technical plans "for the future" leads to the fact that after completing the current stage, you have to
-reconsider the implementation plan for the next stage.
+Создание технических планов "на будущее" приводит к тому, что после выполнения текущего этапа приходится
+ пересматривать план реализации следующего этапа.
 
-To reduce context and simplify code review, the technical plan is also divided into several implementation sub-stages
-+ separately code development and test writing.
+Для уменьшения контекста и упрощения code-review технический план так же разбивается на несколько подэтапов реализации  
 
-## Work Sequence
+- по отдельности разработка кода и написание тестов.
 
-### Step 0. Describing business requirements and planning epic stages
+## Последовательность работ
 
-Command: `/ra-epic <epic number> <description of business needs>`
+### Шаг 0. Описание бизнес требований и планирование этапов эпика
 
-Algorithm: [ra-epic.md](/.ai/commands/ra-epic.md)
+Команда: `/ra-epic <номер эпика> <описание бизнес-потребностей>`
 
-### Step 1. Describing functional requirements
+Алгоритм: [ra-epic.md](/.ai/commands/ra-epic.md)
 
-Command: `/ra-spec <task number> <path to epic Summary.md> <stage number>`
+### Шаг 1. Описание функциональных требований
 
-Algorithm: [ra-spec.md](/.ai/commands/ra-spec.md)
+Команда: `/ra-spec <номер задачи> <путь к Summary.md эпика> <номер этапа>`
 
-### Step 2. Forming a summary technical plan
+Алгоритм: [ra-spec.md](/.ai/commands/ra-spec.md)
 
-**Recommendation**: create the technical plan immediately before development.
-Creating a plan "for the future" leads to the fact that after implementing the current stage, you have to
-reconsider the development plan for the next stage.
+### Шаг 2. Формирование сводного технического плана
 
-Command: `/ra-plan-sum <path to task Spec.md>`
+**Рекомендация**: создавайте технический план непосредственно перед разработкой.
+Создание плана "на будущее" приводит к тому, что после реализации текущего этапа приходится
+пересматривать план разработки следующего этапа.
 
-Algorithm: [ra-plan-sum.md](/.ai/commands/ra-plan-sum.md)
+Команда: `/ra-plan-sum <путь к Spec.md задачи>`
 
-### Step 3. Forming a technical plan for code development
+Алгоритм: [ra-plan-sum.md](/.ai/commands/ra-plan-sum.md)
 
-Command: `/ra-plan-dev <path to task folder> <stage number>`
+### Шаг 3. Формирование технического плана по разработке кода
 
-Algorithm: [ra-plan-dev.md](/.ai/commands/ra-plan-dev.md)
+Команда: `/ra-plan-dev <путь к папке задачи> <номер этапа>`
 
-### Step 4. Forming a technical plan for writing tests
+Алгоритм: [ra-plan-dev.md](/.ai/commands/ra-plan-dev.md)
 
-Command: `/ra-plan-test <path to task folder> <stage number>`
+### Шаг 4. Формирование технического плана по написанию тестов
 
-Algorithm: [ra-plan-test.md](/.ai/commands/ra-plan-test.md)
+Команда: `/ra-plan-test <путь к папке задачи> <номер этапа>`
 
-### Step 5. Software code development
+Алгоритм: [ra-plan-test.md](/.ai/commands/ra-plan-test.md)
 
-Command: `/ra-impl <path to task Task.md> <implementation stage number>`
+### Шаг 5. Разработка программного кода
 
-Algorithm: [ra-impl.md](/.ai/commands/ra-impl.md)
+Команда: `/ra-impl <путь к TaskSummary.md задачи> <номер этапа реализации>`
 
-Conduct a review, make corrections yourself or give a command to the agent for corrections.
-Make a commit yourself or give the command: `make a commit`.
+Алгоритм: [ra-impl.md](/.ai/commands/ra-impl.md)
 
-### Step 6. Writing tests
+Проводим ревью, вносим правки самостоятельно или даем команду на исправление агенту.
+Делаем коммит самостоятельно или даем команду: `сделай коммит`.
 
-Command: `/ra-test <path to task Task.md> <implementation stage number>`
+### Шаг 6. Написание тестов
 
-Algorithm: [ra-test.md](/.ai/commands/ra-test.md)
+Команда: `/ra-test <путь к TaskSummary.md задачи> <номер этапа реализации>`
 
-Conduct a review, make corrections yourself or give a command to the agent for corrections.
-Make a commit yourself or give the command: `make a commit`.
+Алгоритм: [ra-test.md](/.ai/commands/ra-test.md)
 
-### Step 7. Creating technical documentation
+Проводим ревью, вносим правки самостоятельно или даем команду на исправление агенту.
+Делаем коммит самостоятельно или даем команду: `сделай коммит`.
 
-Command: `/ra-tech-doc <path to task folder>`
+### Шаг 7. Создание технической документации
 
-Algorithm: [ra-tech-doc.md](/.ai/commands/ra-tech-doc.md)
+Команда: `/ra-tech-doc <путь к папке задачи>`
 
-### Step 8. Creating architectural documentation
+Алгоритм: [ra-tech-doc.md](/.ai/commands/ra-tech-doc.md)
 
-Command: `/ra-arch-doc <path to task folder>`
+### Шаг 8. Создание архитектурной документации
 
-Algorithm: [ra-arch-doc.md](/.ai/commands/ra-arch-doc.md)
+Команда: `/ra-arch-doc <путь к папке задачи>`
+
+Алгоритм: [ra-arch-doc.md](/.ai/commands/ra-arch-doc.md)

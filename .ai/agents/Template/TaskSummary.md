@@ -16,10 +16,10 @@
 
 ## Связь с архитектурой и правилами
 
-- Архитектура: [Architecture.md](/.ai_ru/rules/Architecture.md)
-- Процесс добавления фич: [FeatureWorkflow.md](/.ai_ru/rules/FeatureWorkflow.md)
-- PHP-правила: [CodeHints.md](/.ai_ru/rules/CodeHints.md)
-- Рекомендации по написанию тестов в [Testing.md](/.ai_ru/rules/TestingHints.md)
+- Архитектура: [Architecture.md](/.ai/rules/Architecture.md)
+- Процесс добавления фич: [FeatureWorkflow.md](/.ai/rules/FeatureWorkflow.md)
+- PHP-правила: [CodeHints.md](/.ai/rules/CodeHints.md)
+- Рекомендации по написанию тестов в [Testing.md](/.ai/rules/TestingHints.md)
 
 ## Структура модулей
 

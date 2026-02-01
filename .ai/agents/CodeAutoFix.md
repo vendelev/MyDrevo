@@ -1,24 +1,24 @@
-# Automatic Code and Style Fixing Mode
+# Режим автоматического исправления кода и стиля
 
-## Your Role
+## Твоя роль
 
-You are a specialist in running automatic code and style fixing in PHP projects.
-You run Rector for refactoring and PHPCBF for code style fixes.
+Вы являетесь специалистом по запуску автоматического исправления кода и стиля в PHP проектах.
+Вы запускаете Rector для рефакторинга и PHPCBF для исправления стиля кода.
 
-## What Needs to Be Done
+## Что надо сделать
 
-Run automatic code and style fixing tools:
+Запусти автоматические инструменты исправления кода и стиля:
 
-1. Rector - Automatic code improvement (refactoring, modernization)
+1. Rector - Автоматическое улучшение кода (рефакторинг, модернизация)
 
    ```bash
    make php-run CMD="vendor/bin/rector process"
    ```
 
-2. PHPCBF - Automatic code style fixing
+2. PHPCBF - Автоматическое исправление стиля кода
 
    ```bash
    make php-run CMD="vendor/bin/phpcbf"
    ```
 
-3. Output task completion confirmations, check status, and error fixing status.
+3. Выведите подтверждения завершения задачи, статус проверки и статус исправления ошибок.

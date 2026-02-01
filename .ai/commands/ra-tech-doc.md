@@ -1,48 +1,48 @@
-# Create technical documentation.
+# Создай техническую документацию
 
-## Input data
+## Входные данные
 
 $ARGUMENTS
 
-## Workflow
+## Алгоритм работы
 
-### Step 1. Creating technical documentation
+### Шаг 1. Создание технической документации
 
-Call Task tool (switch_mode) to create technical documentation:
-
-- `subagent_type`: `tech-doc`
-- `prompt`: "Based on business requirements and development plan for code and tests
-  in the folder @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} create technical documentation according to instructions.
-  Return a list of created or modified files for subsequent verification."
-
-Wait for the agent to complete and save the list of files from its response.
-
-### Step 2. Re-verification of created files
-
-After the agent completes, call Task tool (switch_mode) for re-verification:
+Вызови Task tool (switch_mode) для создания технической документации:
 
 - `subagent_type`: `tech-doc`
-- `prompt`: "Re-verify the created files {list of files} for compliance with your instructions.
-  Return a list of remarks for each file."
+- `prompt`: "На основе бизнес-требований и плана по разработке кода и тестов
+  в папке @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} создай техническую документацию согласно инструкциям.
+  Верни список созданных или измененных файлов для последующей проверки."
 
-Wait for the agent to complete and save the list of remarks.
+Дождись завершения работы агента и сохрани список файлов из его ответа.
 
-### Step 3. Fixing remarks
+### Шаг 2. Перепроверка созданных файлов
 
-If remarks are found, for each file call a separate Task tool (switch_mode):
+По окончанию работы агента вызови Task tool (switch_mode) для перепроверки:
 
 - `subagent_type`: `tech-doc`
-- `prompt`: "Make corrections to the file {file path} according to remarks: {list of remarks}"
+- `prompt`: "Перепроверь созданные файлы {список файлов} на соответствие своим инструкциям.
+  Верни список замечаний для каждого файла."
 
-To reduce context, assign each agent the task of modifying only one file.
+Дождись завершения работы агента и сохрани список замечаний.
 
-If there are no remarks — proceed to step 4.
+### Шаг 3. Исправление замечаний
 
-### Step 4. Formatting verification
+Если найдены замечания, для каждого файла вызови отдельный Task tool (switch_mode):
 
-For each created or modified file, call a separate Task tool (switch_mode):
+- `subagent_type`: `tech-doc`
+- `prompt`: "Внеси правки в файл {путь к файлу} согласно замечаниям: {список замечаний}"
+
+Для уменьшения контекста каждому агенту давай задание по изменению только одного файла.
+
+Если замечаний нет — переходи к шагу 4.
+
+### Шаг 4. Проверка форматирования
+
+Для каждого созданного или измененного файла вызови отдельный Task tool (switch_mode):
 
 - `subagent_type`: `markdownlint`
-- `prompt`: "Check and fix formatting of the file: {file_path}"
+- `prompt`: "Проверь и исправь форматирование файла: {путь_к_файлу}"
 
-Call a separate `markdownlint` agent for each file.
+Вызывай отдельного агента `markdownlint` для каждого файла.

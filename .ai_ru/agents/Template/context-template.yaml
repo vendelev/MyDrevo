@@ -1,5 +1,0 @@
-contexts:
-  {{context_id}}:
-    title: "{{context_title}}"
-    description: >
-      {{short_description_one_or_two_sentences}}

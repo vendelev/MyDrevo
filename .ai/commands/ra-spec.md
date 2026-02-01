@@ -1,49 +1,49 @@
-# Create a specification with functional requirements description.
+# Создай спецификацию с описанием функциональных требований
 
-## Input Data
+## Входные данные
 
 $ARGUMENTS
 
-## Workflow Algorithm
+## Алгоритм работы
 
-### Step 1. Create Specification
+### Шаг 1. Создание спецификации
 
-Call Task tool (switch_mode) to describe functional requirements:
-
-- `subagent_type`: `create-spec`
-- `prompt`: "Task number: {task number from tracker}.
-  The epic description is located in the file @/Doc/Backlog/{YYYY}/{EPIC_FOLDER}/Summary.md.
-  Create a functional requirements description for stage {X} according to the instructions.
-  Return the list of created or modified files for subsequent verification"
-
-Wait for the agent to complete and save the list of files from its response.
-
-### Step 2. Re-verify Created Files
-
-After the agent completes, call Task tool (switch_mode) for re-verification:
+Вызови Task tool (switch_mode) для описания функциональных требований:
 
 - `subagent_type`: `create-spec`
-- `prompt`: "Re-verify the created files {list of files} for compliance with your instructions.
-  Return the list of remarks for each file"
+- `prompt`: "Номер задачи: {номер задачи из трекера}.
+  Описание эпика находится в файле @/Doc/Backlog/{YYYY}/{EPIC_FOLDER}/Summary.md.
+  Создай описание функциональных требований для этапа {Х} согласно инструкциям.
+  Верни список созданных или измененных файлов для последующей проверки"
 
-Wait for the agent to complete and save the list of remarks.
+Дождись завершения работы агента и сохрани список файлов из его ответа.
 
-### Step 3. Fix Remarks
+### Шаг 2. Перепроверка созданных файлов
 
-If remarks are found, call a separate Task tool (switch_mode) for each file:
+По окончанию работы агента вызови Task tool (switch_mode) для перепроверки:
 
 - `subagent_type`: `create-spec`
-- `prompt`: "Make corrections to the file {file path} according to the remarks: {list of remarks}"
+- `prompt`: "Перепроверь созданные файлы {список файлов} на соответствие своим инструкциям.
+  Верни список замечаний для каждого файла"
 
-To reduce context, assign each agent the task of modifying only one file.
+Дождись завершения работы агента и сохрани список замечаний.
 
-If there are no remarks - proceed to step 4.
+### Шаг 3. Исправление замечаний
 
-### Step 4. Formatting Check
+Если найдены замечания, для каждого файла вызови отдельный Task tool (switch_mode):
 
-For each created or modified file, call a separate Task tool (switch_mode):
+- `subagent_type`: `create-spec`
+- `prompt`: "Внеси правки в файл {путь к файлу} согласно замечаниям: {список замечаний}"
+
+Для уменьшения контекста каждому агенту давай задание по изменению только одного файла.
+
+Если замечаний нет — переходи к шагу 4.
+
+### Шаг 4. Проверка форматирования
+
+Для каждого созданного или измененного файла вызови отдельный Task tool (switch_mode):
 
 - `subagent_type`: `markdownlint`
-- `prompt`: "Check and fix formatting of the file: {file_path}"
+- `prompt`: "Проверь и исправь форматирование файла: {путь_к_файлу}"
 
-Call a separate `markdownlint` agent for each file.
+Вызывай отдельного агента `markdownlint` для каждого файла.

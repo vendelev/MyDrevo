@@ -1,47 +1,47 @@
-# Create business requirements description and break down work into stages (epic).
+# Создай описание бизнес-потребностей и разбей работу на этапы (эпик)
 
-## Input Data
+## Входные данные
 
 $ARGUMENTS
 
-## Workflow Algorithm
+## Алгоритм работы
 
-### Step 1. Creating the Epic
+### Шаг 1. Создание эпика
 
-Call the Task tool (switch_mode) to describe business requirements:
-
-- `subagent_type`: `create-epic`
-- `prompt`: "Epic number: {epic number from tracker}. Business requirements description: {description from $ARGUMENTS}.
-  Return a list of created or modified files for subsequent verification"
-
-Wait for the agent to complete and save the list of files from its response.
-
-### Step 2. Verification of Created Files
-
-After the agent completes its work, call the Task tool (switch_mode) for verification:
+Вызови Task tool (switch_mode) для описания бизнес-требований:
 
 - `subagent_type`: `create-epic`
-- `prompt`: "Verify the created files {list of files} against your instructions.
-  Return a list of files and a list of remarks for each file"
+- `prompt`: "Номер эпика: {номер эпика из трекера}. Описание потребностей бизнеса: {описание из $ARGUMENTS}.
+  Верни список созданных или измененных файлов для последующей проверки"
 
-Wait for the agent to complete and save the list of remarks.
+Дождись завершения работы агента и сохрани список файлов из его ответа.
 
-### Step 3. Fixing Remarks
+### Шаг 2. Перепроверка созданных файлов
 
-If remarks are found, call a separate Task tool (switch_mode) for each file:
+По окончанию работы агента вызови Task tool (switch_mode) для перепроверки:
 
 - `subagent_type`: `create-epic`
-- `prompt`: "Make corrections to the file {file path} according to the remarks: {list of remarks}"
+- `prompt`: "Перепроверь созданные файлы {список файлов} на соответствие своим инструкциям.
+  Верни список файлов и список замечаний для каждого файла"
 
-To reduce context, give each agent a task to modify only one file.
+Дождись завершения работы агента и сохрани список замечаний.
 
-If there are no remarks — proceed to step 4.
+### Шаг 3. Исправление замечаний
 
-### Step 4. Formatting Check
+Если найдены замечания, для каждого файла вызови отдельный Task tool (switch_mode):
 
-For each created or modified file, call a separate Task tool (switch_mode):
+- `subagent_type`: `create-epic`
+- `prompt`: "Внеси правки в файл {путь к файлу} согласно замечаниям: {список замечаний}"
+
+Для уменьшения контекста каждому агенту давай задание по изменению только одного файла.
+
+Если замечаний нет — переходи к шагу 4.
+
+### Шаг 4. Проверка форматирования
+
+Для каждого созданного или измененного файла вызови отдельный Task tool (switch_mode):
 
 - `subagent_type`: `markdownlint`
-- `prompt`: "Check and fix the formatting of the file: {file_path}"
+- `prompt`: "Проверь и исправь форматирование файла: {путь_к_файлу}"
 
-Call a separate `markdownlint` agent for each file.
+Вызывай отдельного агента `markdownlint` для каждого файла.

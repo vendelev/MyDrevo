@@ -1,91 +1,94 @@
-# Testing
+# Тестирование
 
-**Test Writing Features**:
-- Test methods must start with the word test, the "@test" annotation doesn't work
-- Test classes must extend Tests\TestCase, not PHPUnit\Framework\TestCase
-- Controllers should only be tested via E2E tests
-- For controllers returning View, verify template content (render())
-- For UseCase testing, use Integration tests; the constructor may have `final class` dependencies
-- Don't use Mockery
-- Use `$this->service` instead of `app()`.
-  Example: app(ValidationFactoryInterface::class) -> $this->service(ValidationFactoryInterface::class)
-- For Integration and E2E tests, create database records using classes in the [ModelFactory](../../backend/tests/Stub/ModelFactory) folder
+**Особенности написания тестов**:
 
-**When to Write Tests**:
-- ✅ All components in Application and Domain layers **MUST** be tested
-- ❌ Tests for configuration and simple DTOs are **NOT NEEDED** (if they don't contain logic)
-- ✅ Infrastructure layer (Repository, Adapter) must be tested (Integration tests with DB)
-- ✅ Presentation layer (Command, Listener) must be tested (E2E tests)
+- Методы в тестах должны начинаться со слова test, аннотация "@test" - не работает
+- Класс с тестами должен наследоваться от Tests\TestCase, а не PHPUnit\Framework\TestCase
+- Контроллеры надо тестировать только через E2E тесты
+- Для контроллеров, возвращающих View, проверять содержимое шаблона (render())
+- Для тестирования UseCase применяй Integration тесты, в конструктре могут быть зависимости `final class`
+- Не использовать Mockery
+- Вместо `app()` использовать `$this->service`.
+  Пример: app(ValidationFactoryInterface::class) -> $this->service(ValidationFactoryInterface::class)
+- Для Integration и E2E надо создавать записи в БД используя классы в папке [ModelFactory](../../backend/tests/Stub/ModelFactory)
 
-**Minimum Requirements**:
-- For each public method — at least one positive test
-- For methods with validation — tests for invalid data
-- For methods with dependencies — use Mock/Stub objects
+**Когда писать тесты**:
 
-## Test Types
+- ✅ Все компоненты Application и Domain слоев **ОБЯЗАТЕЛЬНО** должны быть протестированы
+- ❌ Тесты для конфигурации и простых DTO **НЕ НУЖНО** создавать (если они не содержат логики)
+- ✅ Infrastructure слой (Repository, Adapter) должен быть протестирован (Integration тесты с БД)
+- ✅ Presentation слой (Command, Listener) должен быть протестирован (E2E тесты)
 
-The test file structure should mirror the module structure.
-Separation by test type is only logical.
+**Минимальное требование**:
 
-### Unit Tests
+- Для каждого public метода — хотя бы один позитивный тест
+- Для методов с валидацией — тесты на invalid данные
+- Для методов с зависимостями — используются Mock/Stub объекты
 
-Testing individual components in isolation (without dependencies).
+## Типы тестов
 
-- **Location**: `backend/tests/Suite/{ModuleName}/Application`, `backend/tests/Suite/{ModuleName}/Domain`
-- **Covers**:
-  - Business logic in Service
-  - Validation in Validation classes
-  - Logic in Domain objects and ValueObject
+Структура файлов с тестами должна повторять структуру модуля.
+Разделение по типу тестов только логическое.
 
-### Integration Tests
+### Unit тесты
 
-Testing individual components when interacting with the database.
+Тестирование отдельных компонентов в изоляции (без зависимостей).
 
-- **Location**: `backend/tests/Suite/{ModuleName}/Application/UseCase`, `backend/tests/Suite/{ModuleName}/Application/Query`, `backend/tests/Suite/{ModuleName}/Application/Command`
-- **Covers**:
-  - Business logic in UseCase, Query, Command
+- **Расположение**: `backend/tests/Suite/{ModuleName}/Application`, `backend/tests/Suite/{ModuleName}/Domain`
+- **Охватывает**:
+  - Бизнес-логика в Service
+  - Валидация в Validation классах
+  - Логика в Domain объектах и ValueObject
 
-Testing component interaction with external systems.
+### Integration тесты
 
-- **Location**: `backend/tests/Suite/{ModuleName}/Infrastructure`
-- **Covers**:
-  - Adapter (interaction with external services)
-  - Anti-corruption layer between modules
+Тестирование отдельных компонентов при взаимодействии с БД.
 
-### End-To-End (E2E) Tests
+- **Расположение**: `backend/tests/Suite/{ModuleName}/Application/UseCase`, `backend/tests/Suite/{ModuleName}/Application/Query`, `backend/tests/Suite/{ModuleName}/Application/Command`
+- **Охватывает**:
+  - Бизнес-логика в UseCase, Query, Command
 
-Testing the complete flow: from HTTP request to response, including all layers.
+Тестирование взаимодействия компонентов с внешними системами.
 
-- **Location**: `backend/tests/Suite/{ModuleName}/Presentation`
-- **Covers**:
-  - HTTP controllers and routes
+- **Расположение**: `backend/tests/Suite/{ModuleName}/Infrastructure`
+- **Охватывает**:
+  - Adapter (взаимодействие с внешними сервисами)
+  - Anti-corruption layer между модулями
+
+### End-To-End (E2E) тесты
+
+Тестирование полного потока: от HTTP запроса до ответа, включая все слои.
+
+- **Расположение**: `backend/tests/Suite/{ModuleName}/Presentation`
+- **Охватывает**:
+  - HTTP контроллеры и маршруты
   - Middleware
-  - Complete lifecycle of request and data
+  - Полный жизненный цикл запроса и данных
 
-## Module File Template Examples
+## Примеры-шаблоны файлов модуля
 
 ### Application
 
-- Unit test for Service - [`ExampleCalcServiceTest.php`](../../backend/tests/Suite/Example/Application/ExampleCalcServiceTest.php)
-- Integration test for Command - [`ExampleOutboxCommandTest.php`](../../backend/tests/Suite/Example/Application/ExampleOutboxCommandTest.php)
-- Unit test for Responder - [`ExampleReportResponderTest.php`](../../backend/tests/Suite/Example/Application/ExampleReportResponderTest.php)
-- Unit test for Factory - [`ExampleRequestFactoryTest.php`](../../backend/tests/Suite/Example/Application/ExampleRequestFactoryTest.php)
-- Integration test for UseCase - [`ExampleUseCaseTest.php`](../../backend/tests/Suite/Example/Application/ExampleUseCaseTest.php)
-- Integration test for Query - [`GetExampleQueryTest.php`](../../backend/tests/Suite/Example/Application/GetExampleQueryTest.php)
+- Unit тест для Service - [`ExampleCalcServiceTest.php`](../../backend/tests/Suite/Example/Application/ExampleCalcServiceTest.php)
+- Integration тест для Command - [`ExampleOutboxCommandTest.php`](../../backend/tests/Suite/Example/Application/ExampleOutboxCommandTest.php)
+- Unit тест для Responder - [`ExampleReportResponderTest.php`](../../backend/tests/Suite/Example/Application/ExampleReportResponderTest.php)
+- Unit тест для Factory - [`ExampleRequestFactoryTest.php`](../../backend/tests/Suite/Example/Application/ExampleRequestFactoryTest.php)
+- Integration тест для UseCase - [`ExampleUseCaseTest.php`](../../backend/tests/Suite/Example/Application/ExampleUseCaseTest.php)
+- Integration тест для Query - [`GetExampleQueryTest.php`](../../backend/tests/Suite/Example/Application/GetExampleQueryTest.php)
 
 ### Domain
 
-- Unit test for exception - [`ExampleNotFoundExceptionTest.php`](../../backend/tests/Suite/Example/Domain/ExampleNotFoundExceptionTest.php)
-- Unit test for ValueObject with validation - [`SubtractNumbersVOTest.php`](../../backend/tests/Suite/Example/Domain/SubtractNumbersVOTest.php)
+- Unit тест для исключения - [`ExampleNotFoundExceptionTest.php`](../../backend/tests/Suite/Example/Domain/ExampleNotFoundExceptionTest.php)
+- Unit тест для ValueObject с валидацией - [`SubtractNumbersVOTest.php`](../../backend/tests/Suite/Example/Domain/SubtractNumbersVOTest.php)
 
 ### Infrastructure
 
-- Integration test for adapter - [`ClickhouseLoggerTest.php`](../../backend/tests/Suite/Example/Infrastructure/ClickhouseLoggerTest.php)
-- Integration test for repository - [`EloquentExampleRepositoryTest.php`](../../backend/tests/Suite/Example/Infrastructure/EloquentExampleRepositoryTest.php)
+- Integration тест для адаптера - [`ClickhouseLoggerTest.php`](../../backend/tests/Suite/Example/Infrastructure/ClickhouseLoggerTest.php)
+- Integration тест для репозитория - [`EloquentExampleRepositoryTest.php`](../../backend/tests/Suite/Example/Infrastructure/EloquentExampleRepositoryTest.php)
 
 ### Presentation
 
-- E2E test for controller - [`ExampleControllerTest.php`](../../backend/tests/Suite/Example/Presentation/ExampleControllerTest.php)
-- E2E test for event listener - [`ExampleCreatedListenerTest.php`](../../backend/tests/Suite/Example/Presentation/ExampleCreatedListenerTest.php)
-- E2E test for middleware - [`ExampleMiddlewareTest.php`](../../backend/tests/Suite/Example/Presentation/ExampleMiddlewareTest.php)
-- E2E test for console command - [`SubtractExampleCommandTest.php`](../../backend/tests/Suite/Example/Presentation/SubtractExampleCommandTest.php)
+- E2E тест для контроллера - [`ExampleControllerTest.php`](../../backend/tests/Suite/Example/Presentation/ExampleControllerTest.php)
+- E2E тест для слушателя события - [`ExampleCreatedListenerTest.php`](../../backend/tests/Suite/Example/Presentation/ExampleCreatedListenerTest.php)
+- E2E тест для middleware - [`ExampleMiddlewareTest.php`](../../backend/tests/Suite/Example/Presentation/ExampleMiddlewareTest.php)
+- E2E тест для консольной команды - [`SubtractExampleCommandTest.php`](../../backend/tests/Suite/Example/Presentation/SubtractExampleCommandTest.php)

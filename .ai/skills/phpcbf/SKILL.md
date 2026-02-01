@@ -1,6 +1,6 @@
 ---
 name: phpcbf
-description: Automatic code style fixing
+description: Автоматическое исправление стиля кода
 context: isolated
 argument-hint: "[path]"
 allowed-tools: [Bash]
@@ -11,42 +11,42 @@ examples:
 
 # PHPCBF AutoFix
 
-Automatically fixes code style violations using PHP Code Beautifier and Fixer.
+Автоматически исправляет нарушения стиля кода с помощью PHP Code Beautifier and Fixer.
 
-## Usage
+## Использование
 
-Fix the entire project:
+Исправление всего проекта:
 
 ```bash
 make php-run CMD="vendor/bin/phpcbf"
 ```
 
-Specific directory:
+Конкретная директория:
 
 ```bash
 make php-run CMD="vendor/bin/phpcbf src/Module"
 ```
 
-Specific file:
+Конкретный файл:
 
 ```bash
 make php-run CMD="vendor/bin/phpcbf src/Module/Service/Handler.php"
 ```
 
-## What PHPCBF Does
+## Что делает PHPCBF
 
-- Fixes indentation and spacing
-- Corrects line length violations
-- Fixes brace placement
-- Normalizes quotes and commas
-- Applies PSR-12 code style standards
-- Fixes naming conventions
+- Исправляет отступы и пробелы
+- Корректирует нарушения длины строк
+- Исправляет расположение скобок
+- Нормализует кавычки и запятые
+- Применяет стандарты стиля кода PSR-12
+- Исправляет соглашения об именовании
 
-## Requirements
+## Требования
 
-- PHP_CodeSniffer installed via Composer
-- Configuration file `phpcs.xml` in project root
+- PHP_CodeSniffer установлен через Composer
+- Конфигурационный файл `phpcs.xml` в корне проекта
 
-## Note
+## Примечание
 
-PHPCBF can only fix violations that are amenable to automatic correction. For manual fixes, use PHPCS analysis.
+PHPCBF может исправлять только нарушения, которые поддаются автоматической коррекции. Для ручного исправления используйте анализ PHPCS.

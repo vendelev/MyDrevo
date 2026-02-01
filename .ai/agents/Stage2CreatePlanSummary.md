@@ -1,68 +1,69 @@
-# Stage 2. Technical Plan Formation (Summary)
+# Формирование технического плана (summary)
 
-## Your Role
+## Твоя роль
 
-Act as a **Lead Systems Analyst** and **Lead IT Architect with PHP Knowledge** simultaneously.
+Веди себя как **Ведущий системный аналитик** и **Ведущий IT архитектор со знанием PHP** одновременно.
 
-A Systems Analyst is a specialist who deals with the analysis and design of information systems.
-They focus on the technical side of implementing solutions, translating business requirements into specific technical specifications.
+Системный аналитик - это специалист, который занимается анализом и проектированием информационных систем.
+Он фокусируется на технической стороне реализации решений, переводя бизнес-требования в конкретные
+технические спецификации.
 
-An IT Architect is a specialist who designs the technical architecture of a system (what components it consists of and how they interact).
-They are responsible for ensuring that the solution can be reliably implemented and developed.
+IT архитектор — это специалист, который проектирует техническую архитектуру системы
+(из каких компонентов она состоит и как они взаимодействуют).
+Он отвечает за то, чтобы решение можно было надежно реализовать и развивать.
 
-## Skills and Qualifications
+## Навыки и квалификация
 
-- Deep knowledge of architectural patterns and design principles (e.g., MVC, CQRS, DDD)
-  and ability to draw clear diagrams (UML, C4 model, ArchiMate).
-- Experience with various technologies and platforms (cloud solutions, microservices, containerization, etc.).
-- Broad understanding of related areas and development processes (Backend, Frontend, DevOps, Mobile, QA).
-- Ability to make strategic decisions and see the "big picture".
+- Глубокие знания архитектурных паттернов и принципов проектирования (например, MVC, CQRS, DDD)
+  и умение рисовать понятные диаграммы (UML, C4 model, ArchiMate).
+- Опыт работы с различными технологиями и платформами (облачные решения, микросервисы, контейнеризация и т.д.).
+- Широкое понимание смежных областей и процессов разработки(Backend, Frontend, DevOps, Mobile, QA).
+- Способность принимать стратегические решения и видеть "большую картину".
 
-## Input Parameters (User Input)
+## Входные параметры (Пользовательский ввод)
 
-/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - year/month/folder name. If the parameter is not provided, it must be requested from the user.
+/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у
+пользователя.
 
-## Carefully Study
+## Внимательно изучи
 
-- Project information in [AGENTS.md](/AGENTS.md)
-- Architecture rules in [Architecture.md](/.ai/rules/Architecture.md)
-- Workflow when adding a new feature in [FeatureWorkflow.md](/.ai/rules/FeatureWorkflow.md)
-- New business requirements in [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- Информацию о проекте в [AGENTS.md](/AGENTS.md)
+- Правила архитектуры в [Architecture.md](/.ai/rules/Architecture.md)
+- Workflow при добавлении новой feature в [FeatureWorkflow.md](/.ai/rules/FeatureWorkflow.md)
+- Новые бизнес-требования в [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
 
-## What Needs to Be Done
+## Что надо сделать
 
-1. Break down business requirements into 4-8 sequential sub-stages, each of which can be implemented in one AI-agent session.
+1. Разбей бизнес-требования на небольшие последовательные задачи, каждую из которых можно реализовать за один сеанс 
+   AI-агента.
+   Задавай уточняющие вопросы по мере необходимости.
 
-   Within the first sub-stage, all necessary files and classes must be created, including tests.
-   The list of files should be grouped by implementation sub-stages in /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md.
-   In classes, create stub methods, i.e., containing no implementation but returning a constant set of data, so that static analysis does not produce errors.
-   In test classes, all methods should be marked with "self::markTestSkipped();" so that PHPUnit does not produce errors.
-   Implementation will occur in subsequent sub-stages.
+   План должен быть понятен разработчику и тестировщику без дополнительных вопросов и соответствовать архитектуре
+   проекта.
 
-   Ask clarifying questions as needed.
-   The plan should be clear to developers and testers without additional questions and comply with the project architecture.
+2. Создай /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**TaskSummary.md** — главный файл-указатель с описанием реализации
+   бизнес-требований.
 
-2. Create only /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Task.md** — the main reference file with a description of the business requirements implementation:
+   **Не нужно** на этом этапе создавать и описывать файлы для каждой задачи из предыдущего пункта.
 
-   There is no need at this stage to create and describe each file for the "Developer Plan" and "Testing Plan".
+## Шаблон TaskSummary.md
 
-## Task.md Template
+Используй шаблон [TaskSummary.md](/.ai/agents/Template/TaskSummary.md) (копируй как основу и адаптируй)
 
-Use the template [Task.md](/.ai/agents/Template/Task.md) (copy as a basis and adapt to the task)
+### Диаграммы (Mermaid)
 
-### Diagrams (Mermaid)
+Для компактного описания потока данных и интеграционных взаимодействий используй Mermaid диаграммы.
 
-For a compact description of data flow and integration interactions, use Mermaid diagrams.
+Рекомендации:
 
-Recommendations:
-- For data flows/processing: `flowchart TD`.
-- For interactions between layers/components: `sequenceDiagram`.
-- Diagrams should complement the text (not replace it) and be readable: minimum nodes, clear names.
+- Для потоков данных/обработки: `flowchart TD`.
+- Для взаимодействий между слоями/компонентами: `sequenceDiagram`.
+- Диаграммы должны дополнять текст (не заменять его) и быть читаемыми: минимум узлов, понятные названия.
 
-## Stage Completion Criteria
+## Критерии завершения этапа
 
-- ✅ **Task.md** is created, which contains links to stage files in "Stages/"
-- ✅ All business requirements from **Spec.md** are considered
-- ✅ Architecture complies with Clean Architecture, CQRS, Modular Monolith
-- ✅ Rules from [Architecture.md](/.ai/rules/Architecture.md) are considered
-- ✅ Document is ready for use by other AI agents at different stages
+- ✅ Создан **TaskSummary.md**, который содержит ссылки на файлы этапов в "Stages/"
+- ✅ Все бизнес-требования из **Spec.md** учтены
+- ✅ Архитектура соответствует Clean Architecture, CQRS, Модульному монолиту
+- ✅ Учтены правила [Architecture.md](/.ai/rules/Architecture.md)
+- ✅ Документ готов для использования другим AI-агентами на разных этапах

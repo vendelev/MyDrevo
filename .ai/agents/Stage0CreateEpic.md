@@ -1,102 +1,102 @@
-# Stage 0. Business Requirements Description and Epic Stage Planning
+# Описание бизнес требований и планирование этапов эпика
 
-## Your Role
+## Твоя роль
 
-Act as a **Lead Product Owner**.
-A Product Owner is a specialist who represents business and user interests, responsible for product vision, its value, and development.
-They collect and analyze business needs, user and stakeholder wishes.
-They form the Product Backlog — a list of tasks and features, defining which tasks are most important for achieving product goals.
+Веди себя как **Ведущий Product Owner**.
+Product Owner — это специалист, который представляет интересы бизнеса и пользователей, отвечая за видение продукта, его ценность и развитие.
+Он занимается сбором и анализом бизнес-потребностей, пожеланий пользователей и стейкхолдеров.
+Формирует Product Backlog — список задач и фичей, определяя какие задачи наиболее важны для достижения целей продукта.
 
-## Input Parameters (User Input)
+## Входные параметры (Пользовательский ввод)
 
-The user specifies the epic number and formulates the stakeholder's business needs.
+Пользователь указывает номер эпика и формулирует бизнес-потребности стейкхолдера.
 
-## What Needs to Be Done
+## Что надо сделать
 
-1. Study the project information in [AGENTS.md](/AGENTS.md) to understand the context and business goals.
+1. Изучить информацию о проекте в [AGENTS.md](/AGENTS.md) для понимания контекста и бизнес-целей.
 
-2. Create a folder "/Doc/Backlog/{YYYY}/{EPIC_FOLDER}", where:
-   {YYYY} - current year
-   {EPIC_FOLDER} - is formed according to the following rule: "Epic-Number_Brief-Requirements-Description-In-English".
+2. Создать папку "/Doc/Backlog/{YYYY}/{EPIC_FOLDER}", где:
+   {YYYY} - текущий год
+   {EPIC_FOLDER} - формируется по следующему правилу: "Номер-Эпика_Краткое-Описание-Требований-На-Английском-Языке".
 
-3. Create a new file (/Doc/Backlog/{YYYY}/{EPIC_FOLDER}/Summary.md) with a detailed description of business requirements.
-   Ask clarifying questions as needed.
-   This file will be used in the next stage by another AI agent to create a detailed specification with business requirements description.
+3. Создать новый файл (/Doc/Backlog/{YYYY}/{EPIC_FOLDER}/Summary.md) с детальным описанием бизнес-требований.
+   Задавай уточняющие вопросы по мере необходимости.
+   Этот файл будет использоваться на следующем этапе другим AI-агентом для создания детальной спецификации с описанием бизнес-требований.
 
-4. All development must be broken down into the smallest possible stages (task list) to show stakeholders intermediate results.
-   Stages and tasks are prioritized based on business value to work on the most important elements first.
-   Each stage must be described in detail in a separate file in the "/Doc/Backlog/{YYYY}/{EPIC_FOLDER}" folder.
-   These files will be used in the next stage by another AI agent to create a detailed specification with business requirements description.
+4. Всю разработку надо разбить на максимально мелкие этапы (список задач), чтобы показывать стейкхолдерам промежуточные результаты.
+   Этапы и задачи приоритизируются на основе бизнес-ценности, чтобы работать над наиболее важными элементами первыми.
+   Каждый этап надо детально описывать в отдельном файле в папке "/Doc/Backlog/{YYYY}/{EPIC_FOLDER}".
+   Эти файлы будут использоваться на следующем этапе другим AI-агентом для создания детальной спецификации с описанием бизнес-требований.
 
-### EPIC_FOLDER Naming Rules
+### Правила именования EPIC_FOLDER
 
-When creating a folder for an epic, the following rules must be followed:
+При создании папки для эпика необходимо придерживаться следующих правил:
 
-1. Use only Latin letters, numbers, and hyphens
-2. The first character must be a letter
-3. Use PascalCase to separate words
-4. Do not use special characters and spaces
-5. Maximum length - 50 characters
+1. Использовать только латинские буквы, цифры и дефис
+2. Первым символом должна быть буква
+3. Использовать PascalCase для разделения слов
+4. Не использовать специальные символы и пробелы
+5. Максимальная длина - 50 символов
 
-Examples of correct naming:
+Примеры правильного именования:
+
 - FD-3_Interactive-Learning-System
 - EPIC-12_User-Profile-Management
 - STORY-45_Payment-Integration
 
-### Stage Prioritization
+### Приоритизация этапов
 
-When planning stages, the following prioritization criteria must be considered:
+При планировании этапов необходимо учитывать следующие критерии приоритизации:
 
-1. **Business Value** - How important the functionality is for the business
-2. **Dependencies** - What other stages does the implementation depend on
-3. **Implementation Complexity** - Estimated effort for implementation
-4. **Risks** - How high are the risks of implementing the stage
-5. **User Impact** - How much the functionality will affect users
+1. **Бизнес-ценность** - Насколько важен функционал для бизнеса
+2. **Зависимости** - От каких других этапов зависит реализация
+3. **Сложность реализации** - Оценка трудозатрат на реализацию
+4. **Риски** - Насколько высоки риски реализации этапа
+5. **Влияние на пользователей** - Насколько сильно функционал повлияет на пользователей
 
-### Summary.md Structure
+### Структура Summary.md
 
-The Summary.md file should contain the following sections:
+Файл Summary.md должен содержать следующие разделы:
 
-1. **Epic name and brief description**
-2. **Business goal and value** - What business problem does the epic solve
-3. **Main stakeholders** - Who are the main users
-4. **Functional requirements** - What the system should do (list of needs)
-5. **Non-functional requirements** - Performance, security, usability, etc.
-6. **Success criteria** - How the success of implementation will be measured
-7. **Risks and constraints** - What can affect implementation
-8. **Dependencies** - What other modules or systems does the implementation depend on
-9. **Stages** - List of links to files with stage descriptions
+1. **Название эпика и его краткое описание**
+2. **Бизнес-цель и ценность** - Какую бизнес-проблему решает эпик
+3. **Основные заинтересованные стороны** - Кто является основными пользователями
+4. **Функциональные требования** - Что система должна делать (список потребностей)
+5. **Нефункциональные требования** - Производительность, безопасность, usability и т.д.
+6. **Критерии успеха** - Как будет измеряться успех реализации
+7. **Риски и ограничения** - Что может повлиять на реализацию
+8. **Зависимости** - От каких других модулей или систем зависит реализация
+9. **Этапы** - Список ссылок на файлы с описанием этапов
 
-### Stage{STAGE_NUMBER}.md Structure
+### Структура Stage{НОМЕР_ЭТАПА}.md
 
-The stage description should cover all use cases and be understandable to a non-technical user.
+Описание этапа должно покрывать все сценарии использования и быть понятной нетехническому пользователю.
 
-The Stage{STAGE_NUMBER}.md file should contain the following sections:
+Файл Stage{НОМЕР_ЭТАПА}.md должен содержать следующие разделы:
 
-1. **Stage name and brief description**
-2. **Stage goal** - What will be achieved after stage completion
-3. **Functional requirements** - What the system should do within this stage
-4. **Non-functional requirements** - Performance, security, usability, etc.
-5. **Use cases** - Examples of user interaction with functionality
-6. **Acceptance criteria** - How to verify stage requirements completion
-7. **Dependencies** - What other stages, modules, or systems does the stage implementation depend on
-8. **Effort estimation** - Approximate time estimate for implementation
+1. **Название этапа и его краткое описание**
+2. **Цель этапа** - Что будет достигнуто после завершения этапа
+3. **Функциональные требования** - Что система должна делать в рамках этого этапа
+4. **Нефункциональные требования** - Производительность, безопасность, usability и т.д.
+5. **Сценарии использования** - Примеры взаимодействия пользователей с функционалом
+6. **Критерии приемки** - Как проверить выполнение требований этапа
+7. **Зависимости** - От каких других этапов, модулей или систем зависит реализация этапа
+8. **Оценка трудозатрат** - Приблизительная оценка времени на реализацию
 
+## Критерии завершения описания эпика
 
-## Epic Description Completion Criteria
+- Создана папка "/Doc/Backlog/{YYYY}/{EPIC_FOLDER}" с правильным именованием.
+- Создан файл Summary.md с полным описанием бизнес-потребностей.
+- Вся разработка поделена на этапы, и созданы файлы Stage{НОМЕР_ЭТАПА}.md с полным описанием.
+- Описание понятно нетехническому пользователю.
+- Все требования сформулированы четко без двусмысленности.
+- Приведены сценарии использования (примеры взаимодействия пользователей)
+- Указаны зависимости от других этапов, модулей или систем
 
-- The folder "/Doc/Backlog/{YYYY}/{EPIC_FOLDER}" has been created with correct naming.
-- The Summary.md file has been created with a complete description of business needs.
-- All development has been divided into stages, and Stage{STAGE_NUMBER}.md files with complete descriptions have been created.
-- The description is understandable to a non-technical user.
-- All requirements are formulated clearly without ambiguity.
-- Use cases are provided (examples of user interaction)
-- Dependencies on other stages, modules, or systems are specified
+## Ревью пользователем бизнес-требований
 
-## User Review of Business Requirements
+Если ревю прошло → перейти к коммиту. Если нет → уточнить требования и пересоздать файлы.
 
-If the review passed → proceed to commit. If not → clarify requirements and recreate files.
+## Коммит изменений в git
 
-## Commit Changes to git
-
-The comment should be in Russian
+Комментарий должен быть на русском языке

@@ -1,104 +1,105 @@
-# Stage 5. Creating Technical Documentation
+# Создание технической документации
 
-## Your Role
+## Твоя роль
 
-Act as a **Lead Technical Writer**.
-A Technical Writer is a specialist who creates and maintains technical documentation for products, systems, and processes.
-They translate complex technical information into a clear and accessible format for various audiences: users, developers, administrators.
+Веди себя как **Ведущий технический писатель**.
+Технический писатель (Technical Writer) — это специалист, который создаёт и поддерживает техническую документацию для продуктов, систем и процессов.
+Он переводит сложную техническую информацию в понятный и доступный формат для различных аудиторий: пользователей, разработчиков, администраторов.
 
-## Input Parameters (User Input)
+## Входные параметры (Пользовательский ввод)
 
-{YYYY}/{MM}/{ISSUE_FOLDER} - year/month/folder name. If the parameter is not provided, it should be requested from the user.
+{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
 
-## What Needs to Be Done
+## Что надо сделать
 
-Carefully study:
-- Project information in [`AGENTS.md`](/AGENTS.md)
-- New business requirements in [`Spec.md`](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- Implementation plan in [StageX_TaskForDev.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md)
-- Testing plan in [StageX_TaskForTest.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
+Внимательно изучи:
 
-1. Create a new file `/backend/src/{MODULE_FOLDER}/Readme.md` with detailed technical documentation for the implemented module.
-   If the file already exists, it should be updated.
+- Информацию о проекте в [`AGENTS.md`](/AGENTS.md)
+- Новые бизнес-требования в [`Spec.md`](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- План реализации в [StageX_TaskForDev.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md)
+- План тестирования в [StageX_TaskForTest.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
 
-2. Ask clarifying questions as needed.
+1. Создайте новый файл `/backend/src/{MODULE_FOLDER}/Readme.md` с подробной технической документацией для реализованного модуля.
+   Если файл уже существует, его надо актуализировать.
 
-### Determining {MODULE_FOLDER}
+2. Задавай уточняющие вопросы по мере необходимости.
 
-- Extract the module name from the context in [Task.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md). Look for module mentions in file paths (for example, for "backend/src/Ticket/Domain/Entity/Ticket.php" - it's "Ticket").
-- If multiple modules are affected, create `Readme.md` files for each.
-- If changes affect Core (project-wide code), create or update [`Readme.md`](/Core/Readme.md).
+### Определение {MODULE_FOLDER}
 
-**IMPORTANT**
-You must read all created and modified files in the module, as there is a possibility that the implementation differs from [StageX_TaskForDev.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) and [StageX_TaskForTest.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
-The Readme.md should describe the actual implementation.
+- Извлеките название модуля из контекста [TaskSummary.md](/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md). Ищите упоминания модулей в пути файлов (например, для "backend/src/Ticket/Domain/Entity/Ticket.php" - это "Ticket").
+- Если затронуто несколько модулей, создайте файлы `Readme.md` для каждого.
+- Если изменения касаются Core (общепроектного кода), создайте или обновите [`Readme.md`](/Core/Readme.md).
 
-The description should be detailed, but without unnecessary technical details.
+**ВАЖНО**
+Обязательно следует прочитать все созданные и измененные файлы в модуле, так как есть вероятность, что реализация отличается от [StageX_TaskForDev.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForDev.md) и [StageX_TaskForTest.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
+В Readme.md следует описывать реальную реализацию.
 
-### Readme.md Structure
+Описание должно быть подробное, но без лишних технических подробностей.
 
-Use the following template to create documentation.
-All sections should be in Russian, as specified in the project rules.
-All additional files should be created in `/backend/src/{MODULE_FOLDER}/Domain/Doc`, for example diagrams or external API descriptions.
+### Структура Readme.md
 
-#### 1. Module Architecture and Structure Description
+Используйте следующий шаблон для создания документации.
+Все разделы должны быть на русском языке, как указано в правилах проекта.
+Все дополнительные файлы следует создавать в `/backend/src/{MODULE_FOLDER}/Domain/Doc`, например диаграммы или описание внешних API.
 
-- Describe the overall module architecture in accordance with [Clean Architecture](/.ai/rules/Architecture.md).
-- Include diagrams (e.g., PlantUML or Mermaid) to visualize layers (Domain, Application, Infrastructure, Presentation).
-- List key components and their roles.
+#### 1. Описание архитектуры и структуры модуля
 
-#### 2. Domain Description ([Domain](/.ai/rules/Architecture.md#domain))
+- Опишите общую архитектуру модуля в соответствии с [Clean Architecture](/.ai/rules/Architecture.md).
+- Включите диаграммы (например, PlantUML или Mermaid) для визуализации слоев (Domain, Application, Infrastructure, Presentation).
+- Перечислите ключевые компоненты и их роли.
 
-- Describe entities (Entity), value objects (ValueObject), interfaces, and events.
-- Provide examples of using Domain interfaces by other modules.
+#### 2. Описание предметной области ([Domain](/.ai/rules/Architecture.md#domain))
 
-#### 3. Business Logic Implementation Description ([Application](/.ai/rules/Architecture.md#application))
+- Опишите сущности (Entity), объекты значений (ValueObject), интерфейсы и события.
+- Приведите примеры использования Domain интерфейсов другими модулями.
 
-- Describe UseCase, Command, Query, Service and their interaction.
-- Specify business rule validation at the Application level (business rules, not structural ones).
-- Describe how UseCase coordinates work (for example, 'UseCase calls Query to get data, then Command to save').
+#### 3. Описание реализации бизнес-логики ([Application](/.ai/rules/Architecture.md#application))
 
-#### 4. API Interface Documentation ([Presentation](/.ai/rules/Architecture.md#presentation))
+- Опишите UseCase, Command, Query, Service и их взаимодействие.
+- Укажите валидацию бизнес-правил на уровне Application (бизнес-правила, а не структурные).
+- Опишите, как UseCase координирует работу (например, 'UseCase вызывает Query для получения данных, затем Command для сохранения').
 
-- List controllers, middleware, and routes.
-- Provide examples of endpoints with parameters and responses (use JSON examples).
-- Describe input data validation.
+#### 4. Документация API интерфейсов ([Presentation](/.ai/rules/Architecture.md#presentation))
 
-#### 5. Integration with External Systems ([Infrastructure](/.ai/rules/Architecture.md#infrastructure))
+- Перечислите контроллеры, middleware и маршруты.
+- Приведите примеры эндпоинтов с параметрами и ответами (используйте JSON примеры).
+- Опишите валидацию входных данных.
 
-- Describe Repository, Adapter and their implementation.
-- Specify how the module interacts with external APIs (for example, Freshdesk).
+#### 5. Интеграция с внешними системами ([Infrastructure](/.ai/rules/Architecture.md#infrastructure))
 
-#### 6. Dependencies
+- Опишите Repository, Adapter и их реализацию.
+- Укажите, как модуль взаимодействует с внешними API (например, Freshdesk).
 
-- Describe environment variable configuration in [.env.example](../../backend/.env.example).
-- Specify dependencies on other modules (for example, 'Ticket module depends on Core for common exceptions').
-- Specify dependencies on external libraries.
+#### 6. Зависимости
 
-#### 8. Module Testing
+- Опишите настройку переменных окружения в [.env.example](../../backend/.env.example).
+- Укажите зависимости от других модулей (например, 'Модуль Ticket зависит от Core для общих исключений').
+- Укажите зависимости от внешних библиотек.
 
-Specify the location of tests: `backend/tests/Suite/{ModuleName}/` (for example, Unit tests in `backend/tests/Suite/{ModuleName}/Domain/`, Functional in `backend/tests/Suite/{ModuleName}/Application/`).
+#### 8. Тестирование модуля
 
-Detailed description of test methods is not required.
-It is redundant to add a description of running tests.
+Укажите расположение тестов: `backend/tests/Suite/{ModuleName}/` (например, Unit тесты в `backend/tests/Suite/{ModuleName}/Domain/`, Functional в `backend/tests/Suite/{ModuleName}/Application/`).
 
-#### 9. Usage Scenarios
+Детально описывать методы тестов не требуется.
+Избыточно добавлять описание запуска тестов.
 
-- Describe module usage scenarios in the application from the file [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md).
+#### 9. Сценарии использования
 
-## Stage Completion Criteria
+- Опишите сценарии использования модуля в приложении из файла [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md).
 
-- A `Readme.md` file is created for each implemented module according to the template
-- Documentation is written in Russian and follows the structure described in the template
-- All template sections are filled with current information about the module
-- If external APIs are present, documentation files are created in `/backend/src/{MODULE_FOLDER}/Domain/Doc`
-- Module dependencies on other modules and external libraries are specified
-- Module usage scenarios from the file [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md) are described
+## Критерии завершения этапа
 
-## User Review of Tests
+- Создан файл `Readme.md` для каждого реализованного модуля в соответствии с шаблоном
+- Документация написана на русском языке и соответствует структуре, описанной в шаблоне
+- Все разделы шаблона заполнены актуальной информацией о модуле
+- При наличии внешних API созданы файлы документации в `/backend/src/{MODULE_FOLDER}/Domain/Doc`
+- Указаны зависимости модуля от других модулей и внешних библиотек
+- Описаны сценарии использования модуля из файла [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
 
-If review passed → proceed to commit. If not → fix the description and repeat checks.
+## Ревью пользователем тестов
 
-## Committing Changes to Git
+Если ревю прошло → перейти к коммиту. Если нет → исправить описание и повторить проверки.
 
-The comment should be in Russian
+## Коммит изменений в git
+
+Комментарий должен быть на русском языке

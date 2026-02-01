@@ -1,50 +1,50 @@
-# Create a technical plan for writing tests.
+# Сформируй технический план по написанию тестов
 
-## Input Data
+## Входные данные
 
 $ARGUMENTS
 
-## Workflow
+## Алгоритм работы
 
-### Step 1. Creating the Test Plan
+### Шаг 1. Создание плана тестов
 
-Call the Task tool (switch_mode) to create the test plan:
-
-- `subagent_type`: `create-plan-test`
-- `prompt`: "Based on the business requirements and summary plan for stage {X}
-  for task @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}, create a plan for writing tests according to the instructions.
-  Return a list of created or modified files for subsequent verification."
-
-Wait for the agent to complete and save the list of files from its response.
-
-### Step 2. Re-checking the Created Files
-
-After the agent finishes, call the Task tool (switch_mode) for re-checking:
+Вызови Task tool (switch_mode) для создания плана тестов:
 
 - `subagent_type`: `create-plan-test`
-- `prompt`: "Re-check the created file {file path} for compliance with your instructions.
-  Return a list of remarks."
+- `prompt`: "На основе бизнес-требований и сводного плана по этапу {X}
+  для задачи @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} создай план по написанию тестов согласно инструкциям.
+  Верни список созданных или измененных файлов для последующей проверки."
 
-To reduce context, give each agent a task to check only one file.
+Дождись завершения работы агента и сохрани список файлов из его ответа.
 
-Wait for the agent to complete and save the list of remarks.
+### Шаг 2. Перепроверка созданных файлов
 
-### Step 3. Fixing Remarks
-
-If remarks are found, call a separate Task tool (switch_mode) for each file:
+По окончанию работы агента вызови Task tool (switch_mode) для перепроверки:
 
 - `subagent_type`: `create-plan-test`
-- `prompt`: "Make corrections to file {file path} according to the remarks: {list of remarks}"
+- `prompt`: "Перепроверь созданный файл {путь к файлу} на соответствие своим инструкциям.
+  Верни список замечаний."
 
-To reduce context, give each agent a task to modify only one file.
+Для уменьшения контекста каждому агенту давай задание по проверке только одного файла.
 
-If there are no remarks — proceed to step 4.
+Дождись завершения работы агента и сохрани список замечаний.
 
-### Step 4. Formatting Check
+### Шаг 3. Исправление замечаний
 
-For each created or modified file, call a separate Task tool (switch_mode):
+Если найдены замечания, для каждого файла вызови отдельный Task tool (switch_mode):
+
+- `subagent_type`: `create-plan-test`
+- `prompt`: "Внеси правки в файл {путь к файлу} согласно замечаниям: {список замечаний}"
+
+Для уменьшения контекста каждому агенту давай задание по изменению только одного файла.
+
+Если замечаний нет — переходи к шагу 4.
+
+### Шаг 4. Проверка форматирования
+
+Для каждого созданного или измененного файла вызови отдельный Task tool (switch_mode):
 
 - `subagent_type`: `markdownlint`
-- `prompt`: "Check and fix the formatting of the file: {file_path}"
+- `prompt`: "Проверь и исправь форматирование файла: {путь_к_файлу}"
 
-Call a separate `markdownlint` agent for each file.
+Вызывай отдельного агента `markdownlint` для каждого файла.

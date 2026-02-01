@@ -1,46 +1,47 @@
-# Stage 4. Test Development
+# Разработка тестов
 
-## Your Role
+## Твоя роль
 
-Act as a **Lead PHP Developer** with deep knowledge of TDD (Test-Driven Development) and test types.
+Веди себя как **Ведущий PHP разработчик** с глубокими знаниями TDD (Test-Driven Development) и типами тестов.
 
-## Input Parameters (User Input)
+## Входные параметры (Пользовательский ввод)
 
-{YYYY}/{MM}/{ISSUE_FOLDER} - year/month/folder name. If the parameter is not provided, it must be requested from the user.
+{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки. Если параметр не передан, его надо запросить у пользователя.
 
-## What Needs to Be Done
+## Что надо сделать
 
-Carefully review:
+Внимательно изучите:
+
 - [CodeStyle.md](/.ai/rules/CodeStyle.md)
 - [Testing.md](/.ai/rules/TestingHints.md)
-- New functional requirements in the file [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- Implementation in the file [StageX_TaskForTest.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
+- Новые требования к функционалу в файле [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- Реализацию в файле [StageX_TaskForTest.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
 
-Mandatory steps, execute them STRICTLY sequentially:
+Обязательные шаги, выполняйте их СТРОГО последовательно:
 
-1. Analyze StageX_TaskForTest.md to determine which components and scenarios need to be tested.
+1. Проанализируй StageX_TaskForTest.md для определения, какие компоненты и сценарии нужно протестировать.
 
-2. Write tests for the new functionality, following the types from [Testing.md](/.ai/rules/TestingHints.md) (Unit, Integration, E2E). Place tests in the appropriate directories (backend/tests/Suite/{ModuleName}/).
-   **IMPORTANT**. To reduce context, for each file creation or modification, launch a new agent in "testing" mode.
+2. Напиши тесты для нового функционала, следуя типам из [Testing.md](/.ai/rules/TestingHints.md) (Unit, Integration, E2E). Размести тесты в соответствующих директориях (backend/tests/Suite/{ModuleName}/).
+   **ВАЖНО**. Для уменьшения контекста для каждого создания или изменения файла запускай нового агента в режиме "testing".
 
-3. Run the PHPUnit check
+3. Запустите проверку PHPUnit
+
     ```bash
     make php-run CMD="vendor/bin/phpunit --colors --coverage-text"
     ```
 
-   **Success Criteria**:
-   - ✅ PHPUnit: **All tests PASSED**, code coverage ≥ 75%
+   **Критерии успеха**:
+   - ✅ PHPUnit: **Все тесты PASSED**, код coverage ≥ 75%
 
-4. Check tests against the checklist:
-   - Are all scenarios from Spec.md covered?
-   - Do tests comply with architecture and styles?
-   - Is there no duplication or redundancy?
+4. Проверь тесты на соответствие чек-листу:
+   - Покрыты ли все сценарии из Spec.md?
+   - Тесты соответствуют архитектуре и стилям?
+   - Нет дублирования или избыточности?
 
-**Do not** run PHPStan, Rector, PHP_Codesniffer (phpcs) and fix errors. This is forbidden.
-Static code analyzer runs will be in the next stage.
+**Не надо** запускать PHPStan, Rector, PHP_Codesniffer (phpcs) и исправлять ошибки. Это запрещено.
+Запуск статических анализаторов кода будет на следующем этапе.  
 
-## Stage Completion Criteria
+## Критерии завершения этапа
 
-1. Tests are written and run for the new functionality
-2. All tests pass, coverage meets requirements
-
+1. Написаны и запущены тесты для нового функционала
+2. Все тесты проходят, покрытие соответствует требованиям

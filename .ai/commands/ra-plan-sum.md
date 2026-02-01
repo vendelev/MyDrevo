@@ -1,37 +1,46 @@
-# Create a summary technical plan.
+# Сформируй сводный технический план
 
-## Input Data
+## Входные данные
 
 $ARGUMENTS
 
-## Work Algorithm
+## Алгоритм работы
 
-### Step 1. Creating the summary plan
+### Шаг 1. Создание сводного плана
 
-Call the Task tool (switch_mode) to create the summary plan:
-
-- `subagent_type`: `create-plan-sum`
-- `prompt`: "Based on business requirements from the file @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md
-  create a summary plan for code and test development according to the instructions.
-  Return a list of created or modified files for subsequent verification."
-
-Wait for the agent to complete and save the list of files from its response.
-
-### Step 2. Re-checking the created files
-
-After the agent finishes, call the Task tool (switch_mode) for re-checking:
+Вызови Task tool (switch_mode) для создания сводного плана:
 
 - `subagent_type`: `create-plan-sum`
-- `prompt`: "Re-check the created files {list of files} for compliance with your instructions.
-  Return a list of remarks for each file."
+- `prompt`: "На основе бизнес-требований из файла @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md
+  создай сводный план по разработке кода и тестов согласно инструкциям.
+  Верни список созданных или измененных файлов для последующей проверки"
 
-Wait for the agent to complete and save the list of remarks.
+Дождись завершения работы агента и сохрани список файлов из его ответа.
 
-### Step 3. Fixing remarks
+### Шаг 2. Перепроверка созданных файлов
 
-If remarks are found, for each file call a separate Task tool (switch_mode):
+По окончанию работы агента вызови Task tool (switch_mode) для перепроверки:
 
 - `subagent_type`: `create-plan-sum`
-- `prompt`: "Make corrections to the file {file path} according to the remarks: {list of remarks}"
+- `prompt`: "Перепроверь созданные файлы {список файлов} на соответствие своим инструкциям.
+  Верни список замечаний для каждого файла"
 
-To reduce context, give each agent a task to modify only one file.
+Дождись завершения работы агента и сохрани список замечаний.
+
+### Шаг 3. Исправление замечаний
+
+Если найдены замечания, для каждого файла вызови отдельный Task tool (switch_mode):
+
+- `subagent_type`: `create-plan-sum`
+- `prompt`: "Внеси правки в файл {путь к файлу} согласно замечаниям: {список замечаний}"
+
+Для уменьшения контекста каждому агенту давай задание по изменению только одного файла.
+
+### Шаг 4. Проверка форматирования
+
+Для каждого созданного или измененного файла вызови отдельный Task tool (switch_mode):
+
+- `subagent_type`: `markdownlint`
+- `prompt`: "Проверь и исправь форматирование файла: {путь_к_файлу}"
+
+Вызывай отдельного агента `markdownlint` для каждого файла.

@@ -1,69 +1,69 @@
-# Develop the program code.
+# Разработай программный код
 
-## Input data
+## Входные данные
 
 $ARGUMENTS
 
-## Workflow algorithm
+## Алгоритм работы
 
-### Step 1. Code development
+### Шаг 1. Разработка кода
 
-Call the Task tool (switch_mode) for code development:
-
-- `subagent_type`: `implementation`
-- `prompt`: "Develop code for implementation stage {X} from the file
-  @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md according to the instructions.
-  Return a list of created or modified files for subsequent verification."
-
-Wait for the agent to complete and save the list of files from its response.
-
-### Step 2. Re-verification
-
-After the agent completes, call the Task tool (switch_mode) for re-verification:
+Вызови Task tool (switch_mode) для разработки кода:
 
 - `subagent_type`: `implementation`
-- `prompt`: "Re-verify stage {X} from @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Task.md.
-  Return a list of remarks for each file."
+- `prompt`: "Разработай код по этапу реализации {X} из файла
+  @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md согласно инструкциям.
+  Верни список созданных или измененных файлов для последующей проверки"
 
-Wait for the agent to complete and save the list of remarks.
+Дождись завершения работы агента и сохрани список файлов из его ответа.
 
-### Step 3. Fix remarks
+### Шаг 2. Перепроверка
 
-If remarks are found, call a separate Task tool (switch_mode) for each file:
+По окончанию работы агента вызови Task tool (switch_mode) для перепроверки:
 
 - `subagent_type`: `implementation`
-- `prompt`: "Make corrections to the file {file path} according to the remarks: {list of remarks}"
+- `prompt`: "Перепроверь этап {X} из @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md.
+  Верни список замечаний для каждого файла"
 
-To reduce context, assign each agent the task of modifying only one file.
+Дождись завершения работы агента и сохрани список замечаний.
 
-### Step 4. Automatic code and style fix
+### Шаг 3. Исправление замечаний
 
-Call the Task tool (switch_mode):
+Если найдены замечания, для каждого файла вызови отдельный Task tool (switch_mode):
+
+- `subagent_type`: `implementation`
+- `prompt`: "Внеси правки в файл {путь к файлу} согласно замечаниям: {список замечаний}"
+
+Для уменьшения контекста каждому агенту давай задание по изменению только одного файла.
+
+### Шаг 4. Автоматическое исправление кода и стиля
+
+Вызови Task tool (switch_mode):
 
 - `subagent_type`: `code-auto-fix`
-- `prompt`: "Fix code and style"
+- `prompt`: "Исправь код и стиль"
 
-### Step 5. Type error checking
+### Шаг 5. Проверка ошибок типов
 
-Call the Task tool (switch_mode):
+Вызови Task tool (switch_mode):
 
 - `subagent_type`: `phpstan`
-- `prompt`: "Check and fix type errors"
+- `prompt`: "Проверь и исправь ошибки типов"
 
-If the agent returns an error message, restart the subtask (no more than 2 times).
+Если агент вернул сообщение об ошибках, перезапусти подзадачу (не более 2-х раз).
 
-### Step 6. Refactoring
+### Шаг 6. Рефакторинг
 
-Call the Task tool (switch_mode):
+Вызови Task tool (switch_mode):
 
 - `subagent_type`: `rector`
-- `prompt`: "Check and fix code"
+- `prompt`: "Проверь и исправь код"
 
-### Step 7. Code style checking
+### Шаг 7. Проверка стиля кода
 
-Call the Task tool (switch_mode):
+Вызови Task tool (switch_mode):
 
 - `subagent_type`: `phpcs`
-- `prompt`: "Check and fix code style"
+- `prompt`: "Проверь и исправь стиль кода"
 
-If the agent returns an error message, restart the subtask (no more than 2 times).
+Если агент вернул сообщение об ошибках, перезапусти подзадачу (не более 2-х раз).

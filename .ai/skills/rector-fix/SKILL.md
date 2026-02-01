@@ -1,6 +1,6 @@
 ---
 name: rector-fix
-description: Automatic code improvement (refactoring, modernization)
+description: Автоматическое улучшение кода (рефакторинг, модернизация)
 context: isolated
 argument-hint: "[path]"
 allowed-tools: [Bash]
@@ -11,31 +11,31 @@ examples:
 
 # Rector AutoFix
 
-Automatically improves PHP code using Rector: refactoring, modernization, applying best practices.
+Автоматически улучшает PHP-код с помощью Rector: рефакторинг, модернизация, применение лучших практик.
 
-## Usage
+## Использование
 
-Refactoring the entire project:
+Рефакторинг всего проекта:
 
 ```bash
 make php-run CMD="vendor/bin/rector process"
 ```
 
-Specific directory:
+Конкретная директория:
 
 ```bash
 make php-run CMD="vendor/bin/rector process src/Module"
 ```
 
-## What Rector Does
+## Что делает Rector
 
-- Refactors code according to modern PHP standards
-- Adds type hints for arguments and return values
-- Modernizes deprecated constructs
-- Applies best practices and patterns
-- Automatically fixes code quality issues
+- Рефакторит код в соответствии с современными стандартами PHP
+- Добавляет указания типов аргументов и возвращаемых значений
+- Модернизирует устаревшие конструкции
+- Применяет лучшие практики и паттерны
+- Автоматически исправляет проблемы качества кода
 
-## Requirements
+## Требования
 
-- Rector installed via Composer
-- Configuration file `rector.php` in project root
+- Rector установлен через Composer
+- Конфигурационный файл `rector.php` в корне проекта

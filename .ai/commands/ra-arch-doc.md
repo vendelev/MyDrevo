@@ -1,48 +1,48 @@
-# Create architectural documentation.
+# Создай архитектурную документацию
 
-## Input Data
+## Входные данные
 
 $ARGUMENTS
 
-## Workflow
+## Алгоритм работы
 
-### Step 1. Creating Architectural Documentation
+### Шаг 1. Создание архитектурной документации
 
-Call the Task tool (switch_mode) to create architectural documentation:
-
-- `subagent_type`: `arch-doc`
-- `prompt`: "Based on business requirements and the development and testing plan
-  in the folder @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}, create architectural documentation according to the instructions.
-  Return a list of created or modified files for subsequent review"
-
-Wait for the agent to complete and save the list of files from its response.
-
-### Step 2. Re-verification of Created Files
-
-After the agent completes, call the Task tool (switch_mode) for re-verification:
+Вызови Task tool (switch_mode) для создания архитектурной документации:
 
 - `subagent_type`: `arch-doc`
-- `prompt`: "Re-verify the created files {list of files} for compliance with your instructions.
-  Return a list of remarks for each file"
+- `prompt`: "На основе бизнес-требований и плана по разработке кода и тестов
+  в папке @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} создай архитектурную документацию согласно инструкциям.
+  Верни список созданных или измененных файлов для последующей проверки"
 
-Wait for the agent to complete and save the list of remarks.
+Дождись завершения работы агента и сохрани список файлов из его ответа.
 
-### Step 3. Fixing Remarks
+### Шаг 2. Перепроверка созданных файлов
 
-If remarks are found, for each file call a separate Task tool (switch_mode):
+По окончанию работы агента вызови Task tool (switch_mode) для перепроверки:
 
 - `subagent_type`: `arch-doc`
-- `prompt`: "Make corrections to the file {path to file} according to the remarks: {list of remarks}"
+- `prompt`: "Перепроверь созданные файлы {список файлов} на соответствие своим инструкциям.
+  Верни список замечаний для каждого файла"
 
-To reduce context, give each agent a task to modify only one file.
+Дождись завершения работы агента и сохрани список замечаний.
 
-If there are no remarks - proceed to step 4.
+### Шаг 3. Исправление замечаний
 
-### Step 4. Formatting Verification
+Если найдены замечания, для каждого файла вызови отдельный Task tool (switch_mode):
 
-For each created or modified md-file, call a separate Task tool (switch_mode):
+- `subagent_type`: `arch-doc`
+- `prompt`: "Внеси правки в файл {путь к файлу} согласно замечаниям: {список замечаний}"
+
+Для уменьшения контекста каждому агенту давай задание по изменению только одного файла.
+
+Если замечаний нет — переходи к шагу 4.
+
+### Шаг 4. Проверка форматирования
+
+Для каждого созданного или измененного md-файла вызови отдельный Task tool (switch_mode):
 
 - `subagent_type`: `markdownlint`
-- `prompt`: "Check and fix the formatting of the file: {path_to_file}"
+- `prompt`: "Проверь и исправь форматирование файла: {путь_к_файлу}"
 
-Call a separate `markdownlint` agent for each file.
+Вызывай отдельного агента `markdownlint` для каждого файла.
