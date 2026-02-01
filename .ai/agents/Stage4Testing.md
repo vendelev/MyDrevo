@@ -14,12 +14,12 @@
 
 - [CodeStyle.md](/.ai/rules/CodeStyle.md)
 - [Testing.md](/.ai/rules/TestingHints.md)
-- Новые требования к функционалу в файле [Spec.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- Реализацию в файле [StageX_TaskForTest.md](/Doc/Issue/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Stages/StageX_TaskForTest.md)
+- Новые требования к функционалу в файле [Spec.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- Реализацию в файле [TaskX_TaskForTest.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForTest.md)
 
 Обязательные шаги, выполняйте их СТРОГО последовательно:
 
-1. Проанализируй StageX_TaskForTest.md для определения, какие компоненты и сценарии нужно протестировать.
+1. Проанализируй TaskX_TaskForTest.md для определения, какие компоненты и сценарии нужно протестировать.
 
 2. Напиши тесты для нового функционала, следуя типам из [Testing.md](/.ai/rules/TestingHints.md) (Unit, Integration, E2E). Размести тесты в соответствующих директориях (backend/tests/Suite/{ModuleName}/).
    **ВАЖНО**. Для уменьшения контекста для каждого создания или изменения файла запускай нового агента в режиме "testing".

@@ -12,8 +12,8 @@ PHP разработчик - это программист с глубокими
 
 ## Входные параметры (Пользовательский ввод)
 
-- /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки.
-- Номер выполняемого этапа.
+- /Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки.
+- Номер выполняемой задачи.
 
 Если параметры не переданы, их надо запросить у пользователя.
 
@@ -22,23 +22,24 @@ PHP разработчик - это программист с глубокими
 - Информацию о проекте в [AGENTS.md](/AGENTS.md)
 - Правила архитектуры в [Architecture.md](/.ai/rules/Architecture.md)
 - Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai/rules/CodeHints.md)
-- Описание бизнес-требований в [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- Сводный план по всем этапам разработки в [TaskSummary.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md)
+- Описание бизнес-требований в [Spec.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- Сводный план по всем этапам разработки в [TaskSummary.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md)
+- Workflow при добавлении новой feature в [FeatureWorkflow.md](/.ai/rules/FeatureWorkflow.md)
 
 ## Что надо сделать
 
-1. Нужно создать "План для разработчика" - /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Stages/StageX_TaskForDev.md**.
+1. Нужно создать "План для разработчика" - /Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForDev.md.
    "План для тестирования" описывать не надо, это будет сделано позже другим AI-агентом.
 
-   Шаблон файла: [StageX_TaskForDev.md](/.ai/agents/Template/StageX_TaskForDev.md) (копируй как основу и адаптируй под задачу).
+   Шаблон файла: [TaskX_TaskForDev.md](/.ai/agents/Template/TaskX_TaskForDev.md) (копируй как основу и адаптируй под задачу).
    Файл предназначем для AI агента в роли разработчика с детальным описанием реализации без деталей тестирования.
 
 2. Задавай уточняющие вопросы по мере необходимости.
-   Описание реализации должно быть понятон разработчику без дополнительных вопросов и соответствовать архитектуре проекта.
+   Описание реализации должно быть понятно разработчику без дополнительных вопросов и соответствовать архитектуре проекта.
 
 ## Критерии завершения этапа
 
-**StageX_TaskForDev.md**:
+**TaskX_TaskForDev.md**:
 
 - ✅ Содержит архитектурные решения для всех слоев (Domain, Application, Infrastructure, Presentation)
 - ✅ Описана модель предметной области (интерфейсы, DTO, исключения)

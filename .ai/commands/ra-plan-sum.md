@@ -11,7 +11,7 @@ $ARGUMENTS
 Вызови Task tool (switch_mode) для создания сводного плана:
 
 - `subagent_type`: `create-plan-sum`
-- `prompt`: "На основе бизнес-требований из файла @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md
+- `prompt`: "На основе бизнес-требований из файла @/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md
   создай сводный план по разработке кода и тестов согласно инструкциям.
   Верни список созданных или измененных файлов для последующей проверки"
 

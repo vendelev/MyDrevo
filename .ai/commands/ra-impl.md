@@ -12,7 +12,7 @@ $ARGUMENTS
 
 - `subagent_type`: `implementation`
 - `prompt`: "Разработай код по этапу реализации {X} из файла
-  @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md согласно инструкциям.
+  @/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md согласно инструкциям.
   Верни список созданных или измененных файлов для последующей проверки"
 
 Дождись завершения работы агента и сохрани список файлов из его ответа.
@@ -22,7 +22,7 @@ $ARGUMENTS
 По окончанию работы агента вызови Task tool (switch_mode) для перепроверки:
 
 - `subagent_type`: `implementation`
-- `prompt`: "Перепроверь этап {X} из @/Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md.
+- `prompt`: "Перепроверь этап {X} из @/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md.
   Верни список замечаний для каждого файла"
 
 Дождись завершения работы агента и сохрани список замечаний.

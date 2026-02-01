@@ -33,9 +33,3 @@
 - Controller получает Request, валидирует структурные данные, вызывает UseCase.
 - Listener реагирует на доменные события других модулей.
 - Console Command реализует фоновые задачи.
-
-## 5. Тестирование
-
-- **Unit тесты** Domain слоя (Entity, ValueObject, Service).
-- **Integration тесты** Infrastructure слоя (UseCase, Query, Command, Repository, Adapter).
-- **E2E тесты** полного потока от HTTP запроса до ответа.

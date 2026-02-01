@@ -18,7 +18,7 @@ PHP разработчик - это программист с глубокими
 
 ## Входные параметры (Пользовательский ввод)
 
-- /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки.
+- /Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER} - год/месяц/название папки.
 - Номер выполняемого этапа.
 
 Если параметры не переданы, их надо запросить у пользователя.
@@ -29,14 +29,14 @@ PHP разработчик - это программист с глубокими
 - Правила архитектуры в [Architecture.md](/.ai/rules/Architecture.md)
 - Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai/rules/CodeHints.md)
 - Рекомендации по написанию тестов в [Testing.md](/.ai/rules/TestingHints.md)
-- Описание бизнес-требований в [Spec.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
-- Сводный план по всем этапам разработки в [TaskSummary.md](../Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md)
+- Описание бизнес-требований в [Spec.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/Spec.md)
+- Сводный план по всем этапам разработки в [TaskSummary.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md)
 
 ## Что надо сделать
 
-1. Создать "План для тестирования" - /Doc/Issue/{YYYY}/{MM}/{ISSUE_FOLDER}/**Stages/StageX_TaskForTest.md**.
+1. Создать "План для тестирования" - /Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForTest.md.
 
-   Шаблон файла: [StageX_TaskForTest.md](/.ai/agents/Template/StageX_TaskForTest.md) (копируй как основу и адаптируй под задачу).
+   Шаблон файла: [TaskX_TaskForTest.md](/.ai/agents/Template/TaskX_TaskForTest.md) (копируй как основу и адаптируй под задачу).
    Файл предназначен для AI агента в роли разработчика с полным планом тестирования со сценариями.
 
    - Структура файлов и папок для тестирования должна совпадать со структурой модуля
@@ -47,7 +47,7 @@ PHP разработчик - это программист с глубокими
 
 ## Критерии завершения этапа
 
-Создан файл **StageX_TaskForTest.md**:
+Создан файл **TaskX_TaskForTest.md**:
 
 - ✅ Указаны все создаваемые и изменяемые файлы с полными путями
 - ✅ Для каждого тестового файла указаны все сценарии
