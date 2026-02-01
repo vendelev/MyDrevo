@@ -3,8 +3,13 @@
 ## Твоя роль
 
 Веди себя как **Ведущий технический писатель**.
-Технический писатель (Technical Writer) — это специалист, который создаёт и поддерживает техническую документацию для продуктов, систем и процессов.
-Он переводит сложную техническую информацию в понятный и доступный формат для различных аудиторий: пользователей, разработчиков, администраторов.
+Технический писатель (Technical Writer) — это специалист, который создаёт и поддерживает техническую документацию
+для продуктов, систем и процессов.
+Он переводит сложную техническую информацию в понятный и доступный формат для различных аудиторий:
+
+- пользователей,
+- разработчиков,
+- администраторов.
 
 ## Входные параметры (Пользовательский ввод)
 
@@ -19,19 +24,22 @@
 - План реализации в [TaskX_TaskForDev.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForDev.md)
 - План тестирования в [TaskX_TaskForTest.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForTest.md)
 
-1. Создайте новый файл `/backend/src/{MODULE_FOLDER}/Readme.md` с подробной технической документацией для реализованного модуля.
+1. Создайте новый файл `/backend/src/{MODULE_FOLDER}/Readme.md` с подробной технической документацией для
+   реализованного модуля.
    Если файл уже существует, его надо актуализировать.
 
 2. Задавай уточняющие вопросы по мере необходимости.
 
 ### Определение {MODULE_FOLDER}
 
-- Извлеките название модуля из контекста [TaskSummary.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md). Ищите упоминания модулей в пути файлов (например, для "backend/src/Ticket/Domain/Entity/Ticket.php" - это "Ticket").
+- Извлеките название модуля из контекста [TaskSummary.md](/Doc/FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskSummary.md).
+  Ищите упоминания модулей в пути файлов (например, для "backend/src/Ticket/Domain/Entity/Ticket.php" - это "Ticket").
 - Если затронуто несколько модулей, создайте файлы `Readme.md` для каждого.
 - Если изменения касаются Core (общепроектного кода), создайте или обновите [`Readme.md`](/Core/Readme.md).
 
 **ВАЖНО**
-Обязательно следует прочитать все созданные и измененные файлы в модуле, так как есть вероятность, что реализация отличается от [TaskX_TaskForDev.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForDev.md) и [TaskX_TaskForTest.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForTest.md)
+Обязательно следует прочитать все созданные и измененные файлы в модуле, так как есть вероятность, что реализация
+отличается от [TaskX_TaskForDev.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForDev.md) и [TaskX_TaskForTest.md](../FeatureList/{YYYY}/{MM}/{ISSUE_FOLDER}/TaskList/TaskX_TaskForTest.md).
 В Readme.md следует описывать реальную реализацию.
 
 Описание должно быть подробное, но без лишних технических подробностей.
@@ -40,12 +48,17 @@
 
 Используйте следующий шаблон для создания документации.
 Все разделы должны быть на русском языке, как указано в правилах проекта.
-Все дополнительные файлы следует создавать в `/backend/src/{MODULE_FOLDER}/Domain/Doc`, например диаграммы или описание внешних API.
+Все дополнительные файлы следует создавать в `/backend/src/{MODULE_FOLDER}/Domain/Doc`, например диаграммы или описание
+внешних API.
 
 #### 1. Описание архитектуры и структуры модуля
 
 - Опишите общую архитектуру модуля в соответствии с [Clean Architecture](/.ai/rules/Architecture.md).
-- Включите диаграммы (например, PlantUML или Mermaid) для визуализации слоев (Domain, Application, Infrastructure, Presentation).
+- Включите диаграммы (например, PlantUML или Mermaid) для визуализации слоев:
+  - Domain,
+  - Application,
+  - Infrastructure,
+  - Presentation.
 - Перечислите ключевые компоненты и их роли.
 
 #### 2. Описание предметной области ([Domain](/.ai/rules/Architecture.md#domain))
@@ -57,7 +70,8 @@
 
 - Опишите UseCase, Command, Query, Service и их взаимодействие.
 - Укажите валидацию бизнес-правил на уровне Application (бизнес-правила, а не структурные).
-- Опишите, как UseCase координирует работу (например, 'UseCase вызывает Query для получения данных, затем Command для сохранения').
+- Опишите, как UseCase координирует работу.
+  Например, 'UseCase вызывает Query для получения данных, затем Command для сохранения'.
 
 #### 4. Документация API интерфейсов ([Presentation](/.ai/rules/Architecture.md#presentation))
 
@@ -78,7 +92,11 @@
 
 #### 8. Тестирование модуля
 
-Укажите расположение тестов: `backend/tests/Suite/{ModuleName}/` (например, Unit тесты в `backend/tests/Suite/{ModuleName}/Domain/`, Functional в `backend/tests/Suite/{ModuleName}/Application/`).
+Укажите расположение тестов: `backend/tests/Suite/{ModuleName}/`.
+Например,
+
+- Unit тесты в `backend/tests/Suite/{ModuleName}/Domain/`,
+- Functional в `backend/tests/Suite/{ModuleName}/Application/`).
 
 Детально описывать методы тестов не требуется.
 Избыточно добавлять описание запуска тестов.

@@ -44,7 +44,10 @@
 
 Тестирование отдельных компонентов при взаимодействии с БД.
 
-- **Расположение**: `backend/tests/Suite/{ModuleName}/Application/UseCase`, `backend/tests/Suite/{ModuleName}/Application/Query`, `backend/tests/Suite/{ModuleName}/Application/Command`
+- **Расположение**:
+  - `backend/tests/Suite/{ModuleName}/Application/UseCase`,
+  - `backend/tests/Suite/{ModuleName}/Application/Query`,
+  - `backend/tests/Suite/{ModuleName}/Application/Command`
 - **Охватывает**:
   - Бизнес-логика в UseCase, Query, Command
 

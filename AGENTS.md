@@ -1,81 +1,83 @@
-# Project Information
+# Информация о проекте
 
-## Communication
+## Общение
 
-All responses and interactions in **Russian language**.
+Все ответы и взаимодействие на **русском языке**.
 
-## Summary
+## Сводка
 
-Educational project for creating a genealogical tree website using Specification-Driven Development and AI, using Laravel with full containerization via Docker.
+Учебный проект для создания сайта гениалогического древа используя Specification-Driven Development и AI, 
+используя Laravel и полной контейнеризацией через Docker.
 
-### Main Components
-- **Backend API**: Laravel service with Clean Architecture and CQRS
-- **Database**: SQLite with migrations via Laravel
+### Основные компоненты
 
-### Makefile Commands
+- **Backend API**: Сервис на Laravel с Clean Architecture и CQRS
+- **Database**: SQLite с миграциями через Laravel
 
-The project uses Makefile to simplify frequent development tasks:
+### Команды Makefile
 
-- `make install` - Build and start images, composer install, create test DB.
-- `make up` - Start containers.
-- `make down` - Stop and remove containers.
-- `make update` - Rebuild and restart images, composer install.
-- `make php-cli` - Bash into PHP container.
-- `make php-log` - PHP container logs.
-- `make php-run CMD="..."` - Execute command in PHP container. For example, `make php-run CMD="php artisan migrate"`
+Проект использует Makefile для упрощения выполнения частых задач разработки:
+
+- `make install` - Собрать и запустить образы, composer install, создание тестовой БД.
+- `make up` - Запуск контейнеров.
+- `make down` - Остановить и удалить контейнеры.
+- `make update` - Пересобрать и перезапустить образы, composer install.
+- `make php-cli` - Bash PHP контейнера.
+- `make php-log` - Логи PHP контейнера.
+- `make php-run CMD="..."` - Выполнить команду в PHP контейнере. Например, `make php-run CMD="php artisan migrate"`
 
 ---
 
 ## Backend (PHP/Laravel)
 
-**Configuration**: `backend/composer.json`
+**Конфигурация**: `backend/composer.json`
 
-- **Language**: PHP 8.5.1
-- **Framework**: Laravel 12.46.0
-- **Build**: Composer
-- **Structure**: Modular monolith with Clean Architecture and CQRS
-- **Tests**: Unit, Integration, E2E
-- **Static Analysis**: PHPStan, PHP_CodeSniffer, Rector
+- **Язык**: PHP 8.5.1
+- **Фреймворк**: Laravel 12.46.0
+- **Сборка**: Composer
+- **Структура**: Модульный монолит с Clean Architecture и CQRS
+- **Тесты**: Unit, Integration, E2E
+- **Статический анализ**: PHPStan, PHP_CodeSniffer, Rector
 
-### Architecture
+### Архитектура
 
-- Architecture rules in [Architecture.md](/.ai/rules/Architecture.md)
+- Правила архитектуры в [Architecture.md](/.ai/rules/Architecture.md)
 
 ### Code Style
 
-- PHP specifics for this project in [CodeHints.md](/.ai/rules/CodeHints.md)
-- Team-accepted code style in [CodeStyle.md](/.ai/rules/CodeStyle.md)
+- Особенности работы с PHP в этом проекте в [CodeHints.md](/.ai/rules/CodeHints.md)
+- Принятый в команде стиль кода в [CodeStyle.md](/.ai/rules/CodeStyle.md)
 
-### Testing
+### Тестирование
 
-- Recommendations for writing tests in [Testing.md](/.ai/rules/Testing.md)
+- Рекомендации по написанию тестов в [Testing.md](/.ai/rules/TestingHints.md)
 
-### Environment Variables
+### Переменные окружения
 
-- **Backend**: `backend/.env.example` — template with comments
-- **Backend**: `backend/.env.testing` — variables for running tests
-- **Backend**: `backend/.env` — variables with actual values
+- **Backend**: `backend/.env.example` — шаблон с комментариями
+- **Backend**: `backend/.env.testing` — переменные для проведения тестов
+- **Backend**: `backend/.env` — переменные с реальными значениями
 
-### Backend Directory Structure
+### Структура директорий в backend
 
 ```text
 backend/
 ├── src/
-│   ├── Core/           (Project-wide code)
-│   └── {ModuleName}/   (Feature modules)
+│   ├── Core/           (Общепроектный код)
+│   └── {ModuleName}/   (Модули функциональности)
 ├── database/
-│   └── migrations/     (DB migrations)
+│   └── migrations/     (Миграции БД)
 ├── tests/
-│   ├── Suite/          (All application tests)
-│   └── Stub/           (Fixtures and test data)
-└── composer.json       (Dependencies)
+│   ├── Suite/          (Все тесты приложения)
+│   └── Stub/           (Фикстуры и тестовые данные)
+└── composer.json       (Зависимости)
 ```
 
 ---
 
-## Database
+## База данных
 
-- **DBMS**: SQLite
-- **Schema Management**: Laravel migrations
-- **Configuration**: Backend environment variables
-- **Test DB**: Separate configuration for tests
+- **СУБД**: SQLite
+- **Управление схемой**: Laravel миграции
+- **Конфигурация**: Backend переменные окружения
+- **Тестовая БД**: Отдельная конфигурация для тестов

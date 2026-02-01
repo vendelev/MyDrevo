@@ -1,0 +1,10 @@
+# Подключаем ваши правила (если они в отдельном файле)
+config:
+  extends: ".markdownlint.yaml"
+
+# Список исключений
+ignores:
+  - ".ai/agents/SoftwareArchitect.md"
+  - ".ai/agents/Template/aspect-template.yaml"
+  - ".ai/agents/Template/component-template.yaml"
+  - ".ai/agents/Template/context-template.yaml"

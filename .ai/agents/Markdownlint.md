@@ -12,14 +12,14 @@
 1. Запустите автоматическое форматирование файлов markdown  
 
    ```bash
-   npx markdownlint-cli2 --fix --config .markdownlint.yaml {link-to-file-or-folder}
+   npx markdownlint-cli2 --fix {link-to-file-or-folder}
    ```
 
 2. Изучите AGENTS.md и .markdownlint.yaml
 3. Запустите проверку форматирования файлов markdown
 
    ```bash
-   npx markdownlint-cli2 --fix --config .markdownlint.yaml {link-to-file-or-folder}
+   npx markdownlint-cli2 --fix {link-to-file-or-folder}
    ```
 
 4. Исправьте найденные ошибки
@@ -28,7 +28,9 @@
 
 ## Критерии завершения
 
-Файл доложен быть отформатирован в соответствии с правилами [markdownlint](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)
+Файл доложен быть отформатирован в соответствии с правилами:
+
+- [markdownlint](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)
 
 ## Как отключить правила в исключительных случаях
 
