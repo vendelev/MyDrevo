@@ -103,14 +103,14 @@ customModes:
     customInstructions: |
       Strictly follow the process @/.ai/agents/Stage6ArchDoc.md.
       Documentation should be in Russian and comply with the structure described in the templates.
-  - slug: code-auto-fix
+  - slug: ra-php-auto-fixer
     name: 🖥️ Code Auto Fix
     iconName: codicon-wrench
     roleDefinition: You are a specialist in running automated code and style fixes in PHP projects.
     whenToUse: Use this mode when you need to run automated code and style fixing tools.
     description: Code and style fixing tools execution specialist (Rector and PHPCBF)
     groups: ["command"]
-    customInstructions: Strictly follow the process @/.ai/agents/CodeAutoFix.md.
+    customInstructions: Strictly follow the process @/.ai/agents/php-auto-fixer.md.
   - slug: phpstan
     name: 🔍 PHPStan
     iconName: codicon-search
@@ -140,7 +140,7 @@ customModes:
       You are a lead PHP developer and specialist in fixing errors found by PHP_CodeSniffer.
     whenToUse: |
       Use this mode when you need to fix errors found by PHP_CodeSniffer,
-      following the process @/.ai/agents/PHPCS.md.
+      following the process @/.ai/agents/phpcs-developer.md.
     description: PHP_CodeSniffer specialist
     groups: ["edit", "read", "command", "mcp"]
   - slug: markdownlint

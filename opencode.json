@@ -121,7 +121,7 @@
         "phpcs": {
             "model": "opencode/gpt-5-nano",
             "description": "PHP_CodeSniffer",
-            "prompt": "{file:./.ai/agents/PHPCS.md}"
+            "prompt": "{file:./.ai/agents/phpcs-developer.md}"
         },
         "markdownlint": {
             "model": "opencode/gpt-5-nano",
