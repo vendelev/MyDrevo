@@ -17,6 +17,7 @@ final class DatabaseMigrationServiceProvider extends ServiceProvider
     /**
      * Регистрация команд модуля.
      */
+    #[\Override]
     public function register(): void
     {
         // Регистрация команд будет добавлена на этапе реализации

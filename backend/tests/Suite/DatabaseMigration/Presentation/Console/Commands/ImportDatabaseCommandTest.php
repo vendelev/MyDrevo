@@ -14,7 +14,7 @@ final class ImportDatabaseCommandTest extends TestCase
     /**
      * Тест успешного импорта данных.
      */
-    public function test_import_success(): void
+    public function testImportSuccess(): void
     {
         self::markTestSkipped('TODO: Реализовать тест на этапе 4');
     }
@@ -22,7 +22,7 @@ final class ImportDatabaseCommandTest extends TestCase
     /**
      * Тест импорта с валидацией файла.
      */
-    public function test_import_validation(): void
+    public function testImportValidation(): void
     {
         self::markTestSkipped('TODO: Реализовать тест на этапе 4');
     }
@@ -30,7 +30,7 @@ final class ImportDatabaseCommandTest extends TestCase
     /**
      * Тест импорта с флагом truncate.
      */
-    public function test_import_truncate(): void
+    public function testImportTruncate(): void
     {
         self::markTestSkipped('TODO: Реализовать тест на этапе 4');
     }
@@ -38,7 +38,7 @@ final class ImportDatabaseCommandTest extends TestCase
     /**
      * Тест импорта с флагом skip-existing.
      */
-    public function test_import_skip_existing(): void
+    public function testImportSkipExisting(): void
     {
         self::markTestSkipped('TODO: Реализовать тест на этапе 4');
     }

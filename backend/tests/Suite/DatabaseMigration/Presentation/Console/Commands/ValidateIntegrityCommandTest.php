@@ -14,7 +14,7 @@ final class ValidateIntegrityCommandTest extends TestCase
     /**
      * Тест проверки целостности без ошибок.
      */
-    public function test_validate_success(): void
+    public function testValidateSuccess(): void
     {
         self::markTestSkipped('TODO: Реализовать тест на этапе 5');
     }
@@ -22,7 +22,7 @@ final class ValidateIntegrityCommandTest extends TestCase
     /**
      * Тест проверки целостности с ошибками.
      */
-    public function test_validate_with_errors(): void
+    public function testValidateWithErrors(): void
     {
         self::markTestSkipped('TODO: Реализовать тест на этапе 5');
     }
@@ -30,7 +30,7 @@ final class ValidateIntegrityCommandTest extends TestCase
     /**
      * Тест автоматического исправления проблем.
      */
-    public function test_validate_fix(): void
+    public function testValidateFix(): void
     {
         self::markTestSkipped('TODO: Реализовать тест на этапе 5');
     }
@@ -38,7 +38,7 @@ final class ValidateIntegrityCommandTest extends TestCase
     /**
      * Тест вывода в формате JSON.
      */
-    public function test_validate_json_output(): void
+    public function testValidateJsonOutput(): void
     {
         self::markTestSkipped('TODO: Реализовать тест на этапе 5');
     }
