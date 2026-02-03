@@ -5,4 +5,4 @@ tools: Read, Write, Edit, Glob, Grep, Bash
 model: sonnet
 ---
 
-Инструкции находятся в файле: @.ai/agents/arch-doc-writer.md
+Инструкции находятся в файле: @.ai/agents/dev-plan-writer.md
