@@ -1,7 +1,7 @@
 ---
 name: ra-create-summary-plan
 description: Создание сводного технического плана с разбивкой на последовательные задачи
-argument-hint: "Путь к файлу с описанием бизнес-требований, формат: @/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/Spec.md"
+argument-hint: "Путь к папке с описанием бизнес-требований, формат: @/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}"
 model: haiku
 allowed-tools: Task
 disable-model-invocation: true
