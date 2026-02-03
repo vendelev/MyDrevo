@@ -26,7 +26,7 @@ description: Поиск ошибок PHP_CodeSniffer и их исправлен�
 Запустите агента `php-auto-fixer` для автоматического исправления:
 
 ```
-Используйте Task tool с subagent_type="php-auto-fixer"
+Используйте Task tool (switch_mode) с subagent_type="php-auto-fixer"
 ```
 
 Агент выполнит:
