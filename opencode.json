@@ -11,122 +11,127 @@
         }
     },
     "command": {
-        "ra-epic": {
+        "ra-create-epic": {
             "description": "Создание эпика: описание бизнес требований и разбивка на этапы",
-            "template": "{file:./.ai/commands/ra-epic.md}",
+            "template": "{file:./.ai/commands/ra-create-epic.md}",
             "model": "opencode/gpt-5-nano"
         },
-        "ra-feature": {
+        "ra-create-feature": {
             "description": "Описание функциональных требований",
-            "template": "{file:./.ai/commands/ra-feature.md}",
+            "template": "{file:./.ai/commands/ra-create-feature.md}",
             "model": "opencode/gpt-5-nano"
         },
-        "ra-plan-sum": {
+        "ra-create-summary-plan": {
             "description": "Формирование сводного технического плана",
-            "template": "{file:./.ai/commands/ra-plan-sum.md}",
+            "template": "{file:./.ai/commands/ra-create-summary-plan.md}",
             "model": "opencode/gpt-5-nano"
         },
-        "ra-plan-dev": {
+        "ra-create-dev-plan": {
             "description": "Формирование технического плана по разработке кода",
-            "template": "{file:./.ai/commands/ra-plan-dev.md}",
+            "template": "{file:./.ai/commands/ra-create-dev-plan.md}",
             "model": "opencode/gpt-5-nano"
         },
-        "ra-plan-test": {
+        "ra-create-test-plan": {
             "description": "Формирование технического плана по написанию тестов",
-            "template": "{file:./.ai/commands/ra-plan-test.md}",
+            "template": "{file:./.ai/commands/ra-create-test-plan.md}",
             "model": "opencode/gpt-5-nano"
         },
-        "ra-impl": {
-            "description": "Разработка программного кода",
-            "template": "{file:./.ai/commands/ra-impl.md}",
+        "ra-php-implementation": {
+            "description": "Разработка программного кода согласно техническому плану",
+            "template": "{file:./.ai/commands/ra-php-implementation.md}",
             "model": "opencode/gpt-5-nano"
         },
-        "ra-test": {
-            "description": "Написание тестов",
-            "template": "{file:./.ai/commands/ra-test.md}",
+        "ra-php-test-implementation": {
+            "description": "Написание тестов согласно техническому плану",
+            "template": "{file:./.ai/commands/ra-php-test-implementation.md}",
             "model": "opencode/gpt-5-nano"
         },
-        "ra-tech-doc": {
+        "ra-create-tech-doc": {
             "description": "Создание технической документации",
-            "template": "{file:./.ai/commands/ra-tech-doc.md}",
+            "template": "{file:./.ai/commands/ra-create-tech-doc.md}",
             "model": "opencode/gpt-5-nano"
         },
-        "ra-arch-doc": {
+        "ra-create-arch-doc": {
             "description": "Создание архитектурной документации",
-            "template": "{file:./.ai/commands/ra-arch-doc.md}",
+            "template": "{file:./.ai/commands/ra-create-arch-doc.md}",
+            "model": "opencode/gpt-5-nano"
+        },
+        "ra-php-auto-fixer": {
+            "description": "Автоматическое исправление кода и стиля (Rector и PHPCBF)",
+            "template": "{file:./.ai/commands/ra-php-auto-fixer.md}",
+            "model": "opencode/gpt-5-nano"
+        },
+        "ra-phpcs-developer": {
+            "description": "Поиск ошибок PHP_CodeSniffer и их исправление",
+            "template": "{file:./.ai/commands/ra-phpcs-developer.md}",
             "model": "opencode/gpt-5-nano"
         }
     },
     "agent": {
-        "create-epic": {
+        "epic-writer": {
             "model": "opencode/big-pickle",
-            "description": "Создание бизнес требований",
-            "prompt": "{file:./.ai/agents/Stage0CreateEpic.md}"
+            "description": "Создание бизнес требований и планирование этапов эпика",
+            "prompt": "{file:./.ai/agents/epic-writer.md}"
         },
-        "create-feature": {
+        "feature-writer": {
             "model": "opencode/big-pickle",
-            "description": "Создание функциональных требований",
-            "prompt": "{file:./.ai/agents/Stage1CreateFeature.md}"
+            "description": "Создание функциональных требований для этапа",
+            "prompt": "{file:./.ai/agents/feature-writer.md}"
         },
-        "create-plan-sum": {
+        "summary-plan-writer": {
             "model": "opencode/big-pickle",
             "description": "Создание сводного технического плана",
-            "prompt": "{file:./.ai/agents/Stage2CreatePlanSummary.md}"
+            "prompt": "{file:./.ai/agents/summary-plan-writer.md}"
         },
-        "create-plan-dev": {
+        "dev-plan-writer": {
             "model": "opencode/big-pickle",
             "description": "Создание технического плана разработки кода",
-            "prompt": "{file:./.ai/agents/Stage2CreatePlanDev.md}"
+            "prompt": "{file:./.ai/agents/dev-plan-writer.md}"
         },
-        "create-plan-test": {
+        "test-plan-writer": {
             "model": "opencode/big-pickle",
             "description": "Создание технического плана написания тестов",
-            "prompt": "{file:./.ai/agents/Stage2CreatePlanTest.md}"
+            "prompt": "{file:./.ai/agents/test-plan-writer.md}"
         },
-        "implementation": {
+        "php-developer": {
             "model": "opencode/big-pickle",
-            "description": "Реализация кода на PHP",
-            "prompt": "{file:./.ai/agents/Stage3Implementation.md}"
+            "description": "Реализация кода на PHP согласно техническому плану",
+            "prompt": "{file:./.ai/agents/php-developer.md}"
         },
-        "testing": {
+        "php-test-developer": {
             "model": "opencode/big-pickle",
-            "description": "Разработка тестов",
-            "prompt": "{file:./.ai/agents/Stage4Testing.md}"
+            "description": "Разработка тестов согласно техническому плану",
+            "prompt": "{file:./.ai/agents/php-test-developer.md}"
         },
-        "tech-doc": {
+        "tech-doc-writer": {
             "model": "opencode/big-pickle",
-            "description": "Создание технической документации",
-            "prompt": "{file:./.ai/agents/Stage5TechDoc.md}"
+            "description": "Создание технической документации для модулей",
+            "prompt": "{file:./.ai/agents/tech-doc-writer.md}"
         },
-        "arch-doc": {
+        "arch-doc-writer": {
             "model": "opencode/big-pickle",
-            "description": "Создание архитектурной документации",
-            "prompt": "{file:./.ai/agents/Stage6ArchDoc.md}"
+            "description": "Создание архитектурной документации в формате DocHub",
+            "prompt": "{file:./.ai/agents/arch-doc-writer.md}"
         },
-        "code-auto-fix": {
+        "php-auto-fixer": {
             "model": "opencode/gpt-5-nano",
             "description": "Автоматическое исправление кода и стиля (Rector и PHPCBF)",
-            "prompt": "{file:./.ai/agents/CodeAutoFix.md}"
+            "prompt": "{file:./.ai/agents/php-auto-fixer.md}"
         },
-        "phpstan": {
+        "phpstan-developer": {
             "model": "opencode/gpt-5-nano",
-            "description": "PHPStan",
-            "prompt": "{file:./.ai/agents/PHPStan.md}"
+            "description": "Поиск ошибок PHPStan и их исправление",
+            "prompt": "{file:./.ai/agents/phpstan-developer.md}"
         },
-        "rector": {
+        "phpcs-developer": {
             "model": "opencode/gpt-5-nano",
-            "description": "Rector",
-            "prompt": "{file:./.ai/agents/Rector.md}"
-        },
-        "phpcs": {
-            "model": "opencode/gpt-5-nano",
-            "description": "PHP_CodeSniffer",
-            "prompt": "{file:./.ai/agents/PHPCS.md}"
+            "description": "Поиск ошибок PHP_CodeSniffer и их исправление",
+            "prompt": "{file:./.ai/agents/phpcs-developer.md}"
         },
         "markdownlint": {
             "model": "opencode/gpt-5-nano",
-            "description": "Исправление ошибок markdownlint",
-            "prompt": "{file:./.ai/agents/Markdownlint.md}"
+            "description": "Исправление ошибок форматирования Markdown-документов",
+            "prompt": "{file:./.ai/agents/markdownlint.md}"
         }
     }
 }

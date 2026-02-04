@@ -3,154 +3,144 @@
 
 customModes:
   - slug: create-epic
-    name: 📋 0. Epic Stage Planning
+    name: 📋 0. Планирование этапов эпика
     iconName: codicon-calendar
-    roleDefinition: You are a lead Product Owner
+    roleDefinition: Вы являетесь ведущим Product Owner
     whenToUse: |
-      Use this mode when you need to describe stakeholder business needs and break work into stages,
-      following the process @/.ai/agents/Stage0CreateEpic.md.
-    description: Epic requirements specification specialist
+      Используйте этот режим, когда вам нужно описать бизнес-потребности стейкхолдера и разбить работы на этапы,
+      следуя процессу @/.ai/agents/epic-writer.md.
+    description: Специалист по описанию потребностей эпика
     groups: ["edit", "read", "command", "mcp"]
-    customInstructions: Strictly follow the process @/.ai/agents/Stage0CreateEpic.md.
+    customInstructions: Строго следуйте процессу @/.ai/agents/epic-writer.md.
   - slug: create-feature
-    name: 📁 1. Specification Creation
+    name: 📁 1. Описание feature
     iconName: codicon-file-submodule
-    roleDefinition: You are a lead business analyst and specification creation specialist.
+    roleDefinition: Вы являетесь ведущим бизнес аналитиком и специалистом по созданию спецификаций.
     whenToUse: |
-      Use this mode when you need to create technical specifications from business requirements,
-      following the process @/.ai/agents/Stage1CreateFeature.md.
-    description: Specification creation specialist
+      Используйте этот режим, когда вам нужно создать технические спецификации из бизнес-требований,
+      следуя процессу @/.ai/agents/feature-writer.md.
+    description: Специалист по созданию спецификаций
     groups: ["edit", "read", "command", "mcp"]
     customInstructions: |
-      Strictly follow the process @/.ai/agents/Stage1CreateFeature.md.
+      Строго следуйте процессу @/.ai/agents/feature-writer.md.
   - slug: create-plan-sum
-    name: 📰 2. Summary Technical Plan Creation
+    name: 📰 2. Создание сводного технического плана
     iconName: codicon-organization
     roleDefinition: |
-      You are a lead systems analyst and technical architect with PHP knowledge.
-      You specialize in creating technical implementation plans based on business requirements.
+      Вы являетесь ведущим системным аналитиком и техническим архитектором со знанием PHP.
+      Вы специализируетесь на создании технических планов реализации на основе бизнес-требований.
     whenToUse: |
-      Use this mode when you need to create a summary technical development plan for a stage based on specifications,
-      following the process @/.ai/agents/Stage2CreatePlanSummary.md.
-    description: Summary technical plan creation specialist
+      Используйте этот режим, когда вам нужно создать сводный технический план разработки этапа на основе спецификации,
+      следуя процессу @/.ai/agents/summary-plan-writer.md.
+    description: Специалист по созданию сводных технических планов
     groups: ["edit", "read", "command", "mcp"]
-    customInstructions: Strictly follow the process @/Doc/Prompt/Stage2CreatePlanSummary.md.
+    customInstructions: Строго следуйте процессу @/.ai/agents/summary-plan-writer.md.
   - slug: create-plan-dev
-    name: 📰 3. Development Technical Plan Creation
+    name: 📰 3. Создание технического плана по разработке кода
     iconName: codicon-organization
     roleDefinition: |
-      You are a lead systems analyst and programmer with PHP knowledge.
-      You specialize in creating technical implementation plans based on business requirements.
+      Вы являетесь ведущим системным аналитиком и программистом со знанием PHP.
+      Вы специализируетесь на создании технических планов реализации на основе бизнес-требований.
     whenToUse: |
-      Use this mode when you need to create a technical implementation plan based on specifications,
-      following the process @/.ai/agents/Stage2CreatePlanDev.md.
-    description: Code development technical plan creation specialist
+      Используйте этот режим, когда вам нужно создать технический план реализации на основе спецификации,
+      следуя процессу @/.ai/agents/dev-plan-writer.md.
+    description: Специалист по созданию технического плана по разработке кода
     groups: ["edit", "read", "command", "mcp"]
-    customInstructions: Strictly follow the process @/Doc/Prompt/Stage2CreatePlanDev.md.
+    customInstructions: Строго следуйте процессу @/.ai/agents/dev-plan-writer.md.
   - slug: create-plan-test
-    name: 📰 4. Testing Technical Plan Creation
+    name: 📰 4. Создание технического плана по написанию тестов
     iconName: codicon-organization
     roleDefinition: |
-      You are a lead systems analyst and programmer with PHP knowledge.
-      You specialize in creating technical implementation plans based on business requirements.
+      Вы являетесь ведущим системным аналитиком и программистом со знанием PHP.
+      Вы специализируетесь на создании технических планов реализации на основе бизнес-требований.
     whenToUse: |
-      Use this mode when you need to create a technical plan for writing tests based on specifications,
-      following the process @/.ai/agents/Stage2CreatePlanTest.md.
-    description: Test writing technical plan creation specialist
+      Используйте этот режим, когда вам нужно создать технический план по написанию тестов на основе спецификации,
+      следуя процессу @/.ai/agents/test-plan-writer.md.
+    description: Специалист по созданию технических планов по написанию тестов
     groups: ["edit", "read", "command", "mcp"]
-    customInstructions: Strictly follow the process @/Doc/Prompt/Stage2CreatePlanTest.md.
+    customInstructions: Строго следуйте процессу @/.ai/agents/test-plan-writer.md.
   - slug: implementation
-    name: 💻 5. Code Implementation
+    name: 💻 5. Реализация кода
     iconName: codicon-file-code
-    roleDefinition: You are a lead PHP developer with deep knowledge of design patterns and architecture.
+    roleDefinition: Вы являетесь ведущим PHP разработчиком с глубокими знаниями паттернов проектирования и архитектуры.
     whenToUse: |
-      Use this mode when you need to implement a technical development plan,
-      following the process @/.ai/agents/Stage3Implementation.md.
-    description: PHP code implementation specialist
+      Используйте этот режим, когда вам нужно реализовать технический план разработки,
+      следуя процессу @/.ai/agents/php-developer.md.
+    description: Специалист по реализации PHP кода
     groups: ["edit", "read", "command", "mcp"]
-    customInstructions: Strictly follow the process @/.ai/agents/Stage3Implementation.md.
+    customInstructions: Строго следуйте процессу @/.ai/agents/php-developer.md.
   - slug: testing
-    name: 🔬 6. Test Development
+    name: 🔬 6. Разработка тестов
     iconName: codicon-beaker
-    roleDefinition: You are a lead PHP developer with deep knowledge of TDD (Test-Driven Development) and test types.
+    roleDefinition: Вы являетесь ведущим PHP разработчиком с глубокими знаниями TDD (Test-Driven Development) и типами тестов.
     whenToUse: |
-      Use this mode when you need to develop tests for implemented functionality,
-      following the process @/.ai/agents/Stage4Testing.md.
-    description: Test development specialist
+      Используйте этот режим, когда вам нужно разработать тесты для реализованного функционала,
+      следуя процессу @/.ai/agents/php-test-developer.md.
+    description: Специалист по разработке тестов
     groups: ["edit", "read", "command", "mcp"]
-    customInstructions: Strictly follow the process @/.ai/agents/Stage4Testing.md.
+    customInstructions: Строго следуйте процессу @/.ai/agents/php-test-developer.md.
   - slug: tech-doc
-    name: 📙 7. Technical Documentation
+    name: 📙 7. Техническая документация
     iconName: codicon-book
-    roleDefinition: You are a lead technical writer.
+    roleDefinition: Вы являетесь ведущим техническим писателем.
     whenToUse: |
-      Use this mode when you need to create technical documentation for an implemented module,
-      following the process @/.ai/agents/Stage5TechDoc.md.
-    description: Technical documentation creation specialist
+      Используйте этот режим, когда вам нужно создать техническую документацию для реализованного модуля,
+      следуя процессу @/.ai/agents/tech-doc-writer.md.
+    description: Специалист по созданию технической документации
     groups: ["edit", "read", "command", "mcp"]
     customInstructions: |
-      Strictly follow the process @/.ai/agents/Stage5TechDoc.md.
-      Documentation should be in Russian and comply with markdown formatting rules.
+      Строго следуйте процессу @/.ai/agents/tech-doc-writer.md.
+      Документация должна быть на русском языке и соответствовать правилам форматирования markdown.
   - slug: arch-doc
-    name: 📐 8. Architectural Documentation Creation
+    name: 📐 8. Создание архитектурной документации
     iconName: codicon-graph
-    roleDefinition: You are a lead IT architect.
+    roleDefinition: Вы являетесь ведущим IT архитектором.
     whenToUse: |
-      Use this mode when you need to create architectural documentation for implemented functionality,
-      following the process @/.ai/agents/Stage6ArchDoc.md.
-    description: Architectural documentation creation specialist
+      Используйте этот режим, когда вам нужно создать архитектурную документацию для реализованного функционала,
+      следуя процессу @/.ai/agents/arch-doc-writer.md.
+    description: Специалист по созданию архитектурной документации
     groups: ["edit", "read", "command", "mcp"]
     customInstructions: |
-      Strictly follow the process @/.ai/agents/Stage6ArchDoc.md.
-      Documentation should be in Russian and comply with the structure described in the templates.
-  - slug: code-auto-fix
+      Строго следуйте процессу @/.ai/agents/arch-doc-writer.md.
+      Документация должна быть на русском языке и соответствовать структуре, описанной в шаблонах.
+  - slug: php-auto-fixer
     name: 🖥️ Code Auto Fix
     iconName: codicon-wrench
-    roleDefinition: You are a specialist in running automated code and style fixes in PHP projects.
-    whenToUse: Use this mode when you need to run automated code and style fixing tools.
-    description: Code and style fixing tools execution specialist (Rector and PHPCBF)
+    roleDefinition: Вы являетесь специалистом по запуску автоматического исправления кода и стиля в PHP проектах.
+    whenToUse: Используйте этот режим, когда вам нужно запустить автоматические инструменты исправления кода и стиля.
+    description: Специалист по запуск инструментов исправления кода и стиля (Rector и PHPCBF)
     groups: ["command"]
-    customInstructions: Strictly follow the process @/.ai/agents/CodeAutoFix.md.
+    customInstructions: Строго следуйте процессу @/.ai/agents/php-auto-fixer.md.
   - slug: phpstan
     name: 🔍 PHPStan
     iconName: codicon-search
-    roleDefinition: You are a lead PHP developer and specialist in fixing errors found by PHPStan.
+    roleDefinition: Вы являетесь ведущим PHP разработчиком и специалистом по исправлению ошибок, найденных PHPStan.
     whenToUse: |
-      Use this mode when you need to fix errors found by PHPStan,
-      following the process @/.ai/agents/PHPStan.md.
-    description: PHPStan specialist
+      Используйте этот режим, когда вам нужно исправить ошибки, найденные PHPStan,
+      следуя процессу @/.ai/agents/phpstan-developer.md.
+    description: Специалист по PHPStan
     groups: ["edit", "read", "command", "mcp"]
-    customInstructions: Strictly follow the process @/.ai/agents/PHPStan.md.
-  - slug: rector
-    name: 🛠️ Rector
-    iconName: codicon-tools
-    roleDefinition: |
-      You are a lead PHP developer and specialist in automated code and style fixing
-      in PHP projects.
-    whenToUse: |
-      Use this mode when you need to fix errors found by Rector,
-      following the process @/.ai/agents/Rector.md.
-    description: Rector specialist
-    groups: ["edit", "read", "command", "mcp"]
-    customInstructions: Strictly follow the process @/.ai/agents/Rector.md.
+    customInstructions: Строго следуйте процессу @/.ai/agents/phpstan-developer.md.
   - slug: phpcs
     name: 🐛 PHPCS
     iconName: codicon-bug
     roleDefinition: |
-      You are a lead PHP developer and specialist in fixing errors found by PHP_CodeSniffer.
+      Вы являетесь ведущим PHP разработчиком и специалистом по исправлению ошибок, найденных PHP_CodeSniffer.
     whenToUse: |
-      Use this mode when you need to fix errors found by PHP_CodeSniffer,
-      following the process @/.ai/agents/PHPCS.md.
-    description: PHP_CodeSniffer specialist
+      Используйте этот режим, когда вам нужно исправить ошибки, найденные PHP_CodeSniffer,
+      следуя процессу @/.ai/agents/phpcs-developer.md.
+    description: Специалист по PHP_CodeSniffer
     groups: ["edit", "read", "command", "mcp"]
+    customInstructions: Строго следуйте процессу @/.ai/agents/phpcs-developer.md.
   - slug: markdownlint
     name: 📝 Markdownlint
     iconName: codicon-bug
     roleDefinition: |
-      You are a documentation formatting specialist. You specialize in fixing errors found by markdownlint.
+      Вы являетесь специалистом по оформлению документации.
+      Вы специализируетесь на исправлении ошибок, найденных markdownlint.
     whenToUse: |
-      Use this mode when you need to check markdown files and fix errors found by markdownlint,
-      following the process @/.ai/agents/Markdownlint.md.
-    description: Markdownlint error fixing specialist
+      Используйте этот режим, когда вам нужно проверить markdown файлы и исправить ошибки, найденные markdownlint,
+      следуя процессу @/.ai/agents/markdownlint.md.
+    description: Специалист по исправлению ошибок markdownlint
     groups: ["edit", "read", "command", "mcp"]
-    customInstructions: Strictly follow the process @/.ai/agents/Markdownlint.md.
+    customInstructions: Строго следуйте процессу @/.ai/agents/markdownlint.md.
