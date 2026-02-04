@@ -9,4 +9,4 @@ ignores:
   - ".ai/agents/Template/aspect-template.yaml"
   - ".ai/agents/Template/component-template.yaml"
   - ".ai/agents/Template/context-template.yaml"
-  - ".ai/examples"
+  - ".ai/examples/filled-examples"
