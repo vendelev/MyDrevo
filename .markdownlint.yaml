@@ -6,6 +6,8 @@ MD013:
   code_block_line_length: 120
   tables: false
 
-table-column-style: false
+MD024: false
 
 MD033: false
+
+table-column-style: false

@@ -26,8 +26,8 @@ PHP_CodeSniffer - это инструмент для проверки стиля
 
 3. Проверьте исправленные файлы на соответствие:
 
-   - [CodeHints.md](/.ai/rules/CodeHints.md)
-   - [CodeStyle.md](/.ai/rules/CodeStyle.md)
+   - [CodeHints.md](../rules/CodeHints.md)
+   - [CodeStyle.md](../rules/CodeStyle.md)
 
 4. Выведите подтверждения завершения задачи, статус проверки и статус исправления ошибок.
 

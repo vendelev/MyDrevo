@@ -4,7 +4,9 @@ config:
 
 # Список исключений
 ignores:
+  - ".ai/CustomModes.yaml"
   - ".ai/agents/SoftwareArchitect.md"
   - ".ai/agents/Template/aspect-template.yaml"
   - ".ai/agents/Template/component-template.yaml"
   - ".ai/agents/Template/context-template.yaml"
+  - ".ai/examples/filled-examples"

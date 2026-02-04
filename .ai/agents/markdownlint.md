@@ -14,7 +14,7 @@ description: Режим исправления ошибок форматиров
 
 **СТРОГО последовательно** выполните только следующие шаги:
 
-1. Изучите [AGENTS.md](/AGENTS.md) и [.markdownlint.yaml](../../.markdownlint.yaml)
+1. Изучите [AGENTS.md](../../AGENTS.md) и [.markdownlint.yaml](../../.markdownlint.yaml)
 2. Запустите автоматическое форматирование файлов markdown
 
    ```bash
