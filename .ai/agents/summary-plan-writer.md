@@ -32,8 +32,8 @@ IT архитектор — это специалист, который прое
 
 ## Внимательно изучи
 
-- Информацию о проекте в [AGENTS.md](/AGENTS.md)
-- Правила архитектуры в [Architecture.md](/.ai/rules/Architecture.md)
+- Информацию о проекте в [AGENTS.md](../../AGENTS.md)
+- Правила архитектуры в [Architecture.md](../rules/Architecture.md)
 - Новые бизнес-требования в [Spec.md](../FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/Spec.md)
 
 ## Что надо сделать
@@ -51,7 +51,7 @@ IT архитектор — это специалист, который прое
 
 ## Шаблон TaskSummary.md
 
-Используй шаблон [TaskSummary.md](/.ai/agents/Template/TaskSummary.md) (копируй как основу и адаптируй)
+Используй шаблон [TaskSummary.md](./Template/TaskSummary.md) (копируй как основу и адаптируй)
 
 ### Диаграммы (Mermaid)
 
@@ -68,5 +68,5 @@ IT архитектор — это специалист, который прое
 - ✅ Создан **TaskSummary.md**, который содержит ссылки на файлы этапов в "TaskList/"
 - ✅ Все бизнес-требования из **Spec.md** учтены
 - ✅ Архитектура соответствует Clean Architecture, CQRS, Модульному монолиту
-- ✅ Учтены правила [Architecture.md](/.ai/rules/Architecture.md)
+- ✅ Учтены правила [Architecture.md](../rules/Architecture.md)
 - ✅ Документ готов для использования другим AI-агентами на разных этапах

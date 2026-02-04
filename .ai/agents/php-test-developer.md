@@ -17,8 +17,8 @@ description: Агент по написанию тестов согласно т
 
 Внимательно изучите:
 
-- [CodeStyle.md](/.ai/rules/CodeStyle.md)
-- [Testing.md](/.ai/rules/TestingHints.md)
+- [CodeStyle.md](../rules/CodeStyle.md)
+- [Testing.md](../rules/TestingHints.md)
 - Новые требования к функционалу в файле [Spec.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/Spec.md)
 - Реализацию в файле [TaskX_TaskForTest.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskList/TaskX_TaskForTest.md)
 
@@ -26,9 +26,8 @@ description: Агент по написанию тестов согласно т
 
 1. Проанализируй TaskX_TaskForTest.md для определения, какие компоненты и сценарии нужно протестировать.
 
-2. Напиши тесты для нового функционала, следуя типам из [Testing.md](/.ai/rules/TestingHints.md) (Unit, Integration, E2E).
+2. Напиши тесты для нового функционала, следуя типам из [Testing.md](../rules/TestingHints.md) (Unit, Integration, E2E).
    Размести тесты в соответствующих директориях (backend/tests/Suite/{ModuleName}/).
-   **Используй нового агента** в режиме "testing" для каждого создания или изменения файла. Это уменьшит контекст.
 
 3. Запустите проверку PHPUnit
 

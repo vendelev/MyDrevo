@@ -51,8 +51,8 @@ IT архитектор — это высококвалифицированны�
 
 Внимательно изучи:
 
-- Информацию о проекте в [AGENTS.md](/AGENTS.md)
-- Правила архитектуры в [Architecture.md](/.ai/rules/Architecture.md)
+- Информацию о проекте в [AGENTS.md](../../AGENTS.md)
+- Правила архитектуры в [Architecture.md](../rules/Architecture.md)
 - Новые бизнес-требования в [Spec.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/Spec.md)
 - План реализации в [TaskSummary.md](/Doc/FeatureList/{YYYY}/{MM}/{FEATURE_FOLDER}/TaskSummary.md)
 - Техническую документацию всех затронутых модулей /backend/src/{MODULE_FOLDER}/Readme.md
