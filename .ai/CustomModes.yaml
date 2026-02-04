@@ -1,7 +1,6 @@
 # <https://docs.roocode.com/features/custom-modes>
 
 customModes:
-
   - slug: create-epic
     name: 📋 0. Планирование этапов эпика
     iconName: codicon-calendar
@@ -103,7 +102,7 @@ customModes:
     customInstructions: |
       Строго следуйте процессу @/.ai/agents/arch-doc-writer.md.
       Документация должна быть на русском языке и соответствовать структуре, описанной в шаблонах.
-  - slug: ra-php-auto-fixer
+  - slug: php-auto-fixer
     name: 🖥️ Code Auto Fix
     iconName: codicon-wrench
     roleDefinition: Вы являетесь специалистом по запуску автоматического исправления кода и стиля в PHP проектах.
