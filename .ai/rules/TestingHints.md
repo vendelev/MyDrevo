@@ -8,8 +8,9 @@
 - Для контроллеров, возвращающих View, проверять содержимое шаблона (render())
 - Для тестирования UseCase применяй Integration тесты, в конструктре могут быть зависимости `final class`
 - Не использовать Mockery
-- Вместо `app()` использовать `$this->service()` - метод определен в базовом `Tests\TestCase` как обертка над 
+- Вместо `app()` использовать `$this->service()` - метод определен в базовом `Tests\TestCase` как обертка над
   контейнером зависимостей. Пример:
+
   ```php
   // Вместо:
   $validator = app(ValidationFactoryInterface::class);
@@ -17,6 +18,7 @@
   // Используй:
   $validator = $this->service(ValidationFactoryInterface::class);
   ```
+
 - Для Integration и E2E надо создавать записи в БД используя классы в папке [ModelFactory](../../backend/tests/Stub/ModelFactory)
 
 **Когда писать тесты**:
