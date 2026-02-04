@@ -53,7 +53,7 @@ $ARGUMENTS
 
 Вызови Task tool (switch_mode):
 
-- `subagent_type`: `phpstan`
+- `subagent_type`: `phpstan-developer`
 - `prompt`: "Проверь и исправь ошибки типов"
 
 Если агент вернул сообщение об ошибках, перезапусти подзадачу (не более 2-х раз).
