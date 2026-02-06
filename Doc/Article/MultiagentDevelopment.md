@@ -263,57 +263,47 @@ Doc/
 
 Весь процесс разбит на несколько последовательных шагов.
 
-```plantuml
-@startuml
+```mermaid
+flowchart LR
+    subgraph Planning["Планирование"]
+        Step0["Шаг 0. Создание эпика"]
+        Step1["Шаг 1. Спецификация"]
+    end
 
-skinparam backgroundColor #FEFEFE
-skinparam activityBackgroundColor #F5F5F5
-skinparam activityBorderColor #333333
+    subgraph Design["Проектирование"]
+        Step2["Шаг 2. Сводный план"]
+        Step3["Шаг 3. План разработки"]
+        Step4["Шаг 4. План тестирования"]
+    end
 
-|Планирование|
-start
-:Шаг 0. **Создание эпика**
-Product Owner описывает бизнес-требования
-и разбивает работу на этапы;
+    subgraph Implementation["Реализация"]
+        Step5["Шаг 5. Разработка кода"]
+        Step6["Шаг 6. Написание тестов"]
+    end
 
-:Шаг 1. **Спецификация**
-Бизнес-аналитик создаёт описание
-функциональных требований для каждого этапа;
+    subgraph Documentation["Документирование"]
+        Step7["Шаг 7. Техническая документация"]
+        Step8["Шаг 8. Архитектурная документация"]
+    end
 
-|Проектирование|
-:Шаг 2. **Сводный план**
-Архитектор формирует общий
-технический план реализации;
+    Step0 --> Step1
+    Step1 --> Step2
+    Step2 --> Step3
+    Step3 --> Step4
+    Step4 --> Step5
+    Step5 --> Step6
+    Step6 --> Step7
+    Step7 --> Step8
 
-:Шаг 3. **План разработки**
-Детальный план по написанию кода
-для каждого подэтапа;
+    classDef planningStyle fill:#e1f5e1,stroke:#333,stroke-width:2px
+    classDef designStyle fill:#fff3cd,stroke:#333,stroke-width:2px
+    classDef implementationStyle fill:#cfe2ff,stroke:#333,stroke-width:2px
+    classDef documentationStyle fill:#f8d7da,stroke:#333,stroke-width:2px
 
-:Шаг 4. **План тестирования**
-Детальный план по написанию тестов
-для каждого подэтапа;
-
-|Реализация|
-:Шаг 5. **Разработка кода**
-PHP-разработчик пишет код
-по плану + автофикс + PHPStan;
-
-:Шаг 6. **Написание тестов**
-Тестировщик покрывает код
-unit/integration/e2e тестами;
-
-|Документирование|
-:Шаг 7. **Техническая документация**
-Технический писатель описывает
-реализованную функциональность;
-
-:Шаг 8. **Архитектурная документация**
-IT-архитектор документирует
-взаимодействие и зависимости;
-
-stop
-
-@enduml
+    class Step0,Step1 planningStyle
+    class Step2,Step3,Step4 designStyle
+    class Step5,Step6 implementationStyle
+    class Step7,Step8 documentationStyle
 ```
 
 #### Шаг 0. Описание бизнес требований и планирование этапов эпика
