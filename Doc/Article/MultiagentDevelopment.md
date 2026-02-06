@@ -2,6 +2,10 @@
 
 ## Аннотация
 
+Мультиагентная разработка — это возможность превратить работу с AI из «вайб‑кодинга» в управляемый конвейер: от бизнес‑хотелок до тестов и документации. 
+
+В статье я покажу свой «велосипед»: набор специализированных агентов (PO/BA/SA/архитектор/разработчик/тестировщик/техпис) и 
+оркестратор, который гоняет их по пайплайну с изоляцией контекста.
 
 ## Вступление
 
@@ -179,14 +183,14 @@ Doc/
 **Product Owner** или «владелец продукта» — это специалист, который представляет интересы бизнеса и пользователей,
 отвечая за видение продукта, его ценность и развитие.
 
-**Функция:** [Описание бизнес потребностей и планирование этапов эпика](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/epic-writer.md)
+**Функция**: Описание бизнес потребностей и планирование этапов эпика - [prompt](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/epic-writer.md)
 
 ### Бизнес аналитик
 
 **Бизнес-аналитик** — это специалист, который занимается анализом бизнес-процессов и требований, предлагает решения,
 помогая переводить бизнес-идеи в технические решения.
 
-**Функция**: Описание бизнес-требований [prompt](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/feature-writer.md)
+**Функция**: Описание бизнес-требований - [prompt](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/feature-writer.md)
 
 ### Системный аналитик + IT архитектор
 
@@ -198,37 +202,37 @@ Doc/
 (из каких компонентов она состоит и как они взаимодействуют) и отвечает за то,
 чтобы решение можно было надежно реализовать и развивать.
 
-**Функция:** [Формирование сводного технического плана](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/summary-plan-writer.md)
+**Функция**: Формирование сводного технического плана - [prompt](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/summary-plan-writer.md)
 
 ### Системный аналитик + PHP Техлид
 
 **Технический лидер** или «техлид» — это наиболее компетентный инженер в команде, который отвечает за качество
 технической реализации проекта.
 
-**Функция:** [Формирование технического плана по разработке кода](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/dev-plan-writer.md)
+**Функция**: Формирование технического плана по разработке кода - [prompt](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/dev-plan-writer.md)
 
 ### Системный аналитик + Техлид тестировщик
 
-**Функция:** [Формирование технического плана по написанию тестов](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/test-plan-writer.md)
+**Функция**: Формирование технического плана по написанию тестов - [prompt](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/test-plan-writer.md)
 
 ### PHP разработчик
 
-**Функция:** [Разработка программного кода](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/php-developer.md)
+**Функция**: Разработка программного кода - [prompt](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/php-developer.md)
 
 ### Разработчик тестов
 
-**Функция:** [Разработка тестов](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/php-test-developer.md)
+**Функция**: Разработка тестов - [prompt](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/php-test-developer.md)
 
 ### Технический писатель
 
 **Технический писатель** — это специалист, который собирает информацию о продукте/системе и превращает её в понятную,
 точную и структурированную документацию.
 
-**Функция:** [Создание технической документации](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/tech-doc-writer.md)
+**Функция**: Создание технической документации - [prompt](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/tech-doc-writer.md)
 
 ### IT архитектор
 
-**Функция:** [Создание архитектурной документации](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/arch-doc-writer.md)
+**Функция**: Создание архитектурной документации - [prompt](https://github.com/vendelev/MyDrevo/tree/master/.ai/agents/arch-doc-writer.md)
 
 ### Project Manager или Оркестратор
 
