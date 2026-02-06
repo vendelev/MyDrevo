@@ -264,36 +264,32 @@ Doc/
 Весь процесс разбит на несколько последовательных шагов.
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph Planning["Планирование"]
-        Step0["Шаг 0. Создание эпика"]
-        Step1["Шаг 1. Спецификация"]
+        direction LR
+        Step0["Шаг 0. Создание эпика"] --> Step1["Шаг 1. Спецификация"]
     end
 
     subgraph Design["Проектирование"]
-        Step2["Шаг 2. Сводный план"]
-        Step3["Шаг 3. План разработки"]
-        Step4["Шаг 4. План тестирования"]
+        direction LR
+        Step2["Шаг 2. Сводный план"] --> Step3["Шаг 3. План разработки"]
+        Step3 --> Step4["Шаг 4. План тестирования"]
     end
 
     subgraph Implementation["Реализация"]
-        Step5["Шаг 5. Разработка кода"]
-        Step6["Шаг 6. Написание тестов"]
+        direction LR
+        Step5["Шаг 5. Разработка кода"] --> Step6["Шаг 6. Написание тестов"]
     end
 
     subgraph Documentation["Документирование"]
+        direction LR
         Step7["Шаг 7. Техническая документация"]
-        Step8["Шаг 8. Архитектурная документация"]
+        Step7 --> Step8["Шаг 8. Архитектурная документация"]
     end
 
-    Step0 --> Step1
-    Step1 --> Step2
-    Step2 --> Step3
-    Step3 --> Step4
-    Step4 --> Step5
-    Step5 --> Step6
-    Step6 --> Step7
-    Step7 --> Step8
+    Planning --> Design
+    Design --> Implementation
+    Implementation --> Documentation
 
     classDef planningStyle fill:#e1f5e1,stroke:#333,stroke-width:2px
     classDef designStyle fill:#fff3cd,stroke:#333,stroke-width:2px
