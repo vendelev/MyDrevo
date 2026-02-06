@@ -465,27 +465,28 @@ flowchart TD
 ### Визуальная схема процесса
 
 ```mermaid
-flowchart TD
+flowchart LR
     Start[Бизнес-идея] --> Decision{Крупная?}
-
     Decision -->|Да| Epic[0. Создать эпик]
     Decision -->|Нет| Feature[1. Создать фичу]
-
     Epic --> Feature
+
     Feature --> Summary[2. Сводный план]
     Summary --> DevPlan[3. План разработки]
     DevPlan --> TestPlan[4. План тестирования]
+
     TestPlan --> Code[5. Разработка кода]
     Code --> Tests[6. Написание тестов]
-    Tests --> TechDoc[7. Техническая документация]
-    TechDoc --> ArchDoc[8. Архитектурная документация]
+
+    Tests --> TechDoc[7. Тех документация]
+    TechDoc --> ArchDoc[8. Арх документация]
 
     ArchDoc --> MoreTasks{Еще задачи?}
-    MoreTasks -->|Да| DevPlan
     MoreTasks -->|Нет| MoreStages{Еще этапы?}
+    MoreTasks -->|Да| DevPlan
 
-    MoreStages -->|Да| Feature
     MoreStages -->|Нет| Done[Готово!]
+    MoreStages -->|Да| Feature
 
     style Start fill:#e1f5e1
     style Done fill:#e1f5e1
